@@ -1,0 +1,8 @@
+files
+tmp
+.git
+.idea
+.vscode
+*.sql
+*.zip
+*.tar.gz
