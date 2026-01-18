@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="landingPage">
+    <title>Landing Pages</title>
+    <description>Creates landing pages with unique metadata and converts more traffic</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.0.2</version>
+    <date>15.09.2023</date>
+    <controller>landingPage</controller>
+    <class>LandingPage</class>
+    <compatible>4.8.2</compatible>
+
+    <files>
+        <file>admin/landingPage.inc.php</file>
+        <file>admin/landingPage.tpl</file>
+        <file>admin/.htaccess</file>
+        <file>i18n/ru.json</file>
+        <file>.htaccess</file>
+        <file>rlLandingPage.class.php</file>
+    </files>
+    
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="reeflessWwwRedirect"><![CDATA[]]></hook>
+        <hook name="pageTitle"><![CDATA[]]></hook>
+        <hook name="apTplFooter"><![CDATA[]]></hook>
+        <hook name="sitemapAddPluginUrls"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="1.0.1" name="tplHeader"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="lp_manager" module="admin" js="1" target="landingPage"><![CDATA[Landing Pages]]></phrase>
+        <phrase key="lp_landing_page_url" module="admin" js="1" target="landingPage"><![CDATA[Landing page URL]]></phrase>
+        <phrase key="lp_landing_page_subdomain" module="admin" js="1" target="landingPage"><![CDATA[Landing page subdomain]]></phrase>
+        <phrase key="lp_original_page_subdomain" module="admin" js="1" target="landingPage"><![CDATA[Original page subdomain]]></phrase>
+        <phrase key="lp_original_page_url" js="1" module="admin" target="landingPage"><![CDATA[Original page URL]]></phrase>
+        <phrase key="lp_seo_text" module="admin" target="landingPage"><![CDATA[SEO text in the content box]]></phrase>
+        <phrase key="lp_use_subdomains" module="admin" target="landingPage"><![CDATA[Use subdomains]]></phrase>
+        <phrase key="lp_error_landing_page_exists" module="admin" target="landingPage"><![CDATA[The landing page with the URL {language} is already in use.]]></phrase>
+        <phrase key="lp_error_original_page_exists" module="admin" target="landingPage"><![CDATA[The original page with the URL {language} is already in use.]]></phrase>
+        <phrase key="lp_error_fill_in_all_languages" module="admin" target="landingPage"><![CDATA[Fill in the <b>{field}</b> field in all the languages.]]></phrase>
+        <phrase key="lp_error_no_mod_rewrite" module="system"><![CDATA["Please enable the Apache mod_rewrite option from the Basic Settings to make the Landing Pages work.]]></phrase>
+        <phrase key="lp_error_url_has_host" module="admin" target="landingPage"><![CDATA[The page URL {language} should not contain the domain data.]]></phrase>
+        <phrase key="lp_error_url_ending_by_ext" module="admin" target="landingPage"><![CDATA[The page URL {language} should not ending by file extension.]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="1.0.1" files="rlLandingPage.class.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="admin/landingPage.inc.php,admin/landingPage.tpl,rlLandingPage.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

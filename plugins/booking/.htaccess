@@ -1,0 +1,7 @@
+# deny all external requests
+DENY FROM ALL
+
+# allow all external requests
+<FilesMatch "request\.ajax\.php$">
+  ALLOW FROM ALL
+</FilesMatch>

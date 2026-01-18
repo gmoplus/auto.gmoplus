@@ -1,0 +1,9 @@
+{
+  "name": "flynax-components/objects-container",
+  "description": "Description here",
+  "autoload": {
+    "psr-4": {
+      "Flynax\\Components\\": "src/"
+    }
+  }
+}

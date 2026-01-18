@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="affiliate">
+    <title>Affiliate Program</title>
+    <description>Creates Affiliate Program on your website</description>
+    <author>Curtis</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.3.5</version>
+    <date>13.08.2015</date>
+    <controller>affiliate</controller>
+    <class>Affiliate</class>
+    <compatible>4.7.1</compatible>
+
+    <files>
+        <file>i18n/ru.json</file>
+        <file>admin/affiliate.inc.php</file>
+        <file>admin/affiliate.tpl</file>
+        <file>static/lib.js</file>
+        <file>static/save_payout_as_pdf.php</file>
+        <file>static/style.css</file>
+        <file>affiliate_program_page.tpl</file>
+        <file>affiliate_program_page.inc.php</file>
+        <file>banners.inc.php</file>
+        <file>banners.tpl</file>
+        <file>billing_details.tpl</file>
+        <file>commissions.inc.php</file>
+        <file>commissions.tpl</file>
+        <file>general_stats.inc.php</file>
+        <file>general_stats.tpl</file>
+        <file>payment_history.inc.php</file>
+        <file>payment_history.tpl</file>
+        <file>rlAffiliate.class.php</file>
+        <file>tpl_registration_checkbox.tpl</file>
+        <file>traffic_log.inc.php</file>
+        <file>traffic_log.tpl</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="init" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="boot" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="pageinfoArea" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="phpLoginValidation" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="reeflessRedirctTarget" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="phpQuickRegistrationBeforeInsert" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="addListingFormDataChecking" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="afterListingDone" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="registerSuccess" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="loginSuccess" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="profileController" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="profileEditProfileValidate" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansValidate" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansBeforeAdd" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansBeforeEdit" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpConfigAfterUpdate" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apTplContentBottom" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="tplRegistrationCheckbox" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="profileBlock" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="staticDataRegister" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="cronAdditional" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="registrationDone" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansValidate" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansBeforeAdd" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansBeforeEdit" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBeforeUpdate" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="registrationBegin" version="1.2.0"><![CDATA[]]></hook>
+
+        <!-- special hook for bankWireTransfer plugin | activate commission of membership plan-->
+        <hook name="postPaymentComplete" version="1.1.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <!-- common phrases -->
+        <phrase key="account_types+name+affiliate" module="common"><![CDATA[Affiliate]]></phrase>
+        <phrase key="aff_affiliate_accept" module="common"><![CDATA[I accept ]]></phrase>
+        <phrase key="aff_affiliate_not_accepted" module="frontEnd" version="1.2.0"><![CDATA[You should read and agree with the Terms of Use of our Affiliate Program.]]></phrase>
+        <phrase key="aff_account_type_not_affiliate" module="common"><![CDATA[Users having an affiliate account can sign in here]]></phrase>
+        <phrase key="aff_your_referral_link" module="common"><![CDATA[Your Referral Link]]></phrase>
+        <phrase key="aff_by_product" module="common"><![CDATA[Buy Package]]></phrase>
+        <phrase version="1.0.1" key="aff_commission_for_affiliates" module="common"><![CDATA[Affiliate сommission]]></phrase>
+        <phrase key="aff_commission_for_affiliates_option1" module="common"><![CDATA[fixed сommission]]></phrase>
+        <phrase key="aff_commission_for_affiliates_option2" module="common"><![CDATA[% of the price]]></phrase>
+        <phrase key="aff_current_statistics" module="common"><![CDATA[Current Stats (from the last payout until now)]]></phrase>
+        <phrase key="aff_cur_count_visitors" module="common"><![CDATA[Visits]]></phrase>
+        <phrase key="aff_cur_count_unique_visitors" module="common"><![CDATA[Unique Visits]]></phrase>
+        <phrase key="aff_cur_count_registered" module="common"><![CDATA[Sign-ups]]></phrase>
+        <phrase key="aff_cur_count_transactions" module="common"><![CDATA[Transactions]]></phrase>
+        <phrase key="aff_cur_pending_earnings" module="common"><![CDATA[Pending Earnings]]></phrase>
+        <phrase key="aff_cur_available_earnings" module="common"><![CDATA[Payable Earnings]]></phrase>
+        <phrase key="aff_general_statistics" module="common"><![CDATA[Total Stats]]></phrase>
+        <phrase key="aff_gen_count_visitors" module="common"><![CDATA[Visits]]></phrase>
+        <phrase key="aff_gen_count_unique_visitors" module="common"><![CDATA[Unique Visits]]></phrase>
+        <phrase key="aff_gen_count_registered" module="common"><![CDATA[Sign-ups]]></phrase>
+        <phrase key="aff_gen_count_transactions" module="common"><![CDATA[Transactions]]></phrase>
+        <phrase key="aff_gen_earnings" module="common"><![CDATA[Earnings]]></phrase>
+        <phrase key="aff_traffic_ip" module="common"><![CDATA[IP]]></phrase>
+        <phrase key="aff_traffic_date" module="common"><![CDATA[Date]]></phrase>
+        <phrase key="aff_traffic_country" module="common"><![CDATA[Country]]></phrase>
+        <phrase key="aff_traffic_region_city" module="common"><![CDATA[Region/City]]></phrase>
+        <phrase key="aff_traffic_details" module="common"><![CDATA[Details]]></phrase>
+        <phrase key="aff_traffic_type" module="common"><![CDATA[Event Type]]></phrase>
+        <phrase key="aff_traffic_referring_url" module="common"><![CDATA[Referring URL]]></phrase>
+        <phrase key="aff_billing_area" module="common"><![CDATA[Affiliate Billing Details]]></phrase>
+        <phrase key="aff_billing_type" module="common"><![CDATA[Select your method]]></phrase>
+        <phrase key="aff_western_union" module="common"><![CDATA[Western Union]]></phrase>
+        <phrase key="aff_bank_wire" module="common"><![CDATA[Wire Transfer]]></phrase>
+        <phrase key="aff_bank_wire_details" module="common"><![CDATA[Bank Details]]></phrase>
+        <phrase key="aff_wu_country" module="common"><![CDATA[Country]]></phrase>
+        <phrase key="aff_wu_city" module="common"><![CDATA[City]]></phrase>
+        <phrase key="aff_wu_fullname" module="common"><![CDATA[Full Name]]></phrase>
+        <phrase key="aff_paypal_email" module="common"><![CDATA[PayPal Account]]></phrase>
+        <phrase key="aff_banners_not_exist" module="common"><![CDATA[The Administrator hasn't yet added any banners]]></phrase>
+        <phrase key="aff_commissions_not_exist" module="common"><![CDATA[Commission data is not yet available]]></phrase>
+        <phrase key="aff_payouts_not_exist" module="common"><![CDATA[Payout data is not yet available]]></phrase>
+        <phrase key="aff_traffic_not_exist" module="common"><![CDATA[Traffic data is not yet available]]></phrase>
+        <phrase key="aff_banner_name" module="common"><![CDATA[Title]]></phrase>
+        <phrase key="aff_banner_details" module="common"><![CDATA[Details]]></phrase>
+        <phrase key="aff_banner_size" module="common"><![CDATA[Banner Size]]></phrase>
+        <phrase key="aff_banner_size_px" module="common"><![CDATA[px]]></phrase>
+        <phrase key="aff_banner_image" module="common"><![CDATA[Image]]></phrase>
+        <phrase key="aff_banner_code" module="common"><![CDATA[Copy and paste the code to any page of your site]]></phrase>
+        <phrase key="aff_details_item" module="common"><![CDATA[Posted Ad]]></phrase>
+        <phrase key="aff_details_item_separator" module="common"><![CDATA[----------------------------]]></phrase>
+        <phrase key="aff_details_item_admin_user" module="common"><![CDATA[User]]></phrase>
+        <phrase key="aff_details_item_admin_item" module="common"><![CDATA[Item]]></phrase>
+        <phrase key="aff_details_item_admin_plan" module="common"><![CDATA[Plan]]></phrase>
+        <phrase key="aff_details_item_admin_commission" module="common"><![CDATA[Commission]]></phrase>
+        <phrase key="aff_payout_date" module="common"><![CDATA[Payout Date]]></phrase>
+        <phrase key="aff_payout_count" module="common"><![CDATA[Number of Deals]]></phrase>
+        <phrase key="aff_payout_amount" module="common"><![CDATA[Amount]]></phrase>
+        <phrase key="aff_commissions_date" module="common"><![CDATA[Event Date]]></phrase>
+        <phrase key="aff_commissions_type" module="common"><![CDATA[Type]]></phrase>
+        <phrase key="aff_commissions_deposit_date" module="common"><![CDATA[Payout date]]></phrase>
+        <phrase key="aff_commissions_status" module="common"><![CDATA[Status]]></phrase>
+        <phrase key="aff_commissions_commission" module="common"><![CDATA[Commission]]></phrase>
+        <phrase key="aff_status_refused" module="common"><![CDATA[Denied]]></phrase>
+        <phrase key="aff_status_pending" module="common"><![CDATA[Pending]]></phrase>
+        <phrase key="aff_status_ready" module="common"><![CDATA[Payable]]></phrase>
+        <phrase key="aff_status_deposited" module="common"><![CDATA[Paid]]></phrase>
+        <phrase key="aff_status_not_cashing" module="common"><![CDATA[Unpayable]]></phrase>
+        <phrase key="aff_type_visit" module="common"><![CDATA[Visit]]></phrase>
+        <phrase key="aff_type_register" module="common"><![CDATA[Sign-up]]></phrase>
+        <phrase key="aff_type_listing" module="common"><![CDATA[Listing]]></phrase>
+        <phrase key="aff_type_membership" module="common"><![CDATA[Membership]]></phrase>
+        <phrase key="aff_payout_details" module="common"><![CDATA[Payout Details]]></phrase>
+        <phrase key="aff_payment_invoice" module="common"><![CDATA[Affiliate Invoice]]></phrase>
+        <phrase key="aff_copy" module="common"><![CDATA[Copy]]></phrase>
+        <phrase key="aff_referral_link_coppied" module="common"><![CDATA[You've copied the referral link; go to your site and paste it]]></phrase>
+        <phrase key="aff_go_to_account" module="frontEnd"><![CDATA[Go to Affiliate Account]]></phrase>
+        <phrase key="aff_billing_details_empty" module="frontEnd"><![CDATA[Please update your affiliate profile with valid billing details. Go to [My Profile] page.]]></phrase>
+        <phrase key="aff_referral_user" module="common"><![CDATA[Sign-up]]></phrase>
+        <phrase key="aff_title_pdf_export" module="frontEnd"><![CDATA[Save as PDF]]></phrase>
+        <!-- common phrases end -->
+
+        <!-- ext phrases -->
+        <phrase key="aff_events_ext_caption" module="ext"><![CDATA[Affiliate Event Manager]]></phrase>
+        <phrase key="aff_affiliate_ext" module="ext"><![CDATA[Affiliate]]></phrase>
+        <phrase key="aff_referral_ext" module="ext"><![CDATA[Referral]]></phrase>
+        <phrase key="aff_ip_ext" module="ext"><![CDATA[IP]]></phrase>
+        <phrase key="aff_date_ext" module="ext"><![CDATA[Date]]></phrase>
+        <phrase key="aff_location_ext" module="ext"><![CDATA[Location]]></phrase>
+        <phrase key="aff_plan_ext" module="ext"><![CDATA[Plan]]></phrase>
+        <phrase key="aff_type_ext" module="ext"><![CDATA[Event Type]]></phrase>
+        <phrase key="aff_commission_ext" module="ext"><![CDATA[Commission]]></phrase>
+        <phrase key="aff_banners_ext_caption" module="ext"><![CDATA[Banner Manager]]></phrase>
+        <phrase key="aff_banner_name_ext" module="ext"><![CDATA[Banner Title]]></phrase>
+        <phrase key="aff_banner_size_ext" module="ext"><![CDATA[Size]]></phrase>
+        <phrase key="aff_payouts_ext_caption" module="ext"><![CDATA[Payout Manager]]></phrase>
+        <phrase key="aff_payment_date_ext_caption" module="ext"><![CDATA[Payout Date]]></phrase>
+        <phrase key="aff_count_deals_ext_caption" module="ext"><![CDATA[Number of Deals]]></phrase>
+        <phrase key="aff_amount_ext_caption" module="ext"><![CDATA[Amount]]></phrase>
+        <phrase key="aff_banner_clicks_ext" module="ext"><![CDATA[Clicks]]></phrase>
+        <phrase key="aff_mark_as_deposited_ext" module="ext"><![CDATA[Mark as paid]]></phrase>
+        <phrase key="aff_mark_as_refused_ext" module="ext"><![CDATA[Mark as denied]]></phrase>
+        <phrase key="aff_status_refused" module="ext"><![CDATA[Denied]]></phrase>
+        <phrase key="aff_status_pending" module="ext"><![CDATA[Pending]]></phrase>
+        <phrase key="aff_status_ready" module="ext"><![CDATA[Payable]]></phrase>
+        <phrase key="aff_status_deposited" module="ext"><![CDATA[Paid]]></phrase>
+        <phrase key="aff_status_not_cashing" module="ext"><![CDATA[Unpayable]]></phrase>
+        <phrase key="aff_type_visit" module="ext"><![CDATA[Visit]]></phrase>
+        <phrase key="aff_type_register" module="ext"><![CDATA[Sign-up]]></phrase>
+        <phrase key="aff_type_listing" module="ext"><![CDATA[Listing]]></phrase>
+        <phrase key="aff_type_membership" module="ext"><![CDATA[Membership]]></phrase>
+        <!-- ext phrases end -->
+
+        <!-- admin phrases -->
+        <phrase key="aff_affiliate_filter" module="admin"><![CDATA[Affiliate]]></phrase>
+        <phrase key="aff_referral_filter" module="admin"><![CDATA[Referral]]></phrase>
+        <phrase key="aff_type_filter" module="admin"><![CDATA[Event Type]]></phrase>
+        <phrase key="aff_warning_commission_period" module="admin"><![CDATA[We recommended setting the pending commission period to more than 30 days]]></phrase>
+        <phrase key="aff_payouts_button" module="admin"><![CDATA[Payouts]]></phrase>
+        <phrase key="aff_banners_button" module="admin"><![CDATA[Banners]]></phrase>
+        <phrase key="aff_add_banner_button" module="admin"><![CDATA[Add a Banner]]></phrase>
+        <phrase key="aff_edit_banner" module="admin"><![CDATA[Edit Banner]]></phrase>
+        <phrase key="aff_banner_name" module="admin"><![CDATA[Banner Title]]></phrase>
+        <phrase key="aff_banner_width" module="admin"><![CDATA[Width]]></phrase>
+        <phrase key="aff_banner_height" module="admin"><![CDATA[Height]]></phrase>
+        <phrase key="aff_banner_image_desc" module="admin"><![CDATA[Use the following formats for banners: *.JPG, *.GIF, *.PNG]]></phrase>
+        <phrase key="aff_banner_gif_wrong_size" module="admin"><![CDATA[Make sure the size of animated GIFs corresponds to banner size]]></phrase>
+        <phrase key="aff_banner_added" module="admin"><![CDATA[The banner has been added successfully]]></phrase>
+        <phrase key="aff_banner_edited" module="admin"><![CDATA[The banner has been edited successfully]]></phrase>
+        <phrase key="aff_banner_removed" module="admin"><![CDATA[The banner has been removed successfully]]></phrase>
+        <phrase key="aff_events_button" module="admin"><![CDATA[List of Events]]></phrase>
+        <phrase key="aff_affiliates_button" module="admin"><![CDATA[Affiliates]]></phrase>
+        <phrase key="aff_update_banner_image" module="admin"><![CDATA[Upload a new image]]></phrase>
+        <phrase key="aff_marked_as_deposited" module="admin"><![CDATA[You have successfully marked the deals as paid]]></phrase>
+        <phrase key="aff_marked_as_refused" module="admin"><![CDATA[You have successfully marked the deals as denied]]></phrase>
+        <phrase key="aff_use_one_affiliate" module="admin"><![CDATA[You cannot mark deals of different affiliates; please select deals of a particular user]]></phrase>
+        <phrase key="aff_mass_actions_error_type" module="admin"><![CDATA[You cannot process events with the "Visit" type]]></phrase>
+        <phrase key="aff_mass_actions_error_status" module="admin"><![CDATA[You can process events with "Payable" status only]]></phrase>
+        <phrase key="aff_incorrect_commission_type" module="admin" version="1.1.0"><![CDATA[You cannot set a percentage commission on listing packages/membership plans whose price amounts to 0]]></phrase>
+        <phrase key="aff_button_refused" module="admin"><![CDATA[Denied]]></phrase>
+        <phrase key="aff_deposite_note" module="admin"><![CDATA[<b>NOTE</b>: Before clicking the button send the total earnings to the affiliate account using his billing details above]]></phrase>
+        <phrase key="aff_banner_deleted" module="admin" version="1.1.0"><![CDATA[You've successfully removed the banner.]]></phrase>
+        <phrase key="aff_remove_banner_notify_fail" module="admin" version="1.1.0"><![CDATA[Failed to remove the banner; please contact Flynax helpdesk.]]></phrase>
+        <!-- admin phrases end -->
+    </phrases>
+
+    <configs key="affiliate" name="Affiliate" version="1.3.3">
+        <![CDATA[]]>
+        <config key="affiliate_module" name="Affiliate module" type="bool"><![CDATA[1]]></config>
+        <config key="aff_cookie_time" name="Cookie expiration period" type="text" description="days"><![CDATA[90]]></config>
+        <config key="aff_pending_period" name="Pending commission period" type="text" description="days"><![CDATA[30]]></config>
+        <config version="1.0.1" key="aff_commission_by_registered" name="Commission per sign-up" type="text" description="a fixed price in the system currency, for example: $1"><![CDATA[0]]></config>
+        <config version="1.0.1" key="aff_items_per_page" name="Number of events per page" type="text"><![CDATA[10]]></config>
+        <config key="aff_show_in_registration" name="Offer affiliate account type on sign-up page" type="bool" version="1.2.0"><![CDATA[1]]></config>
+        <config key="aff_html_in_link" name="HTML for referral links" type="bool" version="1.3.0"><![CDATA[1]]></config>
+        <config key="aff_billing_details_divider" name="Billing" type="divider" version="1.2.0"><![CDATA[]]></config>
+        <config key="aff_paypal" name="Paypal" type="bool" version="1.2.0"><![CDATA[1]]></config>
+        <config key="aff_western_union" name="Western Union" type="bool" version="1.2.0"><![CDATA[1]]></config>
+        <config key="aff_bank_wire" name="Wire Transfer" type="bool" version="1.2.0"><![CDATA[1]]></config>
+    </configs>
+
+    <blocks>
+        <block key="aff_menu" name="Affiliate Menu" side="left" type="smarty" tpl="1"><![CDATA[
+            {include file='menus'|cat:$smarty.const.RL_DS|cat:'account_menu.tpl'}
+        ]]></block>
+    </blocks>
+
+    <pages>
+        <page key="aff_program_page" name="Affiliate" type="static" controller="static" path="affiliate-program" login="0" menus="3" tpl="1"><![CDATA[
+            <h2>Welcome to our affiliate program!</h2>
+            <p style="padding: 10px 0 30px;">Registration in our affiliate program is free. It doesn’t require any technical skills on your part and takes no more than a few clicks. Its content and concept is similar to affiliate programs offered by other companies. To start generating profit, you simply need to post a link or a banner on your site, which will send more traffic our way; we, on our part, will pay you a commission on each transaction closed by a registered user referred from your site.</p>
+
+            <h2>How it works?</h2>
+            <p style="padding: 10px 0 30px;">Once you register, you get your affiliate account along with useful tools such as an overview of general account stats, reports indicating traffic sent from your website, commission stats, HMTL banner codes, and more. You will be notified by email of any successful transactions completed by your referrals.</p>
+
+            <em>* You may further post a table highlighting commission rates for each of the action completed by your referrals.</em>
+
+            <ul style="padding-top: 10px;">
+            <li>User regisration – <b>US $1</b></li>
+            <li>Listing added under Bronze package – <b>US $2</b></li>
+            <li>Listing added under Silver package – <b>US $5</b></li>
+            <li>Listing added under Gold package – <b>US $10</b></li>
+            <li>And other events eligible for a commission</li>
+            </ul>
+        ]]></page>
+        <page key="aff_terms_of_use_program_page" name="Terms of Use of the Affiliate Program" type="static" controller="static" path="affiliate-terms-of-use-affiliate-program" login="0" tpl="1"><![CDATA[This is the Agreement of the Affiliate Program.]]></page>
+        <page key="aff_general_stats" name="Affiliate Stats" type="system" controller="general_stats" path="affiliate-general-stats" login="1" tpl="1" menus="2"><![CDATA[]]></page>
+        <page key="aff_commissions" name="Commissions" type="system" controller="commissions" path="affiliate-commissions" login="1" tpl="1" menus="2"><![CDATA[]]></page>
+        <page key="aff_payment_history" name="Payment History" type="system" controller="payment_history" path="affiliate-payment-history" login="1" tpl="1" menus="2"><![CDATA[]]></page>
+        <page key="aff_banners" name="Banners" type="system" controller="banners" path="affiliate-banners" login="1" tpl="1" menus="2"><![CDATA[]]></page>
+        <page key="aff_traffic_log" name="Traffic Log" type="system" controller="traffic_log" path="affiliate-traffic-log" login="1" tpl="1" menus="2"><![CDATA[]]></page>
+    </pages>
+
+    <emails>
+        <email key="affiliate_account_created" subject="Your affiliate details for {site_name}"><![CDATA[
+            Hello {name},
+
+            You have successfully created an affiliate account at {site_name}.
+            Please use the login details below:
+
+            {site_url}
+
+            Username: {login}
+            Password: {password}
+
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+        <email key="referral_user_registered" subject="A new referral signed up for {site_name}"><![CDATA[
+            Hello {user},
+
+            Good news: one of your referrals has signed up at your link. Transaction details:
+
+            1. Referral Name: {ref_name}
+            3. Your Commission: {commission}
+
+            Your earnings will be made payable in {commission_period} days.
+            You can learn more about your earnings here: {link}
+
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+        <email key="referral_listing_added" subject="A referral posted an ad at {site_name}"><![CDATA[
+            Hello {user},
+
+            Good news: one of your referrals has added a listing at your link.
+
+            Transaction details:
+
+            1. Referral Name: {ref_name}
+            2. Listing URL: {listing_url}
+            3. Your Commission: {commission}
+
+            Your earnings will be made payable in {commission_period} days.
+            You can learn more about your earnings here: {link}
+
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+        <email key="referral_membership_plan_added" subject="A referral purchased a membership plan at {site_name}" version="1.1.0"><![CDATA[
+            Hello {user},
+
+            Good news: one of your referrals has purchased a membership plan at your link.
+
+            Transaction details:
+
+            1. Referral Name: {ref_name}
+            2. Membership Plan: {plan_name}
+            3. Your Commission: {commission}
+
+            Your earnings will be made payable in {commission_period} days.
+            You can learn more about your earnings here: {link}
+
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+        <email key="affiliate_commission_ready" subject="Your earnings at {site_name} marked as payable"><![CDATA[
+            Hello {user},
+
+            You closed {count} affiliate transactions over the last {days} days and earned {amount}:
+
+            {aff_details}
+
+            Your earnings have been marked as payable and will be paid out by the Administrator soon.
+            You can learn more about your earnings here: {link}
+
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+        <email key="affiliate_commission_ready_admin" subject="Affiliate earnings at {site_name} marked as payable"><![CDATA[
+            Hello Administrator,
+
+            {count} affiliate transactions have been marked as payable over the last {days} days; please sign in and pay out affiliate earnings:
+
+            {aff_details}
+
+            ______________________________
+            {site_name}
+        ]]></email>
+        <email key="affiliate_commissions_deposited" subject="Your earnings from {site_name} paid out"><![CDATA[
+            Hello {user},
+
+            The Administrator sent your affiliate earnings and marked them as paid.
+            You can learn more about your earnings here: {link}
+
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+        <email key="affiliate_commissions_refused" subject="Your transaction at {site_name} denied"><![CDATA[
+            Hello {user},
+
+            The Administrator didn’t accept your transaction and marked it as denied:
+
+            Reason: {reason}
+
+            You may {contact} the Administrator if you have any comments or questions.
+
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+    </emails>
+
+    <updates>
+        <update version="1.0.1" files="rlAffiliate.class.php,admin/affiliate.tpl,affiliate_program_page.tpl"><![CDATA[]]></update>
+        <update version="1.0.2" files="rlAffiliate.class.php"><![CDATA[]]></update>
+        <update version="1.0.3" files="rlAffiliate.class.php"><![CDATA[]]></update>
+        <update version="1.1.0" files="rlAffiliate.class.php,admin/affiliate.tpl"><![CDATA[]]></update>
+        <update version="1.2.0" files="billing_details.tpl,payment_history.tpl,rlAffiliate.class.php,static/save_payout_as_pdf.php,tpl_registration_checkbox.tpl"><![CDATA[]]></update>
+        <update version="1.3.0" files="general_stats.tpl,rlAffiliate.class.php"><![CDATA[]]></update>
+        <update version="1.3.1" files="rlAffiliate.class.php"><![CDATA[]]></update>
+        <update version="1.3.2" files="admin/affiliate.inc.php,rlAffiliate.class.php,i18n/ru.json,static/style.css"><![CDATA[]]></update>
+        <update version="1.3.3" files="i18n/ru.json,rlAffiliate.class.php,affiliate_program_page.tpl"><![CDATA[]]></update>
+        <update version="1.3.4" files="rlAffiliate.class.php,affiliate_program_page.tpl,tpl_registration_checkbox.tpl"><![CDATA[]]></update>
+        <update version="1.3.5" files="admin/affiliate.tpl,rlAffiliate.class.php,static/save_payout_as_pdf.php,static/style.css"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

@@ -1,0 +1,237 @@
+/*** Icons ***/
+.favorite {
+  .icon {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    background: none;
+    vertical-align: top;
+
+    @include tap_square;
+
+    &:before {
+      content: "";
+      width: $icon-size-default;
+      height: $icon-size-default - 0.125rem;
+
+      @include absolute_center($icon-size-default, $icon-size-default - 0.125rem);
+
+      background: url(../img/gallery.png) 100% -88px no-repeat;
+
+      @include gallery_retina;
+    }
+  }
+
+  &.remove {
+    .icon {
+      &:before {
+        background-position: 100% -104px;
+      }
+    }
+  }
+}
+
+a.qrCodeModal,
+a.pdfExport,
+.compare-details,
+a.print {
+  background: none;
+
+  svg {
+    padding: 13px;
+    opacity: .3;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+  }
+
+  *:not(.link) {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+
+    @include icon_hover;
+
+    @include tap_square;
+
+    img {
+      display: none;
+    }
+
+    &:before {
+      content: "";
+      width: $icon-size-default;
+      height: $icon-size-default;
+
+      @include absolute_center($icon-size-default, $icon-size-default);
+
+      @include gallery_retina;
+    }
+  }
+
+  span.link {
+    display: none;
+  }
+}
+
+a.print {
+  span {
+    &:before {
+      background: url(../img/gallery.png) 0 -177px no-repeat;
+    }
+  }
+}
+
+a.pdfExport {
+  span.icon {
+    &:before {
+      background: url(../img/gallery.png) 0 -195px no-repeat;
+    }
+  }
+}
+
+a.qrCodeModal {
+  span.icon {
+    &:before {
+      background: url(../img/gallery.png) 0 -213px no-repeat;
+    }
+  }
+}
+
+.add_to_compare,
+.remove_from_compare {
+  .icon {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    background: none !important;
+
+    @include icon_hover;
+
+    @include tap_square;
+
+    &:before {
+      content: "";
+      width: $icon-size-default;
+      height: $icon-size-default;
+
+      @include absolute_center($icon-size-default, $icon-size-default);
+
+      background: url(../img/gallery.png) 0 -159px no-repeat;
+
+      @include gallery_retina;
+    }
+  }
+
+  &.remove_from_compare .icon:before {
+    background-position: -18px -159px;
+  }
+}
+
+div.close {
+  cursor: pointer;
+  background: transparentize($color-white, 0.3);
+  position: relative;
+
+  @include icon_hover;
+
+  @include tap_square;
+
+  &:before {
+    content: "";
+    width: $icon-size-lg;
+    height: $icon-size-lg;
+
+    @include absolute_center($icon-size-lg, $icon-size-lg);
+
+    background: url(../img/gallery.png) 0 -88px no-repeat;
+
+    @include gallery_retina;
+  }
+
+  @include respond_to(tablet) {
+    width: map_get($tap-zone, sm);
+    height: map_get($tap-zone, sm);
+  }
+}
+
+div.close-small,
+div.close-red {
+  cursor: pointer;
+  width: map_get($tap-zone, lg);
+  height: map_get($tap-zone, lg);
+
+  &:before {
+    content: "";
+    width: $icon-size-default - 0.125rem;
+    height: $icon-size-default - 0.125rem;
+    background: url(../img/gallery.png) 0 -125px no-repeat;
+
+    @include absolute_center($icon-size-default - 0.125rem, $icon-size-default - 0.125rem);
+
+    @include gallery_retina;
+  }
+
+  @include respond_to(tablet) {
+    width: map_get($tap-zone, sm);
+    height: map_get($tap-zone, sm);
+  }
+}
+
+span.toggle.plus {
+  @include plus_icon;
+}
+
+// Quick tip
+img.qtip {
+  width: $icon-size-default;
+  height: $icon-size-default;
+  background: url(../img/gallery.png) -19px -188px no-repeat;
+  opacity: 0.7;
+  cursor: pointer;
+
+  @include transition(opacity);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+img.qtip {
+    background-color: $color-main;
+}
+
+.delete {
+    display: inline-block;
+}
+
+.icon {
+    background-size: 50px auto !important; 
+
+    &.delete {
+      background-position: (-18px) -300px !important;
+      position: static;
+    }
+    
+    &.crop {
+      background-position: 0 -336px !important;
+    }
+    
+    &.manage {
+      background-position: 0 -300px !important;
+    }
+}
+
+img.remove {
+  width: 8px;
+  height: 8px;
+  margin-#{$space}: $spacer;
+  opacity: 0.7;
+  cursor: pointer;
+  background: url(../img/gallery.png) -20px -373px no-repeat;
+  &:hover {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="search_by_distance">
+    <title>Searching By Distance</title>
+    <description>Searches listings within a specific mileage based on a zip code</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>5.1.2</version>
+    <date>31.01.2012</date>
+    <class>SearchByDistance</class>
+    <compatible>4.8.2</compatible>
+
+    <files>
+        <file>block.tpl</file>
+        <file>distance.tpl</file>
+        <file>field.tpl</file>
+        <file>config.js.tpl</file>
+        <file>refine_search.tpl</file>
+        <file>header_block.tpl</file>
+        <file>rlSearchByDistance.class.php</file>
+        <file>search.inc.php</file>
+        <file>search.tpl</file>
+        <file>static/lib.js</file>
+        <file>static/page_lib.js</file>
+        <file>static/style.css</file>
+        <file>static/target.png</file>
+        <file>static/request.ajax.php</file>
+        <file>static/LeafletDraw/Edit.Circle.js</file>
+        <file>static/LeafletDraw/Edit.CircleMarker.js</file>
+        <file>static/LeafletDraw/Edit.SimpleShape.js</file>
+        <file>static/LeafletDraw/Leaflet.Draw.Event.js</file>
+        <file>static/LeafletDraw/Leaflet.draw.js</file>
+        <file>static/LeafletDraw/TouchEvents.js</file>
+        <file>static/leafletExtendTouch.js</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[
+        global $rlDb, $reefless, $config;
+
+        $config['sbd_country_field'] = 'b_country';
+        $reefless->loadClass('SearchByDistance', null, 'search_by_distance');
+
+        $sbd_page_id = $rlDb->getOne('ID', "`Key` = 'search_by_distance'", 'pages');
+        $rlDb->query("UPDATE `{db_prefix}blocks` SET `Page_ID` = '1,11,{$sbd_page_id}', `Position` = 0, `Sticky` = '0' WHERE `Key` = 'search_by_distance' LIMIT 1");
+
+        if ($rlDb->getOne('ID', "`Key` = 'zip'", 'listing_fields')) {
+            $update = array(
+                'fields' => array('Default' => 'zip'),
+                'where'  => array('Key' => 'sbd_zip_field')
+            );
+            $rlDb->updateOne($update, 'config');
+        }
+        if ($rlDb->getOne('ID', "`Key` = 'country'", 'listing_fields')) {
+            $update = array(
+                'fields' => array('Default' => 'country'),
+                'where'  => array('Key' => 'sbd_country_field')
+            );
+            $rlDb->updateOne($update, 'config');
+
+            $config['sbd_country_field'] = 'country';
+        }
+
+        $GLOBALS['rlSearchByDistance']->updateBox();
+    ]]></install>
+
+    <hooks>
+        <hook version="4.1.1" name="listingAfterStats"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="accountAfterStats"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="listingsModifyFieldSearch"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="listingsModifyWhereSearch"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="accountsSearchDealerSqlSelect"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="accountsSearchDealerSqlWhere"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="phpListingTypeTop"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="listingsModifySqlSearch"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="browseMiddle"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="apPhpFormatsAjaxAddItem"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="apPhpFormatsAjaxDeleteItem"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="apExtDataFormatsUpdate"><![CDATA[]]></hook>
+        <hook version="4.1.1" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="5.0.0" name="savedSearchBottom"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="sbd_mi" module="frontEnd"><![CDATA[Miles]]></phrase>
+        <phrase key="sbd_mi_short" module="frontEnd"><![CDATA[Mi]]></phrase>
+        <phrase key="sbd_km" module="frontEnd"><![CDATA[Kilometers]]></phrase>
+        <phrase key="sbd_km_short" module="frontEnd"><![CDATA[Km]]></phrase>
+        <phrase key="sbd_zipcode" module="frontEnd"><![CDATA[Zip Code]]></phrase>
+        <phrase version="4.0.0" key="sbd_within" module="frontEnd"><![CDATA[Within {type}]]></phrase>
+        <phrase key="sbd_distance" module="frontEnd"><![CDATA[Distance]]></phrase>
+        <phrase key="sbd_select_country" module="frontEnd"><![CDATA[- Country -]]></phrase>
+        <phrase key="sbd_search_limit_exceeded" module="frontEnd"><![CDATA[The encircled area on the map contains too many listings, please consider narrowing down your search radius]]></phrase>
+        <phrase key="sbd_zip_not_found" module="frontEnd"><![CDATA[The zip code you have entered is missing in the database]]></phrase>
+        <phrase key="sbd_location_not_found" module="frontEnd"><![CDATA[Failed to find your location]]></phrase>
+        <phrase version="4.0.0" key="sbd_location_search_hint" module="common"><![CDATA[zip or location]]></phrase>
+        <phrase version="4.0.0" key="sbd_number_ads_found" module="frontEnd"><![CDATA[{number} Ads Found]]></phrase>
+        <phrase version="4.0.0" key="sbd_no_ads_found" module="frontEnd"><![CDATA[No ads found in location you specified.]]></phrase>
+        <phrase version="4.0.0" key="sbd_fieldset_caption" module="frontEnd"><![CDATA[Refine Search]]></phrase>
+        <phrase version="5.0.0" key="sbd_within_full" module="frontEnd"><![CDATA[Within {radius} of {location}]]></phrase>
+        <phrase version="5.1.1" key="config+option+sbd_search_mode_zip" module="admin" target="settings"><![CDATA[Zip]]></phrase>
+        <phrase version="5.1.1" key="config+option+sbd_search_mode_mixed" module="admin" target="settings"><![CDATA[Mixed]]></phrase>
+        <phrase version="5.1.1" key="config+option+sbd_units_auto" module="admin" target="settings"><![CDATA[Auto]]></phrase>
+        <phrase version="5.1.1" key="config+option+sbd_units_miles" module="admin" target="settings"><![CDATA[Miles]]></phrase>
+        <phrase version="5.1.1" key="config+option+sbd_units_kilometres" module="admin" target="settings"><![CDATA[Kilometres]]></phrase>
+    </phrases>
+
+    <pages>
+        <page key="search_by_distance" name="Search by Distance" type="system" path="search-by-distance" controller="search" tpl="1" menus="3"><![CDATA[]]></page>
+    </pages>
+
+    <blocks>
+        <block version="3.0.0" key="search_by_distance" name="Search by Distance" side="left" type="PHP" tpl="1"><![CDATA[
+            // the box content will be generated during plugin installation
+        ]]></block>
+    </blocks>
+
+    <configs key="search_by_distance" name="Search by Distance">
+        <![CDATA[]]>
+        <config key="sbd_common" name="Common Settings" type="divider"><![CDATA[1]]></config>
+        <config key="sbd_distance_items" name="Distance range" type="text"><![CDATA[5,10,20,30,50,100]]></config>
+        <config key="sbd_default_distance" name="Default distance" type="text"><![CDATA[10]]></config>
+        <config version="3.2.0" key="sbd_search_mode" name="Search mode" type="select" values="zip,mixed" description="zip - search by zip code only, mixed - serch by location or zip code"><![CDATA[mixed]]></config>
+        <config version="4.0.0" key="sbd_units" name="Distance unit" type="select" values="auto,miles,kilometres"><![CDATA[auto]]></config>
+        <config version="4.0.0" key="sbd_mapping" name="Listing Fields Mapping" type="divider"><![CDATA[1]]></config>
+        <config version="3.2.0" key="sbd_zip_field" name="Zip Code field" type="select"><![CDATA[b_zip]]></config>
+        <config version="4.0.0" key="sbd_country_field" name="Country field" type="select"><![CDATA[b_country]]></config>
+        <config version="3.0.0" key="sbd_default_country" name="Default country" type="text"><![CDATA[US]]></config>
+        <config version="4.0.0" key="sbd_account_mapping" name="Account Fields Mapping" type="divider"><![CDATA[1]]></config>
+        <config version="4.0.0" key="sbd_account_zip_field" name="Zip Code field" type="select"><![CDATA[zip_code]]></config>
+        <config version="4.0.0" key="sbd_account_country_field" name="Country field" type="select"><![CDATA[country]]></config>
+        <config key="sbd_listings" name="Listing Settings" type="divider"><![CDATA[1]]></config>
+        <config key="sbd_listings_limit" name="Single search limit" type="text" validate="int" description="listings"><![CDATA[200]]></config>
+    </configs>
+
+    <updates>
+        <update version="2.1.2" files="search.tpl,rlSearchByDistance.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="2.1.3" files="search.tpl,block.tpl,rlSearchByDistance.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="2.1.4" files="search.tpl,block.tpl,rlSearchByDistance.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="2.1.5" files="rlSearchByDistance.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="2.2.0" files="rlSearchByDistance.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="3.0.0" files="rlSearchByDistance.class.php,block.tpl,search.inc.php,search.tpl,distance_account.tpl,static/lib.js,admin/.htaccess,admin/sbd_countries.inc.php,admin/sbd_countries.tpl"><![CDATA[
+            global $rlDb, $reefless;
+
+            $sql = "
+            CREATE TABLE `".RL_DBPREFIX."sbd_countries` (
+            `Code` VARCHAR( 2 ) NOT NULL ,
+            `Status` ENUM( 'active', 'approval' ) NOT NULL DEFAULT 'active',
+            PRIMARY KEY ( `Code` )
+            )";
+
+            $rlDb -> query($sql);
+
+            $sql = "INSERT INTO `".RL_DBPREFIX."sbd_countries` (`Code`, `Status`) VALUES
+            ('AE', 'active'),
+            ('AU', 'active'),
+            ('BE', 'active'),
+            ('BR', 'active'),
+            ('CA', 'active'),
+            ('CH', 'active'),
+            ('DE', 'active'),
+            ('ES', 'active'),
+            ('FR', 'active'),
+            ('GR', 'active'),
+            ('IE', 'active'),
+            ('IT', 'active'),
+            ('PT', 'active'),
+            ('SA', 'active'),
+            ('TR', 'active'),
+            ('UK', 'active'),
+            ('US', 'active')";
+
+            $rlDb -> query($sql);
+
+            $reefless -> loadClass('Listings');
+            $reefless -> loadClass( 'SearchByDistance', null, 'search_by_distance' );
+            $GLOBALS['rlSearchByDistance'] -> updateBox();
+        ]]></update>
+        <update version="3.0.1" files="rlSearchByDistance.class.php,admin/sbd_countries.tpl"><![CDATA[]]></update>
+        <update version="3.0.2" files="rlSearchByDistance.class.php,admin/sbd_countries.tpl"><![CDATA[]]></update>
+        <update version="3.1.0" files="rlSearchByDistance.class.php,paging.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="3.1.1" files="rlSearchByDistance.class.php,block.tpl,search.tpl,search.inc.php,static/lib.js"><![CDATA[]]></update>
+        <update version="3.1.2" files="rlSearchByDistance.class.php,search.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="3.1.3" files="rlSearchByDistance.class.php"><![CDATA[]]></update>
+        <update version="3.1.4" files="rlSearchByDistance.class.php,block_responsive_42.tpl,paging.tpl,search.tpl,search.inc.php,static/style_responsive_42.css,static/lib.js"><![CDATA[
+            $GLOBALS['rlDb'] -> query("DELETE FROM `". RL_DBPREFIX ."hooks` WHERE `Name` = 'phpGetGEOData'");
+        ]]></update>
+        <update version="3.1.5" files="block_responsive_42.tpl,static/style_responsive_42.css"><![CDATA[]]></update>
+        <update version="3.1.6" files="static/style_responsive_42.css,static/lib.js,static/location.php"><![CDATA[]]></update>
+        <update version="3.1.7" files="static/lib.js"><![CDATA[]]></update>
+        <update version="3.1.8" files="rlSearchByDistance.class.php"><![CDATA[]]></update>
+        <update version="3.1.9" files="search.inc.php,search.tpl,static/location.php"><![CDATA[]]></update>
+        <update version="3.2.0" files="rlSearchByDistance.class.php,field.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="3.2.1" files="static/lib.js,admin/sbd_countries.tpl"><![CDATA[]]></update>
+        <update version="3.2.2" files="distance.tpl,distance_account.tpl,static/style_responsive_42.css"><![CDATA[]]></update>
+        <update version="3.2.3" files="static/lib.js"><![CDATA[]]></update>
+        <update version="3.2.4" files="field.tpl"><![CDATA[]]></update>
+        <update version="3.2.5" files="static/lib.js"><![CDATA[]]></update>
+        <update version="3.2.6" files="block.tpl,block_responsive_42.tpl,rlSearchByDistance.class.php,search.tpl,admin/sbd_countries.tpl"><![CDATA[]]></update>
+        <update version="3.2.7" files="rlSearchByDistance.class.php"><![CDATA[]]></update>
+        <update version="3.2.8" files="rlSearchByDistance.class.php,field.tpl"><![CDATA[]]></update>
+        <update version="4.0.0" files="rlSearchByDistance.class.php,search.inc.php,search.tpl,block.tpl,field.tpl,distance.tpl,refine_search.tpl,static/request.ajax.php,static/page_lib.js,static/lib.js,static/request.ajax.php,static/style.css"><![CDATA[
+            global $rlDb;
+
+            // remove admin panel controller
+            $rlDb->query("UPDATE `".RL_DBPREFIX."plugins` SET `Controller` =  '' WHERE `Key` = 'search_by_distance' LIMIT 1");
+
+            // remove hooks
+            $hooks_to_be_removed = array(
+                'tplHeader',
+                'accountTypeTop',
+                'apPhpConfigBottom',
+                'specialBlock'
+            );
+            $rlDb->query("DELETE FROM `" . RL_DBPREFIX . "hooks` WHERE `Plugin` = 'search_by_distance' AND `Name` IN ('" . implode("','", $hooks_to_be_removed) . "')");
+
+            // remove files
+            $files_to_be_removed = array(
+                'block_responsive_42.tpl',
+                'paging.tpl',
+                'distance_account.tpl',
+                'static/style_responsive_42.css',
+                'static/location.php',
+                'admin/sbd_countries.inc.php',
+                'admin/sbd_countries.tpl'
+            );
+            foreach($files_to_be_removed as &$file) {
+                unlink(RL_PLUGINS . 'search_by_distance' . RL_DS . str_replace('/', RL_DS, $file));
+            }
+
+            // remove legacy config
+            $rlDb->query("DELETE FROM `" . RL_DBPREFIX . "config` WHERE `Key` IN ('sbd_default_units', 'sbd_listings_blank', 'sbd_listings_per_page')");
+
+            // remove phrases
+            $phrases = array(
+                'sbd_add_country',
+                'sbd_country_code',
+                'sbd_country_code_desc',
+                'sbd_edit_country',
+                'sbd_ext_country_code',
+                'sbd_ext_caption',
+                'sbd_ext_country_name',
+                'sbd_country_exists',
+                'sbd_code_wrong',
+                'sbd_country_added_notice',
+                'sbd_country_edited_notice',
+                'config+name+sbd_default_units',
+                'config+name+sbd_listings_blank',
+                'config+name+sbd_listings_per_page'
+            );
+            $sql = "DELETE FROM `" . RL_DBPREFIX . "lang_keys` WHERE `Plugin` = 'search_by_distance' AND `Key` IN ('" . implode("','", $phrases) . "')";
+            $rlDb->query($sql);
+
+            // re-arrange configs
+            $rlDb->query("UPDATE `" . RL_DBPREFIX . "config` SET `Position` = `Position` + 10 WHERE `Position` >= 10 AND `Plugin` = 'search_by_distance'");
+
+            // update positions
+            $config_positions = array(
+                'sbd_mapping' => 9,
+                'sbd_zip_field' => 10,
+                'sbd_country_field' => 11,
+                'sbd_default_country' => 12,
+                'sbd_account_mapping' => 13,
+                'sbd_account_zip_field' => 14,
+                'sbd_account_country_field' => 15
+            );
+
+            foreach($config_positions as $config_key => $config_position) {
+                $sql = "UPDATE `".RL_DBPREFIX."config` SET `Position` = '{$config_position}' WHERE `Key` = '{$config_key}' LIMIT 1";
+                $rlDb->query($sql);
+            }
+
+            // backup old countries
+            $GLOBALS['reefless']->loadClass('SearchByDistance', null, 'search_by_distance');
+            $GLOBALS['rlSearchByDistance']->backup();
+
+            // remove old countries
+            $rlDb->query("DROP TABLE IF EXISTS `" . RL_DBPREFIX . "sbd_countries`");
+            $rlDb->query("DELETE FROM `" . RL_DBPREFIX . "lang_keys` WHERE `Key` LIKE 'sbd_countries+name+sbd_country_%'");
+
+            // update box
+            $GLOBALS['rlSearchByDistance']->updateBox();
+
+            // touch tpl files to update js static cache
+            foreach(array('field.tpl', 'block.tpl', 'search.tpl') as $tfile) {
+                touch(RL_PLUGINS . 'search_by_distance' . RL_DS . $tfile);
+            }
+        ]]></update>
+        <update version="4.0.1" files="rlSearchByDistance.class.php"><![CDATA[]]></update>
+        <update version="4.0.2"><![CDATA[]]></update>
+        <update version="4.0.3" files="rlSearchByDistance.class.php,block.tpl,refine_search.tpl"><![CDATA[]]></update>
+        <update version="4.0.4" files="rlSearchByDistance.class.php,block.tpl,field.tpl,static/request.ajax.php"><![CDATA[]]></update>
+        <update version="4.1.0" files="rlSearchByDistance.class.php,search.inc.php,search.tpl,header.tpl,block.tpl,field.tpl,refine_search.tpl,config.js.tpl,static/request.ajax.php,static/lib.js,static/page_lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="4.1.1" files="rlSearchByDistance.class.php"><![CDATA[]]></update>
+        <update version="4.1.2" files="rlSearchByDistance.class.php,field.tpl,static/page_lib.js"><![CDATA[]]></update>
+        <update version="4.2.0" files="rlSearchByDistance.class.php,search.tpl,static/page_lib.js"><![CDATA[]]></update>
+        <update version="4.2.1" files="static/lib.js,static/page_lib.js,static/style.css,block.tpl,header_block.tpl,rlSearchByDistance.class.php,search.inc.php,search.tpl"><![CDATA[
+            global $rlDb;
+
+            // Remove hook
+            $sql = "
+                DELETE FROM `{db_prefix}hooks`
+                WHERE `Plugin` = 'search_by_distance' AND `Name` = 'tplFooter'
+            ";
+            $rlDb->query($sql);
+
+            // Remove file
+            unlink(RL_PLUGINS . 'search_by_distance' . RL_DS . 'header.tpl');
+        ]]></update>
+        <update version="5.0.0" files="static/LeafletDraw/Edit.Circle.js,static/LeafletDraw/Edit.CircleMarker.js,static/LeafletDraw/Edit.SimpleShape.js,static/LeafletDraw/Leaflet.Draw.Event.js,static/LeafletDraw/Leaflet.draw.js,static/LeafletDraw/TouchEvents.js,static/lib.js,static/page_lib.js,static/style.css,block.tpl,config.js.tpl,refine_search.tpl,rlSearchByDistance.class.php,search.tpl,static/leafletExtendTouch.js"><![CDATA[
+            global $rlDb;
+
+            // Remove file
+            $files = array(
+                'static/map_utility.js',
+                'header_page.tpl'
+            );
+
+            foreach ($files as $file) {
+                unlink(RL_PLUGINS . 'search_by_distance' . RL_DS . $file);
+            }
+
+            // Remove legacy config
+            $rlDb->query("DELETE FROM `{db_prefix}config` WHERE `Key` IN ('sbd_map_width', 'sbd_map_height')");
+
+            // Remove phrases
+            $phrases = array(
+                'config+name+sbd_map_width',
+                'config+name+sbd_map_height',
+                'config+des+sbd_map_width',
+                'config+des+sbd_map_height',
+                'sbd_price_k',
+                'sbd_price_m',
+                'sbd_price_b',
+            );
+            $sql = "DELETE FROM `{db_prefix}lang_keys` WHERE `Plugin` = 'search_by_distance' AND `Key` IN ('" . implode("','", $phrases) . "')";
+            $rlDb->query($sql);
+
+            $GLOBALS['reefless']->loadClass('SearchByDistance', null, 'search_by_distance');
+            $GLOBALS['rlSearchByDistance']->updateBox();
+        ]]></update>
+        <update version="5.0.1" files="rlSearchByDistance.class.php"><![CDATA[]]></update>
+        <update version="5.0.2" files="block.tpl,header_block.tpl,rlSearchByDistance.class.php"><![CDATA[]]></update>
+        <update version="5.1.0" files="rlSearchByDistance.class.php,search.tpl,static/lib.js,static/page_lib.js,static/request.ajax.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('SearchByDistance', null, 'search_by_distance');
+            $GLOBALS['rlSearchByDistance']->updateBox();
+        ]]></update>
+        <update version="5.1.1" files="i18n/ru.json,refine_search.tpl,rlSearchByDistance.class.php"><![CDATA[
+            global $rlDb;
+
+            $phrases = array(
+                'sbd_listing_unavailable',
+                'sbd_field_label',
+            );
+            $sql = "DELETE FROM `{db_prefix}lang_keys` WHERE `Plugin` = 'search_by_distance' AND `Key` IN ('" . implode("','", $phrases) . "')";
+            $rlDb->query($sql);
+
+            if (in_array('ru', array_keys($GLOBALS['languages']))) {
+                $russianTranslation = json_decode(file_get_contents(RL_PLUGINS . 'search_by_distance/i18n/ru.json'), true);
+                foreach ($russianTranslation as $phraseKey => $phraseValue) {
+                    if (!$rlDb->getOne('ID', "`Key` = '{$phraseKey}' AND `Code` = 'ru'", 'lang_keys')) {
+                        $newPhrase = $rlDb->fetch(
+                            ['Module', 'Key', 'Plugin', 'JS', 'Target_key'],
+                            ['Code' => $GLOBALS['config']['lang'], 'Key' => $phraseKey, 'Plugin' => 'search_by_distance'],
+                            null, 1, 'lang_keys', 'row'
+                        );
+                        $newPhrase['Code']  = 'ru';
+                        $newPhrase['Value'] = $phraseValue;
+
+                        $rlDb->insertOne($newPhrase, 'lang_keys');
+                    } else {
+                        $rlDb->updateOne([
+                            'fields' => ['Value' => $phraseValue],
+                            'where'  => ['Key'   => $phraseKey, 'Code' => 'ru'],
+                        ], 'lang_keys');
+                    }
+                }
+            }
+
+            $GLOBALS['reefless']->loadClass('SearchByDistance', null, 'search_by_distance');
+            $GLOBALS['rlSearchByDistance']->updateBox();
+        ]]></update>
+        <update version="5.1.2" files="block.tpl,header_block.tpl,rlSearchByDistance.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall version="3.0.0"><![CDATA[
+        $GLOBALS['rlDb']->query("DROP TABLE IF EXISTS `{db_prefix}sbd_countries`");
+    ]]></uninstall>
+</plugin>

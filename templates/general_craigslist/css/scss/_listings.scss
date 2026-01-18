@@ -1,0 +1,564 @@
+/*** Listings ***/
+
+// Listing grid
+#listings {
+  article.item {
+    @include listing_styles;
+
+    ul.card-info {
+      .favorite {
+        opacity: .7;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+      }
+
+      .fields {
+        span:not(:last-child):after {
+          content: ", ";
+        }
+      }
+    }
+
+    a.reportBrokenGrid,
+    span.link {
+      display: none;
+    }
+
+    .picture {
+      > .group {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+
+      &.no-picture {
+        img {
+          background-color: $no-image-bg;
+          background-image: url(../img/no-picture.png);
+        }
+      }
+    }
+
+    div.navigation-column {
+      ul.nav-column {
+        > li {
+          display: none;
+          z-index: 10;
+          cursor: pointer;
+          line-height: 0;
+
+          > * {
+            padding: 13px;
+            opacity: .4;
+            transition: opacity 0.3s ease;
+            position: relative;
+
+            @include tap_square;
+
+            @include respond_to(tablet) {
+                padding: 10px;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+          }
+
+          > span.icon {
+            display: block;
+          }
+        }
+
+        li {
+          position: absolute;
+        }
+      }
+    }
+
+    &.featured {
+      .price-tag {
+        @include featured_label;
+      }
+    }
+  }
+
+  &.grid {
+    margin-left: -$grid-gutter;
+    margin-right: -$grid-gutter;
+
+    article.item {
+      margin-bottom: $spacer * 3;
+
+      @include respond_to(mobile_xs) {
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+
+        &:first-child {
+          margin-top: $spacer * 3;
+        }
+      }
+
+
+      div.picture {
+        > span {
+          top: -11px;
+          #{$space}: 100%;
+          padding-#{$space}: $spacer / 2;
+
+          &:after {
+            content: attr(accesskey);
+          }
+
+          @include respond_to(mobile_xs) {
+            top: auto;
+            #{$space}: auto;
+            bottom: 100%;
+            #{$space-opposite}: 0;
+            padding: 0 0 ($spacer / 2);
+          }
+        }
+
+        div.price-tag {
+          bottom: 0;
+          #{$space}: 0;
+          background: transparentize($color-white, 0.05);
+          line-height: $listing-price-height;
+          padding: 0 ($grid-gutter / 2);
+        }
+      }
+
+      ul.card-info {
+        padding: 0.75rem ($grid-gutter / 2) 0;
+
+        li:not(:last-child) {
+          margin-bottom: $spacer / 2;
+        }
+
+        ol {
+          display: none;
+        }
+
+        .description,
+        .price-tag {
+          display: none;
+        }
+
+        .services {
+          padding: 0;
+        }
+
+        .before-title {
+          min-height: $icon-size-default;
+          line-height: $font-size-large;
+          position: relative;
+
+          span.date {
+            font-size: 0.813rem;
+            color: $font-color-gray;
+            margin-#{$space-opposite}: $spacer * 1.5;
+          }
+
+          .favorite {
+            position: absolute;
+            top: -0.75rem;
+            #{$space-opposite}: -$grid-gutter / 2;
+
+            @include respond_to(mobile_xs) {
+              #{$space-opposite}: 0;
+            }
+          }
+
+          ul.rating-bar {
+            li {
+              margin-top: 2px;
+            }
+          }
+        }
+      }
+
+      div.navigation-column {
+        ul.nav-column {
+          li {
+            position: absolute;
+            top: 0;
+
+            &.add-to-cart,
+            &.auction-listing {
+              #{$space-opposite}: 15px;
+            }
+
+            .icon {
+              background-color: transparentize($color-white, 0.3) !important;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        @include listing_hover(map_get($listing-views, grid));
+      }
+    }
+  }
+
+  &.list:not(.my-listings) {
+    @include respond_to(mobile_xs) {
+      margin-left: -$grid-gutter;
+      margin-right: -$grid-gutter;
+    }
+
+    article.item {
+      max-width: none;
+      margin-bottom: $spacer * 2;
+
+      @include flex(0, 0, 100%);
+
+      @include respond_to(mobile_xs) {
+        margin-bottom: $spacer;
+        padding-left: $grid-gutter;
+        padding-right: $grid-gutter;
+
+        &:not(:last-child) {
+          border-bottom: $border-width-default solid $disabled-bg;
+        }
+      }
+
+      div.picture {
+        float: #{$float};
+        margin-#{$space}: 35px;
+        width: $listing-list-picture-width;
+        height: $listing-list-picture-height;
+        padding: 0;
+
+        &.no-picture > img {
+          background-size: contain;
+        }
+
+        @include respond_to(mobile_xs) {
+          display: none;
+        }
+
+        > span {
+          bottom: 3px;
+          #{$space-opposite}: 5px;
+          padding: 0;
+
+          &:after {
+            content: attr(accesskey);
+          }
+        }
+
+        div.price-tag {
+          display: none !important;
+        }
+      }
+
+      div.navigation-column {
+        ul.nav-column {
+          li {
+            top: 15px;
+            #{$space}: 5px;
+            height: 30px;
+
+            @include respond_to(mobile_xs) {
+              #{$space}: auto;
+              #{$space-opposite}: 40px;
+              top: -13px;
+            }
+
+            &:nth-child(2) {
+              top: auto;
+              bottom: 0;
+            }
+          }
+        }
+      }
+
+      ul.card-info {
+        padding-#{$space}: ($grid-gutter / 2);
+
+        float: #{$float};
+        width: 100%;
+        max-width: map_get($listing-list-ad-info-max-width, xl);
+
+        > li {
+          padding-#{$space}: $spacer / 2;
+        }
+
+        li.before-title {
+          .favorite {
+            position: absolute;
+            #{$space}: $spacer / 2;
+            top: -(map_get($tap-zone, lg) - $icon-size-default) / 2;
+
+            @include respond_to(tablet) {
+              top: -(map_get($tap-zone, sm) - $icon-size-default) / 2;
+            }
+
+
+            .link {
+              display: none;
+            }
+
+            @include respond_to(mobile_xs) {
+              position: static;
+              float: #{$float-opposite};
+              margin-top: -13px;
+              margin-#{$space-opposite}: -13px;
+            }
+          }
+
+          span.date {
+            font-size: 0.813rem;
+            color: $font-color-gray;
+            position: absolute;
+            #{$space-opposite}: $spacer * 3;
+            top: $spacer / 2;
+
+            @include respond_to(mobile_xs) {
+              position: static;
+              margin-#{$space-opposite}: $grid-gutter / 2;
+            }
+          }
+
+          ul.rating-bar {
+            padding: 0;
+            position: absolute;
+            #{$space-opposite}: 30px;
+            top: 40px;
+
+            @include respond_to(mobile_xs) {
+              position: static;
+
+              li {
+                margin-top: 2px;
+              }
+            }
+          }
+        }
+
+        li.title {
+          @include text_ellipsis;
+
+          padding-bottom: 7px;
+
+          @include respond_to(mobile_xs) {
+            white-space: normal;
+          }
+        }
+
+        > li.price-tag {
+          position: static;
+        }
+
+        > li.description {
+          @include text_ellipsis;
+
+          @include respond_to(mobile_xs) {
+            white-space: normal;
+            display: inline;
+          }
+        }
+
+        > li.fields {
+            margin-top: $spacer / 2;
+            color: $font-color-gray;
+        }
+
+        > li.services {
+          display: none;
+        }
+
+        > ol {
+          margin-top: $spacer / 2;
+        }
+
+        @include respond_to(desktop_sm) {
+          max-width: map_get($listing-list-ad-info-max-width, lg);
+        }
+
+
+        @include respond_to(tablet) {
+          max-width: map_get($listing-list-ad-info-max-width, md);
+        }
+
+
+        @include respond_to(mobile) {
+          max-width: map_get($listing-list-ad-info-max-width, sm);
+          width: 48%;
+        }
+
+
+        @include respond_to(mobile_xs) {
+          max-width: none;
+          width: 100%;
+          margin-bottom: $spacer;
+          padding: 0;
+
+          > li.title,
+          > li.price-tag {
+            display: inline;
+            white-space: normal;
+            margin-#{$space-opposite}: $grid-gutter / 2;
+            float: none;
+          }
+
+          > li.price-tag {
+            white-space: nowrap;
+            position: static;
+          }
+
+          > li.before-title {
+            display: block;
+            line-height: $font-size-large;
+            margin-bottom: $spacer;
+          }
+        }
+      }
+
+      &:hover {
+        @include listing_hover(map_get($listing-views, list));
+      }
+    }
+  }
+}
+
+.listing-fit-contain #listings article.item div.picture img,
+#accounts div.picture > img {
+  object-fit: contain;
+}
+.listing-fit-contain div.picture:not(.no-picture) > img {
+  background: $no-image-bg !important;
+}
+
+// Featured
+.side_block {
+  ul.featured {
+    > li {
+      @include respond_to(desktop_only) {
+        @include flex(1, 0, 100%);
+      }
+    }
+  }
+
+  &.similarListings {
+    ul.featured {
+      > li {
+        ul.card-info {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .picture {
+          position: relative;
+          padding-#{$space-opposite}: $spacer * 3;
+        }
+      }
+    }
+  }
+}
+
+ul.featured {
+  margin-left: -$grid-gutter;
+  margin-right: -$grid-gutter;
+
+  > li {
+    margin-bottom: $spacer * 2;
+
+    @include listing_styles(cb);
+
+    ul.card-info {
+      position: relative;
+      padding: $spacer ($grid-gutter / 2);
+
+      li {
+        &.title {
+          a {
+            line-height: $font-size-large;
+          }
+        }
+
+        &.price_tag {
+          bottom: 100%;
+          #{$space}: 0;
+          background: transparentize($color-white, 0.05);
+          line-height: $listing-price-height;
+          padding: 0 ($grid-gutter / 2);
+        }
+
+        &.fields {
+          flex-wrap: wrap;
+          @include flex_block;
+          align-items: flex-end;
+
+          > div {
+           flex: 1 1 auto;
+           line-height: 24px;
+
+           > span:not(:last-child):after {
+            content: ",";
+            margin-#{$space-opposite}: 4px;
+           }
+          }
+
+          .icons {
+           align-items: center;
+           @include flex_block;
+           margin-#{$space}: auto;
+
+           > *:not(:last-child) {
+            margin-#{$space-opposite}: 10px;
+           }
+
+           .icon {
+             width: 18px;
+             height: 18px;
+             display: inline-block;
+             opacity: .4;
+             transition: opacity 0.3s ease;
+             cursor: pointer;
+
+             &:hover {
+              opacity: 1;
+             }
+           }
+          }
+        }
+      }
+    }
+  }
+
+  &.accounts {
+    > li {
+      .picture.no-picture {
+        img {
+          background-image: url(../img/no-account.png);
+        }
+      }
+
+      &:not(.no-picture) img {
+        object-fit: contain;
+        background: $no-image-bg;
+      }
+    }
+  }
+}
+
+.listing-fit-contain ul.featured > li img {
+  object-fit: contain !important;
+}
+.listing-fit-contain ul.featured > li:not(.no-picture) img {
+  background: $no-image-bg !important;
+}
+.listing-fit-contain .sidebar-content ul.featured > li:not(.no-picture) img {
+  background: $no-image-bg-sidebar !important;
+}
+#accounts div.picture > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+}

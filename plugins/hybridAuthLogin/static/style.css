@@ -1,0 +1,101 @@
+.hookUserNavbar {
+    width: 100%;
+    display: block;
+}
+
+.ha-or {
+    display: flex;
+    text-align: center;
+    padding: 15px 0;
+}
+.ha-or > span {
+    margin: 0 10px;
+}
+.ha-or:before,
+.ha-or:after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: rgba(255, 255, 255, .25);
+    align-self: center;
+    margin-top: 2px;
+}
+
+.ha-social-icons {
+    display: flex;
+    justify-content: center;
+}
+.ha-social-icon > a {
+    display: inline-block;
+    line-height: 0;
+}
+.ha-social-icon > a.loading {
+    animation-name: ha-opacity;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.ha-social-icon > a.ha-disabled {
+    animation-name: ha-disabled;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+.ha-social-icon-svg {
+    width: 34px;
+    height: 34px;
+    background: white;
+    margin: 0 6px;
+    transition: filter 0.25s ease;
+}
+
+.ha-social-icon-svg:hover {
+    filter: brightness(1.15);
+}
+.ha-social-icons > *:first-child .ha-social-icon-svg {
+    margin-left: 0;
+}
+.ha-social-icons > *:last-child .ha-social-icon-svg {
+    margin-right: 0;
+}
+
+.ha-icons-container.in-registration {
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 560px;
+}
+.ha-icons-container.in-registration .ha-or {
+    padding: 20px 0;
+}
+.ha-icons-container.in-registration .ha-or:before,
+.ha-icons-container.in-registration .ha-or:after {
+    background: rgba(0, 0, 0, .1);
+}
+
+.ha-width-100 {
+    width: 100%;
+}
+.ha-agreements-container .ag_fields {
+    padding: 5px 0;
+}
+
+.ha-modal-notice {
+    margin-bottom: 10px;
+}
+
+.ha-disabled:hover {
+    cursor: not-allowed;
+}
+
+@keyframes ha-opacity {
+    50% {opacity: 0.30}
+}
+@keyframes ha-disabled {
+    100% {opacity: 0.30}
+}
+
+body[dir="rtl"] .ha-social-icon-svg {
+    margin-right: 6px !important;
+    margin-left: 0;
+}

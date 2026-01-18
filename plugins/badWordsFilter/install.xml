@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="badWordsFilter">
+    <title>Bad Word Filter</title>
+    <description>Scans textual information for profanity words and prevents them from being posted</description>
+    <author>Alan Wake</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.2.2</version>
+    <date>05.02.2015</date>
+    <controller>bad_words_filter</controller>
+    <class>BadWords</class>
+    <compatible>4.7.2</compatible>
+
+    <notices>
+        <notice><![CDATA[To manage bad words go to the Languages Manager and click "Manage bad words" link]]></notice>
+    </notices>
+
+    <files>
+        <file>admin/.htaccess</file>
+        <file>admin/bad_words_filter.inc.php</file>
+        <file>admin/bad_words_filter.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>langpack/cs.txt</file>
+        <file>static/.htaccess</file>
+        <file>static/lib_admin.js</file>
+        <file>.htaccess</file>
+        <file>rlBadWords.class.php</file>
+    </files>
+
+    <install version="1.2.2"><![CDATA[]]></install>
+
+    <configs version="1.2.0" key="badWordsFilter" name="Bad Word Filter">
+        <![CDATA[]]>
+        <config version="1.2.0" key="bw_scan_mode" name="Use soft scan mode" type="bool"><![CDATA[1]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="bw_sucess" module="admin"><![CDATA[The bad word has been added successfully]]></phrase>
+        <phrase key="ext_bw" module="admin"><![CDATA[Bad word]]></phrase>
+        <phrase key="bw_exist" module="admin"><![CDATA[is already on the list]]></phrase>
+        <phrase key="bw_manage" module="admin"><![CDATA[Manage bad words]]></phrase>
+        <phrase key="bw_language" module="admin"><![CDATA[Language ]]></phrase>
+        <phrase key="bw_manage_header" module="admin"><![CDATA[Number of bad words]]></phrase>
+        <phrase key="bw_breadcumb_title" module="admin"><![CDATA[Bad Word Filter]]></phrase>
+        <phrase key="bw_error" module="common"><![CDATA[A bad word has been found in]]></phrase>
+        <phrase key="bw_grid_header" module="common"><![CDATA[Bad Word Manager]]></phrase>
+        <phrase key="bw_comma" module="common"><![CDATA[Comma]]></phrase>
+        <phrase key="bw_delimetr" module="common"><![CDATA[Delimiter]]></phrase>
+        <phrase key="bad_word" module="common"><![CDATA[Bad Word]]></phrase>
+        <phrase key="bw_another" module="common"><![CDATA[Another]]></phrase>
+        <phrase key="bw_new_line" module="common"><![CDATA[New line]]></phrase>
+        <phrase key="bw_cancel" module="common"><![CDATA[Cancel]]></phrase>
+        <phrase key="bw_exact_match" module="common"><![CDATA[Exact match]]></phrase>
+        <phrase key="bw_select_file" module="common"><![CDATA[Select file]]></phrase>
+        <phrase key="bw_compatible" module="common"><![CDATA[Compatible extensions]]></phrase>
+        <phrase key="ext_notice_delete_badword" module="ext"><![CDATA[Are you sure you want to delete bad word?]]></phrase>
+        <phrase version="1.1.0" key="bw_file_empty" module="common"><![CDATA[File is empty]]></phrase>
+        <phrase version="1.1.0" key="bw_is_empty" module="common"><![CDATA[Bad word is empty. Please fill it]]></phrase>
+        <phrase version="1.1.0" key="bw_select_delimitr" module="common"><![CDATA[Select delimiter]]></phrase>
+        <phrase version="1.1.0" key="bw_fill_bad_word" module="common"><![CDATA[Fill bad word value]]></phrase>
+        <phrase version="1.2.1" key="bw_removed_successfully" module="admin"><![CDATA[The bad word has been removed successfully.]]></phrase>
+    </phrases>
+
+    <hooks>
+        <hook version="1.1.0" name="apTplLanguagesGrid"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="addListingFormDataChecking"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="editListingDataChecking"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="profileController"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="beforeRegister"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="phpAjaxValidateProfile"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="phpCommentAddValidate"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="rlMessagesAjaxContactOwnerValidate"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="contactsCheckData"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apExtAccountFieldsData"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apPhpIndexBottom"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apAjaxRequest"><![CDATA[]]></hook>
+    </hooks>
+
+    <updates>
+        <update version="1.0.1" files="admin/bad_words_filter.inc.php,rlBadWords.class.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="rlBadWords.class.php"><![CDATA[]]></update>
+        <update version="1.1.0" files="admin/bad_words_filter.inc.php,admin/bad_words_filter.tpl,rlBadWords.class.php,static/.htaccess,static/lib_admin.js"><![CDATA[]]></update>
+        <update version="1.2.0" files="rlBadWords.class.php"><![CDATA[]]></update>
+        <update version="1.2.1" files="rlBadWords.class.php,static/lib_admin.js,admin/bad_words_filter.tpl"><![CDATA[]]></update>
+        <update version="1.2.2" files="admin/bad_words_filter.inc.php,rlBadWords.class.php,i18n/ru.json"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall version="1.2.2"><![CDATA[]]></uninstall>
+</plugin>

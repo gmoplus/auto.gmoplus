@@ -1,0 +1,10 @@
+Order deny,allow
+Deny from all
+
+#<Files "import.php">
+#  Allow from all
+#</Files>
+
+<Files "export.php">
+  Allow from all
+</Files>

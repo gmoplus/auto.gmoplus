@@ -1,0 +1,279 @@
+/*** Tables ***/
+// Base
+table {
+  width: 100%;
+
+  tr {
+    td:not(:first-child) {
+      text-align: center;
+    }
+  }
+}
+
+// Table list
+table.list {
+  width: 100%;
+  table-layout: fixed;
+
+  tr {
+    td {
+      padding: $spacer ($grid-gutter / 2);
+      text-align: left;
+    }
+  }
+
+  tr.header {
+    border: $border-width-wide solid $color-gray-lightest;
+
+    td {
+      height: $input-height;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      &:first-child {
+        width: $icon-size-lg + $grid-gutter;
+      }
+    }
+  }
+}
+
+.list-table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin-left: -$grid-gutter/2;
+  margin-right: -$grid-gutter/2;
+
+  @include respond_to(mobile) {
+    display: block;
+    margin: 0;
+  }
+
+  > div {
+    display: table-row;
+    position: relative;
+
+    @include respond_to(mobile) {
+      display: block;
+    }
+
+    > div {
+      display: table-cell;
+      padding: $spacer ($grid-gutter / 2) $spacer 0;
+
+      @include respond_to(mobile) {
+        display: block;
+      }
+
+      &:last-child,
+      &.center {
+        padding-right: 0 !important;
+      }
+
+      &:first-child {
+        padding-left: $grid-gutter / 2;
+      }
+
+      &:last-child {
+        padding-right: $grid-gutter / 2;
+      }
+    }
+
+    &:not(.header):hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    &:before,
+    &:after {
+      content: none;
+    }
+  }
+
+  .header {
+    height: $table-header-height;
+
+    @include respond_to(mobile) {
+      display: none;
+    }
+
+    > div {
+      vertical-align: top;
+      font-size: $table-header-font-size;
+      color: $table-header-color;
+      border-bottom: $border-width-wide solid $color-gray-lightest;
+      text-transform: uppercase;
+      font-weight: $font-weight-normal;
+      white-space: nowrap;
+
+      &.checkbox {
+        width: 52px !important;
+      }
+    }
+  }
+
+  .row {
+    @include respond_to(mobile) {
+      border-bottom: $border-width-wide solid $color-gray-lightest;
+      position: relative;
+      padding: 13px 25px;
+      padding-#{$space-opposite}: 0;
+
+      &:nth-child(2) {
+        padding-top: 0;
+      }
+    }
+
+    @include respond_to(tablet) {
+      margin: 0;
+    }
+
+    > div {
+      vertical-align: top;
+      padding-top: $table-row-padding-x;
+      padding-bottom: $table-row-padding-x;
+      color: $table-row-color;
+      word-break: break-word;
+
+      @include respond_to(mobile) {
+        display: block;
+        border: 0;
+        padding: 5px 0 5px 95px!important;
+        overflow: hidden;
+        position: relative;
+
+        &:not(.no-flex):before {
+          content: attr(data-caption) ":";
+          width: 85px;
+          display: inline-block;
+          word-wrap: break-word;
+          font-size: 0.929em;
+          color: $table-header-color;
+          position: absolute;
+          #{$space}: 0;
+          top: 5px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+
+      @include respond_to(mobile_xs) {
+        padding-right: 40px;
+      }
+
+      > div {
+        padding-top: $spacer / 2;
+        padding-bottom: $spacer / 2;
+      }
+
+      > div.inline {
+        display: inline;
+      }
+
+      table.table {
+        margin-top: -$spacer / 2;
+
+        td.name {
+          width: $table-name-width;
+        }
+      }
+    }
+
+    .text {
+      padding: 0 3px;
+    }
+  }
+
+  @include respond_to(tablet) {
+
+    div.iteration,
+    div.action {
+      position: absolute;
+      top: 50%;
+      #{$space-opposite}: 0;
+      height: 42px;
+    }
+
+    div.action {
+      padding: 0;
+      height: 22px;
+      margin-top: -11px;
+    }
+
+    div.iteration {
+      #{$space}: 0;
+      #{$space-opposite}: auto;
+      margin-top: -15px;
+      padding: 0!important;
+    }
+
+    margin-bottom: ($spacer*2);
+
+    .table-cell > div {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  .text {
+    color: $table-text-color;
+    font-size: $font-size-small;
+  }
+
+  span.title {
+    display: none;
+  }
+}
+
+// Table stats
+table.stats {
+  border-spacing: $border-width-wide;
+  border-collapse: separate;
+  margin: 0 0 ($spacer / 2) 0;
+  table-layout: fixed;
+
+  td {
+    @include text_ellipsis;
+
+    &.column,
+    &.counter {
+      white-space: nowrap;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    &.counter {
+      background: $color-white;
+      display: table-cell!important;
+    }
+
+    &.divider {
+      width: 5px;
+      text-align: center;
+      padding: 0 ($spacer / 2);
+    }
+
+    &.dotted {
+      background: $color-white;
+      padding: 2px ($spacer / 2) 4px;
+
+      a {
+        display: block;
+
+        @include text_ellipsis;
+      }
+    }
+  }
+}
+
+// Mass action
+.mass-actions {
+  padding: ($spacer * 1.5) 0 0 ($spacer * 1.5);
+
+  > a:not(:last-child):after {
+    content: "|";
+    padding: 0 $spacer;
+    color: $table-mass-action-color;
+    font-size: $table-mass-action-font-size;
+  }
+}

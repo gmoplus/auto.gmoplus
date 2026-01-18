@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="reCaptcha">
+    <title>reCaptcha</title>
+    <description>Prevents spam on your site</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.0.0</version>
+    <date>14.04.2012</date>
+    <compatible>4.8.1</compatible>
+    <class>ReCaptcha</class>
+
+    <notices>
+        <notice version="2.0.0"><![CDATA[Follow the link: <a target="_blank" href="http://www.flynax.com/forum/showthread.php?2356-ReCaptcha-2-0-update&p=11278">Recaptcha API Key instructions</a>]]></notice>
+    </notices>
+
+    <files>
+        <file>admin/view/settings.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>static/.htaccess</file>
+        <file>static/lib.js</file>
+        <file>vendor/autoload.php</file>
+        <file>.htaccess</file>
+        <file>reCaptcha.tpl</file>
+        <file>reCaptcha_init.tpl</file>
+        <file>rlReCaptcha.class.php</file>
+    </files>
+
+    <install version="2.3.2"><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="2.3.0" name="init"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="seoBase"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="smartyCompileFileBottom"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="pageinfoArea"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="addListingPreFields"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplFooter"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="reCaptcha" name="reCaptcha">
+        <![CDATA[]]>
+        <config version="3.0.0" key="reCaptcha_type" name="Type" values="v2_checkbox,v2_invisible,v3" type="select"><![CDATA[v2_checkbox]]></config>
+        <config version="2.0.0" key="reCaptcha_public_key" name="Site key" description="Use the link to get correct keys for your site https://www.google.com/recaptcha/admin" type="text"><![CDATA[]]></config>
+        <config version="2.0.0" key="reCaptcha_private_key" name="Secret key" type="text"><![CDATA[]]></config>
+        <config version="3.0.0" key="reCaptcha2_theme" name="Color scheme" type="select" values="light,dark,auto" default="light"><![CDATA[light]]></config>
+        <config version="3.0.0" key="reCaptcha2_compact" name="Compact" type="bool"><![CDATA[0]]></config>
+        <config version="3.0.0" key="reCaptcha_position" name="Position" type="select" values="bottomleft,bottomright,inline"><![CDATA[bottomleft]]></config>
+        <config version="3.0.0" key="reCaptcha3_score" name="Score" type="select" values="0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9" description="Learn more &lt;a href=&quot;https://developers.google.com/recaptcha/docs/v3?hl=en#interpreting_the_score&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;."><![CDATA[0.5]]></config>
+    </configs>
+
+    <phrases>
+        <phrase version="2.0.0" key="recaptcha_error" module="frontEnd"><![CDATA[The captcha is not correct, please try again.]]></phrase>
+        <phrase version="2.3.3" key="config+option+reCaptcha2_theme_light" module="admin" target="settings"><![CDATA[Light]]></phrase>
+        <phrase version="2.3.3" key="config+option+reCaptcha2_theme_dark" module="admin" target="settings"><![CDATA[Dark]]></phrase>
+        <phrase version="3.0.0" key="config+option+reCaptcha2_theme_auto" module="admin" target="settings"><![CDATA[Auto]]></phrase>
+        <phrase version="3.0.0" key="config+option+reCaptcha_type_v2_checkbox" module="admin" target="settings"><![CDATA[reCaptcha v2 (Checkbox)]]></phrase>
+        <phrase version="3.0.0" key="config+option+reCaptcha_type_v2_invisible" module="admin" target="settings"><![CDATA[reCaptcha v2 (Invisible)]]></phrase>
+        <phrase version="3.0.0" key="config+option+reCaptcha_type_v3" module="admin" target="settings"><![CDATA[reCaptcha v3]]></phrase>
+        <phrase version="3.0.0" key="config+option+reCaptcha_position_bottomleft" module="admin" target="settings"><![CDATA[Bottom left]]></phrase>
+        <phrase version="3.0.0" key="config+option+reCaptcha_position_bottomright" module="admin" target="settings"><![CDATA[Bottom right]]></phrase>
+        <phrase version="3.0.0" key="config+option+reCaptcha_position_inline" module="admin" target="settings"><![CDATA[In forms]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="1.1.0"><![CDATA[]]></update>
+        <update version="1.2.0" files="reCaptcha.tpl"><![CDATA[]]></update>
+        <update version="1.2.1" files="reCaptcha.tpl"><![CDATA[]]></update>
+        <update version="1.2.2" files="reCaptcha.tpl"><![CDATA[]]></update>
+        <update version="1.2.3" files="request.php"><![CDATA[]]></update>
+        <update version="1.2.4" files="reCaptcha.tpl"><![CDATA[]]></update>
+        <update version="1.2.5"><![CDATA[]]></update>
+        <update version="1.2.6" files="rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="1.3.0" files="reCaptcha.tpl,request.php"><![CDATA[]]></update>
+        <update version="1.4.0" files="reCaptcha.tpl,request.php"><![CDATA[]]></update>
+        <update version="2.0.0" files="reCaptcha.tpl,rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="2.0.1" files="reCaptcha.tpl,rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="2.0.2" files=""><![CDATA[]]></update>
+        <update version="2.0.3" files="reCaptcha.tpl"><![CDATA[]]></update>
+        <update version="2.0.4" files="reCaptcha.tpl,rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="2.0.5" files="reCaptcha.tpl"><![CDATA[]]></update>
+        <update version="2.0.6" files="reCaptcha.tpl,rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="2.1.0" files="reCaptcha.tpl,tplFooter.tpl"><![CDATA[]]></update>
+        <update version="2.2.0" files="rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="2.2.1" files=""><![CDATA[]]></update>
+        <update version="2.3.0" files=".htaccess,reCaptcha.tpl,reCaptcha_init.tpl,rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="2.3.1" files="rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="2.3.2" files="rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="2.3.3" files="reCaptcha.tpl,rlReCaptcha.class.php,i18n/ru.json"><![CDATA[]]></update>
+        <update version="2.3.4" files="reCaptcha_init.tpl,reCaptcha.tpl,rlReCaptcha.class.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="admin/view/settings.tpl,i18n/ru.json,reCaptcha.tpl,static/.htaccess,static/lib.js,reCaptcha_init.tpl,rlReCaptcha.class.php,vendor/"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall version="2.3.2"><![CDATA[]]></uninstall>
+</plugin>

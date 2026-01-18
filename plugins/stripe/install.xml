@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="stripe">
+    <title>Stripe</title>
+    <description>Stripe payment gateway</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.3.1</version>
+    <date>09.04.2014</date>
+    <class>Stripe</class>
+    <compatible>4.7.2</compatible>
+
+    <files>
+        <file>admin/listing_plans.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>static/style_connect.css</file>
+        <file>static/lib.js</file>
+        <file>static/lib.subscription.js</file>
+        <file>vendor/autoload.php</file>
+        <file>account_settings.tpl</file>
+        <file>form.tpl</file>
+        <file>rlInstall.class.php</file>
+        <file>rlStripe.class.php</file>
+        <file>rlStripeGateway.class.php</file>
+        <file>subscription.php</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="1.2.0" name="shoppingCartAccountSettings"><![CDATA[]]></hook>
+        <hook version="1.2.0" name="phpGetPaymentGateways"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPaymentGatewaysValidate"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="loadPaymentForm"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="profileController"><![CDATA[]]></hook>
+        <hook version="2.2.2" name="apTplPaymentGatewaysBottom"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="stripe_payment" module="common"><![CDATA[Stripe payment gateway]]></phrase>
+        <phrase key="stripe_seller_payment_details_empty" module="common"><![CDATA[Seller not configured Stripe Payment gateway or configured incorrectly]]></phrase>
+        <phrase key="stripe_module" module="common"><![CDATA[Stripe module]]></phrase>
+        <phrase key="stripe_publishable_key" module="common"><![CDATA[Publishable Key]]></phrase>
+        <phrase key="stripe_secret_key" module="common"><![CDATA[Secret key]]></phrase>
+        <phrase key="stripe_currency" module="common"><![CDATA[Currency]]></phrase>
+        <phrase key="stripe_card_number" module="common"><![CDATA[Card Number]]></phrase>
+        <phrase key="stripe_card_name" module="common"><![CDATA[Card Name]]></phrase>
+        <phrase key="stripe_card_type" module="common"><![CDATA[Card Type]]></phrase>
+        <phrase key="stripe_card_expiry_month" module="common"><![CDATA[Month]]></phrase>
+        <phrase key="stripe_card_expiry_year" module="common"><![CDATA[Year]]></phrase>
+        <phrase key="stripe_card_expiry_date" module="common"><![CDATA[Expiry]]></phrase>
+        <phrase key="stripe_card_cvc" module="common"><![CDATA[CVC]]></phrase>
+        <phrase key="stripe_submit" module="common"><![CDATA[Checkout]]></phrase>
+        <phrase key="stripe_interval_week" module="common"><![CDATA[Week]]></phrase>
+        <phrase key="stripe_interval_month" module="common"><![CDATA[Month]]></phrase>
+        <phrase key="stripe_interval_year" module="common"><![CDATA[Year]]></phrase>
+        <phrase key="stripe_subscription" module="common"><![CDATA[Stripe Subscription]]></phrase>
+        <phrase key="stripe_subscription_interval" module="common"><![CDATA[Interval]]></phrase>
+        <phrase key="stripe_subscription_count" module="common"><![CDATA[Interval Count]]></phrase>
+        <phrase key="stripe_unsubscription" module="common"><![CDATA[Stripe Unsubscribe]]></phrase>
+        <phrase key="stripe_unsubscription_success" module="common"><![CDATA[The subscription was canceled successfully]]></phrase>
+        <phrase key="stripe_unsubscription_failed" module="common"><![CDATA[Unable to cancel your subscription]]></phrase>
+        <phrase key="stripe_unsubscripbe_confirmation" module="common"><![CDATA[Do you want to unsubscribe?]]></phrase>
+        <phrase key="subscription_plans+name+sop_stripe_interval" module="common"><![CDATA[Stripe interval]]></phrase>
+        <phrase key="account_email_not_exists" module="common"><![CDATA[You doesn't provided E-mail address in your profile]]></phrase>
+        <phrase version="2.2.2" key="stripe_speed_configuration_guide" target="payment_gateways" module="admin"><![CDATA[Stripe speed configuration guide]]></phrase>
+        <phrase version="1.2.0" key="stripe_3_month" module="common"><![CDATA[Every 3 months]]></phrase>
+        <phrase version="1.2.0" key="stripe_6_month" module="common"><![CDATA[Every 6 months]]></phrase>
+        <phrase version="2.2.0" key="stripe_account_confirmed" target="profile" module="frontEnd"><![CDATA[You connected to stripe successfully]]></phrase>
+        <phrase version="2.2.0" key="stripe_connect_exists" target="profile" module="frontEnd"><![CDATA[The connection to stripe already exists]]></phrase>
+        <phrase version="2.2.0" key="stripe_connected_error" target="profile" module="frontEnd"><![CDATA[Error! The connection to stripe is failed]]></phrase>
+        <phrase version="2.2.0" key="stripe_enabled" target="profile" module="frontEnd"><![CDATA[Enabled]]></phrase>
+        <phrase version="2.2.0" key="stripe_restricted" target="profile" module="frontEnd"><![CDATA[Restricted]]></phrase>
+        <phrase version="2.2.0" key="stripe_account_id" target="profile" module="frontEnd"><![CDATA[Account ID]]></phrase>
+        <phrase version="2.2.0" key="stripe_verification" target="profile" module="frontEnd"><![CDATA[Verification]]></phrase>
+        <phrase version="2.2.0" key="stripe_login" target="profile" module="frontEnd"><![CDATA[Login to]]></phrase>
+        <phrase version="2.2.0" key="stripe_connect" target="profile" module="frontEnd"><![CDATA[Connect with]]></phrase>
+        <phrase version="2.2.0" key="stripe_do_you_want_delete_account" target="profile" module="frontEnd"><![CDATA[Do you want delete your account?]]></phrase>
+        <phrase version="2.2.0" key="stripe_delete" target="profile" module="frontEnd"><![CDATA[Delete account]]></phrase>
+        <phrase version="2.2.0" key="stripe_delete_ok" target="profile" module="frontEnd"><![CDATA[You deleted from stripe successfully]]></phrase>
+        <phrase version="2.2.0" key="stripe_account_not_provided" module="frontEnd"><![CDATA[Seller doesn't provided gateway credentials]]></phrase>
+        <phrase version="2.2.0" key="stripe_shopping_cart_not_supported" target="profile" module="frontEnd"><![CDATA[<b>Warning:</b> The current version of Shopping Cart & Bidding plugin doesn't support Stripe multiple payments]]></phrase>
+    </phrases>
+
+    <config key="stripe_publishable_key" name="Publishable Key" type="text" group="6"><![CDATA[]]></config>
+    <config key="stripe_secret_key" name="Secret key" type="text" group="6"><![CDATA[]]></config>
+    <config version="2.2.2" key="stripe_index" name="Disable postal code" type="bool" group="6"><![CDATA[1]]></config>
+    <config version="2.1.0" key="stripe_endpoint" name="Webhook Endpoint" type="text" group="0"><![CDATA[]]></config>
+    <config key="stripe_test_mode" name="Test Mode" type="bool" group="6"><![CDATA[0]]></config>
+
+    <updates>
+        <update version="1.0.1" files="form.tpl,rlInstall.class.php,rlStripeNew.class.php,stripe.tpl,subscription.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="rlStripeNew.class.php,rlStripeOld.class.php"><![CDATA[]]></update>
+        <update version="1.0.3" files="rlInstall.class.php,rlStripeNew.class.php,rlStripeOld.class.php,account_settings.tpl"><![CDATA[]]></update>
+        <update version="1.0.4" files="rlStripeNew.class.php,form.tpl"><![CDATA[]]></update>
+        <update version="1.1.0" files="rlStripeNew.class.php"><![CDATA[]]></update>
+        <update version="1.2.0" files="rlStripe.class.php,rlStripeGateway.class.php,rlInstall.class.php,form.tpl,subscription.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+            $GLOBALS['rlInstall']->update120();
+        ]]></update>
+        <update version="2.0.0" files="rlStripe.class.php,rlStripeGateway.class.php,rlInstall.class.php,form.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+            $GLOBALS['rlInstall']->update200();
+        ]]></update>
+        <update version="2.1.0" files="rlStripe.class.php,rlStripeGateway.class.php,rlInstall.class.php,subscription.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+            $GLOBALS['rlInstall']->update210();
+        ]]></update>
+        <update version="2.2.0" files="rlStripe.class.php,rlStripeGateway.class.php,rlInstall.class.php,subscription.php,account_settings.tpl,form.tpl,static/lib.js,static/lib.subscription.js,static/style_connect.css"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+            $GLOBALS['rlInstall']->update220();
+        ]]></update>
+        <update version="2.2.1" files="rlStripe.class.php,rlInstall.class.php,form.tpl,rlStripeGateway.class.php,static/lib.subscription.js"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+            $GLOBALS['rlInstall']->update221();
+        ]]></update>
+        <update version="2.2.2" files="rlStripe.class.php,rlInstall.class.php,form.tpl,static/lib.js,static/lib.subscription.js,account_settings.tpl,rlStripeGateway.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+            $GLOBALS['rlInstall']->update222();
+        ]]></update>
+        <update version="2.3.0" files="rlStripe.class.php,rlStripeGateway.class.php,static/lib.js,static/lib.subscription.js,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+            $GLOBALS['rlInstall']->update230();
+        ]]></update>
+        <update version="2.3.1" files="rlStripe.class.php,rlStripeGateway.class.php,i18n/ru.json,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+            $GLOBALS['rlInstall']->update231();
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'stripe');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

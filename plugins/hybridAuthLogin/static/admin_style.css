@@ -1,0 +1,15 @@
+#ha-copy-redirect-link {
+    margin-top: 0;
+}
+
+.provide-guide-box {
+    background: #e7e7e7;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px #c8c8c8 solid;
+    border-radius: 3px;
+}
+
+.provide-guide-box a {
+    color: #b01935;
+}

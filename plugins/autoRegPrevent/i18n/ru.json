@@ -1,0 +1,20 @@
+{
+    "title_autoRegPrevent": "Защита от спама",
+    "description_autoRegPrevent": "Предотвращает спам, проверяя IP-адреса пользователей и адреса электронной почты в черных списках.",
+    "config_groups+name+autoRegPrevent": "Защита от спама",
+    "config+name+autoRegPrevent_check_divider": "Проверить в черных списках",
+    "config+name+autoRegPrevent_check_username": "Имя пользователя",
+    "config+name+autoRegPrevent_check_email": "Электронный адрес",
+    "config+name+autoRegPrevent_check_ip": "IP",
+    "autoRegPrevent_detected": "Сожалеем, но вы не можете зарегистрироваться, потому что ваш IP или адрес электронной почты занесен в черный список по рассылке спама. Если вы попали в черный список по ошибке, [свяжитесь] с Администратором.",
+    "autoRegPrevent_ext_manager": "Менеджер",
+    "autoRegPrevent_ext_reason": "Причина блокировки",
+    "autoRegPrevent_ext_date_reg": "Дата регистрации",
+    "autoRegPrevent_status_block": "Заблокирован",
+    "autoRegPrevent_status_unblock": "Разблокирован",
+    "autoRegPrevent_ext_ip": "IP-адрес",
+    "autoRegPrevent_adminAdded": "Добавил администратор",
+    "autoRegPrevent_addItem": "Добавить в список спама",
+    "autoRegPrevent_fillOutNotice": "Заполните хотя бы одно из полей",
+    "autoRegPrevent_invalidIp": "Неверный IP; пожалуйста, введите действительный."
+}

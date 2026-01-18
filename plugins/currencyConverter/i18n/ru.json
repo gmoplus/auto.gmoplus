@@ -1,0 +1,21 @@
+{
+    "title_currencyConverter": "Конвертер валют",
+    "description_currencyConverter": "Конвертация цены на сайте в валюту пользователя, определенной по его местоположению",
+    "currencyConverter_update_rate": "Обновить курс",
+    "currencyConverter_add_currency": "Добавить валюту",
+    "currencyConverter_code": "Код",
+    "currencyConverter_rate": "Курс к доллару",
+    "currencyConverter_ext_caption": "Менеджер валют (курс к доллару)",
+    "currencyConverter_code_wrong": "Неверный формат валютного кода; используйте ISO формат (например, <b>RUB</b>)",
+    "currencyConverter_rate_wrong": "Неверный курс валюты; используйте дробные или целые числа",
+    "currencyConverter_code_exists": "<b>{code}</b> код уже используется",
+    "currencyConverter_rates_updated": "Курс валют обновлен.",
+    "currencyConverter_added_notice": "Новая валюта успешно добавлена.",
+    "currencyConverter_update_confirm_notice": "Вы хотите обновить/импортировать курс валют?",
+    "currencyConverter_update_rss_fail": "Не удалось обновить курс валют; сервис курса валют недоступен",
+    "currencyConverter_ext_position_rejected": "Вы не можете менять позицию не «закрепленной» валюты",
+    "currencyConverter_symbols": "Символ",
+    "currencyConverter_symbols_hint": "(используйте запятую для разделения символов)",
+    "config_groups+name+currencyConverter": "Конвертер валют",
+    "config+name+currencyConverter_update": "Автоматическое обновление курса"
+}

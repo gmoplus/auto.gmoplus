@@ -1,0 +1,132 @@
+#accounts {
+  @include respond_to(mobile) {
+    justify-content: center;
+  }
+
+  article {
+    margin-bottom: $grid-gutter;
+
+    @include respond_to(mobile) {
+      width: auto;
+    }
+
+    .main-container {
+      .picture {
+        max-width: 100%;
+        width: 100%;
+        margin-#{$space-opposite}: $spacer;
+        float: #{$float};
+        position: relative;
+        background-color: $no-image-bg;
+        text-align: center;
+      }
+
+      &.no-picture div.picture > a,
+      .picture > a > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+      }
+
+      &.landscape {
+        max-width: 100%;
+
+        .statistics {
+          position: static;
+          height: auto;
+
+          .counter {
+            top: 0;
+            position: absolute;
+            background: rgba(27,31,38,.8);
+            height: 22px;
+            line-height: 20px;
+            padding: 0 5px;
+            color: white;
+            pointer-events: none;
+          }
+        }
+
+        div.picture {
+          margin-right: 0;
+          margin-left: 0;
+          float: none;
+        }
+      }
+
+      &.no-picture {
+        .picture {
+          background: $no-image-bg url(../img/no-account.png) center no-repeat;
+          @include respond_to(pixel_ratio) {
+            background-image: url(../img/@2x/no-account.png);
+            background-size: 100% auto;
+          }
+        }
+      }
+
+      &:not(.landscape) {
+        .statistics {
+          overflow: hidden;
+          position: relative;
+
+          @include respond_to(tablet_and_desktop) {
+            height: 105px;
+          }
+
+          @include respond_to(mobile) {
+            width: 100%;
+          }
+
+          .counter {
+            font-size: initial;
+
+            @include respond_to(tablet_and_desktop) {
+              span {
+                &:first-child {
+                  display: block;
+                  font-size: 1.286em;
+                  font-weight: 600;
+                }
+                &:last-child {
+                  font-size: 0.929em;
+                }
+              }
+            }
+          }
+        }
+      }
+      ul {
+        & > li {
+          line-height: 24px;
+
+          @include text_ellipsis();
+
+          &.fields {
+            font-size: $font-size-small;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  ul.info {
+    padding: $spacer / 2 0 0 0;
+
+    li.fields > span:not(:last-child):after {
+        content: ',';
+        margin-#{$space-opposite}: 5px;
+    }
+  }
+}
+
+.map-balloon-account {
+  .picture {
+    background: $no-image-bg url(../img/no-account.png) center no-repeat;    
+  }
+}

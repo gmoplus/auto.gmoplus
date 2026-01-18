@@ -1,0 +1,78 @@
+/*** Notifications ***/
+.notification {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-left: -260px;
+  width: 520px;
+  z-index: 9000;
+
+  @include transition(top);
+
+  @include dropdown_content("no_shadow");
+
+  @include respond_to(mobile) {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+  }
+
+
+  &.fixed {
+    position: fixed;
+  }
+
+  &.top {
+    position: fixed;
+    top: 0;
+  }
+
+  > div {
+    min-height: $notification-min-height;
+    position: relative;
+    padding: 3px;
+
+    > div.message {
+      padding: ($grid-gutter / 2) ($spacer * 4.5) ($grid-gutter / 2) ($spacer * 1.5);
+      word-wrap: break-word;
+      color: $font-color-dark;
+      background: $notification-bg-color-notice;
+    }
+  }
+
+  &.error {
+    > div {
+      > div.message {
+        background: $notification-bg-color-error;
+        color: $color-white;
+      }
+    }
+  }
+
+  &.warning {
+    > div {
+      > div.message {
+        background: $notification-bg-color-warning;
+        color: $color-white;
+      }
+    }
+  }
+
+  ul {
+    padding: 0 0 0 ($spacer * 2);
+
+    > li {
+      list-style: circle;
+
+      &:not(:first-child) {
+        padding: 4px 0 0 0;
+      }
+    }
+  }
+
+  div.close-black {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+  }
+}

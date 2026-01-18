@@ -1,0 +1,67 @@
+/*** Animations ***/
+// Smoothly show an element
+@include create_keyframe(animate_show) {
+  0% {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  50% {
+    height: 100px;
+    opacity: 0;
+    overflow: visible;
+  }
+
+  100% {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+
+// Smoothly show an element
+@include create_keyframe(animate_hide) {
+  0% {
+    opacity: 1;
+    height: auto;
+  }
+
+  50% {
+    height: 100px;
+    opacity: 0;
+    overflow: visible;
+  }
+
+  100% {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+
+@include create_keyframe(animate_show_fade) {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@include create_keyframe(rotateplane) {
+  0% {
+    @include transform(perspective(120px));
+  }
+
+  50% {
+    @include transform(perspective(120px) rotateY(180deg));
+  }
+
+  100% {
+    @include transform(perspective(120px) rotateY(180deg) rotateX(180deg));
+  }
+}

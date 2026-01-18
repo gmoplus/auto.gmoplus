@@ -1,0 +1,7 @@
+# deny all external requests
+DENY FROM ALL
+
+# allow all external requests for php|png|gif
+<FilesMatch "(product_download|currencies)\.php|\.json$">
+  ALLOW FROM ALL
+</FilesMatch>

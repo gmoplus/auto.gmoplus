@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '129b92d30e5bac1618a64fd4ae8de1a0d0174111',
+        'name' => 'flynax/xml-feeds',
+        'dev' => true,
+    ),
+    'versions' => array(
+        'flynax/listing-photo-upload' => array(
+            'pretty_version' => '1.1.1',
+            'version' => '1.1.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../flynax/listing-photo-upload',
+            'aliases' => array(),
+            'reference' => 'a0c6917ba0760b48ee095a44a513ce42fd93e336',
+            'dev_requirement' => false,
+        ),
+        'flynax/xml-feeds' => array(
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '129b92d30e5bac1618a64fd4ae8de1a0d0174111',
+            'dev_requirement' => false,
+        ),
+        'ralouphie/mimey' => array(
+            'pretty_version' => '2.1.0',
+            'version' => '2.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ralouphie/mimey',
+            'aliases' => array(),
+            'reference' => '8f74e6da73f9df7bd965e4e123f3d8fb9acb89ba',
+            'dev_requirement' => false,
+        ),
+    ),
+);

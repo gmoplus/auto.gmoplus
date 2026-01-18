@@ -1,0 +1,86 @@
+.nearby-schools .badge ,
+.nearby-schools .badge-text {
+    font-size: 0.8em;
+    width: 1.53rem;
+    height: 1.53rem;
+    font-weight: bold;
+    background: #00558b;
+    color: black;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 22px;
+    padding: 1px 0 0 0;
+}
+.nearby-schools .badge-text {
+    padding: 1px 8px 5px 8px;
+    border-radius: 2px;
+    width: auto;
+}
+.nearby-schools .badge.success ,
+.nearby-schools .badge-text.success {
+    background: #9cd960;
+    color: black;
+}
+
+.nearby-schools .badge.alert ,
+.nearby-schools .badge-text.alert {
+    background: #ffac49;
+    color: black;
+}
+
+.nearby-schools .badge.warning ,
+.nearby-schools .badge-text.warning {
+    background: #ff7b7b;
+    color: black;
+}
+
+.nearby-schools .row a {
+    margin-left: 12px;
+}
+body[dir=rtl] .nearby-schools .row a {
+    margin-left: 0;
+    margin-right: 12px;
+}
+
+.nearby-schools .view-more-schools {
+    padding-top: 10px;
+}
+
+.nearby-schools.expand .nbs-more {
+    display: none;
+}
+.nearby-schools:not(.expand) .nbs-less {
+    display: none;
+}
+.nearby-schools .hidden-schools {
+    overflow-y: hidden;
+    max-height: 0;
+
+    transition: max-height 0.5s ease;
+}
+.nearby-schools.expand .hidden-schools {
+    max-height: 1000px;
+}
+
+
+/*** ALL TABLET/DESKTOP VIEWS ***/
+@media screen and (min-width: 768px) {
+    .nearby-schools .list-table > div > div:first-child {
+        width: 65%;
+    }
+    .nearby-schools .list-table > div > div:last-child {
+        width: 14%;
+    }
+}
+/*** MOBILE VIEW ***/
+@media screen and (max-width: 767px) {
+    .nearby-schools div.list-table > div.row {
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: -5px;
+    }
+    .nearby-schools.expand .hidden-schools {
+        overflow-y: unset;
+    }
+}

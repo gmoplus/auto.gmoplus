@@ -1,0 +1,57 @@
+/* search by distance page */
+
+#sbd_map {
+    height: 60vh;
+}
+
+.leaflet-editing-icon {
+    background: transparent;
+    border: 0;
+    opacity: 1 !important;
+    cursor: move;
+}
+.leaflet-edit-resize {
+    cursor: col-resize;
+}
+
+.leaflet-editing-icon:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -4.5px 0 0 -4.5px;
+    width: 9px;
+    height: 9px;
+    background: white;
+    border: 1px #9c5100 solid;
+    border-radius: 50%;
+}
+
+div.sbd_label {
+    white-space: nowrap;
+    z-index: 99;
+    position: absolute;
+    padding: 2px 5px;
+    line-height: 14px;
+    width: auto;
+    background: #c17111;
+    border: 1px #9c5100 solid;
+    border-radius: 2px;
+    color: white;
+    font-size: 11px;
+    left: 15px;
+    top: 15px;
+}
+h1.sbd-state {
+    margin-top: 15px;
+}
+.sbd-box div.fieldset {
+    margin-bottom: 0;
+}
+.sbd-box div.fieldset > div.body > div {
+    padding-bottom: 0;
+}
+
+#sbd_dom div.buttons div.map {
+    display: none;
+}

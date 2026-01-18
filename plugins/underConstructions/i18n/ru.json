@@ -1,0 +1,21 @@
+{
+    "title_underConstructions": "Сайт на реконструкции",
+    "description_underConstructions": "Переводит сайт в режим разработки",
+    "under_constructions_h1": "Сайт находится на реконструкции ",
+    "under_constructions_h2": "До запуска сайта осталось:",
+    "under_constructions_days": "Дней",
+    "under_constructions_hours": "Часов",
+    "under_constructions_minutes": "Минут",
+    "under_constructions_seconds": "Секунд",
+    "config_groups+name+underConstructions": "Сайт на реконструкции",
+    "config+name+under_constructions_ip": "Разрешенные IP-адреса",
+    "config+des+under_constructions_ip": "Пример заполнения: 127.0.0.1;198.2.25.56",
+    "config+name+under_constructions_date": "Дата выхода",
+    "config+des+under_constructions_date": "Формат даты: 2011-04-29 17:40:55",
+    "config+name+under_constructions_file": "Свой html файл",
+    "config+des+under_constructions_file": "Имя файла, находящегося в корневой директории сайта (для разработчиков)",
+    "config+name+under_constructions_divider_meta": "Метаданные сайта",
+    "config+name+under_constructions_meta_title": "Заголовок",
+    "config+name+under_constructions_meta_description": "Мета-описание",
+    "config+name+under_constructions_meta_keywords": "Ключевые слова"
+} 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="api">
+    <title>RESTful API</title>
+    <description>Flynax RESTful API</description>
+    <author>Alex</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.0.2</version>
+    <date>21.11.2017</date>
+    <class>ApiPlugin</class>
+    <compatible>4.8.2</compatible>
+
+    <install>
+        <![CDATA[]]>
+    </install>
+
+    <notices>
+        <!-- <notice><![CDATA[]]></notice> -->
+    </notices>
+
+    <files>
+        <file>rlApiPlugin.class.php</file>
+    </files>
+
+    <configs key="api" name="API settings">
+        <![CDATA[]]>
+        <config key="api_firebase_service" name="Firebase service account" description="https://console.firebase.google.com/project/ Your project / Project settings / Service Accounts / Generate new private key. Download the file, open it, copy the data, and paste it into the textarea" type="textarea"><![CDATA[]]></config>
+    </configs>
+
+    <hooks>
+        <hook name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBeforeUpdate"><![CDATA[]]></hook>
+        <hook name="listingsModifyWhereSearch"><![CDATA[]]></hook>
+        <hook name="rlMessagesAjaxAfterMessageSent"><![CDATA[]]></hook>
+        <hook name="rlMessagesAjaxContactOwnerAfterSend"><![CDATA[]]></hook>
+        <hook name="cronSavedSearchNotify"><![CDATA[]]></hook>
+    </hooks>
+
+    <updates>
+        <update version="1.0.1" files="request.php,rlApiPlugin.class.php,src/routes.php,src/Http/Controllers/V1/AccountController.php,src/Http/Controllers/V1/AddEditListingController.php,src/Http/Controllers/V1/AppController.php,src/Http/Controllers/V1/CategoryFilterController.php,src/Http/Controllers/V1/CommentsController.php,src/Http/Controllers/V1/GeoLocationController.php,src/Http/Controllers/V1/ListingPictureUploadAdapter.php,src/Http/Controllers/V1/ListingsController.php,src/Http/Controllers/V1/MessagesController.php,src/Http/Controllers/V1/PaymentController.php,src/Http/Controllers/V1/PaypalController.php,src/Http/Controllers/V1/PushNotificationController.php,bootstrap.php,i18n/ru.json,vendor"><![CDATA[]]></update>
+        <update version="1.0.2" files="request.php,src/routes.php,src/Http/Controllers/V1/AccountController.php,src/Http/Controllers/V1/AddEditListingController.php,src/Http/Controllers/V1/AppController.php,src/Http/Controllers/V1/ListingsController.php,src/Http/Controllers/V1/PaymentController.php,src/Http/Controllers/V1/PaypalController.php,src/Http/Controllers/V1/ShoppingCartController.php,src/Http/Controllers/V1/YookassaController.php,vendor"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall>
+        <![CDATA[]]>
+    </uninstall>
+</plugin>

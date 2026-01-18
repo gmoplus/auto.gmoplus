@@ -1,0 +1,17 @@
+/*** Mobile styles ***/
+
+body.hover-active {
+  #listings {
+    &.grid {
+      article.item {
+        @include listing_hover(map_get($listing-views, grid));
+      }
+    }
+
+    &.list {
+      article.item {
+        @include listing_hover(map_get($listing-views, list));
+      }
+    }
+  }
+}

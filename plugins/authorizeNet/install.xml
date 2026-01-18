@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="authorizeNet">
+    <title>AuthorizeNet</title>
+    <description>AuthorizeNet payment gateway</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.4.0</version>
+    <date>20.08.2012</date>
+    <class>AuthorizeNet</class>
+    <compatible>4.7.2</compatible>
+
+    <files>
+        <file>.htaccess</file>
+        <file>admin/plan_form.tpl</file>
+        <file>account_settings.tpl</file>
+        <file>rlAuthorizeNet.class.php</file>
+        <file>rlAuthorizeNetGateway.class.php</file>
+        <file>rlInstall.class.php</file>
+        <file>vendor/autoload.php</file>
+        <file>static/authorizeNet.png</file>
+        <file>static/authorizenet-speed-configuration-guide.pdf</file>
+        <file>static/.htaccess</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'authorizeNet');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks> 
+        <hook version="2.3.0" name="apTplListingPlansForm"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="shoppingCartAccountSettings"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="apPhpPaymetGatewaysSettings"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="apTplPaymentGatewaysBottom"><![CDATA[]]></hook>
+        <hook version="2.4.0" name="apPhpGatewayUpdateSettings"><![CDATA[]]></hook>
+        <hook version="2.4.0" name="topPaymentPage"><![CDATA[]]></hook>
+        <hook version="2.4.0" name="apTplMembershipPlansForm"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="2.3.0" key="authorizeNet_method_no_selected" module="admin"><![CDATA[The payment method not selected. Please contact the administrator if you have any questions.]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_module" module="common"><![CDATA[AuthorizeNet module]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_account_id" module="common"><![CDATA[Account ID]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_transaction_key" module="common"><![CDATA[Transaction Key]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_md5_hash" module="common"><![CDATA[MD5 Hash]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_seller_payment_details_empty" module="common"><![CDATA[Seller not configured AuthorizeNet Payment gateway or configured incorrectly]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_payment_waiting" module="common"><![CDATA[Your payment is pending to be reviewed. Once the payment is approved by AuthorizeNet your transaction will be activated automatically. Please contact the administrator if you have any questions.]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_speed_configuration_guide" module="common"><![CDATA[AuthorizeNet speed configuration guide]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_interval_unit_notice" module="common"><![CDATA[The unit of time, in association with the Interval Length, between each billing occurrence (Format: days, months)]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_start_date_notice" module="common"><![CDATA[The date the subscription begins (optional).]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_interval_length_notice" module="common"><![CDATA[The measurement of time, in association with the Interval Unit, that is used to define the frequency of the billing occurrences (Format: Up to 3 digits). Notes: If the Interval Unit is "months," can be any number between one (1) and 12. If the Interval Unit is "days," can be any number between seven (7) and 365.]]></phrase>
+        <phrase version="2.3.0" key="subscription_plans+name+sop_authorizenet_interval_length" module="common"><![CDATA[AuthorizeNet Interval Length]]></phrase>
+        <phrase version="2.3.0" key="authorizeNet_return_to" module="admin"><![CDATA[Return to]]></phrase>
+        <phrase version="2.4.0" key="authorizeNet_sim" module="admin"><![CDATA[Simple]]></phrase>
+        <phrase version="2.4.0" key="authorizeNet_aim" module="admin"><![CDATA[Direct]]></phrase>
+        <phrase version="2.4.0" key="authorizeNet_unit_error" module="admin"><![CDATA[Interval Unit configured incorrect]]></phrase>
+    </phrases>
+
+    <config version="2.2.0" key="authorizeNet_account_id" name="Account ID" description="" values="" type="text" validate="" group="6"><![CDATA[]]></config>
+    <config version="2.2.0" key="authorizeNet_transaction_key" name="Transaction Key" description="" values="" type="text" group="6" validate=""><![CDATA[]]></config>
+    <config version="2.2.0" key="authorizeNet_md5_hash" name="MD5 Hash" description="" values="" type="text" group="6" validate=""><![CDATA[]]></config>
+    <config version="2.4.0" key="authorizeNet_type" name="Payment Method" type="select" values="SIM,AIM" group="6" description="Simple - the payments will be accepted on authorizeNet service; Direct - you can accept the payments on your site by credit card; this method require follow to PCI Compliance Standards"><![CDATA[AIM]]></config>
+    <config version="2.2.0" key="authorizeNet_sandbox" name="Use SandBox" description="" values="" type="bool" validate="" group="6"><![CDATA[0]]></config>
+
+    <updates>
+        <update version="2.1.0" files="static/authorizeNet.png,rlAuthorizeNet.class.php"><![CDATA[]]></update>
+        <update version="2.2.0" files="account_settings.tpl,rlAuthorizeNet.class.php,rlInstall.class.php">
+            <![CDATA[
+                global $rlDb, $reefless;
+                $reefless->loadClass('Actions');
+                
+                // shoppingCart plugin (only for shopping cart & bidding plugin)
+                $rlDb->addColumnsToTable(
+                    array(
+                        'shc_authorizeNet_enable'           => "ENUM('0','1') NOT NULL DEFAULT '0'",
+                        'shc_authorizeNet_transaction_key'  => "varchar(50) NOT NULL default ''",
+                        'shc_authorizeNet_account_id'       => "varchar(50) NOT NULL default ''",
+                    ),
+                    'accounts'
+                );
+        
+                if (version_compare($GLOBALS['config']['rl_version'], '4.4.0') >= 0) {
+                    $sql = "SELECT `ID` FROM `" . RL_DBPREFIX . "payment_gateways` WHERE `Key` = 'authorizeNet' LIMIT 1";
+                    $payment_gateway = $rlDb->getRow($sql);
+                    
+                    if (empty($payment_gateway['ID'])) {
+                        // add field to transactions
+                        $rlDb->addColumnsToTable(
+                            array('Item_data' => "Text NOT NULL default ''"),
+                            'transactions'
+                        );
+                        $gateway_info = array(
+                                'Key' => 'authorizeNet',
+                                'Recurring_editable' => 0,
+                                'Plugin' => 'authorizeNet',
+                                'Type' => 'online'
+                            );
+
+                        if ($GLOBALS['rlActions']->insertOne($gateway_info, 'payment_gateways')) {
+                            if ($GLOBALS['languages']) {
+                                foreach ((array)$GLOBALS['languages'] as $lKey => $lValue) {
+                                    if ($rlDb->getOne('ID', "`Key` = 'payment_gateways+name+authorizeNet' AND `Code` = '{$lValue['Code']}'", 'lang_keys')) {
+                                        $update_names = array(
+                                            'fields' => array(
+                                                'Value' => 'AuthorizeNet'
+                                            ),
+                                            'where' => array(
+                                                'Code' => $lValue['Code'],
+                                                'Key' => 'listing_groups+name+authorizeNet'
+                                            )
+                                        );
+                                        $GLOBALS['rlActions']->updateOne($update_names, 'lang_keys');
+                                    } else {
+                                        $insert_names = array(
+                                            'Code' => $lValue['Code'],
+                                            'Module' => 'common',
+                                            'Key' => 'payment_gateways+name+authorizeNet',
+                                            'Value' => 'AuthorizeNet',
+                                            'Plugin' => 'authorizeNet'
+                                        );
+                                        $GLOBALS['rlActions']->insertOne($insert_names, 'lang_keys');
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // delete old configs
+                    $sql = "DELETE FROM `" . RL_DBPREFIX . "config` WHERE `Key` = 'authorizeNet_divider' OR `Key` = 'authorizeNet_module' OR `Key` = 'authorizeNet_currency' ";
+                    $rlDb->query($sql);
+                                       
+                    // delete page
+                    $sql = "DELETE FROM `" . RL_DBPREFIX . "pages` WHERE `Key` = 'authorizeNet_subscription' ";
+                    $rlDb->query($sql);
+                    
+                    $sql = "DROP TABLE IF EXISTS `" . RL_DBPREFIX . "authorizeNet_subscriptions`";
+                    $rlDb->query($sql);
+                    
+                    // remove listing plans fields        
+                    $rlDb->dropColumnsFromTable(
+                        array(
+                            'authorizeNet_interval_length', 
+                            'authorizeNet_interval_unit', 
+                            'authorizeNet_start_date'
+                        ),
+                        'listing_plans'
+                    );
+                } else {
+                    // delete old configs
+                    $sql = "DELETE FROM `" . RL_DBPREFIX . "config` WHERE `Key` LIKE 'authorizeNet_%'";
+                    $rlDb->query($sql);
+
+                    // update payment method config
+                    $sql = "UPDATE `" . RL_DBPREFIX . "config` SET `Values` = 'SIM,ARB,both' WHERE `Key` = 'authorizeNet_type' LIMIT 1";
+                    $rlDb->query($sql);
+                    
+                    if ($GLOBALS['languages']) {
+                        foreach ((array)$GLOBALS['languages'] as $lKey => $lValue) {
+                            $update_names = array(
+                                'fields' => array(
+                                    'Value' => 'SIM uses scripting techniques to authenticate transactions with a unique transaction fingerprint; ARB - Automated Recurring Billing'
+                                ),
+                                'where' => array(
+                                    'Code' => $lValue['Code'],
+                                    'Key' => 'config+des+authorizeNet_type'
+                                )
+                            );
+                            $GLOBALS['rlActions']->updateOne($update_names, 'lang_keys');   
+                        }
+                    }
+                }
+            ]]>
+        </update>
+        <update version="2.3.0" files="rlAuthorizeNet.class.php,rlAuthorizeNetGateway.class.php,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'authorizeNet');
+            $GLOBALS['rlInstall']->update230();
+        ]]></update>
+        <update version="2.4.0" files="rlAuthorizeNet.class.php,rlAuthorizeNetGateway.class.php,rlInstall.class.php,account_settings.tpl,admin/plan_form.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'authorizeNet');
+            $GLOBALS['rlInstall']->update240();
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'authorizeNet');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

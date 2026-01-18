@@ -1,0 +1,79 @@
+.field_obj {
+    -webkit-transition: background 1000ms linear;
+    -ms-transition: background 1000ms linear;
+    transition: background 1000ms linear;
+}
+
+.field_obj, .group_obj {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    margin: 0 3px 5px 2px;
+    padding: 5px;
+    z-index: 1000;
+    background: rgba(244, 243, 244, 1);
+    background: -moz-linear-gradient(top, rgba(244, 243, 244, 1) 0%, rgba(244, 243, 244, 1) 16%, rgba(212, 210, 211, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(244, 243, 244, 1)), color-stop(16%, rgba(244, 243, 244, 1)), color-stop(100%, rgba(212, 210, 211, 1)));
+    background: -webkit-linear-gradient(top, rgba(244, 243, 244, 1) 0%, rgba(244, 243, 244, 1) 16%, rgba(212, 210, 211, 1) 100%);
+    background: -o-linear-gradient(top, rgba(244, 243, 244, 1) 0%, rgba(244, 243, 244, 1) 16%, rgba(212, 210, 211, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(244, 243, 244, 1) 0%, rgba(244, 243, 244, 1) 16%, rgba(212, 210, 211, 1) 100%);
+    background: linear-gradient(to bottom, rgba(244, 243, 244, 1) 0%, rgba(244, 243, 244, 1) 16%, rgba(212, 210, 211, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f3f4', endColorstr='#d4d2d3', GradientType=0);
+    border: 1px #cfcdce solid;
+}
+
+.field_unsync {
+    background: rgba(250, 176, 160, 1);
+    background: -moz-linear-gradient(top, rgba(250, 176, 160, 1) 0%, rgba(250, 176, 160, 1) 31%, rgba(225, 113, 85, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(250, 176, 160, 1)), color-stop(31%, rgba(250, 176, 160, 1)), color-stop(100%, rgba(225, 113, 85, 1)));
+    background: -webkit-linear-gradient(top, rgba(250, 176, 160, 1) 0%, rgba(250, 176, 160, 1) 31%, rgba(225, 113, 85, 1) 100%);
+    background: -o-linear-gradient(top, rgba(250, 176, 160, 1) 0%, rgba(250, 176, 160, 1) 31%, rgba(225, 113, 85, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(250, 176, 160, 1) 0%, rgba(250, 176, 160, 1) 31%, rgba(225, 113, 85, 1) 100%);
+    background: linear-gradient(to bottom, rgba(250, 176, 160, 1) 0%, rgba(250, 176, 160, 1) 31%, rgba(225, 113, 85, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fab0a0', endColorstr='#e17155', GradientType=0);
+}
+
+.field_title {
+    display: inline-block;
+    color: #555555;
+    font-size: 11px;
+    padding: 0 5px;
+}
+
+div.field_title div.title {
+    width: 180px;
+    height: 15px;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.field_obj:hover {
+    cursor: pointer;
+}
+
+#account-field-sync-modal .preloader {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px;
+}
+
+/* Account fields sync modal window */
+#sync-field-window .sync-domain {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+#sync-field-window #sync-actions {
+    text-align: center;
+}
+
+/* Account fields sync modal window end */
+
+/* Manage accounts page */
+.unique-count {
+    display: inline-block;
+    vertical-align: super;
+}
+/* Manage accounts page end */

@@ -1,0 +1,33 @@
+@import "variables"
+
+// Scrollbar
+@if $scrollbar-color == null
+    $scrollbar-color: $color-main
+
+.scrollbar
+    overflow-y: auto
+    overflow-x: hidden
+
+    &:not(.scrollbar_no-padding)
+        padding-#{$right}: $scrollbar-padding
+
+    &_horizontal
+        overflow-y: hidden
+        overflow-x: auto
+        
+        &:not(.scrollbar_no-padding)
+            padding-#{$right}: 0
+            padding-bottom: $scrollbar-padding
+
+    &::-webkit-scrollbar
+        background: rgba(0,0,0,.1)
+        width: $scrollbar-width
+        height: $scrollbar-width
+        border-radius: $scrollbar-border-radius
+
+    &::-webkit-scrollbar-thumb
+        border-radius: $scrollbar-border-radius
+        background: rgba($scrollbar-color, 0.4)
+
+    &:hover::-webkit-scrollbar-thumb
+        background: rgba($scrollbar-color, 0.8)

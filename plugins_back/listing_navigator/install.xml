@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="listing_navigator">
+    <title>Listing navigation</title>
+    <description>Offers quick navigation to next and previous listings</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.2.0</version>
+    <date>20.07.2013</date>
+    <class>ListingNavigator</class>
+    <compatible>4.8.2</compatible>
+    
+    <files>
+        <file>rlListingNavigator.class.php</file>
+        <file>navigation.tpl</file>
+        <file>nav_left.tpl</file>
+        <file>nav_right.tpl</file>
+        <file>.htaccess</file>
+        <file>i18n/ru.json</file>
+    </files>
+    
+    <hooks>
+        <hook version="2.2.0" name="tplBodyTop"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="listingDetailsTopTpl"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="listingDetailsTop"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="searchMiddle"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="searchBottom"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="keywordSearchData"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="browseMiddle"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="listingsBottom"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="accountTypeAccount"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="ajaxRecentlyAddedLoadPost"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="tplListingDetailsNavLeft"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="tplListingDetailsNavRight"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="tplAbovePageContent"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="apTplContentBottom"><![CDATA[]]></hook>
+        <hook version="2.2.0" name="listingsModifyPreSelect"><![CDATA[]]></hook>
+    </hooks>
+    
+    <configs version="2.2.0" key="listing_navigator" name="Listing navigation">
+        <![CDATA[]]>
+        <config version="2.2.0" key="ln_display_basic" name="Basic navigation at the top of the page" type="bool" description="Disabling is available in software 4.9.1 or above"><![CDATA[0]]></config>
+    </configs>
+
+    <phrases>
+        <phrase version="2.2.0" key="listingNav_next" module="frontEnd" target="listing_details"><![CDATA[Next Listing]]></phrase>
+        <phrase version="2.2.0" key="listingNav_prev" module="frontEnd" target="listing_details"><![CDATA[Previous Listing]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="2.1.0" files="navigation.tpl"><![CDATA[]]></update>
+        <update version="2.1.1" files="rlListingNavigator.class.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="navigation.tpl"><![CDATA[]]></update>
+        <update version="2.1.3" files="rlListingNavigator.class.php"><![CDATA[]]></update>
+        <update version="2.1.4" files="rlListingNavigator.class.php"><![CDATA[]]></update>
+        <update version="2.1.6" files="rlListingNavigator.class.php"><![CDATA[]]></update>
+        <update version="2.1.7" files="rlListingNavigator.class.php,navigation.tpl"><![CDATA[]]></update>
+        <update version="2.2.0" files="nav_left.tpl,nav_right.tpl,navigation.tpl,rlListingNavigator.class.php,i18n/ru.json"><![CDATA[]]></update>
+    </updates>
+</plugin>

@@ -1,0 +1,20 @@
+ul.listing_rating_ul {
+    padding: 20px 0 5px;
+}
+ul.listing_rating_ul li {
+    width: 21px;
+    height: 20px;
+    display: inline-block;
+    background: url('stars.png') 0 -40px no-repeat;
+    padding: 0!important;
+    position: relative;
+    text-align: left;
+}
+ul.listing_rating_ul li.active {
+    background-position: 0 0;
+}
+ul.listing_rating_ul li div {
+    height: 100%;
+    background: url('stars.png') 0 0 no-repeat;
+    display: inline-block;
+}

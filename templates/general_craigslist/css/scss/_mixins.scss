@@ -1,0 +1,558 @@
+// Generators
+@function transitionString($props, $time) {
+  $str: "";
+  $i: 1;
+
+  @each $prop in $props {
+    $str: $str + $prop + " " + $time;
+
+    @if $i < length($props) {
+      $str: $str + ", ";
+    }
+
+    $i: $i + 1;
+  }
+
+  @return $str;
+}
+
+@mixin transition($props: "all", $time: $time-transition, $effect: "ease") {
+  @if $props == "all" {
+    transition: all $time;
+  }
+  @else if type-of($props) == "list" {
+    transition: #{transitionString($props, $time)};
+  }
+  @else {
+    transition: #{$props} $time;
+  }
+}
+
+@mixin create_keyframe($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($value) {
+  animation: #{$value};
+}
+
+@mixin transform($value) {
+  transform: #{$value};
+}
+
+// Flex
+@mixin flex($grow: 1, $shrink: 0, $basis: auto, $max-width: 1) {
+  @if $max-width == 1 {
+    @if $basis == auto or $basis == 0 {
+      max-width: none;
+    }
+    @else {
+      max-width: $basis;
+    }
+  }
+
+  min-height: 0;
+
+  flex: $grow $shrink $basis;
+}
+
+@mixin flex_block {
+  display: flex;
+}
+
+@mixin flex_wrap($value) {
+  flex-wrap: #{$value};
+}
+
+@mixin flex_direction($value) {
+  flex-direction: #{$value};
+}
+
+@mixin flex_shrink($value) {
+  flex-shrink: #{$value};
+}
+
+@mixin flex_order($value) {
+  order: $value;
+}
+
+@mixin flex_align_items($value) {
+  align-items: #{$value};
+}
+
+@mixin flex_align_self($value) {
+  align-self: #{$value};
+}
+
+@mixin flex_justify_content($value) {
+  justify-content: #{$value};
+}
+
+// Flip horizontal
+@mixin flip_x {
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+
+// Common
+@mixin button_base {
+  height: $button-height;
+  line-height: $button-height;
+  padding: 0 ($grid-gutter / 2);
+
+  @include transition;
+
+  &.disabled {
+    background: $disabled-bg !important;
+    cursor: not-allowed !important;
+    color: $disabled-color !important;
+  }
+}
+
+// Pass 1 if you need a button with multiple lines
+@mixin button($default: 0) {
+  color: $color-white;
+  background: $color-main-light;
+  border: none;
+  border-radius: 0;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+
+  @if $default == 0 {
+    @include button_base;
+  }
+  @else {
+    line-height: $button-line-height;
+    padding: $button-padding-y ($grid-gutter / 2);
+  }
+
+  &:hover {
+    text-decoration: none;
+    background: $color-main;
+    color: $color-white;
+    cursor: pointer;
+  }
+}
+
+@mixin button_reverse {
+  background: transparent;
+  line-height: $font-size-large;
+  height: auto;
+  border: $button-border-width solid $color-main-light;
+  color: $color-main;
+  padding: 8px ($grid-gutter / 2) 9px;
+
+  &:hover {
+    border-color: $color-main;
+  }
+}
+
+@mixin image_cover {
+  width: 100% !important;
+  height: 100% !important;
+  background-repeat: no-repeat;
+  background-position: center center;
+  object-fit: cover;
+}
+
+@mixin text_ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin absolute_center($width: $icon-size-default, $height: $icon-size-default) {
+  position: absolute;
+  top: 50%;
+  #{$space}: 50%;
+  margin-top: -$height / 2;
+  margin-#{$space}: -$width / 2;
+}
+
+@mixin placehodler {
+  &:-moz-placeholder,
+  &::-webkit-input-placeholder,
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin tap_square {
+  width: map_get($tap-zone, lg);
+  height: map_get($tap-zone, lg);
+
+  @include respond_to(tablet) {
+    width: map_get($tap-zone, sm);
+    height: map_get($tap-zone, sm);
+  }
+}
+
+// Pass 1 if red counter
+@mixin counter_super($red: "0") {
+  @if $red == 1 {
+    color: $color-attention !important;
+  }
+  @else {
+    color: $font-color-dark;
+  }
+
+  vertical-align: super;
+  font-size: $font-size-small;
+  display: inline-block !important;
+}
+
+@mixin dropdown_content($mode: "shadow") {
+  background: $color-white;
+  border: $border-width-wide solid $color-black;
+
+  @if $mode == "shadow" {
+    box-shadow: 0 0 0 5px transparentize($color-black, 0.9);
+  }
+}
+
+@mixin plus_icon {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+
+  @include tap_square;
+
+  &:after,
+  &:before {
+    content: "";
+
+    @include absolute_center(8px, 2px);
+
+    width: 8px;
+    height: 2px;
+    border-radius: 1px;
+    background: $border-color-dark;
+  }
+
+  &:before {
+    width: 2px;
+    height: 8px;
+
+    @include absolute_center(2px, 8px);
+  }
+}
+
+@mixin featured_label {
+  color: $color-featured;
+}
+
+@mixin row {
+  @if $enable-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  margin-left: -$grid-gutter / 2;
+  margin-right: -$grid-gutter / 2;
+}
+
+@mixin column {
+  position: relative;
+  min-height: 1px;
+  padding-left: $grid-gutter / 2;
+  padding-right: $grid-gutter / 2;
+}
+
+// Listing details box
+@mixin box_ld {
+  border: $border-width-default solid $border-color-default;
+  margin-bottom: $spacer;
+  padding: ($spacer * 2) ($grid-gutter / 2);
+
+  @include respond_to(mobile_xs) {
+    border-left: none;
+    border-right: none;
+    margin-bottom: 0;
+    margin-left: -$grid-gutter / 2;
+    margin-right: -$grid-gutter / 2;
+    padding-left: $grid-gutter / 2;
+    padding-right: $grid-gutter / 2;
+  }
+}
+
+// Triangles
+@mixin triangle($name) {
+  $triangle: map-get($triangles, $name);
+
+  @if not $triangle {
+    @error "No triangles with key #{$triangle}.";
+  }
+
+  content: "";
+  display: inline-block;
+
+  @if not $isLtr {
+    @include flip_x;
+  }
+
+  @if $triangle == "smallgray" {
+    width: 7px;
+    height: 4px;
+    background: url(../img/gallery.png) -13px -110px no-repeat;
+  }
+  @else if $triangle == "sortgreen" {
+    width: 15px;
+    height: 9px;
+    background: url(../img/gallery.png) 100% -120px no-repeat;
+  }
+
+  @include gallery_retina;
+}
+
+// Circle
+@mixin circle_square {
+  @include tap_square;
+}
+
+@mixin circle_padding($width: $circle-width, $height: $circle-height) {
+  padding: ((map_get($tap-zone, lg) - $height) / 2) ((map_get($tap-zone, lg) - $width) / 2);
+
+  @include respond_to(tablet) {
+    padding: ((map_get($tap-zone, sm) - $height) / 2) ((map_get($tap-zone, sm) - $width) / 2);
+  }
+}
+
+@mixin circle_styles {
+  background: $color-white;
+  border: 2px solid $color-black;
+  box-shadow: 0 0 0 5px transparentize($color-black, 0.9);
+  line-height: $line-height;
+}
+
+@mixin circle_list($mode: '') {
+  ul#{$mode} {
+    width: 100%;
+    padding: $spacer 0;
+
+    > li {
+      position: relative;
+
+      > a {
+        @include text_ellipsis;
+
+        padding: 0 ($spacer * 2);
+        line-height: 1.625rem;
+        display: block;
+
+        @if not $isLtr {
+          text-align: #{$space};
+        }
+
+        @include transition(background-color);
+
+        &.logout {
+          color: $font-color-dark;
+        }
+      }
+
+      &.active > a,
+      > a.active {
+        color: $font-color-dark;
+      }
+
+      &.messages {
+        a {
+          padding-right: $grid-gutter;
+        }
+
+        .counter {
+          position: absolute;
+          top: 0;
+          padding-right: 0;
+          #{$space-opposite}: 20px;
+
+          @include counter_super(1);
+
+          &:hover + a {
+            background-color: $color-gray;
+            color: $font-color-dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin circle_content {
+  min-width: $circle-content-width;
+  position: absolute;
+  top: 100%;
+  #{$space-opposite}: -7px;
+  z-index: $circle-content-z-index;
+
+  @include circle_styles;
+
+  @include circle_list(':not(.circle__list_no-list-styles)');
+
+  &:before {
+    content: "";
+    width: 13px;
+    height: 7px;
+    position: absolute;
+    bottom: 100%;
+    #{$space-opposite}: 20px;
+    background: url(../img/gallery.png) 0 -110px no-repeat;
+
+    @include gallery_retina;
+  }
+}
+
+// Listings
+@mixin listing_styles($position: lt) {
+  $listing-position: map_get($listing-positions, $position);
+
+  @if not $listing-position {
+    @error "No positions with key #{$listing-position}.";
+  }
+
+  div.picture {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66%;
+
+    img {
+      @include transition(box-shadow);
+
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: $no-image-bg url(../img/no-picture.png) 50% 50% no-repeat;
+    }
+
+    &.no-picture {
+      img {
+        background: $no-image-bg url(../img/no-picture.png) 50% 50% no-repeat;
+        background-size: auto;
+      }
+    }
+  }
+
+  @if $listing-position == "listing_type" {
+    .price-tag {
+      white-space: nowrap;
+      position: absolute;
+      color: $font-color-dark;
+    }
+
+    div.picture {
+      > span {
+        display: none;
+        position: absolute;
+        font-size: $font-size-small;
+        color: $font-color-gray;
+      }
+    }
+  }
+  @else if $listing-position == "content_block" {
+    .price_tag {
+      position: absolute;
+      color: $font-color-dark;
+    }
+  }
+}
+
+// Hovers
+@mixin icon_hover($value: 0.3) {
+  &:before,
+  &:after {
+    opacity: $value;
+
+    @include transition(opacity);
+  }
+
+  &:hover:before,
+  &:hover:after {
+    opacity: 1 !important;
+  }
+}
+
+@mixin listing_hover($view) {
+  div.picture:not(.no-picture) {
+    > img {
+      box-shadow: 0 -4px 0 -2px #b6b6b6, 0 -8px 0 -4px #d9d9d9;
+    }
+
+    > span {
+      display: block;
+      animation: animate_show_fade $time-animation;
+    }
+  }
+
+  @if $view == "list" {
+    div.navigation-column {
+      ul.nav-column {
+        li {
+          animation: animate_show_fade $time-animation;
+          display: block;
+        }
+      }
+    }
+  }
+  @else if $view == "grid" {
+    div.navigation-column {
+      ul.nav-column {
+        li {
+          animation: animate_show_fade $time-animation;
+          display: block;
+
+          > .icon {
+            @include icon_hover(0.7);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Login popup
+@mixin login_popup($mode: "padding") {
+  width: $circle-content-user-navbar-width;
+
+  @if $mode == "padding" {
+    padding: $spacer * 2;
+  }
+
+  form {
+    margin-bottom: $spacer * 1.5;
+
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      margin-bottom: $spacer;
+    }
+
+    input[type=submit] {
+      width: 100%;
+    }
+  }
+
+  .links {
+    text-align: center;
+
+    > a {
+      clear: both;
+    }
+  }
+
+  .nowrap {
+    white-space: normal;
+  }
+
+  a.fb-connect {
+    width: 100%;
+  }
+}

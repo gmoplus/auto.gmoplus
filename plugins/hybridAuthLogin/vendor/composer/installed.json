@@ -1,0 +1,116 @@
+{
+    "packages": [
+        {
+            "name": "flynax-components/image-uploader",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.flynax.asia:flynax/components/profileThumbnailUpload.git",
+                "reference": "d75ac7af7506464938d3d75617ee912a7e6300a2"
+            },
+            "require-dev": {
+                "flynax-components/unit-testing": "dev-master"
+            },
+            "time": "2018-10-12T10:22:43+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "Flynax\\Components\\Image\\Uploader\\": "src/"
+                }
+            },
+            "description": "Allows to upload image to the user profile",
+            "install-path": "../flynax-components/image-uploader"
+        },
+        {
+            "name": "flynax-components/objects-container",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.flynax.asia:flynax/components/objects-container.git",
+                "reference": "bd520f40038a1d4b055c43c20dcb888ffeaa3d15"
+            },
+            "time": "2018-03-16T08:36:13+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "Flynax\\Components\\": "src/"
+                }
+            },
+            "description": "Description here",
+            "install-path": "../flynax-components/objects-container"
+        },
+        {
+            "name": "hybridauth/hybridauth",
+            "version": "v3.8.1",
+            "version_normalized": "3.8.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hybridauth/hybridauth.git",
+                "reference": "cda2ddac102c29872164677fe92900bfef2eb15c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/cda2ddac102c29872164677fe92900bfef2eb15c",
+                "reference": "cda2ddac102c29872164677fe92900bfef2eb15c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^6.5 || ^8.0"
+            },
+            "suggest": {
+                "firebase/php-jwt": "Needed to support Apple provider",
+                "phpseclib/phpseclib": "Needed to support Apple provider"
+            },
+            "time": "2022-07-12T07:29:28+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Hybridauth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Miled",
+                    "email": "hybridauth@gmail.com"
+                }
+            ],
+            "description": "PHP Social Authentication Library",
+            "homepage": "https://hybridauth.github.io",
+            "keywords": [
+                "Authentication",
+                "OpenId",
+                "api",
+                "apple",
+                "authorization",
+                "facebook",
+                "google",
+                "oauth",
+                "social",
+                "twitter"
+            ],
+            "support": {
+                "gitter": "https://gitter.im/hybridauth/hybridauth",
+                "issues": "https://github.com/hybridauth/hybridauth/issues",
+                "source": "https://github.com/hybridauth/hybridauth/tree/v3.8.1"
+            },
+            "install-path": "../hybridauth/hybridauth"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

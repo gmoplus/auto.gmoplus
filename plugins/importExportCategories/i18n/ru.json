@@ -1,0 +1,19 @@
+{
+    "title_importExportCategories": "Импорт/Экспорт категорий",
+    "description_importExportCategories": "Позволяет администратору импортировать и экспортировать категории в формате XLS/XLSX.",
+    "importExportCategories_incorrect_file_ext": "Убедитесь, что вы загружаете файл XLS/XLSX, это единственный допустимый формат.",
+    "importExportCategories_import_filename_empty": "Заполните обязательное поле <b>{field}</b>",
+    "importExportCategories_empty": "Выберите категории для экспорта",
+    "importExportCategories_not_move_file": "Не удалось скопировать файл для обработки",
+    "importExportCategories_count": "<b>{count}</b> новых категорий импортировано",
+    "importExportCategories_file_not_readable": "Файл не читается.",
+    "importExportCategories_import": "Импорт",
+    "importExportCategories_export": "Экспорт",
+    "importExportCategories_importTo": "Импортировать в тип объявлений",
+    "importExportCategories_titleOfManager": "Категории из файла XLS/XLSX",
+    "importExportCategories_import_preview": "Предварительный просмотр импортированных категорий",
+    "importExportCategories_example": "Ваш XLS/XLSX файл должен иметь структуру как на примере ниже.",
+    "importExportCategories_header_row": "Первая строка файла должна содержать следующие системные обязательные столбцы: <b>{system_columns}</b>.<br>Для импорта категорий на нескольких языках, убедитесь, что первая строка содержит следующие столбцы: <b>{multilingual_columns}</b>.",
+    "importExportCategories_missing_header_row": "В файле отсутствует строка с названиями столбцов. Попробуйте выполнить экспорт для получения образца строки с необходимыми полями.",
+    "importExportCategories_pre_import_notice": "Импортировать все категории из загруженного XLS/XLSX файла"
+}

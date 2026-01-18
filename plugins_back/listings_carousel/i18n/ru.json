@@ -1,0 +1,17 @@
+{
+    "title_listings_carousel": "Карусель объявлений",
+    "description_listings_carousel": "Прокручивает премиальные, популярные, недавно добавленные и случайные объявления в отдельном блоке",
+    "listings_carousel_direction": "Направление",
+    "listings_carousel_vertical": "Вертикальное",
+    "listings_carousel_horizontal": "Горизонтальное",
+    "listings_carousel_box": "Блок карусели",
+    "listings_carousel_disabled_box": "Выберите блок для карусели (неактивные блоки не могут быть использованы для выбранного направления)",
+    "listings_carousel_number": "Количество объявлений",
+    "listings_carousel_delay": "Задержка",
+    "listings_carousel_per_slide": "Количество объявлений за прокрутку",
+    "listings_carousel_visible": "Количество видимых",
+    "listings_carousel_round": "Циклическая прокрутка",
+    "listings_carousel_in_sec": "в секундах, 0 - отключений авто прокрутки",
+    "listings_carousel_block_added": "Карусель была добавлена.",
+    "listings_carousel_block_edited": "Карусель была отредактирована."
+}

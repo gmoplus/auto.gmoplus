@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="events">
+    <title>Events</title>
+    <description>Allows both the Administrator and users to post monetizable events</description>
+    <author>Dmitry Azavanichus</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.1.5</version>
+    <date>10.03.2018</date>
+    <class>Events</class>
+    <compatible>4.8.1</compatible>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Events', null, 'events');
+        $GLOBALS['rlEvents']->install();
+    ]]></install>
+
+    <files>
+        <file>src/Cache/CachingBlock.php</file>
+        <file>src/Event.php</file>
+        <file>src/EventsCategory.php</file>
+        <file>src/EventsListingTypesController.php</file>
+        <file>src/EventsRates.php</file>
+        <file>static/add_edit_listing.js</file>
+        <file>static/arrow.svg</file>
+        <file>static/events-calendar.css</file>
+        <file>static/info.json</file>
+        <file>static/.htaccess</file>
+        <file>static/lib.js</file>
+        <file>view/calendar.tpl</file>
+        <file>view/header.tpl</file>
+        <file>view/event_rates_field.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>bootstrap.php</file>
+        <file>install.xml</file>
+        <file>rlEvents.class.php</file>
+        <file>vendor/autoload.php</file>
+    </files>
+
+    <hooks>
+        <hook name="staticDataRegister"><![CDATA[]]></hook>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook name="init"><![CDATA[]]></hook>
+        <hook name="specialBlock"><![CDATA[]]></hook>
+        <hook name="smartyCompileFileBottom"><![CDATA[]]></hook>
+        <hook name="myListingsSqlWhere"><![CDATA[]]></hook>
+        <hook name="listingsModifyField"><![CDATA[]]></hook>
+        <hook name="listingsModifyFieldSearch"><![CDATA[]]></hook>
+        <hook name="listingsModifyWhere"><![CDATA[]]></hook>
+        <hook name="listingsModifyWhereSearch"><![CDATA[]]></hook>
+        <hook name="phpAddListingInitBeforeTypes"><![CDATA[]]></hook>
+        <hook name="addListingPreFields"><![CDATA[]]></hook>
+        <hook name="addListingFormDataChecking"><![CDATA[]]></hook>
+        <hook name="editListingDataChecking"><![CDATA[]]></hook>
+        <hook name="editListingSteps"><![CDATA[]]></hook>
+        <hook name="listingTypesGetAdaptValue"><![CDATA[]]></hook>
+        <hook name="tplListingItemClass"><![CDATA[]]></hook>
+        <hook name="tplMyListingItemClass"><![CDATA[]]></hook>
+        <hook name="listingTop"><![CDATA[]]></hook>
+        <hook name="featuredItemTop"><![CDATA[]]></hook>
+        <hook name="myListingTop"><![CDATA[]]></hook>
+        <hook name="browseTop"><![CDATA[]]></hook>
+        <hook name="phpListingTypeTop"><![CDATA[]]></hook>
+        <hook name="pageinfoArea"><![CDATA[]]></hook>
+        <hook name="phpPrepareListingsData"><![CDATA[]]></hook>
+        <hook name="myListingsPreSelect"><![CDATA[]]></hook>
+        <hook name="myListingsSqlFields"><![CDATA[]]></hook>
+        <hook name="listingDetailsBottom"><![CDATA[]]></hook>
+        <hook name="phpCacheGetAfterFetch"><![CDATA[]]></hook>
+        <hook name="phpSearchBuildSearchBottom"><![CDATA[]]></hook>
+        <hook name="phpCommonFieldValuesAdaptationBottom"><![CDATA[]]></hook>
+        <hook name="phpAfterDeleteListing"><![CDATA[]]></hook>
+        <hook name="tplHeader"><![CDATA[]]></hook>
+        <hook name="phpBuildPagingTemplate"><![CDATA[]]></hook>
+        <hook name="listingsModifyPreSelect"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="smartyCustomFieldHandler"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="afterListingCreate"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="afterListingUpdate"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="afterListingEdit"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="addListingPostSimulation"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="editListingPostSimulation"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apTplContentBottom"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apPhpListingsAfterAdd"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apPhpListingsAfterEdit"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apPhpListingsView"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook name="apPhpListingsValidate"><![CDATA[]]></hook>
+        <hook name="apTplListingsFormAdd"><![CDATA[]]></hook>
+        <hook name="apTplListingsFormEdit"><![CDATA[]]></hook>
+        <hook name="apPhpBlocksPost"><![CDATA[]]></hook>
+        <hook name="apTplBlocksBottom"><![CDATA[]]></hook>
+        <hook name="apTplListingTypesBottom"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBeforeUpdate"><![CDATA[]]></hook>
+        <hook name="apPhpPagesAfterEdit"><![CDATA[]]></hook>
+        <hook name="apTplFieldsDate"><![CDATA[]]></hook>
+        <hook name="apPhpIndexBottom"><![CDATA[]]></hook>
+        <hook version="1.1.4" name="cronAdditional"><![CDATA[]]></hook>
+        <hook version="1.1.4" name="addListingAdditionalInfo"><![CDATA[]]></hook>
+        <hook version="1.1.4" name="editListingAdditionalInfo"><![CDATA[]]></hook>
+        <hook version="1.1.5" name="tplAbovePageContent"><![CDATA[]]></hook>
+        <hook version="1.1.5" name="phpUrlBottom"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="events" name="Events"><![CDATA[]]>
+        <config key="ev_sunday_first" name="Sunday - the first day of the week" type="bool"><![CDATA[0]]></config>
+        <config version="1.1.4" key="ev_show_passed_events" name="Show past events" description="If disabled the past events will be marked as expired and archived." type="bool"><![CDATA[1]]></config>
+        <config key="ev_price_required" name="Make ticket pricing required" type="bool"><![CDATA[0]]></config>
+        <config key="ev_date_format" name="Date format" type="text" description="PHP date formats https://www.php.net/manual/en/function.strftime.php" ><![CDATA[%b %d / %a]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="listing_fields+name+event_title" module="common"><![CDATA[Title]]></phrase>
+        <phrase key="listing_fields+name+event_desc" module="common"><![CDATA[Event description]]></phrase>
+        <phrase key="listing_fields+name+event_type" module="common"><![CDATA[Type]]></phrase>
+        <phrase key="listing_fields+name+event_date" module="common"><![CDATA[Date]]></phrase>
+        <phrase version="1.1.2" key="listing_fields+name+price_event" module="common"><![CDATA[Price]]></phrase>
+        <phrase version="1.1.0" key="listing_fields+name+event_price_type" module="common"><![CDATA[Free event]]></phrase>
+        <phrase key="listing_fields+name+event_type_1" module="common"><![CDATA[Single]]></phrase>
+        <phrase key="listing_fields+name+event_type_2" module="common"><![CDATA[Period]]></phrase>
+        <phrase version="1.1.4" key="past" module="common"><![CDATA[Past Event]]></phrase>
+        <phrase key="edit_event" module="common"><![CDATA[Edit Event]]></phrase>
+        <phrase key="post_an_event" module="common"><![CDATA[Post an Event]]></phrase>
+        <phrase key="ev_ticket_price" module="common"><![CDATA[Ticket price]]></phrase>
+        <phrase key="no_events_here" module="common"><![CDATA[No events scheduled on that day. Be the first to [add an event].]]></phrase>
+        <phrase key="no_events_found" module="common"><![CDATA[No events have been found. [Click] to add an event.]]></phrase>
+        <phrase version="1.1.0" key="data_formats+name+event_rates" module="common"><![CDATA[Tickets]]></phrase>
+        <phrase version="1.1.0" key="listing_groups+name+event_rates" module="common"><![CDATA[Tickets]]></phrase>
+        <phrase version="1.1.0" key="add_event_rate" module="common"><![CDATA[Add ticket price]]></phrase>
+        <phrase version="1.1.0" key="event_custom_rate" module="common"><![CDATA[Custom]]></phrase>
+        <phrase version="1.1.0" key="event_ticket_type" module="common"><![CDATA[- Ticket Type -]]></phrase>
+    </phrases>
+
+    <blocks>
+        <block key="events_calendar" login="0" name="Event Calendar" side="left" type="php" tpl="1"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Events', null, 'events');
+            $GLOBALS['rlEvents']->showEventsCalendar();
+            ]]></block>
+    </blocks>
+
+    <emails>
+        <email version="1.1.4" key="events_expired_past_events" subject="Your event has expired">
+        <![CDATA[
+        Hello {name},
+
+        Your past event at {site_name} was marked as expired and archived:
+
+        {details_link}
+
+        ]]></email>
+    </emails>
+
+    <updates>
+        <update version="1.1.0" files="bootstrap.php,rlEvents.class.php,i18n/ru.json,src/Event.php,src/EventsCategory.php,src/EventsListingTypesController.php,static/lib.js,static/info.json,src/EventsRates.php,view/event_rates_field.tpl,view/header.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Events', null, 'events');
+            $GLOBALS['rlEvents']->update110();
+        ]]></update>
+        <update version="1.1.1" files="src/EventsListingTypesController.php,rlEvents.class.php,view/header.tpl"><![CDATA[]]></update>
+        <update version="1.1.2" files="i18n/ru.json,src/EventsCategory.php,src/EventsListingTypesController.php,rlEvents.class.php,view/event_rates_field.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Events', null, 'events');
+            $GLOBALS['rlEvents']->update112();
+        ]]></update>
+        <update version="1.1.3" files="src/EventsListingTypesController.php"><![CDATA[]]></update>
+        <update version="1.1.4" files="i18n/ru.json,src/EventsListingTypesController.php,src/EventsCategory.php,src/EventsRates.php,rlEvents.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Events', null, 'events');
+            $GLOBALS['rlEvents']->update114();
+            ]]></update>
+        <update version="1.1.5" files="src/Event.php,rlEvents.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Events', null, 'events');
+            $GLOBALS['rlEvents']->update115();
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Events', null, 'events');
+        $GLOBALS['rlEvents']->uninstall();
+    ]]></uninstall>
+</plugin>

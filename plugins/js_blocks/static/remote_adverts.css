@@ -1,0 +1,151 @@
+.jListingPaging {
+    padding-bottom: 10px;
+    font-family: verdana;
+    /*z-index: 2;
+    position: relative;*/
+}
+.jListingPaging span {
+    border-radius: 2px;
+    border: 1px #dbdbdb solid;
+    background: #f0f0f0;
+    margin-right: 5px;
+    cursor: pointer;
+    padding: 4px 6px 5px;
+    color: #3C3C3C;
+    font-size: 11px;
+    text-align: center;
+    display: inline-block;
+}
+.jListingPaging span:hover,
+.jListingPaging span.jListingPageItem-active {
+    filter: brightness(.90);
+    color: black;
+}
+.jListingHide {
+    display: none;
+}
+.jListingPage * {
+    box-sizing: border-box;
+}
+.jListingPage {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.jListingPage_grid-view {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -15px;
+    list-style: none !important;
+    padding: 0 !important;
+}
+.jListingPage_grid-view > li {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    list-style: none !important;
+}
+.jListingPage_grid-view .jListingItem {
+    flex-direction: column;
+    margin-top: 20px;
+}
+.jListingPage_grid-view .jListingPicture {
+    padding-bottom: 66%;
+    position: relative;
+}
+.jListingPage_grid-view .jListingPicture img {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+}
+.jListingPage_grid-view .jListingItem.jListingItem_no-picture .jListingPicture img {
+    object-fit: scale-down !important;
+}
+.jListingPage_grid-view .jListingData {
+    padding: 5px 0 0 !important;
+}
+
+.jListingItem {
+    display: flex;
+    list-style: none;
+    border: 1px #f1f1f1 solid;
+    background: #fafafa;
+    border-radius: 3px;
+    margin: 5px 0 0 0;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    font-family: verdana;
+}
+.jListingItem:hover {
+    filter: brightness(.97);
+}
+.jListingItem img {
+    border: 0;
+    object-fit: contain;
+    background-color: #efefef;
+}
+.jListingData {
+    flex: 1;
+    padding-left: 10px;
+    min-width: 0;
+}
+.jListingTitle {
+    padding: 0 0 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.jListingTitle a {
+    font-size: 14px;
+    color: #3a5f9c;
+}
+.jListingPrice {
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+.jListingFields {
+    color: #888888;
+    font-size: 12px;
+    flex-wrap: wrap;
+    display: flex;
+}
+.jListingFields > span:not(:last-child):after {
+    content: ',';
+    margin-right: 4px;
+}
+.jListingFields_with-names {
+    display: table;
+}
+.jListingFields_with-names > div {
+    display: table-row;
+}
+.jListingFields_with-names > div > span {
+    display: table-cell;
+    word-break: break-all;
+}
+.jListingField_name {
+    padding-right: 3px;
+    opacity: .7;
+}
+
+[dir=rtl] .jListingData {
+    padding-left: 0;
+    padding-right: 10px;
+}
+[dir=rtl] .jListingFields > span:not(:last-child):after {
+    margin-right: 0;
+    margin-left: 4px;
+}
+[dir=rtl] .jListingField_name {
+    padding-right: 0;
+    padding-left: 3px;
+}
+[dir=rtl] .jListingPaging span {
+    margin-right: 0;
+    margin-left: 5px;
+}

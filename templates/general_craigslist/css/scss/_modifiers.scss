@@ -1,0 +1,104 @@
+/*** Css modifiers ***/
+
+.w120 {
+  width: 120px !important;
+}
+
+.w210 {
+  width: 210px !important;
+}
+
+.wauto {
+  width: auto !important;
+  max-width: 100%;
+}
+
+div.counter,
+span.counter {
+  @include counter_super;
+}
+
+.close,
+.red {
+  color: $color-red !important;
+}
+
+.close:hover,
+.red:hover {
+  color: $color-red-light !important;
+}
+
+.text-overflow {
+  @include text_ellipsis;
+}
+
+.mass-actions {
+  padding: ($grid-gutter / 2) 0 0 0;
+}
+.hide {
+  display: none;
+}
+
+.ralign {
+  text-align: #{$float-opposite};
+}
+
+.lalign {
+  text-align: #{$float};
+}
+
+.align-center {
+  text-align: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.fleft {
+  float: #{$float};
+}
+
+.fright {
+  float: #{$float-opposite};
+}
+
+.invisble {
+  opacity: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.flex {
+  @include flex_block;
+
+  @include flex(1, 0, auto);
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity ($time-transition / 2) linear;
+  *opacity: 1;
+}
+
+.fade.in {
+  opacity: 1;
+}
+
+.flex__direction--column {
+  @include flex_direction("column");
+}
+
+.flex__direction--row {
+  @include flex_direction("row");
+}

@@ -1,0 +1,304 @@
+/*** Profile ***/
+table.list.contacts-list {
+  table-layout: auto !important;
+
+  margin-left: -$grid-gutter / 2;
+  margin-right: -$grid-gutter / 2;
+
+  td.info {
+    vertical-align: top;
+
+    .name > span:not(.new) {
+      color: $color-black;
+    }
+
+    .date {
+      padding-bottom: $spacer;
+      font-size: 0.813rem;
+    }
+  }
+
+  tr.header td.user {
+    width: 10%;
+  }
+
+  .picture {
+    position: relative;
+    display: inline-block;
+
+    span {
+      width: 10px;
+      height: 10px;
+      background: #60d400;
+      position: absolute;
+      border-radius: 7px;
+      top: -5px;
+      right: -5px;
+
+      &.new {
+        width: 10px;
+        height: 10px;
+        background: #60d400;
+        border-radius: 7px;
+        border: 2px white solid;
+      }
+    }
+  }
+}
+
+// Messages
+img.account-picture {
+  width: 200px;
+  height: 100px;
+  background: #f4f4f4 no-repeat center center;
+  background-image: url("../img/no-account.png");
+  object-fit: contain
+}
+
+div#messages_cont {
+    max-height: 600px;
+    margin-bottom: 20px;
+}
+
+ul#messages_area {
+  margin: 0 ($grid-gutter / 2);
+
+  > li {
+    box-shadow: inset 0 0 0 2px #e1e1e1;
+    padding: $spacer ($spacer * 2) $spacer $spacer;
+    margin: 0 $grid-gutter ($grid-gutter/2) 0;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      right: 100%;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      margin-right: -2px;
+      border-width: 8px;
+      border-color: transparent #e1e1e1 #e1e1e1 transparent;
+    }
+
+    &:after {
+      bottom: 2px;
+      border-width: $grid-gutter / 4 - 0.125rem;
+      border-color: transparent $color-white $color-white transparent;
+    }
+
+    &.me {
+      background: #f5f5f5;
+      margin: 0 14px ($grid-gutter/2) ($grid-gutter/2);
+
+      &:after {
+        display: none;
+      }
+      &:before {
+        right: auto;
+        left: 100%;
+        border-color: transparent transparent #e1e1e1 #e1e1e1;
+      }
+    }
+
+    > div {
+      &:not(.date) {
+        margin-bottom: $spacer;
+      }
+
+      &.date {
+        padding-top: $spacer / 2;
+      }
+    }
+  }
+}
+
+.info {
+  .table-cell.small {
+    padding-bottom: $spacer / 2;
+  }
+}
+
+.send-controls {
+
+  .charleft {
+    text-align: #{$space-opposite};
+    font-size: $font-size-small;
+  }
+}
+
+#message_text {
+  width: 100%;
+}
+
+#area_membership {
+  .submit-cell.buttons {
+    .button {
+      margin-right: $spacer;
+    }
+  }
+}
+
+.area_profile,
+#area_profile {
+  .submit-cell {
+    .field {
+      .notice_message,
+      > label {
+        @include flex(1,1,100%);
+      }
+    }
+  }
+}
+
+.my-profile-sidebar .image-preview-wrapper,
+.my-profile-sidebar .image-preview-wrapper .image-preview {
+    max-width: 100%;
+}
+
+#listings.my-listings {
+  margin-left: -$grid-gutter / 2;
+  margin-right: -$grid-gutter / 2;
+
+  article.item {
+    margin: 0 0 ($spacer * 1.5) 0;
+    padding: 0 ($grid-gutter / 2) ($spacer * 1.5);
+    border-bottom: 2px solid #e6e6e6;
+    min-height: 95px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    div.picture {
+      margin: 0 !important;
+      width: 200px;
+      height: 150px;
+
+      > .label {
+        display: none;
+      }
+    }
+
+    > div {
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.nav {
+        > div {
+          display: inline-block;
+          vertical-align: top;
+          margin-right: $spacer * 3;
+        }
+      }
+    }
+  }
+
+  .title {
+    font-size: 1rem;
+    padding-bottom: $spacer * 1.5;
+  }
+
+  div.navigation {
+    @include respond_to(mobile_xs) {
+        padding: $spacer 0;
+    }
+
+    ul {
+      > li {
+        select {
+          width: 100%;
+        }
+
+        a {
+          position: relative;
+          padding-#{$float}: $spacer * 2;
+        }
+
+        &:not(:last-child) {
+          padding: 0 0 $spacer 0;
+        }
+
+        &.nav-icon {
+          > a {
+            @include icon_hover;
+
+            > span {
+              margin-#{$float}: $spacer / 2;
+            }
+
+            &:before {
+              content: "";
+              background: url("../img/gallery.png") 0 -300px no-repeat;
+              width: $icon-size-default;
+              height: $icon-size-default;
+              #{$float}: 0;
+              top: 0;
+              position: absolute;
+
+              @include gallery_retina;
+            }
+
+            &.add-photo:before {
+              background-position: 0 -318px;
+            }
+
+            &.add-video:before {
+              background-position: (-18px) -318px;
+            }
+
+            &.delete:before {
+              background-position: (-18px) -300px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div.nav {
+    > div {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: $spacer * 2;
+    }
+  }
+
+  div.stat {
+    ul {
+      > li {
+        .name {
+          color: #949494;
+
+          &:after {
+            content: ":";
+          }
+        }
+
+        &:not(:last-child) {
+          padding: 0 0 ($spacer * 0.8) 0;
+        }
+      }
+    }
+  }
+}
+
+// Account menu
+ul.account-menu-content {
+  display: inline-block;
+
+  > li {
+    position: relative;
+
+    > a {
+
+      &.counter {
+        @include counter_super(1);
+      }
+
+    }
+  }
+}

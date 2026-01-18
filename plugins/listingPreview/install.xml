@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="listingPreview">
+    <title>Listing Preview</title>
+    <description>Allows users to preview listing before publishing</description>
+    <author>John Freeman</author>
+    <owner>Flynax classifieds software</owner>
+    <version>2.4.5</version>
+    <date>03.08.2010</date>
+    <class>ListingPreview</class>
+    <compatible>4.7.0</compatible>
+
+    <files>
+        <file>rlListingPreview.class.php</file>
+        <file>step.tpl</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <hooks>
+        <hook version="2.4.0" name="addListingTop"><![CDATA[]]></hook>
+        <hook version="2.4.0" name="tplHeaderUserNav"><![CDATA[]]></hook>
+        <hook version="2.4.0" name="listingDetailsTopTpl"><![CDATA[]]></hook>
+        <hook version="2.4.0" name="smartyFetchHook"><![CDATA[]]></hook>
+        <hook version="2.4.3" name="listingDetailsSellerBox"><![CDATA[]]></hook>
+        <hook version="2.4.5" name="tplHeader"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="listingPreview_preview" module="frontEnd"><![CDATA[Preview Listing]]></phrase>
+        <phrase key="listingPreview_confirm" module="frontEnd"><![CDATA[Confirm and Continue]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="2.0.1" files="rlListingPreview.class.php,step.tpl"><![CDATA[]]></update>
+        <update version="2.1.0" files="rlListingPreview.class.php,step.tpl"><![CDATA[]]></update>
+        <update version="2.2.0" files="rlListingPreview.class.php,step.tpl"><![CDATA[]]></update>
+        <update version="2.2.1" files="rlListingPreview.class.php"><![CDATA[]]></update>
+        <update version="2.3.0" files="rlListingPreview.class.php"><![CDATA[
+            $GLOBALS['rlDb']->query("DELETE FROM `" . RL_DBPREFIX . "hooks` WHERE `Plugin` = 'listingPreview' AND `Name` = 'tplHeaderCommon'");
+        ]]></update>
+        <update version="2.4.0" files="rlListingPreview.class.php,step.tpl"><![CDATA[
+            global $rlDb;
+
+            // Remove hooks
+            $hooks_to_be_removed = array(
+                'pageinfoArea',
+                'addListingBottom',
+                'addListingBottomTpl'
+            );
+            $rlDb->query("
+                DELETE FROM `" . RL_DBPREFIX . "hooks`
+                WHERE `Plugin` = 'listingPreview'
+                AND `Name` IN ('" . implode("','", $hooks_to_be_removed) . "')
+            ");
+        ]]></update>
+        <update version="2.4.1" files="rlListingPreview.class.php"><![CDATA[]]></update>
+        <update version="2.4.2" files="rlListingPreview.class.php"><![CDATA[]]></update>
+        <update version="2.4.3" files="rlListingPreview.class.php,i18n/ru.json"><![CDATA[
+            if (in_array('ru', array_keys($GLOBALS['languages']))) {
+                $russianTranslation = json_decode(file_get_contents(RL_PLUGINS . 'listingPreview/i18n/ru.json'), true);
+                foreach ($russianTranslation as $phraseKey => $phrase) {
+                    if ($GLOBALS['rlDb']->getOne('ID', "`Key` = '{$phraseKey}' AND `Code` = 'ru'", 'lang_keys')) {
+                        $GLOBALS['rlDb']->updateOne([
+                            'fields' => ['Value' => $phrase],
+                            'where'  => ['Key'   => $phraseKey, 'Code' => 'ru'],
+                        ], 'lang_keys');
+                    } else {
+                        $GLOBALS['rlDb']->insertOne([
+                            'Code'   => 'ru',
+                            'Module' => 'common',
+                            'Key'    =>  $phraseKey,
+                            'Value'  => $phrase,
+                            'Plugin' => 'listingPreview',
+                        ], 'lang_keys');
+                    }
+                }
+            }
+        ]]></update>
+        <update version="2.4.4" files="rlListingPreview.class.php,step.tpl"><![CDATA[]]></update>
+        <update version="2.4.5" files="rlListingPreview.class.php,step.tpl"><![CDATA[]]></update>
+    </updates>
+</plugin>

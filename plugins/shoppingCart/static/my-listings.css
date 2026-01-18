@@ -1,0 +1,23 @@
+/* My listings grid icon */
+
+.shc-my-listings-icon {
+    max-width: 16px;
+    max-height: 16px;
+    cursor: pointer;
+}
+.shc-my-listings-icon {
+    fill: #555555;
+    opacity: .5;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+}
+.shc-my-listings-icon:hover {
+    opacity: .8;
+}
+.shc-my-listings-link {
+    padding: 0 0 0 5px !important;
+}
+.shc-my-listings-link:before {
+    content: none !important;
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="cookiesPolicy">
+    <title>Cookie Policy</title>
+    <description>Notifies users of collecting cookies asking them to either accept or leave</description>
+    <author>Viktor</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.3.2</version>
+    <date>24.06.2014</date>
+    <compatible>4.8.2</compatible>
+    <class>CookiesPolicy</class>
+
+    <files>
+        <file>tab.tpl</file>
+        <file>static/gallery.png</file>
+        <file>static/lib.js</file>
+        <file>static/style.css</file>
+        <file>rlCookiesPolicy.class.php</file>
+        <file>rlManager.class.php</file>
+        <file>admin/js.tpl</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <hooks>
+        <hook version="1.1.0" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="phpPreCreateCookie"><![CDATA[]]></hook>
+        <hook version="1.2.0" name="smartyFetchHook"><![CDATA[]]></hook>
+        <hook version="1.3.0" name="apTplContentBottom"><![CDATA[]]></hook>
+        <hook version="1.3.0" name="apMixConfigItem"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="cookiesPolicy" name="Cookie Policy" version="1.1.0">
+        <![CDATA[]]>
+        <config key="cookiesPolicy_country" name="Country codes for cookie policy" description="You can manage codes of the countries that require cookie policy. For more codes check &lt;a target='_blank' href='https://www.iso.org/iso-3166-country-codes.html' &gt;here &lt;/a&gt;" type="text" version="1.1.0"><![CDATA[AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,GB,GF,GP,MQ,ME,YT,RE,MF,GI,AX,PM,GL,BL,SX,AW,CW,WF,PF,NC,TF,AI,BM,IO,VG,KY,FK,MS,PN,SH,GS,TC,AD,LI,MC,SM,VA,JE,GG,GI]]></config>
+        <config key="cookiesPolicy_view" name="Confirmation view" values="banner,popup" type="select" version="1.3.0"><![CDATA[banner]]></config>
+        <config key="cookiesPolicy_position" name="Pop-up position" values="bottom_left,bottom_right" type="select" version="1.1.0"><![CDATA[bottom_left]]></config>
+        <config key="cookiesPolicy_hide_icon" name="Hide the icon after accepting policy" type="bool" version="1.1.0"><![CDATA[0]]></config>
+        <config key="cookiesPolicy_redirect_url" name="Default URL in case of non-acceptance" type="text" version="1.1.0"><![CDATA[https://www.google.com]]></config>
+        <config key="cp_block_all_cookies" name="Block all cookies" type="bool" version="1.2.0" description="Prevents cookies from being saved and terminates user session (GDPR). When enabled the pop-up will be shown to all users, regardless of their country."><![CDATA[0]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="cookies_policy_cookie_control" module="frontEnd"><![CDATA[Cookie Policy]]></phrase>
+        <phrase key="cookies_policy_accept" module="frontEnd"><![CDATA[Accept]]></phrase>
+        <phrase key="cookies_policy_decline" module="frontEnd"><![CDATA[Decline]]></phrase>
+        <phrase version="1.1.0" key="config+option+cookiesPolicy_position_bottom_left" module="admin" target="settings"><![CDATA[Bottom Left]]></phrase>
+        <phrase version="1.1.0" key="config+option+cookiesPolicy_position_bottom_right" module="admin" target="settings"><![CDATA[Bottom Right]]></phrase>
+        <phrase key="cookies_policy_content_text" module="frontEnd"><![CDATA[Cookies are files stored in your browser with the aim of personalizing your web experience. By accepting our cookie policy you are agreeing to our use of cookies.]]></phrase>
+        <phrase version="1.3.0" key="config+option+cookiesPolicy_view_banner" module="admin" target="settings"><![CDATA[Banner]]></phrase>
+        <phrase version="1.3.0" key="config+option+cookiesPolicy_view_popup" module="admin" target="settings"><![CDATA[Popup]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="1.0.1"><![CDATA[]]></update>
+        <update version="1.0.2" files="tab.tpl,static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="1.0.3" files="tab.tpl,static/lib.js,static/gallery_x2.png,static/style.css"><![CDATA[]]></update>
+        <update version="1.0.4" files="static/lib.js"><![CDATA[]]></update>
+        <update version="1.0.5"><![CDATA[]]></update>
+        <update version="1.0.6" files="static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="1.0.7" files="static/lib.js"><![CDATA[]]></update>
+        <update version="1.0.8" files="tab.tpl,static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="1.1.0" files="static/.htaccess,static/lib.js,static/style.css,.htaccess,rlCookiesPolicy.class.php,tab.tpl,rlManager.class.php" class="Manager"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Manager', null, 'cookiesPolicy');
+            $GLOBALS['rlManagern']->update110();
+        ]]></update>
+        <update version="1.2.0" files="rlCookiesPolicy.class.php,static/lib.js,tab.tpl,rlManager.class.php" class="Manager"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Manager', null, 'cookiesPolicy');
+            $GLOBALS['rlManager']->update120();
+        ]]></update>
+        <update version="1.2.1" files="rlCookiesPolicy.class.php,tab.tpl,rlManager.class.php" class="Manager"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Manager', null, 'cookiesPolicy');
+            $GLOBALS['rlManager']->update121();
+        ]]></update>
+        <update version="1.3.0" files="rlCookiesPolicy.class.php,rlManager.class.php,tab.tpl,admin/js.tpl,i18n/ru.json" class="Manager"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Manager', null, 'cookiesPolicy');
+            $GLOBALS['rlManager']->update130();
+        ]]></update>
+        <update version="1.3.1" files="rlCookiesPolicy.class.php,tab.tpl,static/lib.js,i18n/ru.json"><![CDATA[]]></update>
+        <update version="1.3.2" files="rlCookiesPolicy.class.php"><![CDATA[]]></update>
+    </updates>
+</plugin>

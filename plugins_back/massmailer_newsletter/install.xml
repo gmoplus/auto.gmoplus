@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="massmailer_newsletter">
+    <title>Massmailer/Newsletters</title>
+    <description>Sends bulk emails and newsletters to subscribers and different user groups</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.2.2</version>
+    <date>10.04.2012</date>
+    <controller>massmailer_newsletter</controller>
+    <class>MassmailerNewsletter</class>
+    <compatible>4.7.0</compatible>
+
+    <files>
+        <file>block.tpl</file>
+        <file>checkbox.tpl</file>
+        <file>newsletter.tpl</file>
+        <file>newsletter.inc.php</file>
+        <file>rlMassmailerNewsletter.class.php</file>
+        <file>admin/massmailer_newsletter.tpl</file>
+        <file>admin/massmailer_newsletter.inc.php</file>
+        <file>admin/send_interface.tpl</file>
+        <file>admin/massmailer_newsletter_send.php</file>
+        <file>admin/send.php</file>
+        <file>static/lib.js</file>
+        <file>static/aStyle.css</file>
+        <file>static/gallery.png</file>
+        <file>static/mailler.js</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="3.1.0" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="profileEditProfileDone"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="profileController"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="tplRegistrationCheckbox"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="tplProfileCheckbox"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="phpRegistrationBeforeInsert"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="sitemapExcludedPages"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="phpQuickRegistrationBeforeInsert"><![CDATA[]]></hook>
+        <hook version="3.2.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="3.2.0" name="apAjaxRequest"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="3.2.0" key="massmailer_newsletter_your_name" target="massmailer_newsletter_block" module="box"><![CDATA[Your Name]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_newsletter"  module="admin"><![CDATA[Visitors]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_add_massmailer" target="massmailer_newsletter" module="admin"><![CDATA[Add a Newsletter]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_edit_massmailer" target="massmailer_newsletter" module="admin"><![CDATA[Edit Newsletter]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_recipients" target="massmailer_newsletter" module="admin"><![CDATA[Subscribers]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_site_accounts" target="massmailer_newsletter" module="admin"><![CDATA[Site Users]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_contact_us" target="massmailer_newsletter"  module="admin"><![CDATA[Contact Form Users]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_comments" module="admin"><![CDATA[Comment Posters]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_subject" target="massmailer_newsletter"  module="admin"><![CDATA[Subject]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_to" target="massmailer_newsletter"  module="admin"><![CDATA[To]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_total" target="massmailer_newsletter" module="admin"><![CDATA[Total emails]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_sents" module="admin"><![CDATA[Emails sent]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_sending" target="massmailer_newsletter"  module="admin"><![CDATA[Sending]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_completed" target="massmailer_newsletter" module="admin"><![CDATA[Completed]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_processing" target="massmailer_newsletter" module="admin"><![CDATA[Processing]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_subscribe_to" module="frontEnd"><![CDATA[Subscribe to newsletters]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_your_e_mail" module="frontEnd"><![CDATA[Your Email]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_subscribe" module="frontEnd"><![CDATA[Subscribe]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_empty_name" module="system"><![CDATA[Please enter your name.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_empty_email" module="system"><![CDATA[Please enter your email address.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_incorrect_email" module="system"><![CDATA[Please enter a valid email address.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_name_is_to_short" module="system"><![CDATA[The name you've entered is too short, please think of a lengthier one.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_subscribe_email_exist" module="system"><![CDATA[The email you've entered is already in use, please enter another email.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_subscription_completed" module="system"><![CDATA[Your email address has been successfully saved<br /> Thank you for subscribing to our newsletters!]]></phrase>
+        <phrase version="3.2.0" key="ext_massmailer_newsletter_body" module="admin" js="1"><![CDATA[Body]]></phrase>
+        <phrase version="3.2.0" key="ext_newsletter_manager" module="admin" js="1"><![CDATA[Subscriber Accounts]]></phrase>
+        <phrase version="3.2.0" key="ext_massmailer_manager" module="admin" js="1"><![CDATA[Newsletters]]></phrase>
+        <phrase version="3.2.0" key="ext_subscribe_date" module="admin" js="1"><![CDATA[Subscription Date]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_send" module="admin" js="1"><![CDATA[Send]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_body" module="admin" js="1"><![CDATA[Body]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_incorrect_request"  module="system"><![CDATA[Your request has failed, please contact [sitename] helpdesk to resolve the issue.]]></phrase>
+        <phrase version="3.2.0" key="ext_massmailer_send" module="admin" js="1"><![CDATA[Send]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_added" target="massmailer_newsletter" module="admin"><![CDATA[You've successfully added a template.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_sent" target="massmailer_newsletter" module="admin"><![CDATA[Sending bulk emails has been completed.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_send_confirm" target="massmailer_newsletter"  module="admin"><![CDATA[Are you sure you want to start sending bulk emails?]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_unsubscribe" target="newsletter" module="frontEnd"><![CDATA[Unsubscribe]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_completed_notice" target="massmailer_newsletter" module="admin"><![CDATA[Mass mailing has been completed. <b>{count}</b> email(s) sent]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_person_unsubscibed" target="massmailer_newsletter" module="frontEnd"><![CDATA[You've successfully unsubscribed from [sitename] newsletters.]]></phrase>
+        <phrase version="3.2.0" key="subscribed_from" target="massmailer_newsletter" module="admin"><![CDATA[Subscriber Origin]]></phrase>
+        <phrase version="3.2.0" key="ext_subscribed_account_type" module="admin" js="1"><![CDATA[Site Users]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_person_subscibed"  module="system"><![CDATA[You've successfully subscribed to [sitename] newsletters.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_person_already_subscribed" target="newsletter"  module="frontEnd"><![CDATA[You've already subscribed to [sitename] newsletters.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_subscription_incompleted" module="system"><![CDATA[Your account was created and activation link sent to <b>{email}</b>.<br />Please check your mailbox for the activation link.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_cannot_sendemail_to_subscriber" module="system"><![CDATA[Your account was successfully created but the system failed to send you an activation email.<br />Please email the Administrator to <b>{email_admin}</b> to get your subscriber account enabled.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_duplicate_email" target="massmailer_newsletter" module="admin"><![CDATA[Duplicate email]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_are_you_sure_unsubscribe" target="newsletter" module="frontEnd"><![CDATA[Are you sure you want to unsubscribe from our newsletters?]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_user_unsubsrcibed" module="admin"><![CDATA[The user has been successfully unsubscribed.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_title_for_unsubscribe" module="frontEnd"><![CDATA[Please click the button to unsubscribe from our newsletters.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_title_for_subscribtion_active" target="newsletter" module="frontEnd"><![CDATA[You've successfully confirmed your subscriber account, and now you may get our newsletters!]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_title_for_subscribtion_doesnt_exist"  target="newsletter" module="frontEnd"><![CDATA[No subscription request has been found, or you've already confirmed your subscription.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_title_for_unsubscribtion_doesnt_exist"  module="system"><![CDATA[No subscription has been found or you've already unsubscribed from our newsletters.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_no_response" module="frontEnd" js="1"><![CDATA[The server is not responding; please try again later.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_congratulations" module="system"><![CDATA[Congratulations!]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_oops" module="system"><![CDATA[Oops!]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_no_selected_emails" target="massmailer_newsletter" module="admin"><![CDATA[Please select email(s) from the list for mass mailing.]]></phrase>
+        <phrase version="3.2.0" key="ext_you_shouldnt_change_non_subscribers_users" module="admin" js="1"><![CDATA[You can change status of the subscribers only.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_sent_email_zero" module="admin"><![CDATA[Please select subscribers for mass mailing.]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_newsletters_list" module="admin"><![CDATA[All Newsletters]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_guest" module="frontEnd" js="1"><![CDATA[Guest]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_user_lang" module="admin" js="1"><![CDATA[User Language]]></phrase>
+        <phrase version="3.2.0" key="massmailer_newsletter_incorrect_link"  module="system"><![CDATA[This link is incorrect or was previously used.]]></phrase>
+    </phrases>
+
+    <pages>
+        <page version="3.2.0" controller="newsletter" key="massmailer_newsletter_newsletter" name="Newsletter" type="system" path="newsletter" get="" menus="" tpl="1"><![CDATA[Newsletters]]></page>
+    </pages>
+
+    <emails>
+        <email version="3.2.0" key="massmailer_subscribe" subject="Subscribe Request"><![CDATA[Hello {name},
+
+We've received your request for subscribing to {site_name} newsletters.
+Your subscription has been created and is awaiting to be confirmed.
+Please follow a confirmation link below to validate your account:
+{link}
+
+Please disregard the email if you are not interested in subscribing to our newsletters.
+______________________________
+Thank you,
+{site_name} Team]]>
+        </email>
+        <email version="3.2.0" key="massmailer_massmail_example" type="html"><![CDATA[
+            Hello {name},<br /><br />
+            Type your email body here...<br />
+            ______________________________<br />
+            <small>Click [here] to unsubscribe from newsletters.</small><br /><br />
+            Thank you,<br />
+            {site_name} Team]]>
+        </email>
+    </emails>
+
+    <configs  key="massmailer_newsletter_group" version="3.2.0" name="Massmailer/Newsletters">
+        <![CDATA[]]>
+        <config version="3.2.0" key="massmailer_newsletter_confirm_subscription" name="Confirm subscriptions by email" type="bool"><![CDATA[1]]></config>
+        <config version="3.2.0" key="mn_default_value" name="Auto subscription" type="bool" description='If enabled, the "Subscribe to newsletters" checkbox in front end will be checked by default.'><![CDATA[1]]></config>
+    </configs>
+
+    <blocks version="3.2.0">
+        <block version="3.2.0" key="massmailer_newsletter_block" login="0" name="Newsletters" side="left" type="smarty" tpl="1"><![CDATA[
+            {include file = $smarty.const.RL_PLUGINS|cat:'massmailer_newsletter'|cat:$smarty.const.RL_DS|cat:'block.tpl'}]]></block>
+    </blocks>
+
+    <updates>
+        <update version="2.0.1" files="rlMassmailerNewsletter.class.php,unsubscribe.inc.php"><![CDATA[]]></update>
+        <update version="2.1.0" files="footer.tpl"><![CDATA[]]></update>
+        <update version="2.2.0" files="block.tpl,checkbox.tpl"><![CDATA[]]></update>
+        <update version="3.0.0" files="block.tpl,checkbox.tpl,newsletter.inc.php,newsletter.tpl,rlMassmailerNewsletter.class.php,admin/massmailer_newsletter.inc.php,admin/massmailer_newsletter.tpl,admin/massmailer_newsletter_send.php,admin/send.php,admin/send_interface.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="3.1.0" files="static/lib.js,static/aStyle.css,static/.htaccess,rlMassmailerNewsletter.class.php,newsletter.tpl,newsletter.inc.php,checkbox.tpl,block.tpl,admin/send_interface.tpl,admin/send.php,admin/massmailer_newsletter_send.php,admin/massmailer_newsletter.tpl,admin/massmailer_newsletter.inc.php,admin/.htaccess,.htaccess"><![CDATA[]]></update>
+        <update version="3.2.0" files="static/mailler.js,admin/massmailer_newsletter.tpl,i18n/ru.json,newsletter.inc.php,rlMassmailerNewsletter.class.php,static/lib.js,block.tpl,admin/massmailer_newsletter.inc.php,admin/massmailer_newsletter_send.php,admin/send.php,checkbox.tpl,footer_block_mailler.tpl"><![CDATA[]]></update>
+        <update version="3.2.1" files="rlMassmailerNewsletter.class.php"><![CDATA[]]></update>
+        <update version="3.2.2" files="block.tpl,rlMassmailerNewsletter.class.php,admin/massmailer_newsletter.tpl,newsletter.inc.php,static/lib.js"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

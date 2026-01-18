@@ -1,0 +1,258 @@
+.compare-ad-container {
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    bottom: 60px;
+    display: block;
+}
+.compare-ad-container svg.compare-arows {
+    display: block;
+}
+.compare-ad-container svg.compare-close {
+    display: none;
+}
+.compare-ad-tab {
+    background: rgba(0,0,0,.5);
+    cursor: pointer;
+    min-height: 48px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+}
+.compare-ad-tab svg.compare-arrows {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+.compare-ad-tab .compare-counter {
+    display: inline-block;
+}
+
+.compare-ad-list {
+    padding: 10px 15px 15px;
+    position: absolute;
+    cursor: default;
+    border-radius: 0;
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    z-index: 39;
+}
+
+.compare-ad-list > div.title {
+    padding-bottom: 10px;
+}
+.compare-ad-list div.button {
+    padding-top: 15px;
+}
+.compare-ad-list ul {
+    max-height: 65vh;
+    overflow-y: auto;
+}
+.compare-ad-list .empty-state {
+    display: none;
+}
+.compare-ad-list ul:empty + div.empty-state {
+    display: block;
+}
+.compare-ad-list ul > li {
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.compare-ad-list ul > li:last-child {
+    margin-bottom: 0;
+}
+.compare-ad-list ul > li.rendering,
+.compare-ad-list ul > li.removing {
+    opacity: 0;
+}
+.compare-ad-list ul > li > a {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 10px 0 0;
+}
+.compare-portrait ul > li > a {
+    height: 97px; /* Escort package default thumbnail aspect ratio */
+}
+.compare-ad-list ul > li > a img {
+    width: 100%;
+    height: 100%;
+    background-color: #f1f1f1;
+    object-fit: cover;
+}
+.compare-ad-list ul > li.compare-no-picture > a img {
+    object-fit: contain;
+}
+body.listing-fit-contain .compare-ad-list ul > li > a img {
+    object-fit: contain;
+}
+.compare-ad-list ul > li > div {
+    padding-right: 30px;
+    position: relative;
+}
+.compare-ad-list .remove {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.compare-ad-list .link {
+    font-weight: 600;
+}
+.compare-ad-list .fields {
+    font-size: 0.929em;
+}
+
+body[dir=rtl] .compare-ad-container {
+    right: auto;
+    left: 0;
+}
+body[dir=rtl] .compare-ad-list ul > li > a {
+    margin: 0 0 0 10px;
+}
+body[dir=rtl] .compare-ad-tab svg.compare-arrows {
+    left: auto;
+    right: 15px;
+}
+body[dir=rtl] .compare-ad-list ul > li > div {
+    padding-right: 0;
+    padding-left: 30px;
+}
+body[dir=rtl] .compare-ad-list .remove {
+    right: auto;
+    left: 0;
+}
+body[dir=rtl] .nav-column .compare-grid-icon svg {
+    left: auto;
+    right: 0;
+}
+
+/*** ALL TABLET/DESKTOP VIEWS ***/
+@media screen and (min-width: 576px) {
+    .compare-ad-tab {
+        max-width: 155px;
+        padding: 4px 10px 5px 45px;
+        position: relative; 
+    }
+    .compare-ad-tab label {
+        word-break: break-word;
+        cursor: pointer;
+        font-weight: 300;
+        color: white;
+    }
+
+    .compare-ad-list {
+        width: 300px;
+        min-height: 70px;
+        right: -320px;
+        bottom: 100%;
+        transition: right 0.3s ease;
+    }
+    .compare-ad-container.active .compare-ad-list {
+        right: 0;
+    }
+    .compare-ad-list.empty .title,
+    .compare-ad-list.no-button .button {
+        display: none;
+    }
+
+    body[dir=rtl] .compare-ad-tab {
+        padding: 4px 45px 5px 10px;
+    }
+    body[dir=rtl] .compare-ad-list {
+        right: auto;
+        left: -320px;
+        transition: left 0.3s ease;
+    }
+    body[dir=rtl] .compare-ad-container.active .compare-ad-list {
+        right: auto;
+        left: 0;
+    }
+}
+/*** MOBILE VIEW ***/
+@media screen and (max-width: 576px) {
+    body.compare-active #wrapper,
+    body.compare-active .at-share-dock-outer {
+        display: none;
+    }
+    .compare-ad-container.active {
+        right: 0 !important;
+        left: 0 !important;
+        top: 0;
+        bottom: 0;
+    }
+    .compare-ad-container-shift {
+        bottom: 130px;
+    }
+    .compare-ad-tab {
+        height: 48px;
+        width: 48px;
+        min-height: auto;
+    }
+    .compare-ad-tab label {
+        display: none;
+    }
+
+    .compare-ad-list {
+        display: none;
+    }
+    .compare-ad-container.active .compare-ad-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .compare-ad-container.active .compare-ad-tab {
+        position: absolute;
+        background: transparent;
+        right: 5px;
+        top: 6px;
+        width: 36px;
+        height: 36px;
+    }
+    .compare-ad-tab svg.compare-close {
+        width: 14px;
+        height: 14px;
+        fill: rgba(0,0,0,.5);
+        position: absolute;
+        right: 11px;
+        top: 11px;
+    }
+    
+    .compare-ad-container.active svg.compare-arrows {
+        display: none;
+    }
+    .compare-ad-container.active svg.compare-close {
+        display: block;
+    }
+    .compare-ad-list > div.title {
+        padding: 0 0 30px;
+    }
+    .compare-ad-list ul {
+        max-height: 100%;
+        flex: 1;
+    }
+    .compare-ad-list ul:empty {
+        display: none;
+    }
+    .compare-ad-list ul > li > a {
+        width: 90px;
+    }
+    .compare-ad-list .button {
+        width: 100%;
+        text-align: center;
+    }
+    .compare-ad-list.no-button .button {
+        display: none;
+    }
+
+    body[dir=rtl] .compare-ad-container.active .compare-ad-tab {
+        right: auto;
+        left: 5px;
+    }
+}

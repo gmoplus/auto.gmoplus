@@ -1,0 +1,118 @@
+/* remote ads page style */
+
+[name=category_id] + .cd-extendable {
+    width: 250px;
+    max-width: 100%;
+    position: absolute;
+}
+#controller_area .submit-cell .field select {
+    max-width: 100%;
+}
+
+/**
+ * @todo - remove once form fields is switched to flex
+ */
+#categories_cont:not(.hide) {
+    display: flex;
+}
+#categories_cont .name {
+    float: none;
+}
+#categories_cont .field {
+    position: relative;
+    overflow: visible;
+    flex: 1;
+}
+@media screen and (max-width: 767px) {
+    #categories_cont {
+        flex-direction: column;
+    }
+}
+
+/* remote ads page style end */
+
+/* category dropdown jquery plugin styles */
+select + div.cd-extendable {
+    display: inline-block;
+    vertical-align: inherit;
+}
+select + div.cd-extendable > div.dropdown {
+    position: relative;
+    max-width: 350px;
+    height: 38px;
+    line-height: 36px;
+    padding: 0 10px;
+    border: 2px #c2c2c2 solid;
+    cursor: pointer;
+    background: white;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    direction: rtl;
+}
+select + div.cd-extendable > div.dropdown.disabled {
+    cursor: default!important;
+}
+select + div.cd-extendable > div.dropdown:not(.disabled):after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: 8px;
+    top: 7px;
+}
+select + div.cd-extendable > div.dropdown:not(.disabled):hover {
+    border-color: #8b8b8b;
+}
+select + div.cd-extendable > div.box {
+    display: none;
+    position: absolute;
+    background: #dddddd;
+    padding: 10px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+    min-height: 20px;
+    margin: 1px 0 0 -10px;
+    z-index: 1;
+    white-space: nowrap;
+    overflow-x: auto;
+
+    width: auto;
+    top: auto;
+    right: auto;
+    border: none;
+}
+select + div.cd-extendable > div.box > select {
+    width: 200px;
+    margin-right: 10px;
+    padding-right: 10px;
+    height: auto!important;
+    display: inline-block;
+    background: white;
+}
+select + div.cd-extendable > div.box > select > option {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+select + div.cd-extendable > div.box > select:last-child {
+    width: 200px;
+    margin-right: 0;
+}
+
+body[dir=rtl] select + div.cd-extendable > div.box {
+    right: 0 !important;
+    left: auto;
+}
+body[dir=rtl] select + div.cd-extendable > div.dropdown {
+    text-align: right;
+}
+body[dir=rtl] select + div.cd-extendable > div.box > select {
+    margin-right: 0;
+    margin-left: 10px;
+}
+body[dir=rtl] select + div.cd-extendable > div.box > select:last-child {
+    margin: 0;
+}
+/* category dropdown jquery plugin styles end */

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin name="recentlyViewed">
+    <title>Recently Viewed Listings</title>
+    <description>Displays your browsing history</description>
+    <author>Curtis</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.4.0</version>
+    <date>22.08.2012</date>
+    <compatible>4.8.1</compatible>
+    <class>RecentlyViewed</class>
+
+    <files>
+        <file>i18n/ru.json</file>
+        <file>static/.htaccess</file>
+        <file>static/lib.js</file>
+        <file>static/style.css</file>
+        <file>static/xdLocalStorage.html</file>
+        <file>static/xdLocalStorage.min.js</file>
+        <file>static/xdLocalStoragePostMessageApi.min.js</file>
+        <file>.htaccess</file>
+        <file>rlRecentlyViewed.class.php</file>
+        <file>rv_add_listing.tpl</file>
+        <file>rv_block.tpl</file>
+        <file>rv_del_icon.tpl</file>
+        <file>rv_listings.inc.php</file>
+        <file>rv_listings.tpl</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="listingDetailsTop" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="listingDetailsTopTpl" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="listingNavIcons" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="tplFooter" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="ajaxRequest" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="apTplContentBottom" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="specialBlock" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="tplHeader" version="1.4.0"><![CDATA[]]></hook>
+        <hook name="apMixConfigItem" version="1.4.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="rv_history_link" module="box" target="rv_listings" js="1" version="1.2.6"><![CDATA[View your browsing history]]></phrase>
+        <phrase key="rv_no_listings" module="frontEnd" target="rv_listings" js="1" version="1.2.6"><![CDATA[You have not viewed listings]]></phrase>
+        <phrase key="rv_del_listing" module="frontEnd" target="rv_listings" version="1.2.6"><![CDATA[Remove viewed listing]]></phrase>
+        <phrase key="rv_del_listing_notice" module="frontEnd" target="rv_listings" js="1" version="1.2.6"><![CDATA[Are you sure you want to remove viewed listing from list?]]></phrase>
+        <phrase key="rv_del_listing_success" module="frontEnd" target="rv_listings" js="1" version="1.2.6"><![CDATA[The viewed listing has been successfully removed]]></phrase>
+        <phrase key="rv_del_listings" module="frontEnd" target="rv_listings" version="1.2.6"><![CDATA[Clear viewing history]]></phrase>
+        <phrase key="rv_del_listings_notice" module="frontEnd" target="rv_listings" js="1" version="1.2.6"><![CDATA[Are you sure you want to сlear the viewing history?]]></phrase>
+        <phrase key="rv_del_listings_success" module="frontEnd" target="rv_listings" js="1" version="1.2.6"><![CDATA[The viewing history has been successfully cleared.]]></phrase>
+        <phrase key="rv_remove_listings_notify_fail" module="system" version="1.2.6"><![CDATA[Failed to remove listings; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="rv_remove_listing_notify_fail" module="system" version="1.2.6"><![CDATA[Failed to remove listing; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="rv_get_listings_notify_fail" module="system" version="1.2.6"><![CDATA[Failed to get listings; please contact Flynax helpdesk.]]></phrase>
+        <phrase version="1.4.0" key="config+option+rv_box_type_bottom_bar" target="settings" module="admin"><![CDATA[Bottom Bar]]></phrase>
+        <phrase version="1.4.0" key="config+option+rv_box_type_standard_block" target="settings" module="admin"><![CDATA[Standard Box]]></phrase>
+    </phrases>
+
+    <blocks>
+        <block key="rv_listings" name="You recently viewed" side="bottom" type="smarty" version="1.2.0"><![CDATA[]]></block>
+    </blocks>
+
+    <pages>
+        <page key="rv_listings" name="Recently Viewed Listings" type="system" path="recently-viewed" controller="rv_listings" menus="2,3,6,7" tpl="1" login="0"><![CDATA[]]></page>
+    </pages>
+
+    <configs version="1.4.0" key="rv_settings" name="Recently Viewed Listings">
+        <![CDATA[]]>
+        <config version="1.4.0" key="rv_box_type" name="Box style" values="bottom_bar,standard_block" type="select"><![CDATA[bottom_bar]]></config>
+    </configs>
+
+    <updates>
+        <update version="1.0.1" files="rv_add_listing.tpl"><![CDATA[]]></update>
+        <update version="1.0.2" files="rv_listings.tpl,rlRecentlyViewed.class.php"><![CDATA[]]></update>
+        <update version="1.0.3" files="rv_listings.inc.php,rv_listings.tpl,rlRecentlyViewed.class.php"><![CDATA[]]></update>
+        <update version="1.1.0" files="rv_listings.inc.php,rv_listings.tpl,rlRecentlyViewed.class.php,static/style.css,static/lib.js,rv_del_icon.tpl,rv_block.tpl"><![CDATA[]]></update>
+        <update version="1.1.1" files="rlRecentlyViewed.class.php,rv_block.tpl,static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="1.1.2" files="rlRecentlyViewed.class.php,rv_listings.tpl,rv_block.tpl,rv_add_listing.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="1.1.3" files="rlRecentlyViewed.class.php,static/lib.js,static/style.css,rv_add_listing.tpl,rv_listings.inc.php"><![CDATA[]]></update>
+        <update version="1.1.4" files="static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="1.1.5" files="rlRecentlyViewed.class.php,rv_block.tpl,static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="1.1.6" files="rv_listings.tpl,static/style.css"><![CDATA[]]></update>
+        <update version="1.1.7" files="rv_block.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="1.2.0" files="static/.htaccess,static/lib.js,static/style.css,.htaccess,rlRecentlyViewed.class.php,rv_add_listing.tpl,rv_block.tpl,rv_del_icon.tpl,rv_listings.inc.php,rv_listings.tpl"><![CDATA[]]></update>
+        <update version="1.2.1" files="rlRecentlyViewed.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="1.2.2" files="rlRecentlyViewed.class.php,static/style.css"><![CDATA[]]></update>
+        <update version="1.2.3" files="rlRecentlyViewed.class.php,rv_add_listing.tpl,rv_block.tpl,rv_listings.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="1.2.4" files="static/.htaccess,.htaccess,rv_add_listing.tpl,rv_block.tpl,rv_listings.inc.php,rlRecentlyViewed.class.php,static/lib.js,static/style.css,rv_listings.tpl"><![CDATA[]]></update>
+        <update version="1.2.5" files="rlRecentlyViewed.class.php,rv_listings.tpl"><![CDATA[]]></update>
+        <update version="1.2.6" files="i18n/ru.json,rlRecentlyViewed.class.php,rv_block.tpl,rv_listings.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="1.3.0" files="static/lib.js,static/xdLocalStorage.html,static/xdLocalStorage.min.js,static/xdLocalStoragePostMessageApi.min.js,rlRecentlyViewed.class.php,rv_add_listing.tpl,rv_block.tpl,rv_listings.tpl,rv_listings.inc.php,i18n/ru.json"><![CDATA[]]></update>
+        <update version="1.3.1" files="rlRecentlyViewed.class.php"><![CDATA[]]></update>
+        <update version="1.4.0" files="i18n/ru.json,rlRecentlyViewed.class.php,rv_add_listing.tpl,rv_block.tpl,static/lib.js"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

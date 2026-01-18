@@ -1,0 +1,116 @@
+<?xml version="1.0.2" encoding="utf-8" ?>
+<plugin name="priceHistory">
+    <title>Price History</title>
+    <description>Shows changes in listing prices over the period of time on the chart or in the table. </description>
+    <author>Alan Wake</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.2.5</version>
+    <date>09.10.2015</date>
+    <compatible>4.7.2</compatible>
+    <class>PriceHistory</class>
+
+    <files>
+        <file>price_history.inc.php</file>
+        <file>price_history.tpl</file>
+        <file>rlPriceHistory.class.php</file>
+        <file>static/lib.js</file>
+        <file>static/style.css</file>
+        <file>admin/price_history_edit.php</file>
+        <file>admin/price_history_edit.tpl</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+        $GLOBALS['rlPriceHistory']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="1.2.0" name="editListingAdditionalInfo"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->hookEditListingAdditionalInfo();
+        ]]></hook>
+        <hook version="1.2.0" name="specialBlock"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->hookSpecialBlock();
+        ]]></hook>
+        <hook version="1.2.0" name="listingDetailsBottom"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->hookListingDetailsBottom();
+        ]]></hook>
+        <hook version="1.2.0" name="tplHeader"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->hookTplHeader();
+        ]]></hook>
+        <hook version="1.2.0" name="apPhpListingsValidate"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->hookApPhpListingsValidate();
+        ]]></hook>
+        <hook version="1.2.0" name="apTplFooter"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->hookApTplFooter();
+        ]]></hook>
+        <hook version="1.2.0" name="staticDataRegister"><![CDATA[
+             $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+             $GLOBALS['rlPriceHistory']->hookStaticDataRegister();
+        ]]></hook>
+        <hook version="1.2.0" name="apAjaxRequest"><![CDATA[
+             $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+             $GLOBALS['rlPriceHistory']->hookApAjaxRequest($param1,$param2);
+        ]]></hook>
+    </hooks>
+
+     <phrases>
+        <phrase key="ph_listed_for_sale" module="common"><![CDATA[Listed for sale]]></phrase>
+        <phrase key="ph_price_changed" module="common"><![CDATA[Price changed]]></phrase>
+        <phrase key="ph_event" module="common"><![CDATA[Event]]></phrase>
+        <phrase key="ph_sqft" module="common"><![CDATA[$/SQFT]]></phrase>
+        <phrase key="ph_label" module="common"><![CDATA[Price History]]></phrase>
+        <phrase key="ph_table" module="common"><![CDATA[Table]]></phrase>
+        <phrase key="ph_chart" module="common"><![CDATA[Chart]]></phrase>
+        <phrase version="1.1.0" key="ph_k" module="common"><![CDATA[k]]></phrase>
+        <phrase version="1.1.0" key="ph_m" module="common"><![CDATA[m]]></phrase>
+        <phrase version="1.1.0" key="ph_b" module="common"><![CDATA[b]]></phrase>
+        <phrase version="1.2.0" key="ph_add_price_field" module="admin"><![CDATA[Add price history field]]></phrase>
+    </phrases>
+
+    <blocks>
+        <block key="price_history" login="0" readonly="1" name="Price history" side="bottom" type="php" tpl="1"><![CDATA[
+            global $config, $rlSmarty;
+            $GLOBALS['reefless']->loadClass('PriceHistory', null,  'priceHistory');
+            $price_history = $GLOBALS['rlPriceHistory']->getPriceHistory();
+            $rlSmarty->assign('price_history', $price_history);
+            $rlSmarty->display(RL_PLUGINS . 'priceHistory/price_history.tpl');
+        ]]></block>
+    </blocks>
+
+    <configs key="price_history_configs" name="Price History">
+        <![CDATA[]]>
+        <config key="square_feet_key" name="Key of Square feet field" type="text"><![CDATA[square_feet]]></config>
+        <config key="ph_sqft_enable" name="Enable SQFT collumn" type="bool"><![CDATA[1]]></config>
+    </configs>
+
+    <updates>
+        <update version="1.1.0" files="price_history.tpl,static/lib.js,rlPriceHistory.class.php,static/style.css"><![CDATA[]]></update>
+        <update version="1.2.0" files="admin/.htaccess,admin/price_history_edit.php,admin/price_history_edit.tpl,rlPriceHistory.class.php,static/lib.js,static/style.css,view/apTplFooter.tpl,view/tplHeader.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->update120();
+        ]]></update>
+        <update version="1.2.1" files="rlPriceHistory.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->update121();
+        ]]></update>
+        <update version="1.2.2" files="rlPriceHistory.class.php,i18n/ru.json,static/lib.js,price_history.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+            $GLOBALS['rlPriceHistory']->update122();
+        ]]></update>
+        <update version="1.2.3" files="admin/price_history_edit.php,rlPriceHistory.class.php"><![CDATA[]]></update>
+        <update version="1.2.4" files="admin/price_history_edit.php,admin/price_history_edit.tpl,price_history.tpl,rlPriceHistory.class.php"><![CDATA[]]></update>
+        <update version="1.2.5" files="rlPriceHistory.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('PriceHistory', null, 'priceHistory');
+        $GLOBALS['rlPriceHistory']->uninstall();
+    ]]></uninstall>
+</plugin>

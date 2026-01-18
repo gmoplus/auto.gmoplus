@@ -1,0 +1,92 @@
+/*** Packages ***/
+ul.packages {
+  margin-bottom: $spacer * 2;
+
+  @include flex_block;
+
+  > li {
+    @include flex_block;
+
+    @include respond_to(mobile) {
+      display: block;
+      width: 100%;
+    }
+
+    .frame {
+      border: $border-width-wide solid $packages-border-color;
+      padding: $spacer * 1.5;
+      width: 364px;
+
+      @include respond_to(mobile) {
+        width: auto;
+      }
+    }
+
+    .plan-info {
+      float: left;
+      width: 45%;
+    }
+
+    .highlight {
+      color: $color-black;
+    }
+
+    .listing-info {
+      overflow: hidden;
+      padding: 3px 0 0 ($spacer * 2);
+    }
+
+    > div > div > span {
+      display: block;
+    }
+
+    .status {
+      margin: auto 0 auto ($spacer * 2);
+
+      @include respond_to(mobile) {
+        margin: $spacer 0 0 0;
+      }
+
+      .renew {
+        padding-top: $spacer * 1.5;
+      }
+    }
+  }
+
+  h3 {
+    color: $packages-title-color;
+    font-size: $font-size-large;
+    font-weight: $font-weight-normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: (-$spacer / 2) 0 $spacer 0;
+  }
+
+  .price {
+    color: $packages-price-color;
+    font-size: $packages-price-font-size;
+    padding: 0 0 ($spacer * 1.5);
+  }
+
+  .count {
+    color: $color-gray-dark;
+
+    &:not(:last-child) {
+      padding-bottom: 8px;
+    }
+
+    &:last-child {
+      padding: 0;
+    }
+  }
+
+  .overdue,
+  .expired {
+    color: $packages-color-overdue;
+  }
+
+  .active {
+    color: $packages-color-active;
+  }
+}

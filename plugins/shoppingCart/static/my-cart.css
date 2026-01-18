@@ -1,0 +1,160 @@
+/* My cart page styles */
+
+div.cart-items-table input.quantity {
+    width: 45px;
+}
+div.cart-items-table span.nav {
+    padding: 3px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+div.cart-items-table div.row > div {
+    vertical-align: middle;
+}
+div.cart-items-table div.row span.close-red {
+    vertical-align: middle;
+}
+.shc_price,
+.price-cell {
+    white-space: nowrap;
+}
+.shc-total-price {
+    font-size: 1.125em;
+    font-weight: 400;
+}
+
+.shc-item-picture {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+}
+
+ul.shc-payment-gateways {
+    margin-bottom: 6px;
+}
+ul.shc-payment-gateways li {
+    display: inline-block;
+}
+ul.shc-payment-gateways li:not(:last-child) {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+body[dir=rtl] ul.shc-payment-gateways li:not(:last-child) {
+    margin-right: 0;
+    margin-left: 5px;
+}
+.shc-custom-box {
+    padding: 15px 0px;
+}
+.shc-group ul.checkboxes {
+    margin-bottom: -7px!important;
+}
+.shc-group ul.checkboxes > li {
+    margin-bottom: 7px;
+    float: left;
+    width: 45%;
+    margin-right: 10%;
+}
+.shc-group ul.checkboxes > li:nth-child(2n) {
+    margin-right: 0!important;
+}
+.item_canceled,
+.item_pending,
+.item_unpaid,
+.item_paid {
+    display: inline-block;
+    color: #d81e1e;
+    padding-left: 20px;
+    position: relative;
+    font-size: 0.938em;
+    line-height: 20px;
+}
+.item_paid {
+    color: #628715;
+}
+.item_pending {
+    color: #d9c459;
+}
+.item_canceled:before,
+.item_pending:before,
+.item_unpaid:before,
+.item_paid:before {
+    content: '$';
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 0;
+    background: #c51f1f;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    line-height: 16px;
+    font-size: 11px;
+    font-family: Trebuchet MS;
+    top: 2px;
+}
+.item_paid:before {
+    background: #85b324;
+}
+.item_pending:before {
+    background: #d9c459;
+}
+.item_canceled {
+    color: #a4a4a4;
+}
+.item_canceled:before {
+    background: #a4a4a4;
+}
+#shipping_fields .submit-cell .field > * {
+    max-width: 100%;
+}
+.sch-map-interface {
+    height: 270px;
+}
+
+body[dir=rtl] .item_unpaid,
+body[dir=rtl] .item_paid {
+    padding-left: 0;
+    padding-right: 20px;
+}
+body[dir=rtl] .item_unpaid:before,
+body[dir=rtl] .item_paid:before {
+    left: auto;
+    right: 0;
+}
+.download-unpaid {
+    color: #a6a6a6 !important;
+}
+.download-icon-fill{
+    fill: #a6a6a6 !important;
+}
+.escrow-status.pending {
+    color: #dab500;
+}
+.escrow-status.confirmed {
+    color: #628715;
+}
+.escrow-status.canceled {
+    color: #d81e1e;
+}
+.escrow-status:before {
+    content: "";
+    display:block;
+    height:16px;
+    width:16px;
+    background-size: 16px 16px;
+    background-image: url(../static/escrow.svg);
+    background-repeat: no-repeat;
+    background-color: transparent!important;
+}
+@media screen and (max-width: 767px) {
+    .shc-mobile-inline-cell .submit-cell .name {
+        float: left;
+        width: 140px;
+        padding: 8px 10px 8px 0px;
+    }
+    .shc-mobile-width-100 {
+        width: 100%;
+    }
+}

@@ -1,0 +1,35 @@
+/*** Alphabetic search box ***/
+
+div.alphabetic-saerch > div {
+    @if $isLtr {
+      margin: 2px 0 0 2px;
+    }
+    @else {
+      margin: 2px 2px 0 0;
+    }
+}
+div.alphabetic-saerch > div > a {
+    width: 41px;
+    height: 41px;
+    border: $border-width-wide $border-color-default solid;
+    display: inline-block;
+    text-align: center;
+    line-height: 38px;
+
+    @if $isLtr {
+      margin: -2px 0 0 -2px;
+    }
+    @else {
+      margin: -2px -2px 0 0;
+    }
+}
+div.alphabetic-saerch > div > a.wide {
+    width: 80px;
+}
+div.alphabetic-saerch > div > a:hover {
+    background: $border-color-default;
+}
+div.alphabetic-saerch > div > a.active {
+    background: $font-color-gray;
+    color: $color-white;
+}

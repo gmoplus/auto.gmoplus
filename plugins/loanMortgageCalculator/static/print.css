@@ -1,0 +1,85 @@
+div.info {
+    overflow: hidden;
+}
+div.photo {
+    width: 350px;
+    float: right;
+    padding: 0 0 0 20px;
+}
+div.photo img {
+    width: 350px;
+}
+
+.table-cell > div.name {
+    min-width: 170px;
+    width: auto;
+}
+
+.align-center {
+    text-align: center;
+}
+.ralign {
+    text-align: right;
+}
+
+div.caption {
+    padding: 25px 0 20px;
+    font-size: 20px;
+    text-align: center;
+    clear: both;
+}
+div.section {
+    width: 50%;
+    float: left;
+}
+div.section > div {
+    padding: 0 0 20px;
+}
+div.section > div.left {
+    padding-right: 15px;
+}
+div.section > div.right {
+    padding-left: 15px;
+}
+div.section > div > div.caption,
+div.section-wide > div.caption {
+    padding: 6px 0 8px;
+    background: #e8e8e8;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+div.section-wide div.body {
+    padding: 0 0 50px;
+}
+
+.list-table {
+    display: table;
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+.list-table > div {
+    display: table-row;
+}
+.list-table > div:not(.header):nth-child(odd) {
+    background: #f3f3f3;
+}
+.list-table > div > div {
+    display: table-cell;
+    padding: 2px 0;
+}
+
+.list-table div.header > div {
+    padding: 4px 0 6px!important;
+    border-bottom: 1px #ccc solid;
+}
+
+body[dir=rtl] div.photo {
+    padding: 0 20px 0 0;
+    float: left;
+}
+
+body[dir=rtl] .ralign {
+    text-align: left !important;
+}

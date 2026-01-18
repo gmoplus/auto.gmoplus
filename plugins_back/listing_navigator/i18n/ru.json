@@ -1,0 +1,9 @@
+{
+    "title_listing_navigator": "Навигация по объявлениям",
+    "description_listing_navigator": "Обеспечивает быстрый переход к следующему и предыдущему объявлениям",
+    "config_groups+name+listing_navigator": "Навигация по объявлениям",
+    "config+name+ln_display_basic": "Базовая навигация в верхней части страницы",
+    "config+des+ln_display_basic": "Отключение опции доступно в версии скрипта 4.9.1 и выше",
+    "listingNav_next": "Следующее объявление",
+    "listingNav_prev": "Предыдущее объявление"
+}

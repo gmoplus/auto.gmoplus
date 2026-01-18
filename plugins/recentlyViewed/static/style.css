@@ -1,0 +1,102 @@
+/* recently viewed plugin css styles */
+
+#rv_listings {
+    margin-top: 30px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+div#rv_listings {
+    padding: 20px 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+}
+
+.rv-container {
+    display: flex;
+}
+
+#rv_listings div.item {
+    padding: 0 7px;
+}
+#rv_listings div.item:first-child {
+    padding-left: 0;
+}
+body[dir=rtl] #rv_listings div.item:first-child {
+    padding-left: 4px;
+    padding-right: 0;
+}
+#rv_listings div.item:last-child {
+    padding-right: 0;
+}
+body[dir=rtl] #rv_listings div.item:last-child {
+    padding-right: 4px;
+    padding-left: 0;
+}
+#rv_listings div.item img {
+    width: 82px;
+    height: 60px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(199,199,199,.2)
+}
+#rv_listings div.rv_first,
+#rv_listings div.rv_last {
+    flex: 0 0 0%;
+}
+#rv_listings div.rv_items {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 8px;
+    overflow: hidden;
+    height: 60px;
+}
+#rv_listings.rv-escort div.rv_items {
+    height: 96px;
+}
+#rv_listings.rv-escort div.rv_items .item img {
+    height: 96px;
+}
+
+body.search-on-map-page #rv_listings {
+    display: none;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    #rv_listings.rv-md div.rv_items {
+        justify-content: space-around;
+    }
+}
+@media screen and (min-width: 1200px) and (max-width: 1439px) {
+    #rv_listings.rv-lg div.rv_items {
+        justify-content: space-around;
+    }
+}
+@media screen and (min-width: 1440px) {
+    #rv_listings.rv-xl div.rv_items {
+        justify-content: space-around;
+    }
+}
+
+/*** ALL TABLET/MOBILE VIEWS ***/
+@media screen and (max-width: 991px) {
+    #rv_listings div.rv_items {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        margin: 0 15px;
+    }
+}
+/*** MOBILE VIEW ***/
+@media screen and (max-width: 767px) {
+    .rv-container {
+        flex-direction: column;
+        height: auto;
+    }
+    #rv_listings div.rv_items {
+        margin: 15px 0;
+    }
+}

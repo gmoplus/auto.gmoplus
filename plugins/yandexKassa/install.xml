@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="yandexKassa">
+    <title>ЮKassa</title>
+    <description>ЮKassa payment gateway</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.2.0</version>
+    <date>20.12.2017</date>
+    <class>YandexKassa</class>
+    <compatible>4.7.2</compatible>
+
+    <files>
+        <file>rlYandexKassa.class.php</file>
+        <file>rlYandexKassaGateway.class.php</file>
+        <file>rlInstall.class.php</file>
+        <file>account_settings.tpl</file>
+        <file>form.tpl</file>
+        <file>vendor/autoload.php</file>
+        <file>.htaccess</file>
+        <file>static/.htaccess</file>
+        <file>static/yandexKassa.png</file>
+        <file>payout.tpl</file>
+        <file>static/style.css</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'yandexKassa');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook name="shoppingCartAccountSettings"><![CDATA[]]></hook>
+        <hook name="apPhpPaymetGatewaysSettings"><![CDATA[]]></hook>
+        <hook name="apPhpGatewayUpdateSettings"><![CDATA[]]></hook>
+        <hook name="bottomPaymentPage"><![CDATA[]]></hook>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook name="apTplPaymentGatewaysBottom"><![CDATA[]]></hook>
+        <hook version="1.2.0" name="staticDataRegister"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="1.1.0" key="yandexKassa_module" module="common"><![CDATA[ЮKassa module]]></phrase>
+        <phrase version="1.1.0" key="yandexKassa_seller_payment_details_empty" module="common"><![CDATA[Seller not configured ЮKassa Payment gateway or configured incorrectly]]></phrase>
+        <phrase key="yandexKassa_bank_card" module="common"><![CDATA[Bank Card]]></phrase>
+        <phrase version="1.1.0" key="yandexKassa_yandex_money" module="common"><![CDATA[ЮMoney]]></phrase>
+        <phrase key="yandexKassa_sberbank" module="common"><![CDATA[Sberbank]]></phrase>
+        <phrase key="yandexKassa_qiwi" module="common"><![CDATA[QIWI]]></phrase>
+        <phrase key="yandexKassa_webmoney" module="common"><![CDATA[Webmoney]]></phrase>
+        <phrase key="yandexKassa_alfabank" module="common"><![CDATA[Alfabank]]></phrase>
+        <phrase key="yandexKassa_mobile_balance" module="common"><![CDATA[Mobile balance]]></phrase>
+        <phrase key="yandexKassa_cash" module="common"><![CDATA[Cash]]></phrase>
+        <phrase key="yandexKassa_all" module="common"><![CDATA[All]]></phrase>
+        <phrase version="1.1.0" key="yandexKassa_form" module="common"><![CDATA[ЮKassa]]></phrase>
+        <phrase key="yandexKassa_phone" module="common"><![CDATA[Phone Number]]></phrase>
+        <phrase key="yandexKassa_waiting" module="common"><![CDATA[The payment was successfully done. Please confirm payment by SMS and after click the button "complete".]]></phrase>
+        <phrase version="1.1.0" key="yandexKassa_phone_error" module="frontEnd"><![CDATA[Please enter a Phone Number]]></phrase>
+        <phrase version="1.1.0" key="yandexKassa_currency_note" module="common"><![CDATA[NOTE: The currency on your site (set from the Basic Settings > General) must match the currency in your ЮKassa account.]]></phrase>
+        <phrase version="1.1.0" key="yandexKassa_empty_seller_id" module="frontEnd"><![CDATA[Seller doesn't provided the payment credentials]]></phrase>
+        <phrase version="1.2.0" key="yandexKassa_saved_card_ok" target="profile"  module="frontEnd"><![CDATA[Your card was added successfully.]]></phrase>
+        <phrase version="1.2.0" key="yandexKassa_remove_card_ok" target="profile"  module="frontEnd"><![CDATA[Your card was removed successfully.]]></phrase>
+        <phrase version="1.2.0" key="yandexKassa_saved_card" target="profile"  module="frontEnd"><![CDATA[Saved card]]></phrase>
+        <phrase version="1.2.0" key="yandexKassa_add_card" target="profile"  module="frontEnd"><![CDATA[Add card for payout]]></phrase>
+    </phrases>
+
+    <config key="yandexKassa_api_id" name="Shop ID" type="text" group="6"><![CDATA[]]></config>
+    <config key="yandexKassa_secret_key" name="Secret Key" type="text" group="6"><![CDATA[]]></config>
+    <config key="yandexKassa_payment_method" name="Payment methods" values="bank_card,yandex_money,sberbank,qiwi,webmoney,alfabank,mobile_balance,cash,all" type="select" group="6"><![CDATA[all]]></config>
+    <config key="yandexKassa_qiwi_phone" name="QIWI phone" type="text" group="6"><![CDATA[]]></config>
+    <config key="yandexKassa_test_mode" name="Test Mode" type="bool" group="6"><![CDATA[0]]></config>
+
+    <updates>
+        <update version="1.1.0" files="account_settings.tpl,rlYandexKassa.class.php,rlYandexKassaGateway.class.php,rlInstall.class.php,form.tpl,static/yandexKassa.png"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'yandexKassa');
+            $GLOBALS['rlInstall']->update110();
+        ]]></update>
+        <update version="1.2.0" files="rlYandexKassa.class.php,rlYandexKassaGateway.class.php,rlInstall.class.php,account_settings.tpl,payout.tpl,static/style.css,i18n/ru.json"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'yandexKassa');
+            $GLOBALS['rlInstall']->update120();
+        ]]></update>
+    </updates>
+    
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'yandexKassa');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

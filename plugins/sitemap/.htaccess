@@ -1,0 +1,7 @@
+# Deny all external requests
+DENY FROM ALL
+
+# Allow all external requests for sitemap.php only
+<Files "sitemap.php">
+  ALLOW FROM ALL
+</Files>

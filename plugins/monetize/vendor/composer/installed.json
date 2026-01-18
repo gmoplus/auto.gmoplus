@@ -1,0 +1,58 @@
+{
+    "packages": [
+        {
+            "name": "ressio/pharse",
+            "version": "0.2.0",
+            "version_normalized": "0.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ressio/pharse.git",
+                "reference": "51c87b3eba0a5e7871ce9bd7a90fe020a0729d9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ressio/pharse/zipball/51c87b3eba0a5e7871ce9bd7a90fe020a0729d9a",
+                "reference": "51c87b3eba0a5e7871ce9bd7a90fe020a0729d9a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "time": "2015-03-24T12:48:54+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    ""
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL",
+                "Artistic"
+            ],
+            "authors": [
+                {
+                    "name": "RESS.IO Team",
+                    "homepage": "https://github.com/ressio/pharse"
+                }
+            ],
+            "description": "Fastest PHP HTML Parser",
+            "homepage": "https://github.com/ressio/pharse",
+            "keywords": [
+                "HTML5",
+                "dom",
+                "html",
+                "parser",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/ressio/pharse/issues",
+                "source": "https://github.com/ressio/pharse/tree/master"
+            },
+            "install-path": "../ressio/pharse"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

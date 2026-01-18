@@ -1,0 +1,82 @@
+img.paid {      
+	background: #D2E798;
+	padding-left: 5px;
+}
+img.unpaid {
+	background: #FF878A;
+	padding-left: 5px;
+}
+.price_item {
+	float: left;
+	margin-right: 5px;
+}
+.price_item:not(.listing) {
+    width: 110px;
+}
+.price_item.listing input[type=text] {
+    margin-right: 10px;
+}
+.price_item.listing .starting-price-text {
+    margin-right: 10px;
+}
+.price_item.listing .price-options {
+    padding-bottom: 10px;
+}
+.price_item.listing .price-options label {
+    padding-bottom: 0;
+}
+.price_item .price-caption {
+	text-transform: none;
+    margin-bottom: 4px;
+}
+#shc-group {
+	padding: 15px 0px 0px 0px;
+}
+#shc_fields_area[lang]:not([lang=auction]) .price-caption {
+    display: none;
+}
+#shc_fields_area[lang]:not([lang=listing]) .price-options {
+    display: none;
+}
+#fields_section {
+    margin: 10px 0;
+}
+#fields_section .field_obj {
+    width: 100px!important;
+}
+.custom-input label input {
+    margin-right: 5px;
+}
+.unavailable-notice {
+    display: block; 
+    color: #EC3E19; 
+    font-style: italic;
+}
+.fixed-prices .price-item {
+    margin: 5px 0;
+}
+.download-unpaid {
+    color: #a6a6a6 !important;
+}
+.download-icon-fill{
+    fill: #a6a6a6 !important;
+}
+.escrow-canceled,
+.escrow-pending,
+.escrow-confirmed {
+    margin: 0px 2px;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    background: url('confirmed.svg') 0 0 no-repeat;
+}
+.escrow-pending {
+    background: url('pending.svg') 0 0 no-repeat;
+}
+.escrow-canceled {
+    background: url('canceled.svg') 0 0 no-repeat;
+}
+.cell-action {
+    width: 100%;
+    text-align: center;
+}

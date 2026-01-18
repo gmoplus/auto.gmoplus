@@ -1,0 +1,22 @@
+{
+    "title_recentlyViewed": "Недавно просмотренные объявления",
+    "description_recentlyViewed": "Отображает историю просмотров посетителей",
+    "rv_history_link": "Открыть историю просмотров",
+    "rv_no_listings": "История просмотров пуста",
+    "rv_del_listing": "Удалить просмотренные",
+    "rv_del_listing_notice": "Вы уверены, что хотите удалить просмотренные из списка?",
+    "rv_del_listing_success": "Просмотренное объявление было успешно удалено.",
+    "rv_del_listings": "Очистить историю просмотров",
+    "rv_del_listings_notice": "Вы уверены, что хотите очистить историю просмотров?",
+    "rv_del_listings_success": "История просмотров была удалена.",
+    "rv_remove_listings_notify_fail": "Не удалось удалить объявления; пожалуйста, свяжитесь с поддержкой Флайнекса.",
+    "rv_remove_listing_notify_fail": "Не удалось удалить объявление; пожалуйста, свяжитесь с поддержкой Флайнекса.",
+    "rv_get_listings_notify_fail": "Не удалось вывести объявления; пожалуйста, свяжитесь с поддержкой Флайнекса.",
+    "blocks+name+rv_listings": "Вы просмотрели",
+    "pages+name+rv_listings": "Недавно просмотренные",
+    "pages+title+rv_listings": "Недавно просмотренные",
+    "config_groups+name+rv_settings": "Недавно просмотренные",
+    "config+name+rv_box_type": "Стиль блока",
+    "config+option+rv_box_type_bottom_bar": "Панель внизу страницы",
+    "config+option+rv_box_type_standard_block": "Стандартный блок"
+}

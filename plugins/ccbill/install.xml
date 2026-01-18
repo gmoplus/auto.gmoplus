@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="ccbill">
+    <title>CCBill</title>
+    <description>CCBill payment gateway</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.1.0</version>
+    <date>14.06.2012</date>
+    <controller>ccbill</controller>
+    <class>Ccbill</class>
+    <compatible>4.6.0</compatible>
+
+    <files>
+        <file>admin/ccbill.inc.php</file>
+        <file>admin/ccbill.tpl</file>
+        <file>rlCcbill.class.php</file>
+        <file>rlCcbillGateway.class.php</file>
+        <file>rlInstall.class.php</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'ccbill');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="3.1.0" name="apTplPaymentGatewaysBottom"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="3.0.0" key="ccbill_payment" module="common"><![CDATA[CCBill payment gateway]]></phrase>
+        <phrase version="3.0.0" key="ccbill_module" module="common"><![CDATA[CCBill module]]></phrase>
+        <phrase version="3.0.0" key="ccbill_seller_payment_details_empty" module="common"><![CDATA[Seller not configured CCBill Payment gateway or configured incorrectly]]></phrase>
+        <phrase version="3.0.0" key="ccbill_payment_waiting" module="common"><![CDATA[Your payment is pending to be reviewed. Once the payment is approved by CCBill your transaction will be activated automatically. Please contact the administrator if you have any questions.]]></phrase>
+        <phrase version="3.0.0" key="ccbill_form" module="admin"><![CDATA[Form Key]]></phrase>
+        <phrase version="3.0.0" key="ccbill_allowed_type" module="admin"><![CDATA[Allowed Type]]></phrase>
+        <phrase version="3.0.0" key="subscription_plans+name+sop_ccbill_type_id" module="admin"><![CDATA[Subscription Type ID (CCBIll)]]></phrase>
+        <phrase version="3.0.0" key="ccbill_listing_plans" module="admin"><![CDATA[Listing Plans]]></phrase>
+        <phrase version="3.0.0" key="ccbill_membership_plans" module="admin"><![CDATA[Membership Plans]]></phrase>
+        <phrase version="3.0.0" key="ccbill_banner_plans" module="admin"><![CDATA[Banner Plans]]></phrase>
+        <phrase version="3.0.0" key="ccbill_credit_packages" module="admin"><![CDATA[Credit Packages]]></phrase>
+        <phrase version="3.0.0" key="ccbill_speed_configuration_guide" module="admin"><![CDATA[CCBill speed configuration guide]]></phrase>
+        <phrase version="3.1.0" key="ccbill_clientAccnum" module="common"><![CDATA[Account ID]]></phrase>
+        <phrase version="3.1.0" key="ccbill_clientSubacc" module="common"><![CDATA[Subsccount ID]]></phrase>
+    </phrases>
+
+    <config key="ccbill_clientAccnum" name="Account ID" type="text" group="6"><![CDATA[]]></config>
+    <config key="ccbill_clientSubacc" name="Subsccount ID" type="text" group="6"><![CDATA[]]></config>
+    <config key="ccbill_test_mode" name="Test mode" type="bool" group="6"><![CDATA[0]]></config>
+
+    <updates>
+        <update version="3.0.0" files="admin/ccbill.inc.php,admin/ccbill.tpl,static/ccbill-speed-configuration-guide.pdf,rlCcbill.class.php,rlInstall.class.php">
+            <![CDATA[
+                if (version_compare($GLOBALS['config']['rl_version'], '4.4.0') < 0) {
+                    return;
+                }
+                global $rlDb, $rlActions;
+                
+                // insert item to payment gateways table
+                $gateway_info = array(
+                        'Key' => 'ccbill',
+                        'Recurring_editable' => 0,
+                        'Plugin' => 'ccbill'
+                    );
+
+                if ($rlActions->insertOne($gateway_info, 'payment_gateways')) {
+                    if ($GLOBALS['languages']) {
+                        foreach ((array)$GLOBALS['languages'] as $lKey => $lValue) {
+                            if ($rlDb->getOne('ID', "`Key` = 'payment_gateways+name+ccbill' AND `Code` = '{$lValue['Code']}'", 'lang_keys')) {
+                                $update_names = array(
+                                    'fields' => array(
+                                        'Value' => 'CCBill'
+                                    ),
+                                    'where' => array(
+                                        'Code' => $lValue['Code'],
+                                        'Key' => 'listing_groups+name+ccbill'
+                                    )
+                                );
+                                $rlActions->updateOne($update_names, 'lang_keys');
+                            } else {
+                                $insert_names = array(
+                                    'Code' => $lValue['Code'],
+                                    'Module' => 'common',
+                                    'Key' => 'payment_gateways+name+ccbill',
+                                    'Value' => 'CCBill',
+                                    'Plugin' => 'ccbill'
+                                );
+                                $rlActions->insertOne($insert_names, 'lang_keys');
+                            }
+                        }
+                    }
+                }
+
+                // remove old data
+                $rlDb->query("DELETE FROM `".RL_DBPREFIX."hooks` WHERE `Plugin` = 'ccbill' AND (`Name` = 'paymentGateway' OR `Name` = 'apTplListingPlansForm' OR `Name` = 'apPhpListingPlansBeforeAdd' OR `Name` = 'apPhpListingPlansBeforeEdit' OR `Name` = 'apPhpListingPlansPost' OR `Name` = 'addListingTop' OR `Name` = 'specialBlock')");
+                $files = array('admin/apPhpListingPlansBeforeAdd.php', 'admin/apPhpListingPlansBeforeEdit.php', 'admin/apPhpListingPlansPost.php', 'admin/apTplListingPlansForm.tpl', 'addListingTop.php', 'ccbill_payment_block.tpl', 'specialBlock.php', 'controllers/post.gateway.php', 'controllers/pre.gateway.php');
+
+                foreach ($fils as $file) {
+                    if(file_exists(RL_PLUGINS . 'ccbill' . RL_DS . $file)) {
+                      unlink(RL_PLUGINS . 'ccbill' . RL_DS . $file);
+                    }
+                }
+            ]]>
+        </update>
+        <update version="3.1.0" files="admin/ccbill.inc.php,admin/ccbill.tpl,response.log,rlCcbill.class.php,rlCcbillGateway.class.php,rlInstall.class.php"><![CDATA[
+            $update = array(
+                'fields' => array(
+                    'Form_type' => 'offsite',
+                    'Required_options' => 'ccbill_clientAccnum,ccbill_clientSubacc'
+                ),
+                'where' => array(
+                    'Key' => 'ccbill'
+                )
+            );
+            $GLOBALS['rlActions']->updateOne($update, 'payment_gateways');
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'ccbill');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

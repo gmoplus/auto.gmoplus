@@ -1,0 +1,119 @@
+/*** Seller short ***/
+.view-details-page .seller-short {
+  border: $border-width-default solid $border-color-default;
+  padding: 15px 0;
+  margin: 0 0 $spacer 0;
+}
+.view-details-page .seller-short:not(.row) {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.seller-short {
+  &.side_block {
+    border: none;
+    padding: 0;
+  }
+
+  .relative {
+    .picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+      border: $border-width-wide solid $border-color-default;
+      overflow: hidden;
+      margin: 0 auto $spacer;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: contain;
+      }
+
+      &.no-photo {
+        width: 110px;
+        height: 110px;
+        padding-left: 4px;
+
+        img {
+          background-image: url(../img/no-account.png);
+        }
+      }
+    }
+  }
+
+  div.form {
+    margin-top: 20px;
+  }
+
+  ul.seller-info {
+    width: 100%;
+    line-height: $font-size-large;
+
+    li {
+      text-align: center;
+    }
+
+    li.name > a {
+      color: $font-color-dark;
+    }
+
+    .type {
+      color: #b0b0b0;
+      padding-bottom: $spacer / 2;
+    }
+
+    li.listings-button {
+        padding: 5px 0 10px;
+    }
+
+    li.counter {
+      padding-bottom: $spacer;
+      display: flex !important;
+      justify-content: center;
+      flex-direction: row-reverse;
+
+      .counter {
+        color: #888888;
+        margin: 0 5px;
+      }
+    }
+
+    li.about {
+      padding: $spacer 0 ($spacer / 2);
+    }
+
+    li.listings {
+      > a {
+        display: inline-block;
+        padding: 8px 0;
+      }
+    }
+
+    li.contact {
+      padding-top: $spacer;
+
+      > a {
+        width: 100%;
+
+        @include button_reverse;
+      }
+    }
+
+    li.owner-details {
+      padding: $spacer / 2 0 0;
+    }
+  }
+}
+
+.side_block.account-location {
+  .location-info {
+    .table-cell {
+      padding-left: 0;
+      padding-right: 0;
+      font-size: 100%;
+    }
+  }
+}

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="androidConnect">
+    <title>Android Connect</title>
+    <description>Bridge between your website and Android Application</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>4.2.3</version>
+    <date>30.11.2012</date>
+    <compatible>4.8.2</compatible>
+    <class>AndroidConnect</class>
+
+    <files>
+        <file>i18n/ru.json</file>
+        <file>request.php</file>
+        <file>AdsFilter.php</file>
+        <file>rlAndroidConnect.class.php</file>
+        <file>rlPusher.class.php</file>
+        <file>rlAndroidLang.class.php</file>
+        <file>rlYooKassaGateway.class.php</file>
+        <file>rlSmarty.class.php</file>
+        <file>google.gateway.php</file>
+        <file>paypalREST.gateway.php</file>
+        <file>languages/Arabic(AR).xml</file>
+        <file>languages/English(EN).xml</file>
+        <file>languages/Hungarian(HU).xml</file>
+        <file>languages/Portuguese(PT).xml</file>
+        <file>languages/Russian(RU).xml</file>
+        <file>languages/Turkish(TR).xml</file>
+        <file>admin/android_languages.inc.php</file>
+        <file>admin/android_languages.tpl</file>
+        <file>admin/android_listing_types.inc.php</file>
+        <file>admin/android_listing_types.tpl</file>
+        <file>admin/android_settings.inc.php</file>
+        <file>admin/android_settings.tpl</file>
+        <file>admin/android_adsense.inc.php</file>
+        <file>admin/android_adsense.tpl</file>
+        <file>libs/androidMarket/InvalidArgumentException.php</file>
+        <file>libs/androidMarket/ResponseData.php</file>
+        <file>libs/androidMarket/ResponseValidator.php</file>
+        <file>libs/androidMarket/RuntimeException.php</file>
+        <file>adapter/ProfileThumbnailUploadAdapter.php</file>
+        <file>adapter/ListingPictureUploadAdapter.php</file>
+        <file>view/smart_banner.tpl</file>
+        <file>view/tplHeader.tpl</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="4.0.0" name="listingsModifyWhereFeatured"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apPhpIndexBeforeController"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apPhpIndexBottom"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="confirmPreConfirm"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="phpGetPlanSql"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="myListingsSqlFields"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apPhpConfigBeforeUpdate"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="getCatTreeFields"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="phpGetProfileModifyField"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="rlMessagesAjaxContactOwnerAfterSend"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="rlMessagesAjaxAfterMessageSent"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="cronSavedSearchNotify"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="listingsModifyWhereSearch"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="rlAccountGetAccountTypesFields"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="phpRecentlyAddedModifyPreSelect"><![CDATA[]]></hook>
+        <hook version="4.2.0" name="smartyFetchHook"><![CDATA[]]></hook>
+        <hook version="4.2.0" name="apPhpConfigBottom"><![CDATA[]]></hook>
+        <hook version="4.2.2" name="tplBodyTop"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="androidConnect" name="Android Connect">
+        <![CDATA[]]>
+        <config key="android_divider_common" name="Common" type="divider"><![CDATA[]]></config>
+        <config key="android_count_recently_added" name="Count new listings" description="Show counter of new listings in main menu" type="bool"><![CDATA[1]]></config>
+        <config version="2.0.0" key="android_billing_currency" name="Billing Currency Code" type="text" description="Use ISO codes only, and make sure all payment gateways on your site support this currency."><![CDATA[USD]]></config>
+        <config version="2.0.0" key="android_home_page_listings" name="Listings on Home screen" type="select" values="featured,recently_added"><![CDATA[featured]]></config>
+        <config version="2.0.0" key="android_main_listing_type" name="Main Listing Type" type="select" values=""><![CDATA[]]></config>
+        <config key="android_divider_listign_grid" name="Listing Grid" type="divider"><![CDATA[]]></config>
+        <config key="android_preload_method" name="Preload content method" type="select" values="scroll,button"><![CDATA[scroll]]></config>
+        <config key="android_grid_listings_number" name="Number of listings per page" type="text" validate="int"><![CDATA[10]]></config>
+        <config key="android_divider_listign_details" name="Listing Details" type="divider"><![CDATA[]]></config>
+        <config key="android_listing_details_map_zoom" name="Map zoom level" type="select" values="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21"><![CDATA[15]]></config>
+        <config version="3.3.0" key="android_divider_accounts" name="Account Settings" type="divider"><![CDATA[]]></config>
+        <config version="3.3.0" key="android_second_step" name="Second step of registration" type="bool"><![CDATA[0]]></config>
+        <config version="2.0.0" key="android_divider_inapp" name="In-app Billing" type="divider"><![CDATA[]]></config>
+        <config version="2.0.0" key="android_inapp_module" name="Use In-app Billing module" type="bool"><![CDATA[1]]></config>
+        <config version="2.0.0" key="android_inapp_key" name="License Key" type="textarea"><![CDATA[]]></config>
+        <config version="2.1.0" key="android_divider_paypal" name="PayPal REST Billing" type="divider"><![CDATA[]]></config>
+        <config version="2.1.0" key="android_paypal_module" name="Use PayPal REST module" type="bool"><![CDATA[1]]></config>
+        <config version="2.0.0" key="android_paypal_sandbox" name="Use Sand Box for testing" type="bool"><![CDATA[0]]></config>
+        <config version="2.0.0" key="android_paypal_client_id" name="Client ID" type="text"><![CDATA[]]></config>
+        <config version="2.0.0" key="android_paypal_secret" name="Secret Key" type="text"><![CDATA[]]></config>
+        <config version="2.2.0" key="android_version" name="App version" type="text"><![CDATA[2.2.0]]></config>
+        <config version="2.3.0" key="android_google_app" name="Google App" type="divider"><![CDATA[]]></config>
+        <config version="2.3.0" key="android_google_id" name="Google App ID" type="text"><![CDATA[]]></config>
+        <config version="2.3.0" key="android_google_key" name="Google App Key" type="text"><![CDATA[]]></config>
+        <config version="3.2.0" key="android_divider_smart_banner" name="Smart Banner divider" type="divider"><![CDATA[]]></config>
+        <config version="3.2.0" key="android_smart_banner" name="Package name of app" type="text"><![CDATA[]]></config>
+        <config version="3.2.0" key="android_smart_banner_image" name="Smart Banner image url" type="text"><![CDATA[]]></config>
+        <config version="4.2.0" key="android_divider_yookassa" name="Yookassa Billing" type="divider"><![CDATA[]]></config>
+        <config version="4.2.0" key="android_yookassa_module" name="Yookassa module" type="bool"><![CDATA[1]]></config>
+        <config version="4.2.0" key="android_yookassa_store_id" name="Store ID" type="text"><![CDATA[]]></config>
+        <config version="4.2.2" key="android_yookassa_key_site" name="Secret Key live" type="text"><![CDATA[]]></config>
+        <config version="4.2.0" key="android_yookassa_key" name="Secret Key mSDK" type="text"><![CDATA[]]></config>
+        <config version="4.2.0" key="android_yookassa_app_id" name="YooKassa app ID" type="text"><![CDATA[]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="admin_controllers+name+android" module="admin"><![CDATA[Android App]]></phrase>
+        <phrase key="admin_controllers+name+android_languages" module="admin"><![CDATA[Languages]]></phrase>
+        <phrase key="admin_controllers+name+android_settings" module="admin"><![CDATA[Common Settings]]></phrase>
+        <phrase key="admin_controllers+name+android_listing_types" module="admin"><![CDATA[Listing Type Settings]]></phrase>
+        <phrase key="android_import_lang_file_name_error" module="admin"><![CDATA[The language file name is incorrect, please consider the following sample: <b>English(EN).xml</b>]]></phrase>
+        <phrase key="android_import_lang_file_empty" module="admin"><![CDATA[The language file doesn't have any phrases.]]></phrase>
+        <phrase key="android_type_icon" module="admin"><![CDATA[Icon in sliding menu]]></phrase>
+        <phrase version="2.1.0" key="admin_controllers+name+android_adsense" module="admin"><![CDATA[Google AdMob]]></phrase>
+        <phrase version="2.1.0" key="adsense_code" module="admin" ><![CDATA[Ad unit ID]]></phrase>
+        <phrase version="2.1.0" key="ext_adsense_code" module="ext" ><![CDATA[Ad unit ID]]></phrase>
+        <phrase version="2.1.0" key="add_new_adsense" module="admin" ><![CDATA[Add Unit]]></phrase>
+        <phrase version="2.1.0" key="page_used" module="admin" ><![CDATA[Page has already been used]]></phrase>
+        <phrase version="2.1.0" key="adsense_removed" module="admin" ><![CDATA[AdMob unit removed]]></phrase>
+        <phrase version="2.1.0" key="account_search_results" module="admin"><![CDATA[Account Search Results]]></phrase>
+        <phrase version="2.1.0" key="admob_unit_id_help" module="admin"><![CDATA[<a target="_blank" href="https://support.google.com/admob/answer/3052638?hl=en">Read more</a> how to get AdMob unit ID]]></phrase>
+        <phrase version="2.2.0" key="payment_gateways+name+paypal_rest" module="admin"><![CDATA[Paypal Rest(android)]]></phrase>
+        <phrase version="2.2.0" key="payment_gateways+name+google" module="admin"><![CDATA[Google Wallet (Android)]]></phrase>
+        <phrase version="4.2.2" key="android_view" module="common"><![CDATA[Install]]></phrase>
+    </phrases>
+
+    <updates version="2.1.0">
+        <update version="1.0.1" files="rlAndroidConnect.class.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="rlAndroidConnect.class.php,request.php,languages/English(EN).xml"><![CDATA[]]></update>
+        <update version="1.0.3" files="rlAndroidConnect.class.php"><![CDATA[]]></update>
+        <update version="1.0.4" files="request.php,languages/English(EN).xml"><![CDATA[]]></update>
+        <update version="1.0.5" files="rlAndroidConnect.class.php,request.php,languages/English(EN).xml"><![CDATA[]]></update>
+        <update version="2.0.0" files="admin/android_settings.inc.php,libs/androidMarket/InvalidArgumentException.php,libs/androidMarket/ResponseData.php,libs/androidMarket/ResponseValidator.php,libs/androidMarket/RuntimeException.php,google.gateway.php,log.txt,paypal.gateway.php,languages/English(EN).xml,request.php,rlAndroidConnect.class.php,rlAndroidLang.class.php"><![CDATA[]]></update>
+        <update version="2.0.1" files="languages/English(EN).xml,rlAndroidConnect.class.php"><![CDATA[]]></update>
+        <update version="2.0.2" files="languages/English(EN).xml,rlAndroidConnect.class.php"><![CDATA[]]></update>
+        <update version="2.0.3" files="languages/English(EN).xml,rlAndroidConnect.class.php,request.php"><![CDATA[]]></update>
+        <update version="2.1.0" files="languages/English(EN).xml,rlAndroidConnect.class.php,request.php,paypalREST.gateway.php,admin/android_adsense.tpl,admin/android_adsense.inc.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="rlAndroidConnect.class.php,request.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="rlSmarty.class.php,request.php"><![CDATA[]]></update>
+        <update version="2.2.0" files="languages/English(EN).xml,rlAndroidConnect.class.php,rlAndroidLang.class.php,admin/android_languages.inc.php,request.php"><![CDATA[]]></update>
+        <update version="2.3.0" files="languages/English(EN).xml,rlAndroidConnect.class.php,request.php,rlPusher.class.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="languages/English(EN).xml,rlAndroidConnect.class.php,paypalREST.gateway.php,admin/android_languages.tpl"><![CDATA[]]></update>
+        <update version="3.1.0" files="languages/English(EN).xml,rlAndroidConnect.class.php,request.php,rlSmarty.class.php,admin/android_languages.tpl,rlAndroidLang.class.php"><![CDATA[]]></update>
+        <update version="3.2.0" files="languages/English(EN).xml,rlAndroidConnect.class.php,request.php,rlSmarty.class.php"><![CDATA[]]></update>
+        <update version="3.3.0" files="languages/English(EN).xml,rlAndroidConnect.class.php,request.php"><![CDATA[]]></update>
+        <update version="4.0.0" files="languages/English(EN).xml,languages/Hungarian(HU).xml,adapter/ListingPictureUploadAdapter.php,adapter/ProfileThumbnailUploadAdapter.php,admin/android_adsense.inc.php,admin/android_listing_types.inc.php,admin/android_settings.inc.php,admin/android_languages.inc.php,admin/android_languages.tpl,google.gateway.php,paypalREST.gateway.php,request.php,rlAndroidConnect.class.php,rlAndroidLang.class.php,rlPusher.class.php,rlSmarty.class.php"><![CDATA[]]></update>
+        <update version="4.0.1" files="rlAndroidConnect.class.php,adapter/ListingPictureUploadAdapter.php"><![CDATA[]]></update>
+        <update version="4.0.2" files="admin/android_settings.inc.php"><![CDATA[]]></update>
+        <update version="4.0.3" files="request.php"><![CDATA[]]></update>
+        <update version="4.1.0" files="admin/android_adsense.inc.php,admin/android_languages.inc.php,admin/android_listing_types.inc.php,admin/android_settings.inc.php,i18n/ru.json,languages/Russian(RU).xml,rlAndroidConnect.class.php"><![CDATA[]]></update>
+        <update version="4.2.0" files="i18n/ru.json,languages/English(EN).xml,languages/Russian(RU).xml,request.php,AdsFilter.php,rlAndroidConnect.class.php,rlSmarty.class.php,view/smart_banner.tpl,view/tplHeader.tpl,admin/android_adsense.inc.php,admin/android_languages.inc.php,admin/android_listing_types.inc.php,admin/android_settings.inc.php,admin/android_adsense.tpl,rlYooKassaGateway.class.php"><![CDATA[]]></update>
+        <update version="4.2.1" files="rlAndroidConnect.class.php,rlYooKassaGateway.class.php"><![CDATA[]]></update>
+        <update version="4.2.2" files="rlAndroidConnect.class.php,rlYooKassaGateway.class.php,i18n/ru.json,view/smart_banner.tpl,view/tplHeader.tpl,admin/android_settings.inc.php"><![CDATA[]]></update>
+        <update version="4.2.3" files="rlAndroidConnect.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <emails>
+        <email version="2.3.0" key="android_pending_account_created" subject="You have been sucessfully registered on {site_name}"><![CDATA[
+        Hello {username},
+
+        You have successfully registered at {site_name} although your account will have an incomplete status until you confirm your email.
+        To confirm your email please follow the link {link}.
+
+        If you don't confirm your email you will not be able to log into your account next time.
+
+        Thank you,
+        Flynax Administration
+        ]]></email>
+        <email version="2.0.0" key="android_account_created_admin" subject="A new user ({username}) signed up through Android App at {site_name}"><![CDATA[
+        Deal Administrator,
+
+        A new user signed up and logged into the App. His account was activated automatically.
+        You can review the new account here: {link} and suspend it if needed.
+
+        <b>Account details:</b>
+        Username: {username}
+        E-mail: {email}
+        Join date: {date}
+        Account Type: {account_type}
+        ]]></email>
+    </emails>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

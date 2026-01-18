@@ -1,0 +1,1014 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="shoppingCart">
+    <title>Shopping Cart &amp; Bidding</title>
+    <description>Allows users to pay and collect payments for listings and put up items at auction</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.1.3</version>
+    <date>03.15.2014</date>
+    <controller>shopping_cart</controller>
+    <class>ShoppingCart</class>
+    <compatible>4.8.2</compatible>
+
+    <files>
+        <file>.htaccess</file>
+        <file>admin/.htaccess</file>
+        <file>admin/shopping_cart.inc.php</file>
+        <file>admin/shopping_cart.tpl</file>
+        <file>admin/view/add_listing_fields.tpl</file>
+        <file>admin/view/add_listing_fields_shipping.tpl</file>
+        <file>admin/view/auction.tpl</file>
+        <file>admin/view/auction_details.tpl</file>
+        <file>admin/view/configs.tpl</file>
+        <file>admin/view/digital_product.tpl</file>
+        <file>admin/view/field_form.tpl</file>
+        <file>admin/view/listing_type.tpl</file>
+        <file>admin/view/membership_plan.tpl</file>
+        <file>admin/view/order_details.tpl</file>
+        <file>admin/view/price_format_form.tpl</file>
+        <file>admin/view/shipping_fields.tpl</file>
+        <file>admin/view/shipping_form.tpl</file>
+        <file>admin/view/shipping_info.tpl</file>
+        <file>admin/view/shipping_methods.tpl</file>
+        <file>admin/view/tabs_handler.tpl</file>
+        <file>admin/view/update_interface.tpl</file>
+        <file>admin/view/update_listings.tpl</file>
+        <file>auction_payment.inc.php</file>
+        <file>auction_payment.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>models/Auction.php</file>
+        <file>models/AuctionPayment.php</file>
+        <file>models/CartProcessing.php</file>
+        <file>models/Currency.php</file>
+        <file>models/MyAuctions.php</file>
+        <file>models/Orders.php</file>
+        <file>models/Payment.php</file>
+        <file>models/PriceFormat.php</file>
+        <file>models/PrintOrder.php</file>
+        <file>models/Shipping.php</file>
+        <file>models/Shopping.php</file>
+        <file>models/XMLParser.php</file>
+        <file>models/admin/Auction.php</file>
+        <file>models/admin/Configs.php</file>
+        <file>models/admin/Shipping.php</file>
+        <file>models/admin/ShippingFields.php</file>
+        <file>models/admin/Shopping.php</file>
+        <file>models/admin/UpdateListings.php</file>
+        <file>my_auctions.inc.php</file>
+        <file>my_auctions.tpl</file>
+        <file>my_items_sold.inc.php</file>
+        <file>my_items_sold.tpl</file>
+        <file>my_purchases.inc.php</file>
+        <file>my_purchases.tpl</file>
+        <file>my_shopping_cart.inc.php</file>
+        <file>my_shopping_cart.tpl</file>
+        <file>product_download.php</file>
+        <file>rlInstall.class.php</file>
+        <file>rlShoppingCart.class.php</file>
+        <file>shipping/ShippingMethod.php</file>
+        <file>shipping/dhl/Dhl.php</file>
+        <file>shipping/dhl/static.inc.php</file>
+        <file>shipping/dhl/view/add_listing.tpl</file>
+        <file>shipping/dhl/view/ap_add_listing.tpl</file>
+        <file>shipping/dhl/view/cart_step.tpl</file>
+        <file>shipping/fedex/Fedex.php</file>
+        <file>shipping/fedex/static.inc.php</file>
+        <file>shipping/fedex/view/add_listing.tpl</file>
+        <file>shipping/fedex/view/ap_add_listing.tpl</file>
+        <file>shipping/fedex/view/cart_step.tpl</file>
+        <file>shipping/fedex/view/request.tpl</file>
+        <file>shipping/ups/Ups.php</file>
+        <file>shipping/ups/static.inc.php</file>
+        <file>shipping/ups/view/add_listing.tpl</file>
+        <file>shipping/ups/view/ap_add_listing.tpl</file>
+        <file>shipping/ups/view/cart_step.tpl</file>
+        <file>shipping/ups/view/request.tpl</file>
+        <file>shipping/usps/Usps.php</file>
+        <file>shipping/usps/static.inc.php</file>
+        <file>shipping/usps/view/add_listing.tpl</file>
+        <file>shipping/usps/view/ap_add_listing.tpl</file>
+        <file>shipping/usps/view/cart_step.tpl</file>
+        <file>static/.htaccess</file>
+        <file>static/cash.css</file>
+        <file>static/details.css</file>
+        <file>static/icons.svg</file>
+        <file>static/lib.js</file>
+        <file>static/lib_admin.js</file>
+        <file>static/lib_admin_listings.js</file>
+        <file>static/lib_basic.js</file>
+        <file>static/manage-listing.css</file>
+        <file>static/moment-timezone-with-data.min.js</file>
+        <file>static/moment.min.js</file>
+        <file>static/my-cart.css</file>
+        <file>static/my-listings.css</file>
+        <file>static/style_admin.css</file>
+        <file>static.inc.php</file>
+        <file>view/account_settings.tpl</file>
+        <file>view/add_listing_fields.tpl</file>
+        <file>view/add_listing_fields_shipping.tpl</file>
+        <file>view/auction_details.tpl</file>
+        <file>view/auction_details_live.tpl</file>
+        <file>view/auction_info_short.tpl</file>
+        <file>view/auth.tpl</file>
+        <file>view/bid_history.tpl</file>
+        <file>view/bids.tpl</file>
+        <file>view/cart.tpl</file>
+        <file>view/cart_flatty.tpl</file>
+        <file>view/cart_items.tpl</file>
+        <file>view/cash.tpl</file>
+        <file>view/checkout.tpl</file>
+        <file>view/digital_product.tpl</file>
+        <file>view/email.tpl</file>
+        <file>view/footer.tpl</file>
+        <file>view/grid_icon.tpl</file>
+        <file>view/grid_icon_featured.tpl</file>
+        <file>view/header.tpl</file>
+        <file>view/items.tpl</file>
+        <file>view/items_unavailable.tpl</file>
+        <file>view/listing_details.tpl</file>
+        <file>view/my_auctions.tpl</file>
+        <file>view/my_auctions_won.tpl</file>
+        <file>view/my_listing.tpl</file>
+        <file>view/my_listings.tpl</file>
+        <file>view/order_details.tpl</file>
+        <file>view/order_details_mail.tpl</file>
+        <file>view/order_details_print.tpl</file>
+        <file>view/price_format_form.tpl</file>
+        <file>view/shipping.tpl</file>
+        <file>view/shipping_address.tpl</file>
+        <file>view/shipping_info.tpl</file>
+        <file>view/my_auctions_items.tpl</file>
+        <file>view/my_auctions_won_items.tpl</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('ShoppingCart', null, 'shoppingCart');
+        $GLOBALS['reefless']->loadClass('Install', null, 'shoppingCart');
+        rlShoppingCart::boot();
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="3.0.0" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplHeaderUserNav"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="pageinfoArea"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="specialBlock"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingDetailsBottom"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listing_details_sidebar"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingDetailsBottomTpl"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="addListingPreFields"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="afterListingCreate"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="afterListingEdit"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="afterListingUpdate"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="addListingPostSimulation"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="editListingPostSimulation"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="profileController"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="profileBlock"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="phpListingsAjaxDeleteListing"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplListingsFormEdit"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplListingsFormAdd"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingsPost"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingsAfterEdit"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingsAfterAdd"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="cronAdditional"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplListingTypesForm"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingTypesPost"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingTypesBeforeAdd"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingTypesBeforeEdit"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingsModifyWhere"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingsModifyWhereMyFavorite"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingsModifyWhereByPeriod"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingsModifyWhereByAccount"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingsModifyWhereSearch"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="smartyCompileFileTop"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplFieldsForm"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingNavIcons"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="addListingFormDataChecking"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplFeaturedItemIcon"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="phpAfterDeleteListing"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplMembershipPlansForm"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpMembershipPlansBeforeAdd"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpMembershipPlansBeforeEdit"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpMembershipPlansPost"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplHeaderUserArea"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="myListingsIcon"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="phpListingsGetMyListings"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="myListingsBottom"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="phpGetPaymentGateways"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="phpGetPaymentGatewaysWhere"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="preCheckoutPayment"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="loadPaymentForm"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplPrintPage"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apExtTransactionItem"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="editListingDataChecking"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="phpGetPaymentGatewaysAfter"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="myListingsPreSelect"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="phpBankWireTransferAfterComplete"><![CDATA[]]></hook>
+        <hook version="3.0.2" name="phpLoginSaveSessionData"><![CDATA[]]></hook>
+        <hook version="3.0.2" name="phpLogOut"><![CDATA[]]></hook>
+        <hook version="3.0.2" name="phpMyAdsSearchMiddle"><![CDATA[]]></hook>
+    </hooks>
+
+    <emails>
+        <email version="3.0.1" key="shc_order_remove_by_admin" subject="You've removed the order" type="html">
+            <![CDATA[
+                Hello Administrator,<br>
+
+                You've removed the order - "{order_key}".
+
+                Order Details:
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="shc_order_remove_by_admin_dealer" subject="Your order sold at {site_name} was removed" type="html">
+            <![CDATA[
+                Hello {name},
+
+                The Administrator has removed your order - "{order_key}" at {site_name}.
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="shc_shipping_status_changed" subject="Shipping status of your order changed at {site_name}" type="html">
+            <![CDATA[
+                Hello {buyer},
+
+                The shipping status of your order (#{order_key}) has been changed to {status}.
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="shc_order_payment_accepted" subject="Your order at {site_name} successfully paid " type="html">
+            <![CDATA[
+                Hello {name},
+
+                Your order at {site_name} has been paid successfully.
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="shc_order_payment_accepted_admin" subject="Order #{order_key} at {site_name} paid" type="html">
+            <![CDATA[
+                The order #{order_key} at {site_name} has been successfully paid.
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="cron_auction_close_dealer" subject="Your auction at {site_name} canceled" type="html">
+            <![CDATA[
+                Hello {dealer_name},
+
+                Your auction at {site_name} has been canceled due to the absence of bids or because the highest bid failed to outbid the reserve price. You can renew the auction from your Account Area.
+
+                Details:
+
+                {details}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="cron_auction_close_dealer_ww" subject="Your auction at {site_name} completed" type="html">
+            <![CDATA[
+                Hello {dealer_name},
+
+                Your auction has been completed. {buyer} won the auction. Please give the winner some time to complete the transaction.
+
+                Details:
+
+                {details}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="cron_auction_winner" subject="You won the auction at {site_name}" type="html">
+            <![CDATA[
+                Hello {name},
+
+                You've won the auction, please complete the transaction.
+
+                Owner: {owner},
+                Item: {item},
+                Total Price: {price},
+                Date: {date}
+
+                You may check the details at the link - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="increase_auction_bid" subject="Someone outbid you at {site_name}" type="html">
+            <![CDATA[
+                Hello {bidder_name},
+
+                Someone at {site_name} has outbid you at the auction.
+
+                Details:
+
+                Item: {item},
+                Your Last Bid: {your_last_bid},
+                Current Bid: {current_bid},
+                Date: {date}
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="increase_auction_bid_auto" subject="Automatic bidder at {site_name} outbid you" type="html">
+            <![CDATA[
+                Hello {name},
+
+                The automatic bidder outbid you at the auction.
+
+                Details:
+
+                Item: {item},
+                Your Last Bid: {your_last_bid},
+                Current Bid: {current_bid},
+                Date: {date}
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="renew_auction_bidder" subject="The auction at {site_name} renewed" type="html">
+            <![CDATA[
+                Hello {name},
+
+                The auction where you bid has been updated. All your previous biddings at the auction have been canceled.
+
+                Details:
+
+                Item: {item}
+                Starting Price: {start_price},
+                Start Date: {date}
+                Duration: {days} Days
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="new_auction_bid" subject="A new bid at {site_name} offered" type="html">
+            <![CDATA[
+                Hello {dealer_name},
+
+                {bidder} has offered a bid at your auction.
+
+                Details:
+
+                Item: {item}
+                Starting Price: {start_price},
+                Current Bid: {current_bid}
+                Date: {date}
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="auction_bought_now" subject="The auction at {site_name} completed" type="html">
+            <![CDATA[
+                Hello {bidder_name},
+
+                The auction at {site_name} has been completed.
+
+                Details:
+
+                Item: {item},
+                Date: {date}
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="auction_cancel_bid" subject="You canceled the bid" type="html">
+            <![CDATA[
+                Hello {bidder},
+
+                You have canceled your bid at the auction.
+
+                Details:
+
+                Item: {item},
+                Date: {date}
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="auction_cancel_bid_dealer" subject="Bidder canceled his bid at your auction" type="html">
+            <![CDATA[
+                Hello {dealer},
+
+                {bidder} has canceled his bid at your auction.
+
+                Details:
+
+                Item: {item},
+                Date: {date}
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="auction_bid_first_place" subject="You outbid at the auction" type="html">
+            <![CDATA[
+                Hello {bidder},
+
+                You outbid at the auction because the user who offered the highest bid canceled his bid.
+
+                Details:
+
+                Item: {item},
+                Total: {total},
+                Date: {date}
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="auction_closed_seller" subject="The auction at {site_name} closed ahead of time" type="html">
+            <![CDATA[
+                Hello {buyer},
+
+                The auction at {site_name} has been closed ahead of time.
+
+                Details:
+
+                Item: {item},
+                Starting Price: {start_price},
+                Total Price: {price},
+                Date: {date}
+
+                Proceed to the auction - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="auction_closed_seller_winner" subject="You won the auction at {site_name}" type="html">
+            <![CDATA[
+                Hello {buyer},
+
+                The seller has closed the auction at {site_name} ahead of time because you were the last and highest bidder. You've won the auction; please, complete the transaction.
+
+                Details:
+
+                Seller: {seller},
+                Item: {item},
+                Starting Price: {start_price},
+                Total Price: {price},
+                Date: {date}
+
+                You may check the details here - {link}
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="shc_order_cash_accepted" subject="Your order at {site_name} successfully processed" type="html">
+            <![CDATA[
+                Hello {name},
+
+                Your order at {site_name} has been successfully processed.
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.1" key="shc_order_cash_accepted_admin" subject="Order #{order_key} at {site_name} processed" type="html">
+            <![CDATA[
+                The order #{order_key} at {site_name} has been successfully processed.
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.1.0" key="shc_order_escrow_confirm_seller" subject="Order #{order_key} at {site_name} confirmed" type="html">
+            <![CDATA[
+                Hello {seller},
+
+                Order #{order_key} at {site_name} confirmed
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.1.0" key="shc_order_escrow_cancel_seller" subject="Order #{order_key} at {site_name} canceled" type="html">
+            <![CDATA[
+                Hello {seller},
+
+                Order #{order_key} at {site_name} canceled
+
+                {reason}
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.1.0" key="shc_order_escrow_cancel_buyer" subject="You've canceled the order #{order_key} at {site_name}" type="html">
+            <![CDATA[
+                Hello {buyer},
+
+                You've canceled the order #{order_key} at {site_name}
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+        <email version="3.1.0" key="shc_order_escrow_confirm_buyer" subject="You've confirmed the order #{order_key} at {site_name}" type="html">
+            <![CDATA[
+                Hello {buyer},
+
+                You've confirmed the order #{order_key} at {site_name}
+
+                Order Details:
+
+                {details}
+
+                ______________________________________
+                Thank you,
+                {site_name} Administration
+            ]]>
+        </email>
+    </emails>
+
+    <pages>
+        <page key="shc_purchases" name="My Purchases" type="system" path="shc-my-purchases" get="" login="1" controller="my_purchases" menus="2" tpl="1"><![CDATA[]]></page>
+        <page key="shc_auctions" name="Bids &amp; Offers" type="system" path="shc-my-auctions" get="" login="1" controller="my_auctions" menus="2" tpl="1"><![CDATA[]]></page>
+        <page version="2.0.2" key="shc_my_items_sold" name="My Sold Items" type="system" path="shc-my-items-sold" get="" login="1" controller="my_items_sold" menus="2" status="approval" tpl="1"><![CDATA[]]></page>
+        <page version="3.0.1" key="shc_my_shopping_cart" name="Processing the Order" type="system" path="my-shopping-cart" get="" login="0" controller="my_shopping_cart" menus="" tpl="1"><![CDATA[]]></page>
+        <page version="2.0.2" key="shc_auction_payment" name="Auction Payment Process" type="system" path="shc-auction-payment" get="" login="1" controller="auction_payment" menus="" tpl="1"><![CDATA[]]></page>
+    </pages>
+
+    <phrases>
+        <phrase version="3.0.0" key="shc_orders" target="shopping_cart" module="common"><![CDATA[Orders]]></phrase>
+        <phrase version="3.0.0" key="shc_auction" target="shopping_cart" module="common"><![CDATA[Auction]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_methods" target="add_listing" module="common"><![CDATA[Shipping methods]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_fields" target="shopping_cart" module="admin"><![CDATA[Shipping fields]]></phrase>
+        <phrase version="3.0.0" key="shc_help" target="shopping_cart" module="admin"><![CDATA[Guide]]></phrase>
+        <phrase version="3.0.0" key="ext_shc_orders_manager" target="shopping_cart" module="admin" js="1"><![CDATA[Orders]]></phrase>
+        <phrase version="3.0.0" key="shc_buyer" target="shopping_cart" module="common" js="1"><![CDATA[Buyer]]></phrase>
+        <phrase version="3.0.0" key="shc_dealer" target="shopping_cart" module="common" js="1"><![CDATA[Seller]]></phrase>
+        <phrase version="3.0.0" key="shc_order_key" module="common" js="1"><![CDATA[Order key]]></phrase>
+        <phrase version="3.0.0" key="shc_processing" target="shopping_cart" module="common" js="1"><![CDATA[Processing]]></phrase>
+        <phrase version="3.0.0" key="shc_shipped" target="shopping_cart" module="common" js="1"><![CDATA[Shipped]]></phrase>
+        <phrase version="3.0.0" key="shc_declined" target="shopping_cart" module="common" js="1"><![CDATA[Declined]]></phrase>
+        <phrase version="3.0.0" key="shc_open" target="shopping_cart" module="common" js="1"><![CDATA[Open]]></phrase>
+        <phrase version="3.0.0" key="shc_delivered" target="shopping_cart" module="common" js="1"><![CDATA[Delivered]]></phrase>
+        <phrase version="3.0.1" key="ext_shc_bids_manager" target="shopping_cart" module="admin" js="1"><![CDATA[Bid Manager]]></phrase>
+        <phrase version="3.0.0" key="shc_commission" target="shopping_cart" module="common" js="1"><![CDATA[Commission]]></phrase>
+        <phrase version="3.0.0" key="shc_closed" target="shopping_cart" module="common" js="1"><![CDATA[Closed]]></phrase>
+        <phrase version="3.0.0" key="shc_left_time" module="common" js="1"><![CDATA[Left time]]></phrase>
+        <phrase version="3.0.0" key="ext_shc_auction_manager" target="shopping_cart" module="admin" js="1"><![CDATA[Auction Manager]]></phrase>
+        <phrase version="3.0.0" key="total_bids" target="shopping_cart" module="common" js="1"><![CDATA[Bids]]></phrase>
+        <phrase version="3.0.0" key="payment_status" target="shopping_cart" module="common" js="1"><![CDATA[Payment status]]></phrase>
+        <phrase version="3.0.0" key="progress" target="shopping_cart" module="common" js="1"><![CDATA[In progress]]></phrase>
+        <phrase version="3.0.0" key="start_time" target="shopping_cart" module="common" js="1"><![CDATA[Start time]]></phrase>
+        <phrase version="3.0.0" key="ext_shipping_fields_manager" target="shopping_cart" module="admin" js="1"><![CDATA[Shipping Field Manager]]></phrase>
+        <phrase version="3.0.0" key="ext_shipping_methods_manager" target="shopping_cart" module="admin" js="1"><![CDATA[Shipping Method Manager]]></phrase>
+        <phrase version="3.0.0" key="shc_google_autocomplete_field" target="add_listing" module="common"><![CDATA[Google autocomplete field]]></phrase>
+        <phrase version="3.0.0" key="shc_listing_type_option_name" module="admin"><![CDATA[Shopping Cart &amp; Bidding]]></phrase>
+        <phrase version="3.0.0" key="shc_start_price" target="shopping_cart" module="common" js="1"><![CDATA[Starting price]]></phrase>
+        <phrase version="3.0.0" key="shc_reserved_price" target="add_listing" module="common"><![CDATA[Reserve price]]></phrase>
+        <phrase version="3.0.1" key="shc_buy_now" target="add_listing" module="common"><![CDATA[Buy Now]]></phrase>
+        <phrase version="3.0.0" key="shc_commission_start_price" target="add_listing" module="common"><![CDATA[Commission on starting price]]></phrase>
+        <phrase version="3.0.0" key="shc_commission_start_price_notice" target="add_listing" module="common"><![CDATA[Commission will change after adding new bids]]></phrase>
+        <phrase version="3.0.1" key="shc_start_price_with_commission" target="add_listing" module="common"><![CDATA[Starting price with commission]]></phrase>
+        <phrase version="3.0.0" key="shc_price_with_commission" target="add_listing" module="common"><![CDATA[Price with commission]]></phrase>
+        <phrase version="3.0.0" key="shc_bid_step" target="add_listing" module="common"><![CDATA[Bid step]]></phrase>
+        <phrase version="3.0.1" key="shc_days" target="add_listing" module="common"><![CDATA[days]]></phrase>
+        <phrase version="3.0.0" key="shc_available" target="add_listing" module="common"><![CDATA[Available]]></phrase>
+        <phrase version="3.0.0" key="shc_handling_time" target="add_listing" module="common"><![CDATA[Handling time]]></phrase>
+        <phrase version="3.0.0" key="shc_package_type" target="add_listing" module="common"><![CDATA[Package type]]></phrase>
+        <phrase version="3.0.0" key="shc_weight" target="add_listing" module="common"><![CDATA[Weight]]></phrase>
+        <phrase version="3.0.0" key="shc_dimensions" target="add_listing" module="common"><![CDATA[Dimensions]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_price_type_calculate" target="add_listing" module="common"><![CDATA[Courier services]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_price" target="add_listing" module="common"><![CDATA[Shipping cost]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_discount" target="add_listing" module="common"><![CDATA[Shipping discount]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_discount_at" target="add_listing" module="common"><![CDATA[starting from]]></phrase>
+        <phrase version="3.0.1" key="shc_fixed_shipping_price" target="add_listing" module="common"><![CDATA[Flat rate]]></phrase>
+        <phrase version="3.0.1" key="shc_mode_fixed" module="common"><![CDATA[Shopping Cart]]></phrase>
+        <phrase version="3.0.1" key="shc_mode_listing" module="common"><![CDATA[Standard Ad]]></phrase>
+        <phrase version="3.0.0" key="shc_payment_methods" target="add_listing" module="common"><![CDATA[Payment methods]]></phrase>
+        <phrase version="3.0.0" key="shc_commission_settings" target="shopping_cart" module="common"><![CDATA[Commission settings]]></phrase>
+        <phrase version="3.0.1" key="shc_auction_settings" target="shopping_cart" module="common"><![CDATA[Auction Settings]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping" target="add_listing" module="common" js="1"><![CDATA[Shipping]]></phrase>
+        <phrase version="3.0.0" key="shc_proceed_checkout" target="add_listing" module="common"><![CDATA[Proceed to checkout]]></phrase>
+        <phrase version="3.0.1" key="shc_price_format" target="add_listing" module="common"><![CDATA[Sell item with]]></phrase>
+        <phrase version="3.0.1" key="shc_not_availble" target="add_listing" module="common"><![CDATA[The item is not available, please contact the seller for more details.]]></phrase>
+        <phrase version="3.0.1" key="shc_add_item_owner" module="common"><![CDATA[You cannot add the item to the shopping cart.]]></phrase>
+        <phrase version="3.0.1" key="shc_add_item_notice" module="common"><![CDATA[You've added the item to the shopping cart.]]></phrase>
+        <phrase version="3.0.1" key="shc_auction_reserved_notice" target="listing_details" module="frontEnd"><![CDATA[You should pay for the order in the next 24 hours. Otherwise, the auction will be restarted.]]></phrase>
+        <phrase version="3.0.1" key="shc_add_item_error" target="add_listing" module="common"><![CDATA[Failed to add the item to the cart.]]></phrase>
+        <phrase version="3.0.1" key="shc_auction_reserved" target="add_listing" module="common"><![CDATA[The auction item is reserved.]]></phrase>
+        <phrase version="3.0.1" key="shc_delete_item_notice" module="common"><![CDATA[You've removed the item from the cart.]]></phrase>
+        <phrase version="3.0.1" key="shc_delete_item_error" module="common"><![CDATA[Failed to remove the item from the shopping cart.]]></phrase>
+        <phrase version="3.0.1" key="shc_cart_clear_success" module="common"><![CDATA[Your cart has been emptied.]]></phrase>
+        <phrase version="3.0.1" key="shc_account_settings_empty" target="add_listing" module="common"><![CDATA[The payment gateways and shipping methods are not set up.]]></phrase>
+        <phrase version="3.0.1" key="shc_rate_failed" target="listing_details" module="frontEnd"><![CDATA[Your bid is lower than the minimum one, please consider increasing it.]]></phrase>
+        <phrase version="3.0.1" key="shc_repeated_bid" target="listing_details" module="frontEnd"><![CDATA[You cannot bid repeatedly.]]></phrase>
+        <phrase version="3.0.1" key="shc_add_bid_success" target="listing_details" module="frontEnd"><![CDATA[Your bid has been accepted.]]></phrase>
+        <phrase version="3.0.1" key="shc_bid_deleted_success" target="add_listing" module="common"><![CDATA[You've removed the bid.]]></phrase>
+        <phrase version="3.0.1" key="shc_delete_bid_fail" target="listing_details" module="common"><![CDATA[Failed to cancel the bid.]]></phrase>
+        <phrase version="3.0.1" key="shc_renew_auction_success" target="add_listing" module="common"><![CDATA[Your auction has been updated.]]></phrase>
+        <phrase version="3.0.1" key="shc_renew_auction_failed" target="add_listing" module="common"><![CDATA[Failed to update the auction.]]></phrase>
+        <phrase version="3.0.1" key="shc_close_auction_success" target="add_listing" module="common"><![CDATA[You've closed the auction.]]></phrase>
+        <phrase version="3.0.1" key="shc_close_auction_failed" target="add_listing" module="common"><![CDATA[Failed to close the auction.]]></phrase>
+        <phrase version="3.0.1" key="shc_tracking_number_added_success" target="my_items_sold" module="common"><![CDATA[The tracking number has been added.]]></phrase>
+        <phrase version="3.0.1" key="shc_tracking_number_added_failed" target="my_items_sold" module="common"><![CDATA[Failed to update the tracking number.]]></phrase>
+        <phrase version="3.0.1" key="shc_notice_shipping_status_changed" target="add_listing" module="common"><![CDATA[You've updated the shipping status.]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_status_failed" target="add_listing" module="common"><![CDATA[Failed to update the delivery status.]]></phrase>
+        <phrase version="3.0.1" key="shc_account_type_not_available" target="add_listing" module="common"><![CDATA[The Shopping Cart is not available to your account type.]]></phrase>
+        <phrase version="3.0.1" key="shc_price_format_not_available" target="add_listing" module="common"><![CDATA[Selected price format {price_format} not available to your account type]]></phrase>
+        <phrase version="3.0.0" key="shc_package_type_letter" target="add_listing" module="common"><![CDATA[Letter]]></phrase>
+        <phrase version="3.0.0" key="shc_package_type_large_envelope" target="add_listing" module="common"><![CDATA[Large Envelope]]></phrase>
+        <phrase version="3.0.0" key="shc_package_type_package" target="add_listing" module="common"><![CDATA[Package (or thick envelope)]]></phrase>
+        <phrase version="3.0.0" key="shc_package_type_large_package" target="add_listing" module="common"><![CDATA[Large Package]]></phrase>
+        <phrase version="3.0.0" key="shc_package_type_irregular_package" target="add_listing" module="common"><![CDATA[Irregular package]]></phrase>
+        <phrase version="3.0.0" key="shc_handling_time_0" target="add_listing" module="common"><![CDATA[Same business day]]></phrase>
+        <phrase version="3.0.0" key="shc_handling_time_1" target="add_listing" module="common"><![CDATA[1 business day]]></phrase>
+        <phrase version="3.0.0" key="shc_handling_time_n" target="add_listing" module="common"><![CDATA[{number} business days]]></phrase>
+        <phrase version="3.0.0" key="shc_full_address" target="shopping_cart" module="common"><![CDATA[Enter full address]]></phrase>
+        <phrase version="3.0.1" key="shc_full_address_notice" target="shopping_cart" module="common"><![CDATA[For example, Country > State > City > address]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_method_updated" target="shopping_cart" module="admin"><![CDATA[You've updated the shipping method settings.]]></phrase>
+        <phrase version="3.0.0" key="shc_method_single" target="shopping_cart" module="admin"><![CDATA[Site owner]]></phrase>
+        <phrase version="3.0.0" key="shc_method_multi" target="shopping_cart" module="admin"><![CDATA[Sellers]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_details" target="add_listing" module="common"><![CDATA[Shipping details]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_price_type_free" target="add_listing" module="common"><![CDATA[Free shipping]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_price_type_fixed" target="add_listing" module="common"><![CDATA[Flat shipping rate]]></phrase>
+        <phrase version="3.0.1" key="shc_method_currency_convert_single" target="shopping_cart" module="admin"><![CDATA[Allow the system currency only]]></phrase>
+        <phrase version="3.0.1" key="shc_method_currency_convert_multi" target="shopping_cart" module="admin"><![CDATA[Convert other currencies to the system one in the checkout step]]></phrase>
+        <phrase version="3.0.1" key="shc_confirm_convert_method" target="shopping_cart" module="admin" js="1"><![CDATA[Are you sure you want to convert listing prices to the system currency?]]></phrase>
+        <phrase version="3.0.0" key="shc_add_to_cart" module="frontEnd"><![CDATA[Add to Cart]]></phrase>
+        <phrase version="3.0.1" key="shc_do_you_want_to_add_list" module="frontEnd" js="1"><![CDATA[Do you want to add the item to the shopping cart?]]></phrase>
+        <phrase version="3.0.0" key="shc_do_you_want_clear_cart" module="frontEnd" js="1"><![CDATA[Are you sure you want to empty your cart?]]></phrase>
+        <phrase version="3.0.1" key="shc_notice_delete_item" module="frontEnd" js="1"><![CDATA[Are you sure you want to remove the item from the cart?]]></phrase>
+        <phrase version="3.0.0" key="shc_clear_cart" module="frontEnd"><![CDATA[Clear cart]]></phrase>
+        <phrase version="3.0.1" key="shc_empty_cart" module="frontEnd"><![CDATA[Your cart is empty.]]></phrase>
+        <phrase version="3.0.0" key="shc_increase" target="my_shopping_cart" module="frontEnd"><![CDATA[Increase quantity]]></phrase>
+        <phrase version="3.0.0" key="shc_decrease" target="my_shopping_cart" module="frontEnd"><![CDATA[Decrease quantity]]></phrase>
+        <phrase version="3.0.0" key="shc_quantity" module="common"><![CDATA[Quantity]]></phrase>
+        <phrase version="3.0.1" key="shc_step_cart" target="my_shopping_cart" module="frontEnd"><![CDATA[Details]]></phrase>
+        <phrase version="3.0.1" key="shc_step_auth" target="my_shopping_cart" module="frontEnd"><![CDATA[Log in/Sign up]]></phrase>
+        <phrase version="3.0.1" key="shc_step_shipping" target="my_shopping_cart" module="frontEnd"><![CDATA[Shipping Details]]></phrase>
+        <phrase version="3.0.1" key="shc_cart_details" target="my_shopping_cart" module="frontEnd"><![CDATA[Added to Cart]]></phrase>
+        <phrase version="3.0.1" key="shc_fixed_price_single" target="shopping_cart" module="admin"><![CDATA[Flat rate]]></phrase>
+        <phrase version="3.1.2" key="shc_fixed_price_multi" target="shopping_cart" module="common"><![CDATA[Location-related rates]]></phrase>
+        <phrase version="3.0.0" key="shc_left_in_stock" target="listing_details" module="frontEnd"><![CDATA[Left in stock]]></phrase>
+        <phrase version="3.0.1" key="shc_add_price_item" target="add_listing" module="common"><![CDATA[Add a rate for a location]]></phrase>
+        <phrase version="3.0.1" key="shc_done_notice" target="my_shopping_cart" module="frontEnd"><![CDATA[Thank you for your purchase! Your payment has gone through. After confirming the payment, the seller will send the item(s) to your address. You may track the delivery status of your order from My Orders.]]></phrase>
+        <phrase version="3.0.1" key="shc_waiting_payment" target="my_shopping_cart" module="frontEnd"><![CDATA[Thank you for purchasing the product(s)! The seller will send<br> the item(s) to your address after confirming your payment.]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_method" target="my_shopping_cart" module="common"><![CDATA[Shipping method]]></phrase>
+        <phrase version="3.0.1" key="shc_available_quantity_error" target="my_shopping_cart" module="frontEnd" js="1"><![CDATA[You've exceeded the available quantity.]]></phrase>
+        <phrase version="3.0.0" key="shc_auction_time_attr" module="common"><![CDATA[y|m|d|h|min]]></phrase>
+        <phrase version="3.0.2" key="shc_shipping_status" target="shopping_cart" module="common" js="1"><![CDATA[Shipping status]]></phrase>
+        <phrase version="3.0.1" key="shc_convert_prices_prompt" target="shopping_cart" module="admin" js="1"><![CDATA[As you enabled the 'Allow the system currency only' option, listing prices will be converted to the system currency.]]></phrase>
+        <phrase version="3.0.1" key="shc_convert_prices" target="shopping_cart" module="admin" js="1"><![CDATA[Convert listing prices]]></phrase>
+        <phrase version="3.0.0" key="shc_convert_in_progress" target="shopping_cart" module="admin" js="1"><![CDATA[Processing, please wait...]]></phrase>
+        <phrase version="3.0.1" key="shc_convert_completed" target="shopping_cart" module="admin" js="1"><![CDATA[The prices have been updated.]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_discount_notice" target="add_listing" module="common"><![CDATA[You may set a discount for a certain amount of products.]]></phrase>
+        <phrase version="3.0.0" key="shc_weight_kgs" target="shopping_cart" module="common"><![CDATA[kgs]]></phrase>
+        <phrase version="3.0.0" key="shc_weight_lbs" target="shopping_cart" module="common"><![CDATA[lbs]]></phrase>
+        <phrase version="3.0.0" key="shc_tracking_number" target="shopping_cart" module="common"><![CDATA[Tracking number]]></phrase>
+        <phrase version="3.0.1" key="shc_add_tracking_number" target="shopping_cart" module="frontEnd"><![CDATA[Add a tracking number]]></phrase>
+        <phrase version="3.0.1" key="shc_order_details" target="my_purchases" module="common"><![CDATA[Order Details]]></phrase>
+        <phrase version="3.0.1" key="shc_items_cart_duration_period" target="shopping_cart" module="admin"><![CDATA[Limited]]></phrase>
+        <phrase version="3.0.0" key="shc_items_cart_duration_unlimited" target="shopping_cart" module="admin"><![CDATA[Unlimited]]></phrase>
+        <phrase version="3.1.3" key="shc_not_available" module="frontEnd"><![CDATA[Out of stock]]></phrase>
+        <phrase version="3.0.1" key="shc_unavailable_items" target="my_shopping_cart" module="frontEnd"><![CDATA[Items unavailable for order]]></phrase>
+        <phrase version="3.0.1" key="shc_item_deleted" target="my_shopping_cart" module="frontEnd"><![CDATA[You've removed the Item.]]></phrase>
+        <phrase version="3.0.1" key="shc_owner_item" target="my_shopping_cart" module="frontEnd"><![CDATA[Item owner]]></phrase>
+        <phrase version="3.0.1" key="shc_order_items" target="shopping_cart" module="common"><![CDATA[Orders]]></phrase>
+        <phrase version="3.0.1" key="shc_order_deleted_ok" target="shopping_cart" module="admin" js="1"><![CDATA[You've removed the order.]]></phrase>
+        <phrase version="3.0.1" key="shc_order_deleted_error" target="shopping_cart" module="admin" js="1"><![CDATA[Failed to remove the order.]]></phrase>
+        <phrase version="3.0.0" key="shc_count_items" module="frontEnd"><![CDATA[QWT]]></phrase>
+        <phrase version="3.0.1" key="shc_auction_closed" module="common"><![CDATA[The auction is closed or has expired.]]></phrase>
+        <phrase version="3.0.1" key="shc_auction_is_disabled" target="listing_details" module="common"><![CDATA[The auction is disabled.]]></phrase>
+        <phrase version="3.0.0" key="shc_time_left" target="listing_details" module="common"><![CDATA[Time left]]></phrase>
+        <phrase version="3.0.0" key="shc_current_bid" target="listing_details" module="common" js="1"><![CDATA[Current bid]]></phrase>
+        <phrase version="3.0.0" key="shc_starting_bid" target="listing_details" module="common"><![CDATA[Starting bid]]></phrase>
+        <phrase version="3.0.0" key="shc_bids" module="common"><![CDATA[Bids]]></phrase>
+        <phrase version="3.0.0" key="shc_add_bid" target="listing_details" module="frontEnd"><![CDATA[Enter a bid]]></phrase>
+        <phrase version="3.0.1" key="shc_do_you_want_to_add_bid" target="listing_details" module="frontEnd"><![CDATA[Are you sure you want to bid?]]></phrase>
+        <phrase version="3.0.1" key="shc_empty_bid_value" target="listing_details" module="frontEnd"><![CDATA[Please enter your bid.]]></phrase>
+        <phrase version="3.0.0" key="shc_winner" target="listing_details" module="common"><![CDATA[Winner]]></phrase>
+        <phrase version="3.0.2" key="shc_min_bid" target="listing_details" module="common"><![CDATA[Enter {total} or more]]></phrase>
+        <phrase version="3.0.1" key="shc_add_bid_not_login" target="listing_details" module="frontEnd"><![CDATA[Please [log in] or [sign up] to start bidding.]]></phrase>
+        <phrase version="3.0.0" key="shc_bid_history" target="listing_details" module="common"><![CDATA[Bidding history]]></phrase>
+        <phrase version="3.0.0" key="shc_bidder" target="listing_details" module="common"><![CDATA[Bidder]]></phrase>
+        <phrase version="3.0.0" key="shc_bidders" target="listing_details" module="common"><![CDATA[Bidders]]></phrase>
+        <phrase version="3.0.0" key="shc_bid_amount" target="listing_details" module="common"><![CDATA[Bid amount]]></phrase>
+        <phrase version="3.0.0" key="shc_bid_time" target="listing_details" module="common"><![CDATA[Bid time]]></phrase>
+        <phrase version="3.0.1" key="shc_no_bids" target="listing_details" module="frontEnd"><![CDATA[There are no bids.]]></phrase>
+        <phrase version="3.0.1" key="shc_renew_auction" target="my_listings" module="common"><![CDATA[Renew Auction]]></phrase>
+        <phrase version="3.0.1" key="shc_close_auction" target="my_listings" module="common"><![CDATA[Close Auction]]></phrase>
+        <phrase version="3.0.1" key="shc_add_item_owner_auction" target="listing_details"  module="frontEnd"><![CDATA[You cannot bid at your auction.]]></phrase>
+        <phrase version="3.0.0" key="shc_your_bid_total" target="listing_details"  module="frontEnd"><![CDATA[Your max bid]]></phrase>
+        <phrase version="3.0.0" key="shc_auction_date_close" target="listing_details"  module="common"><![CDATA[Closing date]]></phrase>
+        <phrase version="3.0.0" key="shc_reserve_not_met" target="listing_details"  module="frontEnd"><![CDATA[Reserve price not met]]></phrase>
+        <phrase version="3.0.0" key="shc_reserve_met" target="listing_details"  module="frontEnd"><![CDATA[Reserve price met]]></phrase>
+        <phrase version="3.0.1" key="shc_update_start_time" target="add_listing"  module="frontEnd"><![CDATA[Update Starting Date]]></phrase>
+        <phrase version="3.0.1" key="shc_do_you_want_cancel_bid" target="listing_details"  module="frontEnd"><![CDATA[Are you sure you want to cancel the bid?]]></phrase>
+        <phrase version="3.0.0" key="shc_winner_bids" target="my_auctions"  module="frontEnd"><![CDATA[Auctions I won]]></phrase>
+        <phrase version="3.0.0" key="shc_member_bids" target="my_auctions"  module="frontEnd"><![CDATA[Live auctions]]></phrase>
+        <phrase version="3.0.1" key="shc_dont_win" target="my_auctions"  module="frontEnd"><![CDATA[Auctions I lost]]></phrase>
+        <phrase version="3.0.1" key="shc_no_auctions" target="my_auctions" module="common"><![CDATA[There are no auctions.]]></phrase>
+        <phrase version="3.0.1" key="shc_no_purchases" target="my_purchases" module="common"><![CDATA[You haven't yet purchased anything.]]></phrase>
+        <phrase version="3.0.1" key="shc_no_sold_items" target="my_items_sold" module="common"><![CDATA[You haven't yet sold anything.]]></phrase>
+        <phrase version="3.0.1" key="shc_account_settings" target="profile" module="frontEnd"><![CDATA[Shopping Cart settings]]></phrase>
+        <phrase version="3.0.0" key="shc_billing_address" target="profile" module="frontEnd"><![CDATA[Billing address]]></phrase>
+        <phrase version="3.0.0" key="shc_dhl+name+client_id" target="shopping_cart" module="admin"><![CDATA[Client ID]]></phrase>
+        <phrase version="3.0.0" key="shc_dhl+name+client_secret" target="shopping_cart" module="admin"><![CDATA[Client secret]]></phrase>
+        <phrase version="3.0.0" key="shc_dhl+name+pickup_account" target="shopping_cart" module="admin"><![CDATA[Pickup account]]></phrase>
+        <phrase version="3.0.0" key="shc_ups+name+api_key" target="shopping_cart" module="admin"><![CDATA[API Key]]></phrase>
+        <phrase version="3.0.0" key="shc_ups+name+username" target="shopping_cart" module="admin"><![CDATA[Username]]></phrase>
+        <phrase version="3.0.0" key="shc_fedex+name+api_key" target="shopping_cart" module="admin"><![CDATA[API Key]]></phrase>
+        <phrase version="3.0.0" key="shc_fedex+name+account" target="shopping_cart" module="admin"><![CDATA[Account ID]]></phrase>
+        <phrase version="3.0.0" key="shc_fedex+name+meter" target="shopping_cart" module="admin"><![CDATA[Meter number]]></phrase>
+        <phrase version="3.0.0" key="shc_usps+name+userid" target="shopping_cart" module="admin"><![CDATA[User ID]]></phrase>
+        <phrase version="3.0.0" key="shc_usps_size" target="add_listing" module="common"><![CDATA[Size]]></phrase>
+        <phrase version="3.0.0" key="shc_usps_container" target="add_listing" module="common"><![CDATA[Container]]></phrase>
+        <phrase version="3.0.0" key="shc_usps_machinable" target="add_listing" module="common"><![CDATA[Machinable]]></phrase>
+        <phrase version="3.0.0" key="shc_usps_domestic_services" target="add_listing" module="common"><![CDATA[Domestic services]]></phrase>
+        <phrase version="3.0.0" key="shc_usps_international_services" target="add_listing" module="common"><![CDATA[International services]]></phrase>
+        <phrase version="3.0.0" key="shc_auto_shipping_calculate" target="add_listing" module="frontEnd"><![CDATA[Calculate shipping cost automatically]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_form" target="shopping_cart" module="admin"><![CDATA[Shipping Form]]></phrase>
+        <phrase version="3.0.1" key="shc_payment_gateway_not_configured" target="payment" module="frontEnd"><![CDATA[The seller hasn't yet set up the payment gateway. Please contact the seller for resolving the issue.]]></phrase>
+        <phrase version="3.0.0" key="shc_get_quote" target="my_shopping_cart" module="frontEnd"><![CDATA[Calculate rate]]></phrase>
+        <phrase version="3.0.0" key="shc_shipper_address" target="shopping_cart" module="admin"><![CDATA[Shipper address]]></phrase>
+        <phrase version="3.0.0" key="shc_usps_size_regular" target="add_listing" module="common"><![CDATA[Regular]]></phrase>
+        <phrase version="3.0.0" key="shc_usps_size_large" target="add_listing" module="common"><![CDATA[Large]]></phrase>
+        <phrase version="3.0.0" key="shc_usps_mail_type" target="add_listing" module="common"><![CDATA[Mail type]]></phrase>
+        <phrase version="3.0.1" key="shc_selected_service_unavailable" target="my_shopping_cart" module="frontEnd"><![CDATA[The service is unavailable. Please consider using another service.]]></phrase>
+        <phrase version="3.0.0" key="shc_ups_package_types" target="shopping_cart" module="admin"><![CDATA[Packaging types]]></phrase>
+        <phrase version="3.0.0" key="shc_ups_quote_type" target="shopping_cart" module="admin"><![CDATA[Quote type]]></phrase>
+        <phrase version="3.0.0" key="shc_ups_length_type" target="shopping_cart" module="admin"><![CDATA[Length class]]></phrase>
+        <phrase version="3.0.0" key="shc_ups_insurance" target="shopping_cart" module="admin"><![CDATA[Enable insurance]]></phrase>
+        <phrase version="3.0.0" key="shc_ups_classification" target="shopping_cart" module="admin"><![CDATA[User classification code]]></phrase>
+        <phrase version="3.0.0" key="shc_fedex_rate_type" target="shopping_cart" module="admin"><![CDATA[Rate type]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_services" target="add_listing" module="common"><![CDATA[Services]]></phrase>
+        <phrase version="3.0.0" key="shc_fedex_dropoff_type" target="add_listing" module="common"><![CDATA[Dropoff type]]></phrase>
+        <phrase version="3.0.0" key="shc_fedex_packaging_type" target="add_listing" module="common"><![CDATA[Packaging type]]></phrase>
+        <phrase version="3.0.0" key="shc_ups_origin" target="add_listing" module="common"><![CDATA[Origin]]></phrase>
+        <phrase version="3.0.0" key="shc_ups_pickup_methods" target="add_listing" module="common"><![CDATA[Pickup methods]]></phrase>
+        <phrase version="3.0.0" key="shc_test_mode" target="shopping_cart" module="admin"><![CDATA[Test mode]]></phrase>
+        <phrase version="3.0.0" key="shc_dhl_transport_mode" target="add_listing" module="common"><![CDATA[Transport mode]]></phrase>
+        <phrase version="3.0.0" key="shc_dhl_hs_code" target="add_listing" module="common"><![CDATA[HS Code]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_method_not_configured" target="payment" module="frontEnd"><![CDATA[The seller hasn't yet set up the {method} shipping method. Please contact the seller for resolving the issue.]]></phrase>
+        <phrase version="3.0.0" key="shc_commission_unit_percent" target="shopping_cart" module="admin"><![CDATA[Percentage]]></phrase>
+        <phrase version="3.0.1" key="shc_commission_unit_fixed" target="shopping_cart" module="admin"><![CDATA[Flat]]></phrase>
+        <phrase version="3.0.0" key="shc_no_winner" target="shopping_cart" module="common" js="1"><![CDATA[No winner]]></phrase>
+        <phrase version="3.0.0" key="shc_progress" target="shopping_cart" module="common" js="1"><![CDATA[In progress]]></phrase>
+        <phrase version="3.0.1" key="shc_auction_details" module="common" js="1"><![CDATA[Auction Details]]></phrase>
+        <phrase version="3.0.1" key="shc_start_time" target="shopping_cart" module="common"><![CDATA[Started]]></phrase>
+        <phrase version="3.0.0" key="shc_payment_status" target="shopping_cart" module="common"><![CDATA[Payment status]]></phrase>
+        <phrase version="3.0.1" key="shc_has_winner" target="shopping_cart" module="admin"><![CDATA[Winner]]></phrase>
+        <phrase version="3.0.0" key="shc_file_not_found" target="my_purchases" module="common"><![CDATA[File not found]]></phrase>
+        <phrase version="3.0.1" key="shc_access_denied_file" target="my_purchases" module="common"><![CDATA[You don't have access to the content.]]></phrase>
+        <phrase version="3.0.0" key="shc_download" target="my_purchases" module="common"><![CDATA[Download]]></phrase>
+        <phrase version="3.0.0" key="shc_digital_product" target="add_listing" module="common"><![CDATA[Digital product]]></phrase>
+        <phrase version="3.0.1" key="shc_update_listings" target="shopping_cart" module="admin"><![CDATA[Update Listings]]></phrase>
+        <phrase version="3.0.1" key="shc_confirm_cancel_upddate_listings" target="shopping_cart" module="admin"><![CDATA[If you cancel updating the ads you won't be able to enable the shopping cart for the existing listings. Are you sure you want to proceed?]]></phrase>
+        <phrase version="3.0.1" key="shc_update_listings_notice" target="shopping_cart" module="admin"><![CDATA[You have {count} listings. Click [here] to enable the shopping cart for the listings or click [cancel] if don't need the option.]]></phrase>
+        <phrase version="3.0.1" key="shc_before_update_hint" target="shopping_cart" module="admin"><![CDATA[Please don't close the page until updating is complete.]]></phrase>
+        <phrase version="3.0.1" key="shc_updating_caption" target="shopping_cart" module="admin"><![CDATA[Updating is in process, please wait.]]></phrase>
+        <phrase version="3.0.1" key="shc_percent_from_price" target="shopping_cart" module="admin"><![CDATA[of the total price]]></phrase>
+        <phrase version="3.0.1" key="shc_update_completed" target="shopping_cart" module="admin"><![CDATA[Updating is complete. <b>{count}</b> listing(s) updated.]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_fields+name+location_level1" module="common"><![CDATA[Country]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_fields+name+location_level2" module="common"><![CDATA[State]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_fields+name+location_level3" module="common"><![CDATA[City]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_fields+name+zip" module="common"><![CDATA[Postal Code]]></phrase>
+        <phrase version="3.0.0" key="shc_shipping_fields+name+address" module="common"><![CDATA[Address]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_fields+description+location_level2" module="common"><![CDATA[Please specify your state code in ISO format (for example, NY)]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_fields+description+location_level3" module="common"><![CDATA[Please specify your city in English (for example, Brooklyn)]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_fields+description+address" module="common"><![CDATA[Please specify your address in English (for example, 244 Sumpter St, Brooklyn, NY 11233, USA)]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_price_type" target="add_listing" module="common"><![CDATA[Shipping]]></phrase>
+        <phrase version="3.1.3" key="shc_not_available_payment_gateways" target="listing_details" module="frontEnd"><![CDATA[Please contact the seller]]></phrase>
+        <phrase version="3.0.1" key="shc_do_you_want_close_auction" target="my_listings" module="frontEnd" js="1"><![CDATA[Are you sure you want to close the auction?]]></phrase>
+        <phrase version="3.0.0" key="shc_auto_rate_period_des" target="settings" module="admin"><![CDATA[hours]]></phrase>
+        <phrase version="3.0.1" key="shc_go_to_auction" module="frontEnd"><![CDATA[Go to the auction page]]></phrase>
+        <phrase version="3.0.0" key="shc_courier" target="add_listing" module="common"><![CDATA[Courier]]></phrase>
+        <phrase version="3.0.0" key="shc_pickup" target="add_listing" module="common"><![CDATA[Pickup]]></phrase>
+        <phrase version="3.0.1" key="shc_not_processed" target="my_auctions" module="frontEnd"><![CDATA[Unprocessed]]></phrase>
+        <phrase version="3.0.1" key="shc_payment_cash" module="common"><![CDATA[Cash payment]]></phrase>
+        <phrase version="3.0.0" key="shc_payment_type" target="my_purchases" module="common"><![CDATA[Payment type]]></phrase>
+        <phrase version="3.0.0" key="shc_make_paid" target="my_items_sold" module="common"><![CDATA[Mark as paid]]></phrase>
+        <phrase version="3.0.1" key="shc_do_you_want_make_paid" target="my_items_sold" module="common" js="1"><![CDATA[Are you sure you want to mark the order as paid?]]></phrase>
+        <phrase version="3.0.1" key="shc_set_paid_success" target="my_items_sold" module="common"><![CDATA[The payment status has been changed to paid.]]></phrase>
+        <phrase version="3.0.1" key="shc_cash_unvailable" target="my_shopping_cart" module="frontEnd"><![CDATA[The cash option is unavailable for the seller.]]></phrase>
+        <phrase version="3.0.1" key="shc_cannot_edit_auction" target="add_listing" module="frontEnd"><![CDATA[The auction is still active; you can't edit the details.]]></phrase>
+        <phrase version="3.0.0" key="shc_after_more" target="listing_details" module="common"><![CDATA[off when ordering from {count}]]></phrase>
+        <phrase version="3.0.1" key="shc_bank_transfer" target="my_purchases" module="common"><![CDATA[Bank Transfer]]></phrase>
+        <phrase version="3.0.1" key="shc_price_field_not_exists" target="shopping_cart" module="admin"><![CDATA[The Price field doesn\'t exist in the listing table; please, add the field from the Listing Field manager and enable it on the listing form. ]]></phrase>
+        <phrase version="3.0.1" key="shc_already_added" target="listing_details" module="frontEnd"><![CDATA[You've already added the product to the cart.]]></phrase>
+        <phrase version="3.0.1" key="shc_duration" target="add_listing" module="common"><![CDATA[Duration]]></phrase>
+        <phrase version="3.0.1" key="shc_location" target="add_listing" module="common"><![CDATA[Location]]></phrase>
+        <phrase version="3.0.1" key="shc_notice" module="frontEnd" js="1"><![CDATA[Notice]]></phrase>
+        <phrase version="3.0.1" key="shc_auctions" target="shopping_cart" module="admin" js="1"><![CDATA[Auctions]]></phrase>
+        <phrase version="3.0.1" key="shc_shipping_settings" target="shopping_cart" module="admin"><![CDATA[Shipping Settings]]></phrase>
+        <phrase version="3.0.1" key="shc_comission_enable_notice" target="shopping_cart" module="admin"><![CDATA[You should install and set up a payment gateway with split payment option (stripe or YooKassa) to enable the commission]]></phrase>
+        <phrase version="3.0.2" key="shc_auto_bid" target="listing_details" module="common"><![CDATA[Auto Bid]]></phrase>
+        <phrase version="3.1.0" key="shc_order_not_paid" target="my_purchases" module="common"><![CDATA[You can't download the file; the order is not paid]]></phrase>
+        <phrase version="3.1.0" key="shc_escrow_enable_notice" target="shopping_cart" module="admin"><![CDATA[You should install and set up a payment gateway with payment escrow option (ecrow, stripe or YooKassa) to enable the safe deal]]></phrase>
+        <phrase version="3.1.0" key="shc_escrow_item" target="listing_details" module="common"><![CDATA[Safe deal]]></phrase>
+        <phrase version="3.1.0" key="shc_order_confirm" target="shopping_cart" module="common" js="1"><![CDATA[Confirm order]]></phrase>
+        <phrase version="3.1.0" key="shc_cancel_order" target="my_purchases" module="frontEnd"><![CDATA[Cancel order]]></phrase>
+        <phrase version="3.1.0" key="shc_escrow_confirmed" target="shopping_cart" module="common" js="1"><![CDATA[Confirmed]]></phrase>
+        <phrase version="3.1.0" key="shc_escrow_canceled" target="shopping_cart" module="common" js="1"><![CDATA[Canceled]]></phrase>
+        <phrase version="3.1.0" key="shc_cancel_reason" target="my_purchases" module="frontEnd"><![CDATA[Reason]]></phrase>
+        <phrase version="3.1.0" key="shc_do_you_want_confirm_order" target="shopping_cart" module="common" js="1"><![CDATA[Are you sure you want to confirm the order?]]></phrase>
+        <phrase version="3.1.0" key="shc_do_you_want_cancel_order" target="my_purchases" module="frontEnd"><![CDATA[Are you sure you want to cancel the order]]></phrase>
+        <phrase version="3.1.0" key="shc_order_confirmed_success" target="shopping_cart" module="common" js="1"><![CDATA[The order has been confirmed.]]></phrase>
+        <phrase version="3.1.0" key="shc_order_canceled_success" target="shopping_cart" module="common" js="1"><![CDATA[The order has been canceled.]]></phrase>
+        <phrase version="3.1.0" key="shc_escrow_expiration" target="shopping_cart" module="common" js="1"><![CDATA[Date of expiration deal]]></phrase>
+        <phrase version="3.1.0" key="shc_order_unpaid" target="shopping_cart" module="common" js="1"><![CDATA[Order not paid]]></phrase>
+        <phrase version="3.1.0" key="shc_ok" target="my_purchases" module="common" js="1"><![CDATA[OK]]></phrase>
+        <phrase version="3.1.0" key="shc_deal_id" target="my_purchases" module="common" js="1"><![CDATA[Deal ID]]></phrase>
+        <phrase version="3.1.0" key="shc_payout_id" target="my_purchases" module="common" js="1"><![CDATA[Payout ID]]></phrase>
+        <phrase version="3.1.0" key="shc_refund_id" target="my_purchases" module="common" js="1"><![CDATA[Refund ID]]></phrase>
+        <phrase version="3.1.1" key="shc_pickup_address" target="my_shopping_cart" module="frontEnd" js="1"><![CDATA[Pickup Address]]></phrase>
+        <phrase version="3.1.1" key="shc_pickup_no_address_hint" target="my_shopping_cart" module="frontEnd"><![CDATA[Please, [contact the seller] to get a more accurate pickup address.]]></phrase>
+        <phrase version="3.1.3" key="shc_done_cash_payment" target="my_shopping_cart" module="frontEnd"><![CDATA[Thank you for purchasing the product(s)!<br />The seller will contact you to discuss payment options and clarify delivery details.<br />Please stay reachable.]]></phrase>
+        <phrase version="3.1.3" key="shc_quantity_changed_hint" target="shopping_cart" module="frontEnd"><![CDATA[Item quantity changed, available: {quantity}]]></phrase>
+    </phrases>
+
+    <config version="3.0.1" key="shc_module" name="Shopping Cart module" type="bool" group="0"><![CDATA[1]]></config>
+    <config version="3.0.0" key="shc_module_auction" name="Auction module" type="text" group="0"><![CDATA[1]]></config>
+    <config version="3.0.1" key="shc_module_listing" name="Standard Ad" description="The option allows you to disable posting standard ads on the site." type="text" group="0"><![CDATA[1]]></config>
+    <config version="3.0.1" key="shc_method" name="Recipient of payments" description="Administrator - payments will be sent to the Administrator;  Seller - payments will be sent to sellers" type="text" group="0"><![CDATA[single]]></config>
+    <config version="3.0.0" key="shc_count_items_block" name="Visible number of items in cart" type="text" group="0"><![CDATA[10]]></config>
+    <config version="3.0.0" key="shc_time_format" name="Time format" type="text" group="0"><![CDATA[%H:%I:%S]]></config>
+    <config version="3.0.0" key="shc_weight_unit" name="Weight unit" type="text" group="0"><![CDATA[kgs]]></config>
+    <config version="3.0.1" key="shc_currency_rate_url" name="Currency RSS feed" type="text" description="You might need to edit REGEXP rules in the code if you want to change the setting." group="0"><![CDATA[http://themoneyconverter.com/rss-feed/USD/rss.xml]]></config>
+    <config version="3.0.0" key="shc_allowed_shipping_methods" name="Allowed shipping methods" type="text" group="0"><![CDATA[pickup,courier]]></config>
+    <config version="3.0.1" key="shc_auto_rate" name="Automatic bid" description="The option allows you to bid at auction in auto mode within a fixed period." type="bool" group="0"><![CDATA[0]]></config>
+    <config version="3.0.1" key="shc_auto_rate_period" name="Automatic bid interval" type="text" description="Hours" group="0"><![CDATA[0]]></config>
+    <config version="3.0.1" key="shc_account_types" name="" type="text" description="Select the account type(s) that will be allowed to sell items using the Shopping Cart &amp; Bidding plugin." group="0"><![CDATA[dealer]]></config>
+    <config version="3.0.0" key="shc_orders_per_page" name="Number of orders per page" type="text" group="0"><![CDATA[20]]></config>
+    <config version="3.0.0" key="shc_payment_gateways" name="Payment Gateways" type="text" description="" group="0"><![CDATA[paypal,2co]]></config>
+    <config version="3.0.0" key="shc_shipping_country" name="Country" type="text" description="" group="0"><![CDATA[]]></config>
+    <config version="3.0.0" key="shc_shipping_state" name="State (ISO code)" type="text" description="" group="0"><![CDATA[]]></config>
+    <config version="3.0.0" key="shc_shipping_city" name="City" type="text" description="" group="0"><![CDATA[]]></config>
+    <config version="3.0.0" key="shc_shipping_zip" name="Zip code" type="text" description="" group="0"><![CDATA[]]></config>
+    <config version="3.0.1" key="shc_show_unavailable_listings" name="Show listings with no stock to sell" type="bool" description="" group="0"><![CDATA[1]]></config>
+    <config version="3.0.0" key="shc_commission_enable" name="Enable commission" type="bool" description="" group="0"><![CDATA[0]]></config>
+    <config version="3.0.1" key="shc_commission_type" name="Commission type" type="text" description="Calculate % of an item price and set a flat commission." group="0"><![CDATA[percent]]></config>
+    <config version="3.0.1" key="shc_commission" name="Commission sales" type="text" description="Set % of sales" group="0"><![CDATA[0]]></config>
+    <config version="3.0.0" key="shc_commission_add" name="Add commission to a seller's price" type="text" description="The option allows you to set a commission on sales, which is calculated when adding a listing. A commission is either added or dedicated from an item price." group="0"><![CDATA[0]]></config>
+    <config version="3.0.1" key="shc_interval_refresh_cart" name="Keep items in cart for" type="text" description="Hours" group="0"><![CDATA[12]]></config>
+    <config version="3.0.1" key="shc_price_format_tabs" name="Position of tabs on the listing form" type="text" description="" group="0"><![CDATA[auction,fixed,listing]]></config>
+    <config version="3.0.1" key="shc_shipping_fields" name="Warehouse address fields" type="bool" description="Sellers will need to fill out the fields on the Add/Edit Listing pages so that buyers could pick up bought items at the address." group="0"><![CDATA[1]]></config>
+    <config version="3.1.1" key="shc_shipping_step" name="Shipping step on the order processing page" type="bool" description="Allows buyers to select a delivery method and enter a delivery address; if disabled, only the pickup option will be available." group="0"><![CDATA[1]]></config>
+    <config version="3.0.1" key="shc_method_currency_convert" name="Currency conversion method" type="bool" description="" group="0"><![CDATA[multi]]></config>
+    <config version="3.0.1" key="shc_shipping_price_fixed" name="Shipping costs" type="bool" description="" group="0"><![CDATA[single]]></config>
+    <config version="3.0.1" key="shc_items_cart_duration" name="Item activity period in cart" type="bool" description="" group="0"><![CDATA[unlimited]]></config>
+    <config version="3.0.1" key="shc_auction_cancel_bid_seller" name="Allow sellers to remove bids" type="bool" description="" group="0"><![CDATA[0]]></config>
+    <config version="3.0.1" key="shc_auction_cancel_bid_buyer" name="Allow buyers to remove the last bid" type="bool" description="" group="0"><![CDATA[1]]></config>
+    <config version="3.0.1" key="shc_buy_now" name="Buy Now option" type="bool" description="" group="0"><![CDATA[1]]></config>
+    <config version="3.0.0" key="shc_shipper_address" name="Shipper address" type="text" description="" group="0"><![CDATA[]]></config>
+    <config version="3.0.1" key="shc_use_multifield" name="Use Multifield plugin on shipping form" description="Enabling the plugin allows your users to simplify filling out data in the location fields." type="bool" group="0"><![CDATA[0]]></config>
+    <config version="3.0.0" key="shc_shipping_calc" name="Enable dynamic shipping methods" type="bool" group="0"><![CDATA[0]]></config>
+    <config version="3.0.1" key="shc_digital_product" name="Selling digital products" type="bool" group="0"><![CDATA[0]]></config>
+    <config version="3.0.1" key="shc_count_exists_listings" name="Number of existing listings" type="int" group="0"><![CDATA[0]]></config>
+    <config version="3.0.0" key="shc_update_listings" name="Update listings" type="bool" group="0"><![CDATA[0]]></config>
+    <config version="3.0.1" key="shc_allow_cash" name="Allow cash payments" type="bool" group="0"><![CDATA[0]]></config>
+    <config version="3.1.0" key="shc_escrow" name="Allow secure payments" description="Enable payments with Safe Deal (Escrow)" type="bool" group="0"><![CDATA[0]]></config>
+    <config version="3.1.0" key="shc_debug_escrow" name="Allow to check escrow steps without create real actions in payment gateway" type="bool" group="0"><![CDATA[0]]></config>
+
+    <updates>
+        <update version="1.0.1" files="auction_payment.inc.php,my_auctions.inc.php,my_items_sold.inc.php,my_purchases.inc.php,my_shopping_cart.inc.php,rlShoppingCart.class.php,auction_payment.tpl,my_auctions.tpl,my_items_sold.tpl,my_purchases.tpl,my_shopping_cart.tpl"><![CDATA[]]></update>
+        <update version="1.0.2" files="help/shopping-cart-bidding-speed-guide.pdf,auction_payment.tpl,my_items_sold.inc.php,my_items_sold.tpl,my_purchases.inc.php,my_purchases.tpl,my_shopping_cart.tpl,rlShoppingCart.class.php">
+            <![CDATA[
+                global $rlDb;
+
+                $sql = "ALTER TABLE `" . RL_DBPREFIX . "listing_types` ADD `shc_module` ENUM( '0', '1' ) NOT NULL DEFAULT '1' AFTER `Status`";
+                $rlDb->query($sql);
+            ]]>
+        </update>
+        <update version="1.0.3" files="help/shopping-cart-bidding-speed-guide.pdf,auction_payment.tpl,my_shopping_cart.tpl,rlShoppingCart.class.php,admin/shopping_cart.tpl">
+            <![CDATA[]]>
+        </update>
+        <update version="1.0.4" files="">
+            <![CDATA[]]>
+        </update>
+        <update version="2.0.0" files="admin/shopping_cart.inc.php,static/lib.js,auction_payment.inc.php,auction_payment.tpl,my_auctions.inc.php,my_items_sold.inc.php,my_purchases.inc.php,my_purchases.tpl,my_shopping_cart.inc.php,my_shopping_cart.tpl,rlInstall.class.php,rlShoppingCart.class.php">
+            <![CDATA[
+                global $reefless;
+                $reefless->loadClass('Install', null, 'shoppingCart');
+                $GLOBALS['rlInstall']->update('2.0.0');
+            ]]>
+        </update>
+        <update version="2.0.1" files="rlShoppingCart.class.php"><![CDATA[]]></update>
+        <update version="2.0.2" files=""><![CDATA[]]></update>
+        <update version="2.0.3" files="auction_payment.inc.php,my_shopping_cart.inc.php,rlShoppingCart.class.php"><![CDATA[]]></update>
+        <update version="2.1.0" files="admin/shopping_cart.inc.php,admin/shopping_cart.tpl,auction_payment.inc.php,my_shopping_cart.inc.php,rlInstall.class.php,rlShoppingCart.class.php,my_auctions.inc.php,static/lib.js"><![CDATA[
+            global $rlDb;
+
+            $sql = "ALTER TABLE `" . RL_DBPREFIX . "shc_orders` ADD `Commission` DOUBLE DEFAULT '0' NOT NULL;";
+            $rlDb->query($sql);
+
+            $sql = "ALTER TABLE `" . RL_DBPREFIX . "shc_orders` ADD `Commission_total` DOUBLE DEFAULT '0' NOT NULL;";
+            $rlDb->query($sql);
+        ]]></update>
+        <update version="3.0.0" files=".htaccess,admin/shopping_cart.inc.php,admin/shopping_cart.tpl,admin/view/add_listing_fields.tpl,admin/view/add_listing_fields_shipping.tpl,admin/view/auction.tpl,admin/view/auction_details.tpl,admin/view/configs.tpl,admin/view/digital_product.tpl,admin/view/field_form.tpl,admin/view/listing_type.tpl,admin/view/membership_plan.tpl,admin/view/order_details.tpl,admin/view/price_format_form.tpl,admin/view/shipping_fields.tpl,admin/view/shipping_form.tpl,admin/view/shipping_info.tpl,admin/view/shipping_methods.tpl,admin/view/tabs_handler.tpl,admin/view/update_interface.tpl,admin/view/update_listings.tpl,auction_payment.inc.php,auction_payment.tpl,i18n/ru.json,models/Auction.php,models/AuctionPayment.php,models/CartProcessing.php,models/Currency.php,models/MyAuctions.php,models/Orders.php,models/Payment.php,models/PriceFormat.php,models/PrintOrder.php,models/Shipping.php,models/Shopping.php,models/XMLParser.php,models/admin/Auction.php,models/admin/Configs.php,models/admin/Shipping.php,models/admin/ShippingFields.php,models/admin/Shopping.php,models/admin/UpdateListings.php,models/admin/MigrateData.php,my_auctions.inc.php,my_auctions.tpl,my_items_sold.inc.php,my_items_sold.tpl,my_purchases.inc.php,my_purchases.tpl,my_shopping_cart.inc.php,my_shopping_cart.tpl,product_download.php,rlInstall.class.php,rlShoppingCart.class.php,shipping/ShippingMethod.php,shipping/dhl/Dhl.php,shipping/dhl/static.inc.php,shipping/dhl/view/add_listing.tpl,shipping/dhl/view/ap_add_listing.tpl,shipping/dhl/view/cart_step.tpl,shipping/fedex/Fedex.php,shipping/fedex/static.inc.php,shipping/fedex/view/add_listing.tpl,shipping/fedex/view/ap_add_listing.tpl,shipping/fedex/view/cart_step.tpl,shipping/fedex/view/request.tpl,shipping/ups/Ups.php,shipping/ups/static.inc.php,shipping/ups/view/add_listing.tpl,shipping/ups/view/ap_add_listing.tpl,shipping/ups/view/cart_step.tpl,shipping/ups/view/request.tpl,shipping/usps/Usps.php,shipping/usps/static.inc.php,shipping/usps/view/add_listing.tpl,shipping/usps/view/ap_add_listing.tpl,shipping/usps/view/cart_step.tpl,static/cash.css,static/details.css,static/icons.svg,static/lib.js,static/lib_admin.js,static/lib_admin_listings.js,static/lib_basic.js,static/manage-listing.css,static/moment-timezone-with-data.min.js,static/moment.min.js,static/my-cart.css,static/my-listings.css,static/style_admin.css,static.inc.php,view/account_settings.tpl,view/add_listing_fields.tpl,view/add_listing_fields_shipping.tpl,view/auction_details.tpl,view/auction_details_live.tpl,view/auction_info_short.tpl,view/auth.tpl,view/bid_history.tpl,view/bids.tpl,view/cart.tpl,view/cart_flatty.tpl,view/cart_items.tpl,view/cash.tpl,view/checkout.tpl,view/digital_product.tpl,view/email.tpl,view/footer.tpl,view/grid_icon.tpl,view/grid_icon_featured.tpl,view/header.tpl,view/items.tpl,view/items_unavailable.tpl,view/listing_details.tpl,view/my_auctions.tpl,view/my_auctions_won.tpl,view/my_listing.tpl,view/my_listings.tpl,view/order_details.tpl,view/order_details_mail.tpl,view/order_details_print.tpl,view/price_format_form.tpl,view/shipping.tpl,view/shipping_address.tpl,view/shipping_info.tpl,admin/view/migrate_data.tpl,admin/view/migrate_interface.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'shoppingCart');
+            $GLOBALS['rlInstall']->update300();
+        ]]></update>
+        <update version="3.0.1" files="admin/shopping_cart.inc.php,admin/shopping_cart.tpl,admin/view/add_listing_fields.tpl,admin/view/auction.tpl,admin/view/configs.tpl,admin/view/order_details.tpl,admin/view/update_listings.tpl,i18n/ru.json,install.xml,models/Auction.php,models/AuctionPayment.php,models/CartProcessing.php,models/Currency.php,models/MyAuctions.php,models/Orders.php,models/Payment.php,models/PriceFormat.php,models/PrintOrder.php,models/Shipping.php,models/Shopping.php,models/admin/Auction.php,models/admin/Configs.php,models/admin/MigrateData.php,models/admin/Shipping.php,models/admin/ShippingFields.php,models/admin/Shopping.php,models/admin/UpdateListings.php,rlInstall.class.php,rlShoppingCart.class.php,static/lib_admin.js,static/lib_basic.js,view/add_listing_fields.tpl,view/add_listing_fields_shipping.tpl,view/bids.tpl,view/shipping_address.tpl,shipping/usps/view/add_listing.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'shoppingCart');
+            $GLOBALS['rlInstall']->update301();
+        ]]></update>
+        <update version="3.0.2" files="admin/view/order_details.tpl,i18n/ru.json,models/Auction.php,models/Orders.php,models/Shipping.php,models/admin/Shopping.php,my_items_sold.tpl,my_purchases.inc.php,my_purchases.tpl,static/lib.js,view/listing_details.tpl,view/price_format_form.tpl,view/shipping.tpl,view/auction_details_live.tpl,view/bids.tpl,view/order_details_mail.tpl,view/my_listing.tpl,models/admin/Auction.php,models/CartProcessing.php,rlShoppingCart.class.php,admin/shopping_cart.inc.php,models/Shopping.php,shipping/ups/view/ap_add_listing.tpl,view/add_listing_fields.tpl,auction_payment.tpl,rlInstall.class.php,models/Payment.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'shoppingCart');
+            $GLOBALS['rlInstall']->update302();
+        ]]></update>
+        <update version="3.1.0" files="admin/shopping_cart.inc.php,admin/shopping_cart.tpl,admin/view/auction.tpl,admin/view/configs.tpl,admin/view/digital_product.tpl,admin/view/order_confirm.tpl,admin/view/order_details.tpl,i18n/ru.json,models/CartProcessing.php,models/Currency.php,models/Escrow.php,models/EscrowTest.php,models/Orders.php,models/Payment.php,models/PriceFormat.php,models/Shipping.php,models/Shopping.php,models/admin/Auction.php,models/admin/Configs.php,models/admin/ShippingFields.php,models/admin/UpdateListings.php,my_auctions.inc.php,my_items_sold.inc.php,my_items_sold.tpl,my_purchases.inc.php,my_purchases.tpl,my_shopping_cart.inc.php,rlInstall.class.php,rlShoppingCart.class.php,static/canceled.svg,static/confirmed.svg,static/details.css,static/escrow.svg,static/lib.js,static/lib_basic.js,static/my-cart.css,static/pending.svg,static/style_admin.css,view/account_settings.tpl,view/auction_details.tpl,view/auth.tpl,view/cart_items.tpl,view/checkout.tpl,view/digital_product.tpl,view/items.tpl,view/listing_details.tpl,view/order_confirm.tpl,view/order_details.tpl,view/order_details_mail.tpl,view/order_escrow.tpl,view/shipping.tpl,view/shipping_address.tpl,shipping/ShippingMethod.php,shipping/dhl/Dhl.php,shipping/fedex/Fedex.php,shipping/ups/Ups.php,shipping/usps/Usps.php,shipping/fedex/view/add_listing.tpl,shipping/fedex/view/cart_step.tpl,shipping/ups/view/add_listing.tpl,shipping/ups/view/cart_step.tpl,shipping/usps/view/add_listing.tpl,shipping/usps/view/cart_step.tpl,admin/view/add_listing_fields_shipping.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'shoppingCart');
+            $GLOBALS['rlInstall']->update310();
+        ]]></update>
+        <update version="3.1.1" files="auction_payment.tpl,i18n/ru.json,models/Auction.php,models/AuctionPayment.php,models/CartProcessing.php,models/Currency.php,models/MyAuctions.php,models/Orders.php,models/Shipping.php,models/Shopping.php,my_auctions.inc.php,my_auctions.tpl,rlInstall.class.php,rlShoppingCart.class.php,static/lib.js,static/lib_basic.js,static/my-cart.css,view/add_listing_fields.tpl,view/add_listing_fields_shipping.tpl,view/auth.tpl,view/cart.tpl,view/cart_items.tpl,view/checkout.tpl,view/footer.tpl,view/header.tpl,view/items.tpl,view/listing_details.tpl,view/my_auctions.tpl,view/my_auctions_items.tpl,view/my_auctions_won.tpl,view/my_auctions_won_items.tpl,view/price_format_form.tpl,view/shipping.tpl"><![CDATA[]]></update>
+        <update version="3.1.2" files="admin/shopping_cart.inc.php,admin/view/add_listing_fields.tpl,admin/view/price_format_form.tpl,install.xml,models/Auction.php,models/CartProcessing.php,models/MyAuctions.php,models/Orders.php,models/Payment.php,models/Shopping.php,product_download.php,rlInstall.class.php,rlShoppingCart.class.php,static/lib.js,static/lib_admin_listings.js,static/manage-listing.css,static/style_admin.css,view/add_listing_fields.tpl,view/add_listing_fields_shipping.tpl,view/listing_details.tpl,view/price_format_form.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'shoppingCart');
+            $GLOBALS['rlInstall']->update312();
+        ]]></update>
+        <update version="3.1.3" files="admin/view/add_listing_fields.tpl,admin/view/configs.tpl,i18n/ru.json,models/AuctionPayment.php,models/CartProcessing.php,models/Orders.php,models/Payment.php,models/Shopping.php,my_shopping_cart.inc.php,my_shopping_cart.tpl,rlShoppingCart.class.php,static/lib.js,static/lib_basic.js,view/account_settings.tpl,view/auth.tpl,view/cart.tpl,view/cart_items.tpl,view/header.tpl,view/items.tpl,view/items_unavailable.tpl,view/listing_details.tpl,view/order_details.tpl,view/price_format_form.tpl,view/shipping.tpl"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'shoppingCart');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

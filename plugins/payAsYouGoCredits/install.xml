@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="payAsYouGoCredits">
+    <title>Pay-as-you-go Credits</title>
+    <description>Allows users to buy pay-as-you-go credits for purchasing packages, plans, and other services</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.1.2</version>
+    <date>03.08.2012</date>
+    <controller>credits_manager</controller>
+    <class>PayAsYouGoCredits</class>
+    <compatible>4.8.1</compatible>
+
+    <files>
+        <file>admin/.htaccess</file>
+        <file>admin/apTplAccountsForm.tpl</file>
+        <file>admin/credits_manager.inc.php</file>
+        <file>admin/credits_manager.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>static/.htaccess</file>
+        <file>static/gallery.png</file>
+        <file>static/style.css</file>
+        <file>gateway.tpl</file>
+        <file>my_credits.inc.php</file>
+        <file>my_credits.tpl</file>
+        <file>packages.tpl</file>
+        <file>rlCredits.class.php</file>
+        <file>rlPayAsYouGoCredits.class.php</file>
+        <file>rlPayAsYouGoCreditsGateway.class.php</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="phpGetPaymentGatewaysAfter" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="apTplAccountsForm" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpAccountsPost" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpAccountsAfterAdd" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpAccountsAfterEdit" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="tplHeader" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="paymentHistorySqlWhere" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="cronAdditional" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="phpGetPaymentGatewaysItem" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpPaymetGatewaysSettings" version="2.1.0"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest" version="2.1.2"><![CDATA[]]></hook>
+        <hook name="apExtTransactionItem" version="2.1.2"><![CDATA[]]></hook>
+    </hooks>
+
+    <pages>
+        <page key="my_credits" name="My Credits" type="system" path="my-credits" login="1" controller="my_credits" menus="2" tpl="1"><![CDATA[]]></page>
+    </pages>
+
+    <phrases>
+        <phrase key="paygc_total_credits" module="admin" version="2.1.2"><![CDATA[Number of Credits]]></phrase>
+        <phrase key="paygc_credits_manager" module="admin" target="credits_manager" js="1" version="2.1.2"><![CDATA[Credit Package Manager]]></phrase>
+        <phrase key="paygc_account_credits" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[Available balance:]]></phrase>
+        <phrase key="paygc_buy_credits" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[Buy Credits]]></phrase>
+        <phrase key="paygc_add_item" module="admin" target="credits_manager" version="2.1.2"><![CDATA[Add a Package]]></phrase>
+        <phrase key="paygc_edit_item" module="admin" target="credits_manager" version="2.1.2"><![CDATA[Edit Package]]></phrase>
+        <phrase key="paygc_item_added" module="admin" target="credits_manager" version="2.1.2"><![CDATA[The Package has been added successfully]]></phrase>
+        <phrase key="paygc_item_edited" module="admin" target="credits_manager" version="2.1.2"><![CDATA[The Package has been edited successfully]]></phrase>
+        <phrase key="ext_credits" module="admin" target="credits_manager" js="1" version="2.1.2"><![CDATA[Credits]]></phrase>
+        <phrase key="paygc_desc" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[As an alternative to money payments our site offers you Pay-As-You-Go Credits.<br>After purchasing a credit package you will be able to pay for different services on our site.]]></phrase>
+        <phrase key="paygc_desc_period" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[Credits are effective within <b>{number} months</b> from the date of purchase.]]></phrase>
+        <phrase key="paygc_credits_count" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[Credits]]></phrase>
+        <phrase key="paygc_give_youself_credits" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[Credit Packages]]></phrase>
+        <phrase key="paygc_not_sufficient" module="frontEnd"><![CDATA[Unfortunately, you do not have enough credits to pay for the service.]]></phrase>
+        <phrase key="paygc_use_credits" module="frontEnd"><![CDATA[Use My Pay-As-You-Go Credits]]></phrase>
+        <phrase key="paygc_empty_credit" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[Please choose a <b>Number of Credits</b> from the list.]]></phrase>
+        <phrase key="paygc_view_history" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[View payment history]]></phrase>
+        <phrase key="paygc_purchase_credits" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[Purchase Credits]]></phrase>
+        <phrase key="paygc_available_credits" module="frontEnd" version="2.1.2"><![CDATA[Available Credits]]></phrase>
+        <phrase key="paygc_required_amount" module="frontEnd" version="2.1.2"><![CDATA[Required Amount]]></phrase>
+        <phrase key="paygc_no_packages" module="system" version="2.1.2"><![CDATA[There are no available packages]]></phrase>
+        <phrase key="rate_type_1" module="admin" target="payment_gateways" version="2.1.2"><![CDATA[One to one]]></phrase>
+        <phrase key="rate_type_auto" module="admin" target="payment_gateways" version="2.1.2"><![CDATA[Automatic]]></phrase>
+        <phrase key="paygc_one_credit" module="frontEnd" target="my_credits" version="2.1.2"><![CDATA[credit]]></phrase>
+        <phrase key="payment_gateways+name+payAsYouGoCredits" module="common" version="2.1.2"><![CDATA[Pay-as-you-go Credits]]></phrase>
+    </phrases>
+
+    <config version="2.0.0" key="payAsYouGoCredits_period" name="Credits active period" description="month(s); Set 0 for unlimited period" type="text" validate="int" group="6"><![CDATA[0]]></config>
+    <config version="2.0.0" key="payAsYouGoCredits_rate_type" name="Credit cost calculation" values="1,auto" group="6" description="1 - One to one; auto - Automatic" type="select"><![CDATA[1]]></config>
+    <config version="2.0.0" key="payAsYouGoCredits_rate" name="Default cost of a credit" validate="int" group="0"><![CDATA[0]]></config>
+
+    <updates>
+        <update version="1.0.1" files="gateway.tpl,my_credits.inc.php"><![CDATA[]]></update>
+        <update version="1.1.0" files=""><![CDATA[]]></update>
+        <update version="1.1.1" files="rlPayAsYouGoCredits.class.php,my_credits.inc.php,my_credits.tpl,packages.tpl"><![CDATA[]]></update>
+        <update version="2.0.0" files="admin/credits_manager.inc.php,admin/credits_manager.tpl,controllers/post.gateway.php,controllers/pre.gateway.php,gateway.tpl,my_credits.inc.php,my_credits.tpl,packages.tpl,return_page.tpl,rlCredits.class.php,rlPayAsYouGoCredits.class.php"><![CDATA[]]></update>
+        <update version="2.1.0" files="admin/credits_manager.inc.php,admin/credits_manager.tpl,gateway.tpl,my_credits.inc.php,my_credits.tpl,packages.tpl,rlCredits.class.php,rlPayAsYouGoCredits.class.php,rlPayAsYouGoCreditsGateway.class.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="admin/apTplAccountsForm.tpl,admin/credits_manager.inc.php,admin/credits_manager.tpl,static/style.css,gateway.tpl,my_credits.inc.php,my_credits.tpl,packages.tpl,rlCredits.class.php,rlPayAsYouGoCredits.class.php,rlPayAsYouGoCreditsGateway.class.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="admin/credits_manager.inc.php,admin/credits_manager.tpl,i18n/ru.json,my_credits.inc.php,my_credits.tpl,packages.tpl,rlCredits.class.php,rlPayAsYouGoCredits.class.php,rlPayAsYouGoCreditsGateway.class.php,gateway.tpl"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

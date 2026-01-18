@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="comment">
+    <title>Comments</title>
+    <description>Allows users to leave comments and rate listings</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>4.1.0</version>
+    <date>21.01.2012</date>
+    <controller>comment</controller>
+    <class>Comment</class>
+    <compatible>4.8.2</compatible>
+
+    <files>
+        <file>admin/comment.inc.php</file>
+        <file>admin/comment.tpl</file>
+        <file>admin/row.tpl</file>
+        <file>static/lib.js</file>
+        <file>static/comment.svg</file>
+        <file>comment.block.tpl</file>
+        <file>comment.sidebar.tpl</file>
+        <file>comment_add_block.tpl</file>
+        <file>comment_dom.tpl</file>
+        <file>comment_paging.tpl</file>
+        <file>formComment.tpl</file>
+        <file>header.tpl</file>
+        <file>gridHeader.tpl</file>
+        <file>info_navigator.tpl</file>
+        <file>rlComment.class.php</file>
+        <file>i18n/ru.json</file>
+        <file>listing_details.tpl</file>
+        <file>listing_details_dom.tpl</file>
+    </files>
+    
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="4.0.0" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="listingAfterStats"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apPhpHome"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="listingDetailsBottom"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="listingDetailsBottomTpl"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="phpDeleteListingData"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apTplBlocksNavBar"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apPhpBlocksPost"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="apPhpIndexBeforeController"><![CDATA[]]></hook>
+        <hook version="4.1.0" name="tplHeaderUserNav"><![CDATA[]]></hook>
+        <hook version="4.1.0" name="tplFeaturedItemAdInfo"><![CDATA[]]></hook>
+        <hook version="4.1.0" name="tplListingDetailsRating"><![CDATA[]]></hook>
+        <hook version="4.1.0" name="apTplListingTypesForm"><![CDATA[]]></hook>
+        <hook version="4.1.0" name="apPhpListingTypesPost"><![CDATA[]]></hook>
+        <hook version="4.1.0" name="apPhpListingTypesBeforeAdd"><![CDATA[]]></hook>
+        <hook version="4.1.0" name="apPhpListingTypesBeforeEdit"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="4.0.0" key="comment_add_comment" module="frontEnd" js="1"><![CDATA[Add Comment]]></phrase>
+        <phrase version="4.0.0" key="comment_author" module="common"><![CDATA[Author]]></phrase>
+        <phrase version="4.0.0" key="comment_title" module="common"><![CDATA[Title]]></phrase>
+        <phrase version="4.0.0" key="notice_comment_added" module="system"><![CDATA[Your comment has been successfully added]]></phrase>
+        <phrase version="4.0.0" key="notice_comment_added_approval" module="system"><![CDATA[Your comment has been successfully added and is awaiting to be reviewed by the Administrator.]]></phrase>
+        <phrase version="4.0.0" key="comment_own_listing_not_allowed" module="system"><![CDATA[You are unable to comment your own listings.]]></phrase>
+        <phrase version="4.0.0" key="comment_post_date" module="common"><![CDATA[Post date]]></phrase>
+        <phrase version="4.0.0" key="comment_tab" module="common"><![CDATA[Comments]]></phrase>
+        <phrase version="4.0.0" key="comment_absent_comments_in_listings" module="common"><![CDATA[There are no comments]]></phrase>
+        <phrase version="4.0.0" key="comment_rating" module="common"><![CDATA[Rating]]></phrase>
+        <phrase version="4.0.0" key="comment_set" module="common"><![CDATA[Set {stars} stars]]></phrase>
+        <phrase version="4.0.0" key="comment_author_rating" module="common"><![CDATA[Author rating]]></phrase>
+        <phrase version="4.0.0" key="comment_login_to_post" module="common"><![CDATA[Please sign in or sign up to post comments]]></phrase>
+        <phrase version="4.0.0" key="comment_login_to_see_comments" js="1" module="frontEnd" target="listing_details"><![CDATA[Please sign in or sign up to see comments]]></phrase>
+        <phrase version="4.0.0" key="config+option+comment_mode_box" module="admin"><![CDATA[Box]]></phrase>
+        <phrase version="4.0.0" key="config+option+comment_mode_tab" module="admin"><![CDATA[Tab]]></phrase>
+        <phrase version="4.0.0" key="config+option+comments_select_comments_random_Last" module="admin"><![CDATA[Last]]></phrase>
+        <phrase version="4.0.0" key="config+option+comments_select_comments_random_Random" module="admin"><![CDATA[Random]]></phrase>
+        <phrase version="4.0.0" key="comments_number_info" module="frontEnd"><![CDATA[There are {number} comments in that listing]]></phrase>
+        <phrase version="4.1.0" key="comments_number" module="frontEnd" target="listing_details"><![CDATA[{number} comment(s)]]></phrase>
+        <phrase version="4.1.0" key="comments_no_rating_set" module="system"><![CDATA[You should set rating]]></phrase>
+        <phrase version="4.1.0" key="comments_use_module_in_type" module="admin" target="listing_types"><![CDATA[Use Comments plugin]]></phrase>
+    </phrases>
+    <emails>
+        <email key="comment_email" subject="New comment has been added to your listing"><![CDATA[Dear {name},
+
+Your listing has a new comment, please see the details below:
+<b>Listing:</b> {listing_title}
+<b>Author:</b> {author}
+<b>Title:</b> {title}
+<b>Message:</b>
+{message}
+
+______________________________
+Thank you,
+{site_name}
+Administration Team]]></email>
+    </emails>
+
+    <blocks>
+        <block key="comments_block" login="0" name="Latest Comments" side="left" type="php" tpl="0"><![CDATA[
+            {* will be generated automatically *}
+        ]]></block>
+        <block version="4.0.0" key="comments_block_bottom" login="0" name="Comments" side="bottom" type="smarty" tpl="1"><![CDATA[
+            {include file=$smarty.const.RL_PLUGINS|cat:'comment'|cat:$smarty.const.RL_DS|cat:'comment_add_block.tpl'}
+        ]]></block>
+    </blocks>
+
+    <configs key="comment" name="Comments">
+        <![CDATA[]]>
+        <config key="comment_message_symbols_number" name="Maximum characters number of message text" type="text" validate="int"><![CDATA[500]]></config>
+        <config key="comments_nav_target" name="Open comments page in new window" type="bool"><![CDATA[0]]></config>
+        <config key="comments_comment_block" name="Comments on listing details" type="divider"><![CDATA[]]></config>
+        <config version="4.0.0" key="comment_mode" name="Display mode" type="select" values="tab,box"><![CDATA[tab]]></config>
+        <config key="comments_login_access" name="Prevent not logged in users to see the comments" type="bool"><![CDATA[0]]></config>
+        <config key="comments_per_page" name="Comments per page" type="text" validate="int"><![CDATA[10]]></config>
+        <config key="comment_show_time" name="Show hours and minutes for comments" type="bool" validate="int"><![CDATA[1]]></config>
+        <config version="4.0.0" key="comments_posting_group" name="Posting comment" type="divider"><![CDATA[]]></config>
+        <config key="comments_send_email_after_added_comment" name="Send e-mail notification to listing owner" type="bool"><![CDATA[1]]></config>
+        <config key="security_img_comment_captcha" name="Security Code" type="bool"><![CDATA[1]]></config>
+        <config key="comment_auto_approval" name="Comments auto approval" type="bool"><![CDATA[1]]></config>
+        <config key="comments_login_post" name="Prevent not logged in users to post comments" type="bool"><![CDATA[1]]></config>
+        <config version="4.0.0" key="comments_own_listings" name="Allow user to comment own listings" type="bool"><![CDATA[0]]></config>
+        <config version="4.0.0" key="comments_sidebar_block" name="Latest comments box" type="divider"><![CDATA[]]></config>
+        <config key="comments_select_comments_random" name="Get comments type" values="Last,Random" type="select"><![CDATA[Last]]></config>
+        <config key="comments_number_comments" name="Comments number in block" type="text" validate="int"><![CDATA[5]]></config>
+        <config key="comments_rating_group" name="Rating" type="divider"><![CDATA[]]></config>
+        <config key="comments_rating_module" name="Comments rating" type="bool"><![CDATA[1]]></config>
+        <config key="comments_stars_number" name="Stars number" type="text" validate="int"><![CDATA[5]]></config>
+    </configs>
+
+    <updates>
+        <update version="3.0.1"><![CDATA[]]></update>
+        <update version="3.0.2" files="comment_paging.tpl,comment.block.tpl,comment_dom.tpl,rlComment.class.php"><![CDATA[]]></update>
+        <update version="3.0.3" files="comment_dom.tpl,rlComment.class.php"><![CDATA[]]></update>
+        <update version="3.0.4" files="admin/comment.tpl"><![CDATA[]]></update>
+        <update version="3.0.5" files="rlComment.class.php"><![CDATA[]]></update>
+        <update version="4.0.0" files="static/lib.js,static/comment.svg,formComment.tpl,comment_dom.tpl,i18n/ru.json,comment_add_block.tpl,comment_paging.tpl,admin/comment.inc.php,admin/comment.tpl,comment.block.tpl,rlComment.class.php,header.tpl,gridHeader.tpl,info_navigator.tpl,comment.sidebar.tpl"><![CDATA[]]></update>
+        <update version="4.1.0" files="admin/comment.inc.php,admin/comment.tpl,admin/row.tpl,comment.block.tpl,comment_dom.tpl,gridHeader.tpl,header.tpl,info_navigator.tpl,listing_details.tpl,listing_details_dom.tpl,rlComment.class.php,static/lib.js"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

@@ -1,0 +1,8 @@
+{
+    "config+name+qrCode_phone_field_name": "Поле \"Телефон\" в объявление",
+    "config+name+qrCode_phone_field_account": "Поле \"Телефон\" в аккаунте",
+    "config_groups+name+qrCode": "QR код",
+    "description_qrCode": "Генерирует QR-коды для объявлений",
+    "title_qrCode": "Генератор QR кодов",
+    "see_qrCode": "Получить QR-код"
+}

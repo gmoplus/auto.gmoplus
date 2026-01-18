@@ -1,0 +1,12 @@
+{
+    "title_botBlocker": "Блокировщик ботов",
+    "description_botBlocker": "Позволяет вам запретить сканирование сайта ботами",
+    "config_groups+name+botBlocker": "Блокировщик ботов",
+    "config+name+botB_bots_list": "Список запрещённых ботов",
+    "config+des+botB_bots_list": "<div style='margin-top: 7px;'>Введите название ботов, которые вы хотите заблокировать, разделяя их запятыми. Идентификация ботов будет производиться в хедере User-Agent.</div>",
+    "config+name+botB_restriction_mode": "Режим ограничения",
+    "botB_deny": "Заблокировать",
+    "botB_allow": "Разрешить",
+    "config+name+botB_allowed_bots_list": "Список разрешённых ботов",
+    "config+des+botB_allowed_bots_list": "<div style='margin-top: 7px;'>Введите названия разрешённых ботов, разделяя их запятыми. Идентификация ботов будет производиться в хедере User-Agent.</div>"
+}

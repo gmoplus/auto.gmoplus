@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="qrCode">
+    <title>QR Code Generator</title>
+    <description>Generates QR codes for listings</description>
+    <author>Peter Pan</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.1.1</version>
+    <date>02.09.2013</date>
+    <class>QrCode</class>
+    <compatible>4.8.2</compatible>
+
+    <files>
+        <file>i18n/ru.json</file>
+        <file>phpqrcode/phpqrcode.php</file>
+        <file>phpqrcode/qrbitstream.php</file>
+        <file>phpqrcode/qrconfig.php</file>
+        <file>phpqrcode/qrconst.php</file>
+        <file>phpqrcode/qrencode.php</file>
+        <file>phpqrcode/qrimage.php</file>
+        <file>phpqrcode/qrinput.php</file>
+        <file>phpqrcode/qrlib.php</file>
+        <file>phpqrcode/qrmask.php</file>
+        <file>phpqrcode/qrrscode.php</file>
+        <file>phpqrcode/qrspec.php</file>
+        <file>phpqrcode/qrsplit.php</file>
+        <file>phpqrcode/qrtools.php</file>
+        <file>.htaccess</file>
+        <file>qrcode.png</file>
+        <file>qrCode.tpl</file>
+        <file>rlQrCode.class.php</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="listingDetailsAfterStats"><![CDATA[]]></hook>
+        <hook name="apPhpListingsAfterAdd"><![CDATA[]]></hook>
+        <hook name="apPhpListingsAfterEdit"><![CDATA[]]></hook>
+        <hook name="apPhpAccountsAfterEdit"><![CDATA[]]></hook>
+        <hook name="afterListingCreate"><![CDATA[]]></hook>
+        <hook name="afterListingEdit"><![CDATA[]]></hook>
+        <hook version="1.0.2" name="profileController"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="phpListingsAjaxDeleteListing"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="phpDeleteListingData"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="1.1.1" name="afterListingUpdate"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="qrCode" name="QR Code">
+        <![CDATA[]]>
+        <config version="1.1.1" key="qrCode_phone_field_name" name="Listing phone field" type="select"><![CDATA[]]></config>
+        <config version="1.1.1" key="qrCode_phone_field_account" name="Account phone field" type="select"><![CDATA[]]></config>
+    </configs>
+
+    <phrases>
+        <phrase version="1.1.0" key="see_qrCode" module="frontEnd" target="listing_details"><![CDATA[View QR Code]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="1.0.1" files="qrCode.tpl"><![CDATA[]]></update>
+        <update version="1.0.2" files="rlQrCode.class.php"><![CDATA[]]></update>
+        <update version="1.0.3"><![CDATA[]]></update>
+        <update version="1.0.4" files="qrCode.tpl,rlQrCode.class.php"><![CDATA[]]></update>
+        <update version="1.0.5" files=""><![CDATA[]]></update>
+        <update version="1.1.0" files="i18n/ru.json,qrCode.tpl,rlQrCode.class.php"><![CDATA[]]></update>
+        <update version="1.1.1" files=".htaccess,i18n/ru.json,qrCode.tpl,rlQrCode.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

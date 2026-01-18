@@ -1,0 +1,11 @@
+/* Cash option styles */
+
+.cash-or:before,
+.cash-or:after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: rgba(0, 0, 0, .1);
+    align-self: center;
+    margin-top: 2px;
+}

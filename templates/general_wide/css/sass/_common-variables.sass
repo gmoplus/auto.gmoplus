@@ -1,0 +1,159 @@
+/*** COMMON ***/
+$is-ltr: true !default
+$left: left !default
+$right: right !default
+$float: $left !default
+$float-opposite: $right !default
+$space: $left !default
+$space-opposite: $right !default
+$flex-end: flex-end !default
+
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$grid-breakpoints: (xs: 0, sm: 544px, md: 768px, lg: 992px, xl: 1200px) !default
+
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (sm: 606px, md: 750px, lg: 940px, xl: 1140px) !default
+
+// Sizes
+$box-radius: 0 !default
+$alt-box-radius: 0 !default
+
+// Colors
+$picture_upload_nav_icon_fill_color: #565656 !default
+$color-fancyapps-dot: initial !default
+
+// Miscellaneous
+$no-picture-svg: true !default
+
+// Loading spinner
+$loading-spinner-size: 30px !default
+$loading-spinner-mask-color: white !default
+$loading-spinner-mask-opacity: 0.4 !default
+
+// Statistics
+$stats-box-block-style-number-color: initial !default
+$stats-box-block-style-link-color: inherit !default
+$stats-box-block-style-link-color-hover: inherit !default
+
+// Call owner button
+$call-owner-button-accent-color: white !default
+$call-owner-button-accent-border-color: #45b150 !default
+$call-owner-button-accent-bg-color: #45b150 !default
+$call-owner-button-accent-hover-color: white !default
+$call-owner-button-accent-hover-bg-color: #30993b !default
+$call-owner-button-accent-hover-box-shadow: none !default
+$call-owner-sb-button-accent-bg-color: $call-owner-button-accent-border-color !default
+$call-owner-sb-button-accent-color: white !default
+$call-owner-sb-button-accent-hover-color: white !default
+$call-owner-sb-button-accent-hover-bg-color: $call-owner-button-accent-hover-bg-color !default
+$call-owner-floating-buttons-box-shadow: 0px 5px 15px -3px black !default
+
+// Listing details classic gallery
+$gallery-desktop-width: 100% !default
+$gallery-tablet-width: 100% !default
+$gallery-aspect-ratio: 66% !default
+$gallery-bg: transparent !default
+$gallery-media-border: 0 !default
+$gallery-media-border-radius: 0 !default
+$gallery-mobile-media-border: 0 !default
+$gallery-nav: true !default
+$gallery-nav-margin-top: 10px !default
+$gallery-nav-justify-content: flex-start !default
+$gallery-nav-padding: 0 10px !default
+$gallery-map-group-margin: auto !default
+$gallery-nav-button-margin: 0 1px !default
+$gallery-nav-button-height: 38px !default
+$gallery-nav-button-padding: 0 12px !default
+$gallery-nav-button-color: white !default
+$gallery-nav-button-bg: rgba(55,55,55, .6) !default
+$gallery-nav-button-font-weight: inherit !default
+$gallery-nav-button-font-size: 0.929em !default
+$gallery-nav-button-text-transform: unset !default
+$gallery-nav-button-hover-color: white !default
+$gallery-nav-button-hover-background: #111111 !default
+$gallery-nav-button-border-radius: 0 !default
+$gallery-thumbs-padding: 0 !default
+$gallery-thumbs-bg: #e2e2e2 !default
+$gallery-thumbs-mobile-bg: #e2e2e2 !default
+$gallery-carousel-nav-border-radius: 0 !default
+$gallery-carousel-nav-width: 71px !default
+$gallery-carousel-nav-height: 71px !default
+$gallery-carousel-nav-mobile-width: 30px !default
+$gallery-carousel-nav-bg: transparent !default
+$gallery-carousel-nav-hover-bg: transparent !default
+$gallery-carousel-nav-color: #111111 !default
+$gallery-carousel-nav-hover-color: $gallery-carousel-nav-color !default
+$gallery-carousel-nav-mobile-color: transparent !default
+$gallery-carousel-nav-border-radius: 0 !default
+$gallery-carousel-nav-box-shadow: none !default
+$gallery-carousel-nav-svg-width: 40% !default
+$gallery-carousel-nav-svg-height: 40% !default
+$gallery-carousel-nav-svg-mobile-width: 80% !default
+$gallery-carousel-nav-svg-mobile-height: 80% !default
+$gallery-carousel-slides-container-padding: 0 !default
+$gallery-carousel-slide-width: 71px !default
+$gallery-carousel-slide-height: 71px !default
+$gallery-carousel-slide-margin: 2px !default
+$gallery-carousel-slide-bg: $gallery-thumbs-bg !default
+$gallery-carousel-slide-img-border: 2px white solid !default
+$gallery-carousel-slide-active-img-border-color: #222222 !default
+$gallery-carousel-slide-img-box-shadow: none !default
+$gallery-carousel-slide-active-img-box-shadow: none !default
+$gallery-carousel-slide-border-radius: 0 !default
+
+// Listing details fancyapps gallery
+$fancyapps-gallery-visible-slide: 7 !default
+$fancyapps-gallery-slide-width: 50% !default
+$fancyapps-gallery-slide-aspect-ratio: 66% !default
+$fancyapps-gallery-slide-padding: 5px !default
+$fancyapps-gallery-slide-border: 2px #cccccc solid !default
+$fancyapps-gallery-slide-border-radius: 3px !default
+$fancyapps-gallery-slide-bg: transparent !default
+$fancyapps-gallery-slide-more-bg: #e3e3e3 !default
+$fancyapps-gallery-slide-more-font-size: 0.938em !default
+$fancyapps-gallery-slide-more-font-color: inherit !default
+$fancyapps-gallery-thumbs-mobile-bg: #e2e2e2 !default
+$fancyapps-gallery-carousel-nav-mobile-width: 30px !default
+$fancyapps-gallery-carousel-nav-svg-mobile-width: 80% !default
+$fancyapps-gallery-carousel-nav-svg-mobile-height: 80% !default
+$fancyapps-gallery-lock-icon-filter: none !default
+
+// Listing details wide gallery
+$wide-gallery-bg: white !default
+$wide-gallery-slide-border-color: #b687c6 !default
+$wide-gallery-slide-border-width: 2px !default
+$wide-gallery-locked-slide-bg: #eeeeee !default
+$wide-gallery-lock-icon-filter: none !default
+
+// Category box
+$category-box-xl-column-count: 5 !default
+$category-box-lg-column-count: 4 !default
+$category-box-md-column-count: 3 !default
+$category-box-sm-column-count: 2 !default
+$category-box-column-gap: 30px !default
+$category-box-parent-link-color: black !default
+$category-box-parent-link-font-size: 1.250em !default
+$category-box-parent-link-font-weight: initial !default
+$category-box-parent-link-text-transform: none !default
+$category-box-parent-link-letter-spacing: 0 !default
+$category-box-parent-link-text-decoration: none !default
+$category-box-parent-counter-color: #515151 !default
+$category-box-parent-counter-font-size: 1.143em !default
+$category-box-parent-link-no-sc-font-size: initial !default
+$category-box-parent-link-no-sc-color: initial !default
+$category-box-more-link-color: black !default
+$category-box-more-link-font-size: 0.929em !default
+$category-box-empty-color: #adadad !default
+$category-box-subcategories-mt: 0 !default
+$category-box-subcategory-pb: 6px !default
+$category-box-subcategory-link-color: initial !default
+$category-box-item-border-top: unset !default
+$category-box-item-padding-top: 0 !default
+$category_box-plus-icon-fill: initial !default
+
+// Scrollbar
+$scrollbar-color: null !default
+$scrollbar-width: 4px !default
+$scrollbar-border-radius: 2px !default
+$scrollbar-padding: 10px !default

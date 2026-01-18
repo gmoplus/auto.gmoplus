@@ -1,0 +1,117 @@
+/*** Steps ***/
+.steps {
+  box-shadow: inset 0 0 0 $border-width-wide $steps-bg;
+  height: $steps-height;
+  margin: 0 #{-$grid-gutter / 2} $spacer * 2;
+
+  @include flex_block;
+
+  @include flex_wrap("nowrap");
+
+  > li {
+    height: $steps-height;
+    line-height: $steps-height;
+    position: relative;
+    text-align: center;
+
+    @include flex_block;
+
+    @include flex(1, 0, 0);
+
+    a {
+      cursor: default;
+      padding: 0 ($grid-gutter / 2);
+      margin: 0 auto;
+    }
+
+    &.past,
+    &.current {
+      background: $steps-bg;
+    }
+
+    &.past {
+      a {
+        cursor: pointer;
+      }
+    }
+
+    &.current:after {
+      display: none;
+    }
+
+    &:not(.past) {
+      a {
+        color: $steps-next-color;
+      }
+    }
+
+    &:not(:last-child):not(.past):after,
+    &:not(:last-child):not(.past):before {
+      #{$space}: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:not(:last-child):not(.past):after {
+      border-color: transparent;
+      border-#{$space}-color: white;
+
+      @if $isLtr {
+        border-width: 20px 0 20px 10px;
+      }
+      @else {
+        border-width: 20px 10px 20px 0;
+      }
+
+      margin-top: -$spacer * 2;
+    }
+
+    &:not(:last-child):not(.past):before {
+      border-color: transparent;
+      border-#{$space}-color: $steps-bg;
+
+      @if $isLtr {
+        border-width: 22px 0 22px 13px;
+      }
+      @else {
+        border-width: 22px 13px 22px 0;
+      }
+
+      margin-top: -22px;
+    }
+  }
+
+  &.mobile {
+    @include respond_to(tablet) {
+      > li {
+        display: none;
+
+        &.prev,
+        &.current,
+        &.current + li,
+        &.current + li + li {
+          @include flex_block;
+
+          @include flex(1, 0, 0);
+        }
+
+        &.prev + li + li + li {
+          display: none !important;
+        }
+
+        &.current + li + li,
+        &.prev + li + li {
+          &:before,
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

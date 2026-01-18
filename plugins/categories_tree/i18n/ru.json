@@ -1,0 +1,11 @@
+{
+    "title_categories_tree": "Дерево категорий",
+    "description_categories_tree": "Преобразует блок категорий в дерево категорий",
+    "category_tree_show_subcategories": "Показывать подкатегории",
+    "category_tree_go_back": "Вернуться на первый уровень",
+    "category_tree_tree_options": "Плагин Дерево категорий",
+    "category_tree_show_subcat_counter": "Показывать счетчик подкатегорий",
+    "category_tree_open_subcat": "Открывать подкатегории первого уровня по умолчанию",
+    "category_tree_show_child_only": "Показывать только подкатегории и скрывать родительские категории после выбора",
+    "category_tree_get_cats_notify_fail": "Не удалось загрузить категории; пожалуйста, свяжитесь со службой поддержки Флайнекс."
+}

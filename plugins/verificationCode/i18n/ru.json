@@ -1,0 +1,17 @@
+{
+    "title_verificationCode": "Верификационный код",
+    "description_verificationCode": "Добавляет метатеги и JavaScript-коды от сторонних сервисов и модулей в шапку/подвал сайта",
+    "ext_vc_name": "Название",
+    "ext_vc_position": "Позиция",
+    "ext_vc_manager": "Менеджер кода",
+    "vc_add_item": "Добавить код",
+    "vc_edit_item": "Редактировать код",
+    "verification_code_list": " Список кодов",
+    "vc_name": "Название",
+    "vc_position": "Позиция",
+    "vc_content": "JS script / META tag",
+    "vc_item_added": "Код был успешно добавлен",
+    "vc_item_edited": "Код был успешно отредактирован",
+    "vc_position_footer": "В подвале",
+    "vc_position_header": "В шапке"
+}

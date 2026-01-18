@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="importExportCategories">
+    <title>Category Import/Export</title>
+    <description>Imports and exports categories through XLS/XLSX files</description>
+    <author>Alex</author>
+    <owner>Flynax classifieds software</owner>
+    <version>3.0.2</version>
+    <date>14.02.2012</date>
+    <controller>importExportCategories</controller>
+    <class>ImportExportCategories</class>
+    <compatible>4.8.1</compatible>
+
+    <files>
+        <file>admin/static/.htaccess</file>
+        <file>admin/static/example-v2.png</file>
+        <file>admin/static/export.png</file>
+        <file>admin/static/lib.js</file>
+        <file>admin/static/multilingual_example.png</file>
+        <file>admin/static/style.css</file>
+        <file>admin/.htaccess</file>
+        <file>admin/importExportCategories.inc.php</file>
+        <file>admin/importExportCategories.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>src/DatabaseHandler.php</file>
+        <file>src/Export.php</file>
+        <file>src/ExportException.php</file>
+        <file>src/Import.php</file>
+        <file>src/ImportException.php</file>
+        <file>src/Provider.php</file>
+        <file>vendor/autoload.php</file>
+        <file>.htaccess</file>
+        <file>rlImportExportCategories.class.php</file>
+    </files>
+
+    <hooks>
+        <hook version="3.0.0" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="apPhpIndexBottom"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="phpPreGetCategoryData"><![CDATA[]]></hook>
+   </hooks>
+
+    <phrases>
+        <phrase key="importExportCategories_incorrect_file_ext" module="admin" target="importExportCategories" version="3.0.0"><![CDATA[Extension of the uploaded file is incorrect, XLS/XLSX format is allowed only]]></phrase>
+        <phrase key="importExportCategories_import_filename_empty" module="admin" target="importExportCategories" version="3.0.0"><![CDATA[Please fill in the required <b>{field}</b>]]></phrase>
+        <phrase key="importExportCategories_empty" module="admin" target="importExportCategories" version="3.0.0"><![CDATA[Please select categories to be exported]]></phrase>
+        <phrase key="importExportCategories_not_move_file" module="admin" target="importExportCategories"><![CDATA[Failed to copy the file for parsing]]></phrase>
+        <phrase key="importExportCategories_count" module="admin" target="importExportCategories" version="3.0.0"><![CDATA[<b>{count}</b> new categories imported]]></phrase>
+        <phrase key="importExportCategories_file_not_readable" module="admin" target="importExportCategories"><![CDATA[The file is not readable]]></phrase>
+        <phrase key="importExportCategories_import" module="admin" target="importExportCategories"><![CDATA[Import]]></phrase>
+        <phrase key="importExportCategories_export" module="admin" target="importExportCategories"><![CDATA[Export]]></phrase>
+        <phrase key="importExportCategories_importTo" module="admin" target="importExportCategories" version="2.2.0"><![CDATA[Import to listing type]]></phrase>
+        <phrase key="importExportCategories_titleOfManager" module="admin" js="1" target="importExportCategories" version="3.0.0"><![CDATA[Categories from XLS/XLSX file]]></phrase>
+        <phrase key="importExportCategories_import_preview" module="admin" target="importExportCategories" version="2.2.0"><![CDATA[Preview imported categories]]></phrase>
+        <phrase key="importExportCategories_example" module="admin" target="importExportCategories" version="3.0.0"><![CDATA[Your XLS/XLSX file must have a structure like on the example below.]]></phrase>
+        <phrase key="importExportCategories_header_row" module="admin" target="importExportCategories" version="3.0.0"><![CDATA[The first row in the file must have the following required columns: <b>{system_columns}</b>.<br>To import categories in several languages make sure the first row contains the following columns: <b>{multilingual_columns}</b>.]]></phrase>
+        <phrase key="importExportCategories_missing_header_row" module="admin" target="importExportCategories" version="3.0.0"><![CDATA[A row with column titles is missing in the file. Try to export in order to get a sample row with the required fields.]]></phrase>
+        <phrase key="importExportCategories_pre_import_notice" module="admin" target="importExportCategories" version="3.0.0"><![CDATA[Import all categories from the uploaded XLS/XLSX file]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="2.0.1" files="admin/importExportCategories.inc.php"><![CDATA[]]></update>
+        <update version="2.0.2" files="rlImportExportCategories.class.php"><![CDATA[]]></update>
+        <update version="2.0.3" files="rlImportExportCategories.class.php,admin/importExportCategories.inc.php"><![CDATA[]]></update>
+        <update version="2.1.0" files="admin/lib/reader.php,admin/static/lib.js,admin/.htaccess,admin/importExportCategories.inc.php,admin/importExportCategories.tpl,rlImportExportCategories.class.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="rlImportExportCategories.class.php"><![CDATA[]]></update>
+        <update version="2.2.0" files="admin/importExportCategories.inc.php,admin/importExportCategories.tpl,rlImportExportCategories.class.php"><![CDATA[]]></update>
+        <update version="2.2.1" files="rlImportExportCategories.class.php"><![CDATA[]]></update>
+        <update version="2.2.2" files="rlImportExportCategories.class.php"><![CDATA[]]></update>
+        <update version="2.2.3" files="admin/importExportCategories.tpl,rlImportExportCategories.class.php"><![CDATA[]]></update>
+        <update version="2.3.0" files="admin/importExportCategories.inc.php,admin/static/style.css,admin/.htaccess,admin/importExportCategories.tpl,rlImportExportCategories.class.php"><![CDATA[]]></update>
+        <update version="3.0.0" files=".htaccess,rlImportExportCategories.class.php,i18n/ru.json,src/,vendor/,admin/static/.htaccess,admin/static/lib.js,admin/.htaccess,admin/importExportCategories.inc.php,admin/importExportCategories.tpl,admin/static/example-v2.png,admin/static/multilingual_example.png"><![CDATA[]]></update>
+        <update version="3.0.1" files="src/Import.php"><![CDATA[]]></update>
+        <update version="3.0.2" files="src/Import.php,src/Provider.php"><![CDATA[]]></update>
+    </updates>
+</plugin>

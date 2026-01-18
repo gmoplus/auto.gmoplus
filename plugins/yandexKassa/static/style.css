@@ -1,0 +1,23 @@
+#yandexKassa-saved-card {
+    display: flex;
+}
+#yandexKassa-saved-card span {
+    margin-right: 5px;
+}
+#yandexKassa-saved-card a.yk-remove-card:not(.hide) {
+    display: flex;
+    margin-top: 5px;
+}
+#yk-payout-form {
+    min-width: 320px;
+    height: 390px;
+}
+.yk-remove-card {
+    width: 16px;
+    height: 16px;
+}
+#yk-loading {
+    width: 100%;
+    height: 100%;
+    padding: 140px 90px;
+}

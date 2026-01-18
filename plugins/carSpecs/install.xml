@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="carSpecs">
+	<title>Car Specs</title>
+	<description>Car Specification</description>
+	<author>Mike Fletcher</author>
+	<owner>Flynax Classifieds Software</owner>
+	<version>2.1.0</version>
+	<date>28.07.2015</date>
+	<controller>car_specs</controller>
+	<class>CarSpecs</class>
+    <compatible>4.5.2</compatible>
+	
+	<notices>
+		<notice><![CDATA[Follow the link: <a target="_blank" href="http://forum.flynax.com/showthread.php?2809-Car-Specs-Instructions&p=13335">Car Specs Instructions</a>]]></notice>
+	</notices>
+	
+    <files>
+        <file>rlCarSpecs.class.php</file>
+        <file>admin/car_specs.tpl</file>
+        <file>admin/car_specs.inc.php</file>
+        <file>modules/carmotorspecs.php</file>
+        <file>modules/vinaudit.php</file>
+        <file>static/style.css</file>
+        <file>request.php</file>
+        <file>specs_add_listing.tpl</file>
+        <file>admin/js-langs.tpl</file>
+        <file>src/Cache.php</file>
+        <file>src/HTTP/Request.php</file>
+        <file>src/Interfaces/ModuleInterface.php</file>
+        <file>src/Modules/Carmotorspecs.php</file>
+        <file>src/Modules/Vinaudit.php</file>
+        <file>src/ModulesController.php</file>
+        <file>views/listingDetailsBottomJs.tpl</file>
+        <file>static/lib.js</file>
+        <file>vendor/autoload.php</file>
+    </files>
+
+	<install><![CDATA[
+        $GLOBALS['reefless']->loadClass('CarSpecs', null, 'carSpecs');
+        $GLOBALS['rlCarSpecs']->install();
+	]]></install>
+
+	<hooks>
+        <hook version="2.1.0" name="apTplListingPlansForm"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apPhpListingPlansPost"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apPhpListingPlansBeforeAdd"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apPhpListingPlansBeforeEdit"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="addListingBeforeSteps"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="phpGetPlanByCategoryModifyWhere"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="addListingTopTpl"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="addListingBottom"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="listingDetailsTop"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="smartyFetchHook"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="phpSmartyClassFetch"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="addListingPostSimulation"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="addListingSteps"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="afterListingDone"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apTplHeader"><![CDATA[]]></hook>
+	</hooks>
+
+	<phrases>
+        <phrase key="cs_plan_specs" module="admin"><![CDATA[Available for Specs]]></phrase>
+		<phrase key="cs_add_service" module="admin"><![CDATA[Add service]]></phrase>
+		<phrase key="cs_service_name" module="admin"><![CDATA[Service name]]></phrase>
+		<phrase key="cs_authorization" module="admin"><![CDATA[Service credentials]]></phrase>
+		<phrase key="cs_auth_login" module="admin"><![CDATA[Login or email]]></phrase>
+		<phrase key="cs_auth_password" module="admin"><![CDATA[Password]]></phrase>
+		<phrase key="cs_service_list" module="admin"><![CDATA[Service list]]></phrase>
+		<phrase key="cs_remote_field" module="admin"><![CDATA[Remote field]]></phrase>
+		<phrase key="cs_local_field" module="admin"><![CDATA[Local field]]></phrase>
+		<phrase key="cs_remote_data" module="admin"><![CDATA[Remote data]]></phrase>
+		<phrase key="cs_local_data" module="admin"><![CDATA[Local data]]></phrase>
+		<phrase key="cs_example_value" module="admin"><![CDATA[Example value]]></phrase>
+		<phrase key="cs_mapping_default" module="admin"><![CDATA[Mapping default]]></phrase>
+		<phrase key="cs_cdata" module="admin"><![CDATA[CDATA]]></phrase>
+		<phrase key="ext_cs_mapping_manager" module="ext"><![CDATA[Mapping manager]]></phrase>
+		<phrase key="ext_cs_services_manager" module="ext"><![CDATA[Services manager]]></phrase>
+        <phrase key="cs_add_mapping_item" module="admin"><![CDATA[Add mapping item]]></phrase>
+        <phrase key="cs_test_service" module="admin"><![CDATA[Test service]]></phrase>
+        <phrase key="cs_module" module="admin"><![CDATA[Module]]></phrase>
+        <phrase key="cs_base_field" module="admin"><![CDATA[Reg number or VIN]]></phrase>
+        <phrase key="cs_mapping_bc" module="admin"><![CDATA[{service} mapping]]></phrase>
+        <phrase key="cs_edit_service_bc" module="admin"><![CDATA[Edit {service} service]]></phrase>
+        <phrase key="cs_pictures" module="admin"><![CDATA[Pictures]]></phrase>
+        <phrase key="cs_unit" module="admin"><![CDATA[Unit]]></phrase>
+        <phrase key="cs_build_info" module="admin"><![CDATA[Here are the fields that have unmapped values:]]></phrase>
+        <phrase key="cs_bc_field" module="admin"><![CDATA[{field} Field Mapping]]></phrase>
+        <phrase key="cs_test_number" module="admin"><![CDATA[Test car plate or vin number]]></phrase>
+        <phrase version="1.0.1" key="cs_regnum_placeholder" module="frontEnd"><![CDATA[Enter Reg]]></phrase>
+        <phrase version="1.0.1" key="cs_odo_placeholder" module="frontEnd"><![CDATA[Enter Mileage]]></phrase>
+		<phrase version="1.0.1" key="cs_error_number" module="frontEnd"><![CDATA[You have to enter number to continue]]></phrase>
+        <phrase version="1.0.1" key="cs_error_no_data" module="frontEnd"><![CDATA[Wrong number or data not found]]></phrase>
+        <phrase version="1.0.1" key="cs_step_hint" module="frontEnd"><![CDATA[Post your ad with a car specs database.]]></phrase>
+        <phrase version="1.0.1" key="cs_create_ad" module="frontEnd"><![CDATA[Create Your Ad]]></phrase>
+		<phrase version="1.0.1" key="cs_step_title" module="frontEnd"><![CDATA[Post Ad Fast]]></phrase>
+		<phrase version="2.0.0" key="cs_credentials" module="frontEnd"><![CDATA[Credentials]]></phrase>		
+        <phrase version="2.0.0" key="cs_vinaudit_placeholder" module="frontEnd"><![CDATA[Enter vin]]></phrase>      
+        <phrase version="2.0.0" key="cs_notice_remove_item" module="common"><![CDATA[Are you sure you want to remove item?]]></phrase>
+		<phrase version="2.0.0" key="cs_invalid_vin" module="common"><![CDATA[Invalid VIN]]></phrase>		
+		<phrase version="2.0.2" key="cs_api_key" module="common"><![CDATA[API Key]]></phrase>
+
+        <phrase version="2.1.0" key="cs_map_example_value" module="admin"><![CDATA[Example value]]></phrase>
+		<phrase version="2.1.0" key="cs_insert_item" module="admin"><![CDATA[Are you sure you want to copy the data to the site?]]></phrase>
+		<phrase version="2.1.0" key="cs_copy_item" module="admin"><![CDATA[Copy item to the site]]></phrase>
+		<phrase version="2.1.0" key="cs_mapped_successfully" module="admin"><![CDATA[Data mapped successfully]]></phrase>
+		<phrase version="2.1.0" key="cs_something_went_wrong" module="common"><![CDATA[Something wrong. Please try again later]]></phrase>
+		<phrase version="2.1.0" key="cs_item_added" module="admin"><![CDATA[The item has been successfully added.]]></phrase>
+		<phrase version="2.1.0" key="cs_fetching_vin" module="common"><![CDATA[Fetching data...]]></phrase>
+		<phrase version="2.1.0" key="cs_nothing_found_by_vin" module="common"><![CDATA[There is no information by this VIN]]></phrase>
+	</phrases>
+
+	<updates>
+        <update version="1.0.1" files="rlCarSpecs.class.php,specs_add_listing.tpl"><![CDATA[]]></update>
+        <update version="2.0.0" files="request.php,modules/vinaudit.php,static/.htaccess,static/style.css,rlCarSpecs.class.php,specs_add_listing.tpl,modules/carmotorspecs.php,.htaccess,admin/car_specs.tpl,admin/car_specs.inc.php"><![CDATA[]]></update>
+		<update version="2.0.1" files="admin/car_specs.inc.php,request.php,rlCarSpecs.class.php,specs_add_listing.tpl"><![CDATA[]]></update>
+		<update version="2.0.2" files="admin/car_specs.inc.php,admin/car_specs.tpl,modules/vinaudit.php,rlCarSpecs.class.php,request.php"><![CDATA[
+			$sql ="ALTER TABLE `".RL_DBPREFIX."car_specs_services` ADD `Api_Key` VARCHAR( 50 );";
+			$GLOBALS['rlDb']->query($sql);
+		]]></update>
+        <update version="2.1.0" files="admin/car_specs.inc.php,admin/car_specs.tpl,admin/js-langs.tpl,rlCarSpecs.class.php,specs_add_listing.tpl,src/Cache.php,src/HTTP/Request.php,src/Interfaces/ModuleInterface.php,src/Modules/Carmotorspecs.php,src/Modules/Vinaudit.php,src/ModulesController.php,static/lib.js,static/style.css,views/listingDetailsBottomJs.tpl"><![CDATA[
+			require_once RL_UPLOAD . 'carSpecs/vendor/autoload.php';
+            $filesystem = new \Flynax\Component\Filesystem();
+
+            $pluginsVendor = RL_PLUGINS . 'carSpecs/vendor';
+            $inUploadVendor = RL_UPLOAD . 'carSpecs/vendor';
+
+            $filesystem->copy($inUploadVendor, $pluginsVendor);
+		]]></update>
+	</updates>
+
+	<uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('CarSpecs', null, 'carSpecs');
+        $GLOBALS['rlCarSpecs']->uninstall();
+    ]]></uninstall>
+</plugin>

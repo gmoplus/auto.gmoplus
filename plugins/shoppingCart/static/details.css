@@ -1,0 +1,33 @@
+/* Listing details page styles */
+
+div.auction-details {
+    border-width: 1px;
+    border-style: solid;
+    padding: 16px 20px;
+}
+div.auction-details.closed {
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    color: #cf323d;
+}
+.shc-group .table td.name {
+    width: 170px;
+}
+.shc-payment-gateways li:not(:last-child):after {
+    content: '\00a0';
+}
+.escrow-item {
+    display: flex;
+}
+.escrow-item img {
+    height: 18px;
+}
+.escrow-item span {
+    color: var(--info-field-color);
+    line-height: 18px;
+    margin-left: 5px;
+}
+.escrow-item img {
+    width: 16px;
+    height: 16px;
+}

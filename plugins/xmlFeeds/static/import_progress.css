@@ -1,0 +1,20 @@
+.progress_notice {
+    color: green;
+    padding:10px 0;
+}
+.progress_warning {
+    color:#FB941B;
+    padding:10px 0;
+}
+.progress_error {
+    color:#B22222;
+    padding:2px 0;
+}
+.progress_debug {
+    color:#000;
+    padding:2px 0;
+}
+.progress_data_debug {
+    color:#7FC7FF;
+    padding:2px 0;
+}

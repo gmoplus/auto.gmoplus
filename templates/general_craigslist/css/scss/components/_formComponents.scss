@@ -1,0 +1,615 @@
+/*** Form components ***/
+
+// Password strength
+.password_strength {
+  @if $isLtr {
+    padding: 0 0 0 $spacer;
+  }
+  @else {
+    padding: 0 $spacer 0 0;
+  }
+
+  .scale {
+    background: $password-strength-scale-bg;
+    width: $password-strength-scale-width;
+    height: $password-strength-scale-height;
+    position: relative;
+
+    .color {
+      width: 0;
+      height: $password-strength-scale-height;
+    }
+
+    .red {
+      background: $password-strength-color-red;
+    }
+
+    .green {
+      background: $password-strength-scale-green;
+    }
+
+    .yellow {
+      background: $password-strength-scale-yellow;
+    }
+
+    .shine {
+      width: 0;
+      height: $password-strength-scale-height;
+      position: absolute;
+      top: 0;
+      #{$space}: 0;
+    }
+  }
+}
+
+#pass_strength {
+  line-height: initial;
+}
+
+// Field Group
+.table-cell {
+  position: relative;
+  padding-bottom: $spacer;
+
+  @include flex_block;
+
+  .name {
+    color: $table-cell-name-color;
+
+    @include flex(1, 0, 33%);
+
+    > span {
+      display: block;
+      padding-#{$space-opposite}: $spacer;
+
+      @include text_ellipsis;
+    }
+  }
+
+  .value {
+    word-wrap: break-word;
+    overflow: hidden;
+
+    &.image {
+      @include flex_direction("column");
+
+      img {
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+
+  &.col-sm-6 {
+    .name {
+      @include flex(1, 0, 50%);
+    }
+
+    .value {
+      @include flex(1, 0, 50%);
+    }
+  }
+
+  &.full-width,
+  &.wide-field {
+    @include flex(1, 0, 100%);
+
+    @include flex-wrap("wrap");
+
+    .name,
+    .value {
+      @include flex(0, 0, 100%);
+    }
+
+    .checkboxes {
+      margin-top: $spacer / 2;
+    }
+  }
+
+  @include respond_to(mobile_xs) {
+    .name {
+      @include flex(1, 0, 50%);
+    }
+
+    .value {
+      @include flex(1, 0, 50%);
+    }
+  }
+
+
+  .checkboxes {
+    width: 100%;
+
+    > li {
+      @include text_ellipsis;
+
+      margin-bottom: $spacer / 2;
+
+      img {
+        width: 16px;
+        height: 11px;
+        vertical-align: baseline;
+        margin-#{$space-opposite}: 8px;
+        margin-#{$space}: 2px;
+      }
+
+      &.active {
+        img {
+          background: url("../img/gallery.png") -18px -128px no-repeat;
+        }
+      }
+
+      &:not(.active) {
+        color: #9e9e9e;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &#df_field_vin {
+    .value {
+      @include flex_direction("column");
+    }
+  }
+
+  &.small {
+    padding-bottom: 0;
+
+    .name {
+      @include flex(1, 0, 41.66667%);
+
+      > span:after {
+        content: ':';
+      }
+    }
+
+    .value {
+      word-break: break-all;
+      white-space: normal;
+      @include flex(1, 0, 58.33333%);
+    }
+
+    > div {
+      vertical-align: top;
+      padding-bottom: 5px;
+      font-weight: normal !important;
+      line-height: normal;
+      min-height: inherit;
+    }
+  }
+
+  &.phone {
+    div.value {
+        direction: ltr;
+        text-align: #{$float};
+    }
+  }
+}
+
+// Submit cell
+.submit-cell {
+  margin-bottom: $spacer;
+  min-height: $input-height;
+
+  &:not(.hide):not(.disabled) {
+    display: flex;
+  }
+
+  @include respond_to(mobile) {
+    margin-bottom: $spacer * 1.5;
+    flex-direction: column;
+  }
+
+  &.buttons {
+    padding: ($spacer * 1.5) 0 0;
+    margin-bottom: 0;
+  }
+
+  ul.tabs {
+    margin: 0 0 $spacer 0;
+    max-width: 100%;
+    overflow: hidden;
+
+    &.tabs-ready {
+        overflow: unset;
+    }
+  }
+
+  > .name {
+    line-height: $input-height;
+    margin-#{$space-opposite}: $spacer * 1.5;
+    min-height: $input-height;
+    max-width: $submit-cell-name-width;
+    flex: 1 0 $submit-cell-name-width;
+    display: flex;
+
+    .qtip {
+      @if $isLtr {
+        margin: $spacer 0 $spacer $spacer;
+      }
+      @else {
+        margin: $spacer $spacer $spacer 0;
+      }
+    }
+
+    @include respond_to(mobile) {
+      line-height: initial;
+      flex-basis: auto;
+      padding-bottom: $spacer / 2;
+      margin-#{$space-opposite}: 0;
+      min-height: auto;
+    }
+  }
+
+  .field {
+    flex: 1;
+    min-width: 0;
+
+    &.date {
+      > input {
+        font-size: $font-size-default;
+      }
+    }
+
+    .image-field-preview > div.relative {
+        width: 100%;
+    }
+
+    &.checkbox-field,
+    &.inline-fields {
+        min-height: $grid-gutter;
+        padding-top: $spacer;
+    }
+
+    &.checkbox-field .custom-input {
+        padding-bottom: $spacer;
+    }
+    &.inline-fields .custom-input {
+        padding-#{$space-opposite}: $spacer * 2;
+    }
+
+    &.textarea {
+      overflow: hidden;
+
+      @include respond_to(mobile) {
+        width: 100%;
+        overflow: visible;
+      }
+    }
+
+    &.accept {
+      textarea {
+        width: 100%;
+      }
+    }
+
+    &.single-field select {
+        width: 250px;
+    }
+    &.two-fields > input:first-child {
+      margin-#{$space-opposite}: $spacer * 1.5;
+    }
+    &.three-field > select {
+      width: auto;
+      margin-top: 0;
+      margin-#{$space}: 4%;
+    }
+
+    .custom-input {
+      > label {
+        @include text_ellipsis;
+      }
+    }
+
+    &.combo-field {
+      > input {
+        margin-#{$space-opposite}: $spacer * 1.5;
+        width: 150px;
+      }
+
+      > select {
+        width: 80px;
+      }
+    }
+
+    &.single-field.full-width {
+      input {
+        width: 100% !important;
+      }
+    }
+
+    @include respond_to(mobile_xs) {
+      @include flex(1, 1, 100%);
+
+      &.text,
+      &.select {
+        width: 100%;
+      }
+
+      &.date {
+        @include flex_wrap("wrap");
+
+        > input {
+          margin: 0;
+        }
+
+        > input:not(:first-child) {
+          margin-top: $spacer * 1.5;
+        }
+      }
+    }
+  }
+
+  textarea + .charleft {
+    text-align: #{$float-opposite};
+    font-size: $font-size-small;
+    color: $font-color-gray;
+    line-height: initial;
+  }
+}
+
+// Form styles
+.form-buttons {
+  // @todo: To be removed due to duplicate style in sass components
+  &:not(.no-top-padding) {
+    padding-top: $grid-gutter;
+  }
+
+  > input[type="submit"] {
+    margin-#{$space-opposite}: $spacer;
+  }
+
+  &.right {
+    text-align: #{$float-opposite};
+  }
+
+  &.form {
+    a {
+      display: inline-block;
+      text-align: right;
+    }
+  }
+
+  > span.back {
+    display: inline-block;
+    width: $submit-cell-name-width;
+    margin-#{$space-opposite}: $spacer;
+
+    @include respond_to(mobile_xs) {
+      width: auto;
+      margin-#{$space-opposite}: 0;
+    }
+  }
+
+  a:not(.button) {
+    line-height: $button-height;
+
+    @if $isLtr {
+      padding: 0 ($spacer * 3) 0 0;
+    }
+    @else {
+      padding: 0 0 0 ($spacer * 3);
+    }
+  }
+}
+
+// Form sell
+.search-form-cell {
+  margin-bottom: $spacer * 1.5;
+
+  &:nth-child(even) {
+    padding-#{$space}: $grid-gutter / 2;
+  }
+
+  &:nth-child(odd) {
+    padding-#{$space-opposite}: $grid-gutter / 2;
+  }
+
+  > div {
+    width: 100%;
+
+    > span {
+      display: block;
+
+      @include text_ellipsis;
+
+      padding-bottom: 3px;
+    }
+
+    > div {
+      > * {
+        width: 100%;
+      }
+    }
+  }
+
+  &.two-fields,
+  &.three-field {
+    > div {
+      > div {
+        @include flex_block;
+
+        @include flex_wrap("nowrap");
+      }
+    }
+  }
+
+  &.two-fields {
+    > div {
+      > div {
+        > * {
+          margin-#{$space-opposite}: 4%;
+
+          @include flex(0, 0, 48%);
+
+          &:last-child {
+            margin-#{$space-opposite}: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.three-field {
+    > div {
+      > div {
+        > * {
+          margin-#{$space-opposite}: 3%;
+
+          @include flex(0, 0, 34%);
+
+          &:last-child {
+            @include flex(0, 0, 26%);
+
+            margin-#{$space-opposite}: 0;
+          }
+        }
+      }
+    }
+  }
+
+  span.divider {
+    padding: 0 $spacer;
+  }
+}
+
+@include respond_to(tablet_only) {
+  section.side_block_search div.search-item {
+      width: 48%;
+      margin-right: 4%;
+      display: inline-block;
+      vertical-align: top;
+       &:nth-of-type(2n) {
+          margin-right: 0;
+      }
+  }
+}
+
+.search-item {
+  margin-bottom: $spacer;
+
+  > select,
+  > input {
+    vertical-align: top;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .field {
+    line-height: initial;
+    padding-bottom: $spacer / 2;
+  }
+
+  &.single-field {
+    > select,
+    > input[type="text"] {
+      width: 100%;
+    }
+  }
+
+  &.two-fields {
+    > select,
+    > input[type="text"] {
+      width: 48%;
+      margin-#{$space-opposite}: 4%;
+
+      &:last-child {
+        margin-#{$space-opposite}: 0;
+      }
+    }
+  }
+
+  &.couple-field {
+    > .custom-input {
+      width: 50%;
+      display: inline-block;
+    }
+  }
+
+  &.checkbox-field {
+    > .custom-input {
+      padding: 0 0 $spacer 0;
+      display: inline-block;
+      width: 100%;
+
+      @include respond_to(tablet) {
+        width: 50%;
+      }
+    }
+  }
+
+  &.three-field {
+    @include respond_to(desktop_only) {
+      > span {
+        width: 24%;
+        margin-#{$space-opposite}: 4%;
+      }
+
+      > input {
+        width: 48%;
+        margin-#{$space-opposite}: 4%;
+      }
+
+      > select {
+        width: 100%;
+        margin-top: $spacer;
+      }
+
+      *:last-of-type {
+        margin-#{$space-opposite}: 0;
+      }
+    }
+
+
+    @include respond_to(tablet) {
+      > input,
+      > select {
+        width: 33% !important;
+        margin-#{$space-opposite}: 4%;
+
+        &:last-child {
+          margin: 0;
+          width: 26% !important;
+        }
+      }
+    }
+  }
+
+  .divider {
+    padding: 0 $spacer;
+  }
+
+  &.sorting-fields {
+    margin-top: $spacer;
+  }
+}
+
+.search-item.three-field > span,
+.search-form-cell.three-field > div > div > span {
+  display: inline-block;
+  padding-top: 9px;
+  vertical-align: top;
+
+  @include text_ellipsis;
+}
+
+.search-button {
+  margin-top: $spacer;
+
+  > a,
+  > span {
+    float: #{$float-opposite};
+    line-height: $button-height;
+  }
+
+  > input[type="submit"] {
+    margin-#{$space-opposite}: ($spacer*2);
+  }
+}
+
+#save_search {
+    margin-top: 10px;
+    display: inline-block;
+}

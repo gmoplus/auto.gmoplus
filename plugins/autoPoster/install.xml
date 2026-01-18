@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="autoPoster">
+    <title>Auto Poster</title>
+    <description>Automatically posts listings to admin-owned social networks</description>
+    <author>Alan Wake</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.9.1</version>
+    <date>30.03.2017</date>
+    <class>AutoPoster</class>
+    <controller>auto_poster</controller>
+    <compatible>4.8.1</compatible>
+
+    <notices>
+        <notice version="1.2.0"><![CDATA[Due to recent changes to the Facebook policy, we had to disable posting ads to timeline of the individual profile temporarily.]]></notice>
+    </notices>
+
+    <files>
+        <file>admin/auto_poster.inc.php</file>
+        <file>admin/auto_poster.tpl</file>
+        <file>admin/rlAutoPosterAdmin.class.php</file>
+        <file>admin/view/message_in_category_builder.tpl</file>
+        <file>admin/view/module_configs.tpl</file>
+        <file>admin/view/settings.tpl</file>
+        <file>admin/view/modules/facebook.tpl</file>
+        <file>admin/view/modules/vk.tpl</file>
+        <file>cron/index.php</file>
+        <file>bootstrap.php</file>
+        <file>rlAutoPoster.class.php</file>
+        <file>src/AjaxWrapper.php</file>
+        <file>src/AutoPosterContainer.php</file>
+        <file>src/AutoPosterModules.php</file>
+        <file>src/MessageBuilder.php</file>
+        <file>src/Notifier.php</file>
+        <file>src/ProviderController.php</file>
+        <file>src/Interfaces/ProviderInterface.php</file>
+        <file>src/Providers/Facebook/Facebook.php</file>
+        <file>src/Providers/Twitter/Twitter.php</file>
+        <file>static/images/fb-logo.png</file>
+        <file>static/images/vk-logo.png</file>
+        <file>static/.htaccess</file>
+        <file>static/admin_lib.js</file>
+        <file>static/admin_style.css</file>
+        <file>static/lib.js</file>
+        <file>view/addListingStepActionsTpl.tpl</file>
+        <file>vendor/autoload.php</file>
+        <file>src/Providers/Vk/Vk.php</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook name="apTplCategoriesForm"><![CDATA[]]></hook>
+        <hook name="apPhpCategoriesPost"><![CDATA[]]></hook>
+        <hook name="apPhpCategoriesBeforeEdit"><![CDATA[]]></hook>
+        <hook name="apPhpCategoriesAfterAdd"><![CDATA[]]></hook>
+        <hook name="postPaymentComplete"><![CDATA[]]></hook>
+        <hook name="apExtListingsAfterUpdate"><![CDATA[]]></hook>
+        <hook name="apPhpListingsAfterAdd"><![CDATA[]]></hook>
+        <hook name="addListingStepActionsTpl"><![CDATA[]]></hook>
+        <hook name="staticDataRegister"><![CDATA[]]></hook>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="1.3.0" name="apPhpTrashBottom"><![CDATA[]]></hook>
+        <hook version="1.3.0" name="phpDeleteListingData"><![CDATA[]]></hook>
+        <hook version="1.3.1" name="apPhpListingsAfterActivate"><![CDATA[]]></hook>
+        <hook version="1.4.0" name="apNotifications"><![CDATA[]]></hook>
+        <hook version="1.5.0" name="afterListingCreate"><![CDATA[]]></hook>
+        <hook version="1.5.0" name="cronAdditional"><![CDATA[]]></hook>
+        <hook version="1.8.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="1.8.0" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="1.9.0" name="phpDeleteListingDataBefore"><![CDATA[]]></hook>
+        <hook version="1.9.0" name="apPhpIndexBottom"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="ap_cant_be_negative" module="admin"><![CDATA[You cannot use negative values in the {field} field.]]></phrase>
+        <phrase key="ap_config_saved_fine" module="admin"><![CDATA[Your changes have been successfully saved.]]></phrase>
+        <phrase key="ap_module_missing" module="admin"><![CDATA[The module doesn't exist.]]></phrase>
+        <phrase key="ap_modules_list" module="admin"><![CDATA[All Modules]]></phrase>
+        <phrase key="ap_build_message" module="admin"><![CDATA[Build post description]]></phrase>
+        <phrase key="ap_modules" module="admin"><![CDATA[Social Network Module Manager]]></phrase>
+        <phrase key="ap_module_managment" module="admin"><![CDATA[Module Management]]></phrase>
+        <phrase key="ap_module_settings" module="admin"><![CDATA[Module Settings]]></phrase>
+        <phrase key="ap_module_saving_error" module="admin"><![CDATA[Failed to save the changes.]]></phrase>
+        <phrase key="ap_module_saved_fine" module="admin"><![CDATA[The changes have been successfully made.]]></phrase>
+        <phrase version="1.2.0" key="ap_message_in_posts" module="admin"><![CDATA[Automatic post pattern]]></phrase>
+        <phrase key="ap_token" module="admin"><![CDATA[Token]]></phrase>
+        <phrase key="ap_get_token" module="admin"><![CDATA[Get Token]]></phrase>
+        <phrase version="1.7.0" key="ap_autoposter_settings" module="admin"><![CDATA[Pattern Settings for AutoPoster plugin]]></phrase>
+        <phrase key="ap_facebook_application" module="admin"><![CDATA[Application]]></phrase>
+        <phrase key="ap_facebook_token_expire" module="admin"><![CDATA[Token valid for]]></phrase>
+        <phrase key="ap_never" module="admin"><![CDATA[Unlimited]]></phrase>
+        <phrase key="ap_field_empty" module="admin"><![CDATA[Please fill in the field.]]></phrase>
+        <phrase key="ap_sending_method_dosnt_exist" module="admin"><![CDATA[The posting method doesn't exist.]]></phrase>
+        <phrase key="ap_message_sent" module="admin" version="1.9.0"><![CDATA[Posts have been successfully sent.]]></phrase>
+        <phrase key="ap_message_dont_sent" module="admin"><![CDATA[Failed to send posts to the social networks.]]></phrase>
+        <phrase key="ap_to_personal_page" module="admin"><![CDATA[Personal page]]></phrase>
+        <phrase key="ap_to_business_page" module="admin"><![CDATA[Business page]]></phrase>
+        <phrase version="1.1.0" key="ap_to_group" module="admin"><![CDATA[Facebook Group]]></phrase>
+        <phrase version="1.1.0" key="ap_link_copied" module="admin"><![CDATA[You've copied the link.]]></phrase>
+        <phrase version="1.1.0" key="ap_copy_valid_oauth" module="admin"><![CDATA[Copy the 'Valid OAuth Redirect URI' link]]></phrase>
+        <phrase version="1.1.0" key="ap_copy" module="admin"><![CDATA[Copy]]></phrase>
+        <phrase version="1.2.0" key="ap_facebook_logged" module="admin"><![CDATA[You've logged in to Facebook]]></phrase>
+        <phrase version="1.2.0" key="ap_login_via_facebook" module="admin"><![CDATA[Login with Facebook]]></phrase>
+        <phrase version="1.3.0" key="ap_provider_guide_link" module="admin"><![CDATA[The {provider} guide is available [here].]]></phrase>
+        <phrase version="1.4.0" key="ap_clear_log" module="admin" target="auto_poster"><![CDATA[Clear Log]]></phrase>
+        <phrase version="1.4.0" key="ap_no_category_pattern" module="admin" target="home"><![CDATA[Currently, the Auto Poster plugin cannot post listings to the social networks because you haven't yet set up post patterns for the categories. Proceed to the category manager, select a category, click Edit, and fill in the Automatic Post Pattern field at the bottom of the page.]]></phrase>
+        <phrase version="1.6.0" key="ap_to_group_vk" module="admin" target="auto_poster"><![CDATA[Vk Group]]></phrase>
+        <phrase version="1.7.0" key="telegram_get_chat_id_bot_token_error" module="admin" target="auto_poster"><![CDATA[The bot token is incorrect.]]></phrase>
+        <phrase version="1.7.0" key="telegram_get_chat_id_no_data_error" module="admin" target="auto_poster"><![CDATA[Invite the bot to the Telegram group then post a message to it.]]></phrase>
+        <phrase key="ap_login_via_vk" module="admin" target="auto_poster" version="1.9.0"><![CDATA[Sign in with VK ID]]></phrase>
+        <phrase key="ap_vk_logged" module="admin" version="1.9.0"><![CDATA[You've logged in to VK]]></phrase>
+    </phrases>
+
+    <configs key="autoPoster" name="Auto Poster" version="1.8.0"><![CDATA[]]>
+        <config key="ap_own_cron" name="Plugin built-in Cron script" description="&lt;div&gt;By default, the plugin posts one delayed ad per run with Cron script built into the software.&lt;br&gt;You can enable this option to increase the speed of posting delayed ads (ads under premium packages/plans, ads posted via mobile Apps, etc.).&lt;br&gt;To configure the plugin built-in Cron script you will need to add a task to the Cron Jobs: &lt;i&gt;*/30 * * * * {php_path} {cron_path}&lt;/i&gt;&lt;/div&gt;" type="bool" version="1.8.0"><![CDATA[0]]></config>
+        <config key="ap_cron_ads_limit" name="Number of ads to post per Cron script run" type="text" validate="int" version="1.8.0"><![CDATA[1]]></config>
+        <config key="ap_facebook_app_id" name="Facebook app ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_facebook_app_secret" name="Facebook app secret" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_facebook_post_to" name="Post listings to" type="select" group="0"><![CDATA[]]></config>
+        <config key="ap_facebook_subject_id" name="Page/Group ID" description="Please fill in the field if you chose to post to 'Personal page' or 'Facebook Group'" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_twitter_consumer_key" name="Consumer key (API Key)" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_twitter_consumer_secret" name="Consumer secret (API Secret)" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_twitter_token_key" name="Access token" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_twitter_token_secret" name="Access token secret" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_vk_client_id" version="1.9.0" name="App ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_vk_post_to"  version="1.6.0" name="Post listings to" type="select" group="0"><![CDATA[]]></config>
+        <config key="ap_vk_owner_id" version="1.6.0" name="Page/Group ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_telegram_bot_token" version="1.7.0" name="Bot token" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_telegram_chat_id" version="1.7.0" name="Chat ID" description="&lt;a href=&quot;javascript://&quot; class=&quot;get-chat-id&quot;&gt;Get chat id&lt;/a&gt; (ignore the first &quot;-&quot; character)" type="text" group="0"><![CDATA[]]></config>
+        <config key="ap_imported_ads" name="Publish imported ads (Ads imported with the plugins will be put in line for posting to social networks with the Cron script by limit)" type="divider" version="1.8.0"><![CDATA[]]></config>
+        <config key="ap_xls_frontend" name="Ads imported with the XLSX/CSV Import plugin (frontend)" type="bool" version="1.8.0"><![CDATA[0]]></config>
+        <config key="ap_xls_backend" name="Ads imported with the XLSX/CSV Import plugin (backend)" type="bool" version="1.8.0"><![CDATA[0]]></config>
+        <config key="ap_xml_backend" name="Ads imported with the XML Import plugin" type="bool" version="1.8.0"><![CDATA[0]]></config>
+    </configs>
+
+    <updates>
+        <update version="1.1.0" files="static/admin_lib.js,admin/auto_poster.inc.php,admin/auto_poster.tpl,.htaccess,admin/rlAutoPosterAdmin.class.php,src/Providers/Facebook/Facebook.php,src/Providers/Twitter/Twitter.php,src/AutoPosterModules.php,src/MessageBuilder.php,static/.htaccess,vendor/facebook/graph-sdk/src/Facebook/Authentication/OAuth2Client.php,vendor/facebook/graph-sdk/src/Facebook/Exceptions/FacebookResponseException.php,vendor/facebook/graph-sdk/src/Facebook/GraphNodes/GraphUser.php,vendor/facebook/graph-sdk/src/Facebook/Helpers/FacebookRedirectLoginHelper.php,vendor/facebook/graph-sdk/src/Facebook/HttpClients/FacebookCurlHttpClient.php,vendor/facebook/graph-sdk/src/Facebook/Facebook.php,vendor/facebook/graph-sdk/src/Facebook/SignedRequest.php,vendor/facebook/graph-sdk/CODE_OF_CONDUCT.md,bootstrap.php,rlAutoPoster.class.php,admin/.htaccess"><![CDATA[]]></update>
+        <update version="1.2.0" files="admin/auto_poster.inc.php,admin/auto_poster.tpl,admin/view/module_configs.tpl,admin/view/modules/facebook.tpl,bootstrap.php,src/AutoPosterModules.php,src/ProviderController.php,src/Providers/Facebook/Facebook.php,src/Providers/Twitter/Twitter.php,static/admin_style.css"><![CDATA[]]></update>
+        <update version="1.3.0" files="admin/auto_poster.inc.php,admin/auto_poster.tpl,admin/view/modules/facebook.tpl,bootstrap.php,rlAutoPoster.class.php,src/Interfaces/ProviderInterface.php,src/Providers/Facebook/Facebook.php,src/Providers/Twitter/Twitter.php,static/admin_style.css,static/images/fb-logo.png"><![CDATA[]]></update>
+        <update version="1.3.1" files="admin/auto_poster.inc.php,rlAutoPoster.class.php"><![CDATA[]]></update>
+        <update version="1.4.0" files="admin/auto_poster.inc.php,admin/auto_poster.tpl,rlAutoPoster.class.php,src/MessageBuilder.php,src/Notifier.php,src/Providers/Facebook/Facebook.php,src/Providers/Twitter/Twitter.php,static/admin_lib.js,static/admin_style.css"><![CDATA[]]></update>
+        <update version="1.5.0" files="admin/auto_poster.inc.php,rlAutoPoster.class.php,src/AutoPosterModules.php,src/MessageBuilder.php,src/ProviderController.php,src/Providers/Facebook/Facebook.php,src/Providers/Twitter/Twitter.php"><![CDATA[]]></update>
+        <update version="1.6.0" files="src/AutoPosterModules.php,i18n/ru.json,admin/auto_poster.inc.php,admin/rlAutoPosterAdmin.class.php,bootstrap.php,rlAutoPoster.class.php,src/Providers/Vk/Vk.php"><![CDATA[]]></update>
+        <update version="1.7.0" files="admin/auto_poster.inc.php,admin/auto_poster.tpl,admin/view/message_in_category_builder.tpl,bootstrap.php,i18n/ru.json,rlAutoPoster.class.php,src/AutoPosterModules.php,src/MessageBuilder.php,src/Providers/Telegram/Telegram.php,src/Providers/Facebook/Facebook.php,src/Providers/Twitter/Twitter.php,src/Providers/Vk/Vk.php"><![CDATA[]]></update>
+        <update version="1.7.1" files="admin/auto_poster.tpl,admin/rlAutoPosterAdmin.class.php,admin/view/module_configs.tpl,bootstrap.php,src/Providers/Facebook/Facebook.php,rlAutoPoster.class.php,src/MessageBuilder.php,src/Providers/Telegram/Telegram.php,src/Providers/Vk/Vk.php"><![CDATA[]]></update>
+        <update version="1.8.0" files="bootstrap.php,i18n/ru.json,admin/view/settings.tpl,rlAutoPoster.class.php,cron/index.php,src/Providers/Twitter/Twitter.php,vendor,src/ProviderController.php,src/Providers/Facebook/Facebook.php,src/Providers/Telegram/Telegram.php,src/Providers/Vk/Vk.php"><![CDATA[]]></update>
+        <update version="1.9.0" files="admin/view/modules/facebook.tpl,admin/view/modules/vk.tpl,admin/auto_poster.inc.php,i18n/ru.json,src/Providers/Facebook/Facebook.php,src/Providers/Vk/Vk.php,static/images/vk-logo.png,static/admin_style.css,bootstrap.php,rlAutoPoster.class.php,src/AutoPosterModules.php"><![CDATA[]]></update>
+        <update version="1.9.1" files="src/Providers/Facebook/Facebook.php,src/Providers/Vk/Vk.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

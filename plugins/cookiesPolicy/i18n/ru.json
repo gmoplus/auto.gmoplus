@@ -1,0 +1,21 @@
+{
+    "title_cookiesPolicy": "Политика Cookie",
+    "description_cookiesPolicy": "Уведомляет пользователей о сборе файлов cookie, требуя от посетителей либо принять политику, либо покинуть сайт",
+    "cookies_policy_cookie_control": "Политика Cookie",
+    "cookies_policy_accept": "Принять",
+    "cookies_policy_decline": "Отказать",
+    "config_groups+name+cookiesPolicy": "Политика Cookie",
+    "config+option+cookiesPolicy_position_bottom_left": "Внизу слева",
+    "config+option+cookiesPolicy_position_bottom_right": "Внизу справа",
+    "cookies_policy_content_text": "Cookie являются файлами, хранящимися в вашем браузере с целью персонализации использования сайта. Приняв нашу политику cookie, вы соглашаетесь на использование файлов cookie.",
+    "config+option+cookiesPolicy_view_banner": "Баннер",
+    "config+option+cookiesPolicy_view_popup": "Всплывающее окно",
+    "config+name+cookiesPolicy_country": "Коды стран для политики cookie",
+    "config+des+cookiesPolicy_country": "Вы можете включить политику cookie для определенных стран, введя их коды. Для получения кодов, пройдите <a target=\"_blank\" href=\"https://www.iso.org/iso-3166-country-codes.html\">сюда</a>",
+    "config+name+cookiesPolicy_view": "Вид после подтверждения",
+    "config+name+cookiesPolicy_position": "Расположение всплывающего окна",
+    "config+name+cookiesPolicy_hide_icon": "Скрыть иконку после принятия политики",
+    "config+name+cookiesPolicy_redirect_url": "URL-адрес по умолчанию в случае непринятия политики",
+    "config+name+cp_block_all_cookies": "Блокировать все cookie",
+    "config+des+cp_block_all_cookies": "Препятствует сохранению файлов cookie и прерывает сессию (GDPR). При включении, всплывающее окно будет показано всем пользователям в независимости от их страны."
+}

@@ -1,0 +1,97 @@
+/* listing rating plugin css */
+
+li#listing_rating_dom {
+    padding: 15px 0 0;
+}
+ul.listing_rating_ul {
+    padding: 0 0 3px;
+}
+ul.listing_rating_available li {
+    cursor: pointer;
+}
+ul.listing_rating_ul li {
+    width: 21px;
+    height: 20px;
+    display: inline-block;
+    background: url('stars.png') 0 -40px no-repeat;
+    padding: 0!important;
+    position: relative;
+    text-align: left;
+}
+ul.listing_rating_ul li.active {
+    background-position: 0 0;
+}
+ul.listing_rating_ul li.hover {
+    background-position: 0 -20px;
+}
+ul.listing_rating_ul li div {
+    height: 100%;
+    background: url('stars.png') 0 0 no-repeat;
+    display: inline-block;
+}
+ul.rating-bar {
+    display: inline-block;
+    padding: 0 5px 0 0;
+}
+ul.rating-bar li {
+    background: url('stars.png') 0 -73px no-repeat;
+    width: 11px;
+    height: 11px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    text-align: left;
+    margin-right: 1px;
+}
+ul.rating-bar li.active {
+    background-position: 0 -61px;
+}
+ul.rating-bar li div {
+    height: 100%;
+    background: url('stars.png') 0 -61px no-repeat;
+    display: inline-block;
+    vertical-align: top;
+}
+
+body[dir=rtl] ul.listing_rating_ul li {
+    text-align: right;
+}
+body[dir=rtl] ul.listing_rating_ul li div {
+    background-position: right 0;
+}
+body[dir=rtl] ul.rating-bar {
+    padding: 0 0 0 5px;
+}
+body[dir=rtl] ul.rating-bar li {
+    margin-right: 0;
+    margin-left: 1px;
+    text-align: right;
+}
+body[dir=rtl] ul.rating-bar li > div {
+    background-position: right -61px;
+}
+
+/*** PIXEL RATIO 1.5 ***/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    ul.listing_rating_ul li,
+    ul.listing_rating_ul li > div {
+        background: url('stars@2x.png') 0 -40px no-repeat;
+        background-size: 21px auto;
+    }
+    ul.listing_rating_ul li.active,
+    ul.listing_rating_ul li > div {
+        background-position: 0 0;
+    }
+    ul.listing_rating_ul li.hover {
+        background-position: 0 -20px;
+    }
+
+    ul.rating-bar li {
+        background: url('stars@2x.png') 0 -72px no-repeat;
+        background-size: 21px auto;
+    }
+    ul.rating-bar li > div {
+        background: url('stars@2x.png') 0 -61px no-repeat;
+        background-size: 21px auto;
+    }
+}

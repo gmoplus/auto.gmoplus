@@ -1,0 +1,422 @@
+/*** Plugin overrides ***/
+
+// Slider
+aside.sidebar {
+  @include respond_to(tablet) {
+    .cf-slider {
+      width: 50%;
+    }
+  }
+
+
+  @include respond_to(mobile) {
+    .cf-slider {
+      width: 100%;
+    }
+  }
+}
+
+div.cf-slider + div.cf-apply {
+  padding-top: 10px;
+}
+
+.jslider {
+  .jslider-label,
+  .jslider-value {
+    font-size: 0.75rem !important;
+    color: #888888;
+    background-color: transparent !important;
+  }
+
+  .jslider-value {
+    top: (-25px) !important;
+    padding: 0;
+    margin-left: (-10px) !important;
+
+    &.jslider-value-to {
+      margin-left: 0 !important;
+      margin-right: (-10px) !important;
+    }
+  }
+
+  .jslider-bg {
+    .v {
+      background: #6aa7ee !important;
+    }
+
+    .l,
+    .r {
+      background: #c0c0c0 !important;
+    }
+
+    .v,
+    .l,
+    .r {
+      height: 1px !important;
+    }
+  }
+
+  .jslider-pointer {
+    width: 21px;
+    height: 21px;
+    border-radius: 11px;
+    background: #6aa7ee !important;
+    top: -10px;
+    margin-left: (-11px) !important;
+
+    @include transition(background-color);
+
+    &.jslider-pointer-to {
+      margin-left: (-11px) !important;
+    }
+
+    &:before {
+      width: 7px;
+      height: 7px;
+      background: $color-white;
+      border-radius: 4px;
+      position: absolute;
+      top: 7px;
+      left: 7px;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+// Category filter && box
+.categoryFilter {
+  position: relative;
+  background: #f0f0f0;
+
+  &.content_block {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 11px 15px;
+  }
+
+  &.newFilter {
+    margin-bottom: $spacer;
+  }
+
+  h3 {
+    cursor: pointer;
+
+    @include respond_to(tablet) {
+      display: block;
+
+      &:not(:empty) + span.expander {
+        display: block;
+      }
+    }
+  }
+
+  span.expander {
+    padding: 0 !important;
+    position: absolute;
+    top: -10px;
+    cursor: pointer;
+    #{$space}: -30px;
+
+    @include respond_to(tablet) {
+      display: block;
+      width: map_get($tap-zone, sm);
+      height: map_get($tap-zone, sm);
+      position: absolute;
+      top: -9px;
+      left: -28px;
+    }
+  }
+
+  span.reset {
+    display: inline-block;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 13px 0 36px;
+    background: $color-white;
+    color: #999999;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 15px;
+      width: 10px;
+      height: 10px;
+      background: url(../img/gallery.png) -13px -114px no-repeat;
+      opacity: 0.3;
+
+      @include gallery_retina;
+    }
+  }
+}
+
+div.filter-area,
+div.other_filters_tmp {
+  div.fieldset > div.body {
+    padding-top: $spacer / 2;
+  }
+
+  div.cf-slider {
+    padding-top: ($grid-gutter / 2) !important;
+
+    & + div.cf-apply {
+      padding-top: $spacer;
+    }
+  }
+}
+
+div.other_filters_tmp {
+  z-index: 120;
+
+  > div {
+    @include dropdown_content;
+
+    box-shadow: 0 0 0 5px transparentize($color-black, 0.9) !important;
+  }
+}
+
+// Comments
+#area_comments {
+  .content-padding {
+    padding: 0;
+  }
+
+  .fieldset {
+    form[name="add_comment"] {
+      input,
+      select,
+      textarea {
+        width: 100%;
+      }
+
+      .submit-cell.buttons {
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+#comments_dom {
+  padding-bottom: 0;
+
+  ul.comments {
+    > li {
+      padding-bottom: $grid-gutter / 2;
+      margin-bottom: $grid-gutter / 2;
+      border-bottom: 1px dashed #dddddd;
+
+      > div {
+        padding: 0 0 $spacer / 2;
+        margin: 0;
+        border: none;
+
+        &:before {
+          display: none;
+        }
+
+        h3 {
+          font-size: $font-size-default;
+
+          > span.comment_star_small {
+            margin-top: 2px;
+
+            &:first-child {
+              margin-left: $spacer * 2;
+            }
+          }
+        }
+      }
+
+      > span {
+        padding: 0;
+        color: #b0b0b0;
+
+        span.dark {
+          > b {
+            font-weight: $font-weight-normal;
+            color: #b0b0b0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Weather forecast
+#wf_area_main {
+  .fieldset {
+    > header {
+      > span.arrow {
+        left: -33px;
+      }
+    }
+  }
+}
+
+// Loan Mortgage
+#area_loanMortgage {
+  a.print {
+    z-index: 1;
+  }
+
+  div.submit-cell {
+    > div.name {
+      @include flex(0, 0, 65px);
+
+      white-space: normal !important;
+      line-height: 1.375em !important;
+    }
+
+    > div.field {
+      > span {
+        padding-left: 5px;
+      }
+
+      &.two-fields {
+        > *:first-child {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+div.loan-box .loan-table-cont > div {
+  display: inline-block !important;
+  width: auto !important;
+}
+
+// Recently viewed
+.col-md-12 #rv_listings.wide {
+  div.rv_first,
+  div.rv_last {
+    padding: 0 !important;
+  }
+
+  div.item img {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  @include respond_to(desktop_sm_only) {
+    div.item:nth-child(7),
+    div.item:nth-child(8) {
+        display: none;
+    }
+  }
+}
+
+// Location finder
+#lf-container {
+  div.address-line,
+  div.checkbox-line {
+    padding-top: $spacer !important;
+  }
+}
+
+#lf_map {
+  width: 100%;
+
+  & + .navigation-line {
+    width: 100%;
+  }
+}
+
+#fs_lf_fieldset {
+  .submit-cell {
+    .field {
+      @include flex(1, 0, 0);
+    }
+  }
+}
+
+// Import Export
+#area_import {
+  .submit-cell {
+    .file-input + div[style^="padding"] {
+      @include flex(1, 0, 100%);
+
+      line-height: initial;
+    }
+  }
+}
+
+.xls-export-import-page {
+  ul.tabs {
+    border-bottom: $border-width-default solid $border-color-default;
+    margin-bottom: $spacer * 3;
+    white-space: nowrap;
+    margin-left: -$grid-gutter / 2;
+    margin-right: -$grid-gutter / 2;
+
+    > li {
+      display: inline-block;
+      margin-bottom: -1px;
+      cursor: pointer;
+
+      @include button_base;
+
+      &.active {
+        color: $font-color-dark;
+        box-shadow: inset 0 -3px 0 0 $color-active;
+      }
+    }
+  }
+}
+
+// IP Geo
+.mf-gf {
+  ul.gf-list {
+    padding: 0;
+    max-height: 215px !important;
+
+    &.count-2 {
+      li {
+        margin-#{$space-opposite}: 4% !important;
+        margin-#{$space}: 0 !important;
+
+        &:nth-child(2n) {
+          margin-#{$space-opposite}: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+a.fb-connect {
+  display: block;
+}
+
+aside.sidebar {
+  #geo_autocomplete {
+    width: 100%;
+  }
+}
+
+.listing-details {
+  img.currency-flag {
+    float: #{$float};
+    margin-top: 3px;
+  }
+}
+
+// Loan Calc
+#loan_reset_form {
+    content: '';
+    display: inline-block;
+    vertical-align: text-top;
+    width: 18px;
+    height: 16px;
+    background: url('../img/gallery.png') -18px -337px no-repeat;
+    margin-left: $spacer * 2;
+    cursor: pointer;
+    opacity: 0.7;
+
+    @include gallery_retina;
+}

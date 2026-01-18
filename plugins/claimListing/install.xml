@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="claimListing">
+    <title>Claim Listing</title>
+    <description>Allows users to claim their listings by email, SMS and with pictures</description>
+    <author>Curtis</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.3.0</version>
+    <date>22.05.2015</date>
+    <controller>claimListing</controller>
+    <class>ClaimListing</class>
+    <compatible>4.7.0</compatible>
+
+    <files>
+        <file>admin/view/settings.tpl</file>
+        <file>admin/claimListing.inc.php</file>
+        <file>admin/claimListing.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>vendor/autoload.php</file>
+        <file>vendor/arcturial/clickatell/src/Rest.php</file>
+        <file>button.tpl</file>
+        <file>claim_listing.inc.php</file>
+        <file>claim_listing.tpl</file>
+        <file>rlClaimListing.class.php</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="apTplAccountsForm" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpAccountsAfterAdd" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apPhpAccountsAfterEdit" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apMixConfigItem" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="listingDetailsAfterStats" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="listingDetailsNavIcons" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="listing_details_sidebar" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="staticDataRegister" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="ajaxRequest" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="sitemapExcludedPages" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="tplHeader" version="1.2.0"><![CDATA[]]></hook>
+        <hook name="apTplFooter" version="1.3.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="cl_claim_ad" module="common"><![CDATA[Claim Listing]]></phrase>
+        <phrase key="cl_allow_to_claim" module="common"><![CDATA[Allow visitors to claim listings of the user]]></phrase>
+        <phrase key="cl_select_confirm_method" module="common"><![CDATA[Verification option]]></phrase>
+        <phrase key="cl_verify_code" module="common"><![CDATA[Enter the code you received]]></phrase>
+        <phrase key="cl_verify_code_button" module="common"><![CDATA[Confirm]]></phrase>
+        <phrase key="cl_method_phone" module="common"><![CDATA[Send an SMS with a verification code]]></phrase>
+        <phrase key="cl_method_email" module="common"><![CDATA[Send an email with a verification code]]></phrase>
+        <phrase key="cl_method_form" module="common"><![CDATA[Send a picture]]></phrase>
+        <phrase key="cl_field_missing" module="common"><![CDATA[{field} is missing from listing details.]]></phrase>
+        <phrase key="cl_correct_code" module="common"><![CDATA[Congratulations! The code has matched.]]></phrase>
+        <phrase key="cl_wrong_code" module="common"><![CDATA[Oops! The code hasn't matched! Please check the code and try again.]]></phrase>
+        <phrase key="cl_code_empty" module="common"><![CDATA[The field is empty, please enter the code!]]></phrase>
+        <phrase key="cl_image_description" module="common"><![CDATA[Upload a JPG, PNG, or GIF picture that can prove the listing really belongs to you.]]></phrase>
+        <phrase key="cl_image" module="common"><![CDATA[Upload your picture]]></phrase>
+        <phrase key="cl_success" module="common"><![CDATA[You've successfully claimed the listing!]]></phrase>
+        <phrase key="cl_fail" module="common"><![CDATA[Something went wrong! You've failed to claim the listing.]]></phrase>
+        <phrase key="cl_sms_text" module="common" version="1.3.0"><![CDATA[Thank you for claiming listing(s) at {site_name}!<br/>Please enter the code in the field and confirm: {code}.]]></phrase>
+        <phrase key="cl_image_upload_fail" module="common"><![CDATA[Failed to upload your picture, please [contact] the Administrator.]]></phrase>
+        <phrase key="cl_request_created" module="common"><![CDATA[You've successfully claimed the listing; the Administrator will need some time to review your claim.]]></phrase>
+        <phrase key="cl_sms_email_notice" module="common"><![CDATA[The code will be sent to: {notice_recipient}.]]></phrase>
+        <phrase key="cl_sms_fail" module="frontEnd"><![CDATA[SMS gateway error: {error}]]></phrase>
+        <phrase key="cl_ext_caption" module="ext"><![CDATA[Claim Listing Manager]]></phrase>
+        <phrase key="cl_method" module="admin"><![CDATA[Claiming Option]]></phrase>
+        <phrase key="cl_ip_address" module="admin"><![CDATA[IP]]></phrase>
+        <phrase key="cl_requests" module="admin"><![CDATA[All Claims]]></phrase>
+        <phrase key="cl_request" module="admin"><![CDATA[Claim Details]]></phrase>
+        <phrase key="cl_confirm" module="admin"><![CDATA[Verify]]></phrase>
+        <phrase key="cl_confirmed" module="admin"><![CDATA[Verified]]></phrase>
+        <phrase key="cl_success_confirmed" module="admin"><![CDATA[You've successfully met the claim!]]></phrase>
+        <phrase key="cl_request_deleted" module="admin"><![CDATA[You've successfully removed the claim.]]></phrase>
+        <phrase key="cl_claim_error" module="frontEnd" version="1.1.0"><![CDATA[You cannot claim your own listing.]]></phrase>
+        <phrase key="cl_send_code_notify_fail" module="frontEnd" version="1.1.0"><![CDATA[Failed to send SMS; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="cl_remove_request_notify_fail" module="admin" version="1.1.0"><![CDATA[Failed to remove the request; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="cl_by_same_email_notice" module="frontEnd" version="1.1.0"><![CDATA[{count} listing(s) have been found with the same email.]]></phrase>
+        <phrase key="cl_by_same_phone_notice" module="frontEnd" version="1.1.0"><![CDATA[{count} listing(s) have been found with the same phone number.]]></phrase>
+        <phrase key="cl_other_listings" module="frontEnd" version="1.1.0"><![CDATA[Do you want to claim other listings?]]></phrase>
+        <phrase key="cl_basic_tab" module="admin" version="1.1.0"><![CDATA[Request Details]]></phrase>
+        <phrase key="cl_all_listings_tab" module="admin" version="1.1.0"><![CDATA[All Claimed Listings]]></phrase>
+    </phrases>
+
+    <configs key="claim_listing" name="Claim Listing"><![CDATA[]]>
+        <config key="cl_general" name="General" values="" type="divider"><![CDATA[]]></config>
+        <config key="cl_module" name="Claiming module" type="bool"><![CDATA[1]]></config>
+        <config key="cl_phone_method" name="Claim listings by phone" type="bool"><![CDATA[1]]></config>
+        <config key="cl_email_method" name="Claim listings by email" type="bool"><![CDATA[1]]></config>
+        <config key="cl_phone_field" name="Map phone field" type="select"><![CDATA[phone]]></config>
+        <config key="cl_email_field" name="Map email field" type="select"><![CDATA[email]]></config>
+        <config key="cl_by_same_email" name="Claim several listings with the same email" type="bool" version="1.1.0" description="Allows the user to claim a few listings with the same email."><![CDATA[0]]></config>
+        <config key="cl_by_same_phone" name="Claim several listings with the same phone number" type="bool" version="1.1.0" description="Allows the user to claim a few listings with an SMS."><![CDATA[1]]></config>
+        <config key="cl_sms_service" name="SMS service" type="select" version="1.3.0" values="Clickatell,SMS.RU"><![CDATA[Clickatell]]></config>
+
+        <!-- Clicatell REST API -->
+        <config key="cl_clickatell_divider_rest" name="Clickatell REST API (Recommended)" type="divider" version="1.1.0"><![CDATA[]]></config>
+        <config key="cl_clickatell_api_key_rest" name="API Key" type="text" version="1.1.0"><![CDATA[]]></config>
+        <config key="cl_clickatell_api_phone" name="Phone number" type="text" version="1.2.0" description="Fill in the field if you use two-way SMS messaging."><![CDATA[]]></config>
+
+        <!-- @todo - Remove this method in next major update -->
+        <config key="cl_clickatell_divider" name="Clickatell HTTP API (Archive)" type="divider" version="1.1.0"><![CDATA[]]></config>
+        <config key="cl_clickatell_api_id" name="API Key" type="text"><![CDATA[]]></config>
+        <config key="cl_clickatell_username" name="Username" type="text"><![CDATA[]]></config>
+        <config key="cl_clickatell_password" name="Password" type="text"><![CDATA[]]></config>
+
+        <!-- SMS.RU REST API -->
+        <config key="cl_divider_sms_ru" name="SMS.RU REST API" type="divider" version="1.3.0"><![CDATA[]]></config>
+        <config key="cl_sms_ru_api_key_rest" name="API Key" type="text" version="1.3.0"><![CDATA[]]></config>
+    </configs>
+
+    <pages>
+        <page key="claim_listing" name="Claim Listing" type="system" path="claim-listing" controller="claim_listing" tpl="1" login="0"><![CDATA[]]></page>
+    </pages>
+
+    <emails>
+        <email key="claim_request" subject="Claim verification at {site_name}"><![CDATA[
+            Thank you for claiming listing(s) at {site_name}!
+
+            Please enter the code in the field and confirm: {code}
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+        <email key="claim_request_confirmed" subject="Your claim verified at {site_name}"><![CDATA[
+            Hello {username},
+
+            Congratulations! The Administrator has satisfied your claim to the listing at {site_name}!
+
+            {listing_details}
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+        <email key="claim_request_admin" subject="User claimed a listing at {site_name}" version="1.1.0"><![CDATA[
+            Hello Administrator,
+
+            {name} claimed a listing and uploaded a picture.
+            Please check the details and either verify or delete the claim at: {link}
+            ______________________________
+            Thank you,
+            {site_name} Administration
+        ]]></email>
+    </emails>
+
+    <updates>
+        <update version="1.0.1" files="rlClaimListing.class.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="admin/claimListing.inc.php,rlClaimListing.class.php"><![CDATA[]]></update>
+        <update version="1.1.0" files="admin/claimListing.inc.php,admin/claimListing.tpl,admin/.htaccess,vendor/arcturial/clickatell/src/ClickatellException.php,vendor/arcturial/clickatell/src/Rest.php,vendor/composer/autoload_classmap.php,vendor/composer/autoload_namespaces.php,vendor/composer/autoload_psr4.php,vendor/composer/autoload_real.php,vendor/composer/autoload_static.php,vendor/composer/ClassLoader.php,vendor/composer/ClassLoader.php,vendor/autoload.php,.htaccess,button.tpl,claim_listing.inc.php,claim_listing.tpl,rlClaimListing.class.php"><![CDATA[]]></update>
+        <update version="1.2.0" files="admin/claimListing.tpl,rlClaimListing.class.php"><![CDATA[]]></update>
+        <update version="1.2.1" files="claim_listing.inc.php,claim_listing.tpl,rlClaimListing.class.php"><![CDATA[]]></update>
+        <update version="1.2.2" files="admin/claimListing.inc.php,i18n/ru.json,admin/claimListing.tpl,claim_listing.inc.php,claim_listing.tpl,rlClaimListing.class.php"><![CDATA[]]></update>
+        <update version="1.3.0" files="claim_listing.tpl,claim_listing.inc.php,rlClaimListing.class.php,admin/view/settings.tpl,i18n/ru.json"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

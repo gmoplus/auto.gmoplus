@@ -1,0 +1,5 @@
+# Configures the footer on server-generated documents
+ServerSignature Off
+
+# disable apache morRewrite module
+RewriteEngine Off

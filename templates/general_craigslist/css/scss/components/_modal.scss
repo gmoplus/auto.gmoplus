@@ -1,0 +1,116 @@
+/*** Modal ***/
+#modal_mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $modal-mask-bg;
+  z-index: 8000;
+
+  .modal_block {
+    position: absolute;
+    left: 50%;
+
+    .modal_content {
+      width: 100%;
+      margin: 0 auto;
+      background: $color-white;
+
+      @if $isLtr {
+        padding: $grid-gutter ($spacer * 5) $grid-gutter $grid-gutter;
+      }
+      @else {
+        padding: $grid-gutter $grid-gutter $grid-gutter ($spacer * 5);
+      }
+
+      @include respond_to(tablet) {
+        overflow: auto;
+      }
+    }
+
+    .inner {
+      > .close {
+        position: absolute;
+        top: 0;
+        #{$space-opposite}: 0;
+      }
+    }
+
+    &.fullscreen {
+      position: fixed;
+      #{$space}: 0;
+      top: 0;
+      margin: 0;
+
+      .close {
+        position: absolute;
+        top: 30px;
+        #{$space-opposite}: 30px;
+        z-index: 8001;
+
+        @include respond_to(mobile) {
+          position: fixed;
+          top: 10px;
+          #{$space-opposite}: 5px;
+        }
+      }
+
+      .inner {
+        width: 100%;
+        height: 100%;
+
+        .modal_content {
+          height: 100%;
+        }
+      }
+    }
+
+    &.fill-edge {
+      .modal_content {
+        padding: 0;
+      }
+    }
+  }
+
+  // Forms
+  .modal_content {
+    .caption,
+    .caption_padding {
+      font-size: $font-size-large;
+      margin-bottom: $spacer * 2;
+    }
+
+    form {
+      input[type="text"],
+      input[type="number"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+      }
+
+      img {
+        margin-#{$space-opposite}: $spacer;
+      }
+    }
+
+    .prompt {
+      padding-top: $spacer;
+    }
+
+    .file-input span {
+      float: #{$space-opposite};
+    }
+
+    .file-input div {
+      overflow: hidden;
+      width: auto;
+    }
+
+    input + a.close {
+      margin-#{$space}: $spacer;
+    }
+
+    .restricted-content {
+      @include login_popup("no_padding");
+    }
+  }
+}

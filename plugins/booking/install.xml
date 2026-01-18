@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="booking">
+    <title>Booking</title>
+    <description>Allows users to book listings of different types and make down payments</description>
+    <author>Curtis Jackson</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.4.1</version>
+    <date>27.07.2011</date>
+    <controller>booking</controller>
+    <class>Booking</class>
+    <compatible>4.9.1</compatible>
+
+    <notices>
+        <notice version="3.0.0">
+            <![CDATA[To set up the Booking Plugin 3.0.x watch a <a target="_blank" href="https://youtu.be/nG3MW657wrk">Video Tutorial</a>]]>
+        </notice>
+    </notices>
+
+    <files>
+        <file>admin/booking.inc.php</file>
+        <file>admin/booking.tpl</file>
+        <file>admin/booking_type_properties.tpl</file>
+        <file>smarty_blocks/binding_days.tpl</file>
+        <file>smarty_blocks/calendar.tpl</file>
+        <file>smarty_blocks/checkin_checkout.tpl</file>
+        <file>smarty_blocks/configs.tpl</file>
+        <file>smarty_blocks/escort_data.tpl</file>
+        <file>smarty_blocks/fields.tpl</file>
+        <file>smarty_blocks/js_script.tpl</file>
+        <file>smarty_blocks/listing_data.tpl</file>
+        <file>smarty_blocks/message.tpl</file>
+        <file>smarty_blocks/rate_ranges.tpl</file>
+        <file>smarty_blocks/requests.tpl</file>
+        <file>smarty_blocks/styles.tpl</file>
+        <file>static/admin_style.css</file>
+        <file>static/book.png</file>
+        <file>static/hour.png</file>
+        <file>static/lib.js</file>
+        <file>static/moment-timezone-with-data.min.js</file>
+        <file>static/moment.min.js</file>
+        <file>static/style.css</file>
+        <file>availability_block.tpl</file>
+        <file>booking_details.inc.php</file>
+        <file>booking_details.tpl</file>
+        <file>booking_group.tpl</file>
+        <file>booking_order.inc.php</file>
+        <file>booking_order.tpl</file>
+        <file>booking_requests.inc.php</file>
+        <file>booking_requests.tpl</file>
+        <file>booking_reservations.inc.php</file>
+        <file>booking_reservations.tpl</file>
+        <file>ca_js_handler.tpl</file>
+        <file>icon.tpl</file>
+        <file>nav_bar.tpl</file>
+        <file>rate_ranges.tpl</file>
+        <file>rlBooking.class.php</file>
+        <file>rlBoookingFields.class.php</file>
+        <file>user-navbar.tpl</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="listingsModifyFieldSearch" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="listingsModifyJoinSearch" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="listingsModifyWhereSearch" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="myListingsIcon" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="listingDetailsTop" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="listingDetailsBottom" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="listingDetailsBottomTpl" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="addListingPreFields" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="editListingPreFields" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="afterListingCreate" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="afterListingEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="editListingPostSimulation" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="addListingPostSimulation" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="phpListingsAjaxDeleteListing" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="phpDeleteListingData" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="myListingsPreSelect" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="specialBlock" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="ajaxRequest" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="listingNavIcons" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="addListingFormDataChecking" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="editListingDataChecking" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="sitemapExcludedPages" version="3.1.0"><![CDATA[]]></hook>
+        <hook name="afterListingUpdate" version="3.1.1"><![CDATA[]]></hook>
+        <hook name="phpUrlBottom" version="3.2.0"><![CDATA[]]></hook>
+        <hook name="phpMetaRelPrevNext" version="3.4.1"><![CDATA[]]></hook>
+
+        <!-- hooks for static (js, css) data -->
+        <hook name="tplHeader" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="tplFooter" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="staticDataRegister" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="tplBodyTop" version="3.4.0"><![CDATA[]]></hook>
+
+        <!-- admin hooks -->
+        <hook name="apPhpListingsAfterAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingsAfterEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplHeader" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplContentBottom" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplListingTypesForm" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesBeforeAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansBeforeAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesBeforeEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansBeforeEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesPost" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansPost" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansAfterAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansAfterEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansPost" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apMixConfigItem" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpCategoriesBuild" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apAjaxBuildFormPostSaving" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingsPost" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesAfterAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesAfterEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apExtPluginsUpdate" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesValidate" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingsValidate" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apExtTransactionItem" version="3.2.0"><![CDATA[]]></hook>
+
+        <!-- Temp hook for fix problem with updating cache after plugin installation/updating -->
+        <hook name="apExtPluginsData" version="3.2.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <blocks>
+        <block version="3.0.0" key="booking_availability_block" name="Search for Reservations" side="left" type="smarty" tpl="1"><![CDATA[
+            {include file=$smarty.const.RL_PLUGINS|cat:'booking/availability_block.tpl'}
+        ]]></block>
+        <block version="3.0.0" key="booking_calendar_box" name="Calendar" side="left" type="smarty" tpl="1"><![CDATA[
+            {include file=$smarty.const.RL_PLUGINS|cat:'booking/booking_group.tpl' displayCalendar=true}
+        ]]></block>
+        <block version="3.0.0" key="booking_order_details_1" name="Booking Details (listing)" side="left" type="smarty" tpl="1" header="0"><![CDATA[
+            {include file=$smarty.const.RL_PLUGINS|cat:'booking/smarty_blocks/listing_data.tpl'}
+        ]]></block>
+        <block version="3.0.0" key="booking_order_details_2" name="Booking Details (legend and ranges)" side="left" type="smarty" tpl="0" header="0"><![CDATA[
+            {include file=$bookingBlocksFolder|cat:'rate_ranges.tpl'}
+        ]]></block>
+    </blocks>
+
+    <pages>
+        <page key="booking_requests" name="Booking Requests" type="system" path="booking-requests" get="" controller="booking_requests" menus="2" tpl="1" login="1"><![CDATA[]]></page>
+        <page key="booking_details" name="Booking Details" type="system" path="booking-details" get="" controller="booking_details" menus="" tpl="1" login="1"><![CDATA[]]></page>
+        <page key="booking_order" name="Booking" type="system" path="booking-order" get="" controller="booking_order" menus="" tpl="1" login="0" version="3.0.0"><![CDATA[]]></page>
+        <page key="booking_reservations" name="My Bookings" type="system" path="booking-reservations" get="" controller="booking_reservations" menus="2" tpl="1" login="1" version="3.0.0"><![CDATA[]]></page>
+        <page key="booking_terms_and_conditions" name="Booking Rules and Policies" type="static" controller="static" path="booking-terms-and-conditions" version="3.0.0" tpl="1"><![CDATA[Terms specific for Hosts and Guests.]]></page>
+    </pages>
+
+    <emails>
+        <email version="3.0.0" key="booking_accepted_request" subject="Your booking request accepted" type="html">
+            <![CDATA[
+                Hello {renter},<br>
+                Your booking request has been successfully accepted.
+                {if period_updated}<br>
+                {owner} has rescheduled the dates; please find updated details below:
+                <br>Date(s): {date}
+                <br>Total: {amount}{/if}<br>
+                Listing: {link}
+                Comment: {BODY}
+                ______________________________
+                Thank you,
+                {site_name}
+            ]]>
+        </email>
+        <email version="3.0.0" key="booking_refused_request" subject="Your booking request rejected" type="html">
+            <![CDATA[
+                Hello {renter},<br>
+                Unfortunately, {owner} has rejected your booking request.
+                {if period_updated}<br>
+                {owner} has rescheduled the dates; please find updated details below:
+                <br>Date(s): {date}
+                <br>Total: {amount}{/if}<br>
+                Listing: {link}
+                Reason: {BODY}
+                ______________________________
+                Thank you,
+                {site_name}
+            ]]>
+        </email>
+        <email version="3.0.0" key="booking_new_request_notify" subject="A new booking request" type="html">
+            <![CDATA[
+                You've got a new booking request on {date}<br>
+                <b>Booking Details</b>
+                Listing: {link}
+                Check-in: {checkin}
+                Check-out: {checkout}
+                Total: {amount}
+                {prepayment}<br>
+                <b>Customer Details</b>
+                {details}
+                ______________________________
+                Thank you,
+                {site_name}
+            ]]>
+        </email>
+        <email version="3.0.0" key="booking_accepted_request_escort" subject="Your booking request accepted" type="html">
+            <![CDATA[
+                Hello {renter},<br>
+                Your booking request has been successfully accepted.
+                {if period_updated}<br>
+                {owner} has rescheduled the time; please find updated details below:
+                <br>Date: {date}
+                <br>Total: {amount}{/if}<br>
+                Profile: {link}
+                Comment: {BODY}
+                ______________________________
+                Thank you,
+                {site_name}
+            ]]>
+        </email>
+        <email version="3.0.0" key="booking_refused_request_escort" subject="Your booking request rejected" type="html">
+            <![CDATA[
+                Hello {renter},<br>
+                Unfortunately, {owner} has rejected your booking request.
+                {if period_updated}<br>
+                {owner} has rescheduled the time; please find updated details below:
+                <br>Date: {date}
+                <br>Total: {amount}{/if}<br>
+                Profile: {link}
+                Reason: {BODY}
+                ______________________________
+                Thank you,
+                {site_name}
+            ]]>
+        </email>
+        <email version="3.0.0" key="booking_new_request_notify_escort" subject="A new booking request" type="html">
+            <![CDATA[
+                You've got a new booking request on {date}<br>
+                <b>Booking Details</b>
+                Profile: {link}
+                Start: {checkin}
+                Finish: {checkout}
+                Total: {amount}
+                {prepayment}<br>
+                <b>Customer Details</b>
+                {details}
+                ______________________________
+                Thank you,
+                {site_name}
+            ]]>
+        </email>
+    </emails>
+
+    <phrases>
+        <phrase key="booking_calendar" module="frontEnd" version="3.0.0"><![CDATA[Calendar]]></phrase>
+        <phrase key="booking_checkin" module="common" version="3.2.0" js="1"><![CDATA[Check In]]></phrase>
+        <phrase key="booking_checkin_auto" module="common" version="3.0.0"><![CDATA[Pick Up]]></phrase>
+        <phrase key="booking_checkin_escort" module="common" version="3.0.0"><![CDATA[Start]]></phrase>
+        <phrase key="booking_checkout" module="common" version="3.2.0" js="1"><![CDATA[Check Out]]></phrase>
+        <phrase key="booking_checkout_auto" module="common" version="3.0.0"><![CDATA[Return]]></phrase>
+        <phrase key="booking_checkout_escort" module="common" version="3.0.0"><![CDATA[Finish]]></phrase>
+        <phrase key="booking_remove_confirm" module="common" version="3.0.0"><![CDATA[Are you sure you want to remove the rental rate?]]></phrase>
+        <phrase key="booking_accept" module="frontEnd"><![CDATA[Accept]]></phrase>
+        <phrase key="booking_refuse" module="frontEnd"><![CDATA[Reject]]></phrase>
+        <phrase key="booking_accepted" module="common"><![CDATA[Accepted]]></phrase>
+        <phrase key="booking_refused" module="common"><![CDATA[Rejected]]></phrase>
+        <phrase key="booking_req_accepted" module="system" version="3.2.0"><![CDATA[You've successfully accepted the booking request.]]></phrase>
+        <phrase key="booking_req_refused" module="system" version="3.2.0"><![CDATA[You've rejected the booking request.]]></phrase>
+        <phrase key="booking_already_booked" module="frontEnd" version="3.0.0"><![CDATA[The dates are already booked or blocked; please select other dates.]]></phrase>
+        <phrase key="booking_new_requests" module="frontEnd" version="3.0.0"><![CDATA[You've got [count] new booking request(s).]]></phrase>
+        <phrase key="booking_no_requests" module="frontEnd" version="3.0.0"><![CDATA[There are no booking requests.]]></phrase>
+        <phrase key="booking_deny_guests" module="frontEnd" version="3.0.0"><![CDATA[Please sign up or sign in to send a booking request.]]></phrase>
+        <phrase key="booking_min_booking" module="frontEnd" version="3.2.0"><![CDATA[You can book {nights} nights minimum.]]></phrase>
+        <phrase key="booking_max_booking" module="frontEnd" version="3.2.0"><![CDATA[You can book {nights} nights maximum.]]></phrase>
+        <phrase key="booking_legend_booked" module="frontEnd"><![CDATA[Booked]]></phrase>
+        <phrase key="booking_rate_price_per_day" module="common" version="3.0.0"><![CDATA[Standard Rate]]></phrase>
+        <phrase key="booking_rate_add" module="common" version="3.0.0"><![CDATA[Add a Rate]]></phrase>
+        <phrase key="booking_rate_range" module="common" version="3.0.0"><![CDATA[Rental Rate(s)]]></phrase>
+        <phrase key="booking_rate_range_added" module="common" version="3.0.0"><![CDATA[You've successfully added a new rental rate.]]></phrase>
+        <phrase key="booking_request_send" module="system" version="3.2.0"><![CDATA[You've successfully sent a booking request.]]></phrase>
+        <phrase key="booking_prev" module="frontEnd"><![CDATA[Prev:]]></phrase>
+        <phrase key="booking_next" module="frontEnd"><![CDATA[Next:]]></phrase>
+        <phrase key="booking_month" module="frontEnd"><![CDATA[Month]]></phrase>
+        <phrase key="booking_colors" module="admin" version="3.2.0" target="booking"><![CDATA[Calendar Colors]]></phrase>
+        <phrase key="booking_fields_list" module="admin" version="3.2.0" target="booking"><![CDATA[Booking Fields]]></phrase>
+        <phrase key="booking_requests" module="admin" version="3.0.0"><![CDATA[Booking Requests]]></phrase>
+        <phrase key="booking_fields_manager" module="admin" version="3.2.0" target="booking" js="1"><![CDATA[Booking Field Manager]]></phrase>
+        <phrase key="booking_start_booking_title" module="frontEnd" version="3.0.0"><![CDATA[Click to select dates]]></phrase>
+        <phrase key="booking_bindings_saved" module="system" version="3.2.0"><![CDATA[The available days have been successfully saved.]]></phrase>
+        <phrase key="booking_details" module="frontEnd"><![CDATA[Your booking details]]></phrase>
+        <phrase key="booking_page_details" module="common" version="3.0.0"><![CDATA[Request Details]]></phrase>
+        <phrase key="booking_author" module="frontEnd" version="3.0.0"><![CDATA[Requester]]></phrase>
+        <phrase key="booking_nights" module="frontEnd"><![CDATA[Nights]]></phrase>
+        <phrase key="booking_close_days" module="common" version="3.0.0"><![CDATA[Blocked Days]]></phrase>
+        <phrase key="booking_day_closed" module="frontEnd" version="3.0.0"><![CDATA[The date is not available for booking, please select another date.]]></phrase>
+        <phrase key="booking_day_booked" module="frontEnd" version="3.0.0"><![CDATA[The date is already booked. Please select another date.]]></phrase>
+        <phrase key="booking_client_details" module="common" version="3.0.0"><![CDATA[Customer Details]]></phrase>
+        <phrase key="booking_booking_requests" module="frontEnd" version="3.0.0"><![CDATA[Booking Requests]]></phrase>
+        <phrase key="booking_check_in_only" module="frontEnd" version="3.2.0"><![CDATA[Check-in is available on <b>{days}</b>.]]></phrase>
+        <phrase key="booking_check_out_only" module="frontEnd" version="3.2.0"><![CDATA[Check-out is available on <b>{days}</b>.]]></phrase>
+        <phrase key="booking_ref_number" module="common"><![CDATA[Ref #]]></phrase>
+        <phrase key="ext_booking_client" module="ext" version="3.0.0"><![CDATA[Customer]]></phrase>
+        <phrase key="ext_listing_rate_range_manager" module="admin" version="3.0.0"><![CDATA[Listings offered for booking]]></phrase>
+        <phrase key="ext_booking_remove_notice_ap" module="ext" version="3.0.0"><![CDATA[Are you sure you want to remove the booking request?]]></phrase>
+        <phrase key="ext_booking_request_removed" module="system" version="3.2.0"><![CDATA[You've successfully removed the request.]]></phrase>
+        <phrase key="booking_rate_range_removed" module="system" version="3.2.0"><![CDATA[You've successfully removed the rental rate.]]></phrase>
+        <phrase key="booking_binding_days" module="frontEnd" version="3.2.0" target="booking_details"><![CDATA[Available Week Days]]></phrase>
+        <phrase key="ext_ref_number" module="ext"><![CDATA[Ref #]]></phrase>
+        <phrase key="booking_admin_listings_tab" module="admin" version="3.2.0" target="booking"><![CDATA[Listings for Booking]]></phrase>
+        <phrase key="booking_admin_price_field_devide_price" module="admin" version="3.2.0" target="listing_types"><![CDATA[Price field]]></phrase>
+        <phrase key="booking_admin_rent_time_frame" module="admin" version="3.2.0" target="listing_types"><![CDATA[Rental period]]></phrase>
+        <phrase key="booking_admin_rent_time_frame_per_day" module="admin" version="3.2.0" target="listing_types"><![CDATA[Per day]]></phrase>
+        <phrase key="booking_admin_rent_time_frame_per_week" module="admin" version="3.2.0" target="listing_types"><![CDATA[Per week]]></phrase>
+        <phrase key="booking_admin_rent_time_frame_per_month" module="admin" version="3.2.0" target="listing_types"><![CDATA[Per month]]></phrase>
+        <phrase key="booking_admin_rent_time_frame_per_year" module="admin" version="3.2.0" target="listing_types"><![CDATA[Per year]]></phrase>
+        <phrase key="booking_admin_colors_available" module="admin" version="3.2.0" target="booking"><![CDATA[Available]]></phrase>
+        <phrase key="booking_admin_colors_closed" module="admin" version="3.2.0" target="booking"><![CDATA[Blocked]]></phrase>
+        <phrase key="booking_admin_colors_own" module="admin" version="3.2.0" target="booking"><![CDATA[Requested]]></phrase>
+        <phrase key="booking_admin_colors_own_desc" module="admin" version="3.2.0" target="booking"><![CDATA[Allows users to view their pending dates that they requested in the calendar.]]></phrase>
+        <phrase key="listing_fields+name+check_availability" module="common" version="2.0.1"><![CDATA[Check Availability]]></phrase>
+        <phrase key="listing_fields+name+booking_module" module="common" version="3.0.0"><![CDATA[Available for Booking]]></phrase>
+        <phrase key="listing_groups+name+booking_rates" module="common" version="2.0.1"><![CDATA[Booking]]></phrase>
+        <phrase key="booking_addEditListingErrorEmptyRanges" module="common" version="3.0.0"><![CDATA[Please select dates and add a rental rate.]]></phrase>
+        <phrase key="booking_remove_notice" module="common" version="3.0.0"><![CDATA[Are you sure you want to remove the booking?]]></phrase>
+        <phrase key="booking_type" module="admin" version="3.0.0"><![CDATA[Booking mode]]></phrase>
+        <phrase key="booking_date_range" module="admin" version="3.0.0"><![CDATA[Daily range (Property)]]></phrase>
+        <phrase key="booking_date_time_range" module="admin" version="3.0.0"><![CDATA[Daily and hourly range (Auto)]]></phrase>
+        <phrase key="booking_time_range" module="admin" version="3.2.0"><![CDATA[Hourly range]]></phrase>
+        <phrase key="booking_edit_desc_notify" module="common" version="3.0.0"><![CDATA[You've successfully edited the description.]]></phrase>
+        <phrase key="booking_edit_desc_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to update the rental rate; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_rate_remove_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to remove the rental rate; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_get_ranges_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to get the rental rate; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_get_dates_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to return dates for calendar; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_save_binding_days_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to save availability week days; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_remove_request_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to remove the booking request; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_handler_request_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to process the booking request; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_remove_field_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to remove the field; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_save_configs_notify_fail" module="system" version="3.2.0"><![CDATA[Failed to save settings; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="booking_time_next_day" module="common" version="3.0.0"><![CDATA[tomorrow]]></phrase>
+        <phrase key="config+option+booking_calendar_position_listing" module="admin" version="3.2.0" target="settings"><![CDATA[In listing details]]></phrase>
+        <phrase key="config+option+booking_calendar_position_box" module="admin" version="3.2.0" target="settings"><![CDATA[In a separate box]]></phrase>
+        <phrase key="booking_data_not_found" module="system" version="3.2.0"><![CDATA[The booking option is not available for your session; please go to the listing to request to book it.]]></phrase>
+        <phrase key="booking_message_step_button" module="common" version="3.0.0"><![CDATA[Proceed to Booking]]></phrase>
+        <phrase key="booking_availability_error" module="common" version="3.0.0"><![CDATA[Please select check-in and check-out dates.]]></phrase>
+        <phrase key="booking_close_rate_range_notice" module="common" version="3.0.0"><![CDATA[Set price to 0 to block the rental rate.]]></phrase>
+        <phrase key="booking_ok" module="common" version="3.0.0"><![CDATA[OK]]></phrase>
+        <phrase key="booking_colors_saved" module="admin" version="3.2.0" target="booking"><![CDATA[You've successfully saved the colors.]]></phrase>
+        <phrase key="booking_request_read" module="common" version="3.0.0"><![CDATA[Reviewed]]></phrase>
+        <phrase key="booking_deny_guest" module="common" version="3.0.0"><![CDATA[Disallow visitors to book]]></phrase>
+        <phrase key="booking_min_book_day" module="common" version="3.0.0"><![CDATA[Minimum nights to book]]></phrase>
+        <phrase key="booking_max_book_day" module="common" version="3.0.0"><![CDATA[Maximum nights to book]]></phrase>
+        <phrase key="booking_min_config_desc" module="common" version="3.0.0"><![CDATA[Enter 1 or more than 1 in the field.]]></phrase>
+        <phrase key="booking_max_config_error" module="common" version="3.0.0"><![CDATA[Please enter 0 or a value greater than minimum nights to book.]]></phrase>
+        <phrase key="booking_max_config_desc" module="common" version="3.0.0"><![CDATA[Enter 0 to make it unlimited]]></phrase>
+        <phrase key="booking_calendar_restricted" module="common" version="3.0.0"><![CDATA[Limit calendar to package duration]]></phrase>
+        <phrase key="booking_calendar_restricted_config_desc" module="common" version="3.0.0"><![CDATA[The calendar will show only those dates that fall within duration of the listing package, or from {from} to {to}.]]></phrase>
+        <phrase key="booking_fixed_range" module="common" version="3.0.0"><![CDATA[Fixed rental rate]]></phrase>
+        <phrase key="booking_fixed_range_config_desc" module="common" version="3.0.0"><![CDATA[All the subsequent rental rates will inherit the price from the first rate.]]></phrase>
+        <phrase key="booking_module" module="common" version="3.0.0"><![CDATA[Booking Settings]]></phrase>
+        <phrase key="booking_module_plans" module="admin" version="3.2.0"><![CDATA[Booking]]></phrase>
+        <phrase key="booking_configs_saved" module="common" version="3.0.0"><![CDATA[The changes have been successfully saved.]]></phrase>
+        <phrase key="booking_no_reservations" module="common" version="3.0.0"><![CDATA[There are no bookings.]]></phrase>
+        <phrase key="booking_date" module="common" version="3.0.0"><![CDATA[Date(s)]]></phrase>
+        <phrase key="booking_request_id" module="common" version="3.0.0"><![CDATA[Request ID]]></phrase>
+        <phrase key="booking_changed_reservations" module="frontEnd" version="3.0.0"><![CDATA[Status of your [count] booking(s) has been updated.]]></phrase>
+        <phrase key="booking_price_notice" module="common" version="3.0.0"><![CDATA[ (per day)]]></phrase>
+        <phrase key="booking_fields+name+guests" module="common" version="3.0.0"><![CDATA[Guests]]></phrase>
+        <phrase key="booking_fields+name+age" module="common" version="3.0.0"><![CDATA[Age]]></phrase>
+        <phrase key="booking_fields+name+phone" module="common" version="3.0.0"><![CDATA[Phone]]></phrase>
+        <phrase key="booking_fields+name+comment" module="common" version="3.0.0"><![CDATA[Comments]]></phrase>
+        <phrase key="booking_period" module="common" version="3.0.0"><![CDATA[Period]]></phrase>
+        <phrase key="booking_ext_notice_delete_field" module="ext" version="3.0.0"><![CDATA[Are you sure you want to remove the field?]]></phrase>
+        <phrase key="booking_book_ad" module="frontEnd" version="3.0.0"><![CDATA[Request to Book]]></phrase>
+        <phrase key="booking_prepayment_type" module="admin" version="3.0.0"><![CDATA[Down payment recipient]]></phrase>
+        <phrase key="booking_none" module="common" version="3.0.0"><![CDATA[- None -]]></phrase>
+        <phrase key="booking_prepayment_percent" module="common" version="3.0.0"><![CDATA[Down payment % rate]]></phrase>
+        <phrase key="booking_prepayment_step" module="common" version="3.0.0"><![CDATA[Down payment]]></phrase>
+        <phrase key="booking_price_field_hint" module="admin" version="3.0.0" target="listing_types"><![CDATA[Select and map a price field that will be used for the listing type for booking from the list of available price fields.]]></phrase>
+        <phrase key="booking_rent_field" module="admin" version="3.2.0" target="listing_types"><![CDATA[Rental field]]></phrase>
+        <phrase key="booking_rent_field_value" module="admin" version="3.2.0" target="listing_types"><![CDATA[Rental value]]></phrase>
+        <phrase key="booking_rent_field_hint" module="admin" version="3.2.0" target="listing_types"><![CDATA[Select and map a rental field that will be used for the listing type for booking from the list of available radio button and dropdown fields.]]></phrase>
+        <phrase key="booking_time_frame_field_hint" module="admin" version="3.2.0" target="listing_types"><![CDATA[Select and map a period field that will be used for the listing type for booking from the list of available radio button and dropdown fields.]]></phrase>
+        <phrase key="booking_time_frame_field" module="admin" version="3.2.0" target="listing_types"><![CDATA[Period field]]></phrase>
+        <phrase key="booking_admin_rent_time_frame_per_hour" module="admin" version="3.2.0" target="listing_types"><![CDATA[Per hour]]></phrase>
+        <phrase key="booking_rent_time_frame_per_day_hint" module="admin" version="3.2.0" target="listing_types"><![CDATA[Available for "Daily and hourly" type only]]></phrase>
+        <phrase key="booking_rate_price_per_hour" module="common" version="3.0.0"><![CDATA[Standard price per hour]]></phrase>
+        <phrase key="booking_deny_guests_option_disabled" module="frontEnd" version="3.2.0" target="booking_details"><![CDATA[You cannot allow visitors to book if the Administrator enabled the down payment option for this listing type.]]></phrase>
+        <phrase key="booking_prepayment_step_notice" module="frontEnd" version="3.2.0" target="booking_order"><![CDATA[At this stage you'll be charged <b>{prepayment_percent}%</b>, or <b>{prepayment}</b> of the total amount: <b>{amount}</b>.<br /> You'll pay the rest of the amount directly to the listing owner.]]></phrase>
+        <phrase key="booking_rest_phrase_mail" module="common" version="3.0.0"><![CDATA[Remaining amount]]></phrase>
+        <phrase key="booking_transaction_unpaid_notice" module="system" version="3.2.0"><![CDATA[Your payment is being processed, please be patient.]]></phrase>
+        <phrase key="booking_escort_date" module="common" version="3.0.0"><![CDATA[Scheduled Date]]></phrase>
+        <phrase key="booking_binding_days_unavailable" module="frontEnd" version="3.2.0" target="booking_details"><![CDATA[The available week days are blocked because they are booked on an hourly basis.]]></phrase>
+        <phrase key="booking_escort_time" module="common" version="3.0.0"><![CDATA[Time]]></phrase>
+        <phrase key="booking_escort_type" module="common" version="3.0.0"><![CDATA[Service/Rate]]></phrase>
+        <phrase key="booking_escort_duration" module="common" version="3.0.0"><![CDATA[Duration]]></phrase>
+        <phrase key="booking_hide_booked_days" module="frontEnd" version="3.2.0" target="booking_details"><![CDATA[Hide booked dates from calendar]]></phrase>
+        <phrase key="booking_hide_booked_days_desc" module="frontEnd" version="3.2.0" target="booking_details"><![CDATA[Allow users to request the same dates in calendar.]]></phrase>
+        <phrase key="booking_escort_data_not_found" module="system" version="3.2.0"><![CDATA[To apply the Booking option, please make sure you've set up the "Availability" and "Escort Rates" fields.]]></phrase>
+        <phrase key="booking_button_select_date" module="frontEnd" version="3.0.0"><![CDATA[Change Date]]></phrase>
+        <phrase key="booking_button_change_date" module="frontEnd" version="3.2.0" target="booking_requests"><![CDATA[Reschedule]]></phrase>
+        <phrase key="booking_button_change_period" module="frontEnd" version="3.2.0" target="booking_requests"><![CDATA[Change Period]]></phrase>
+        <phrase key="booking_escort_duration_0.5" module="common" version="3.2.0"><![CDATA[30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_1" module="common" version="3.0.0"><![CDATA[1 hour]]></phrase>
+        <phrase key="booking_escort_duration_1.5" module="common" version="3.2.0"><![CDATA[1 hour 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_2" module="common" version="3.0.0"><![CDATA[2 hours]]></phrase>
+        <phrase key="booking_escort_duration_2.5" module="common" version="3.2.0"><![CDATA[2 hour 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_3" module="common" version="3.0.0"><![CDATA[3 hours]]></phrase>
+        <phrase key="booking_escort_duration_3.5" module="common" version="3.2.0"><![CDATA[3 hour 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_4" module="common" version="3.0.0"><![CDATA[4 hours]]></phrase>
+        <phrase key="booking_escort_duration_4.5" module="common" version="3.2.0"><![CDATA[4 hour 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_5" module="common" version="3.0.0"><![CDATA[5 hours]]></phrase>
+        <phrase key="booking_escort_duration_5.5" module="common" version="3.2.0"><![CDATA[5 hours 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_6" module="common" version="3.0.0"><![CDATA[6 hours]]></phrase>
+        <phrase key="booking_escort_duration_6.5" module="common" version="3.2.0"><![CDATA[6 hours 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_7" module="common" version="3.0.0"><![CDATA[7 hours]]></phrase>
+        <phrase key="booking_escort_duration_7.5" module="common" version="3.2.0"><![CDATA[7 hours 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_8" module="common" version="3.0.0"><![CDATA[8 hours]]></phrase>
+        <phrase key="booking_escort_duration_8.5" module="common" version="3.2.0"><![CDATA[8 hours 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_9" module="common" version="3.0.0"><![CDATA[9 hours]]></phrase>
+        <phrase key="booking_escort_duration_9.5" module="common" version="3.2.0"><![CDATA[9 hours 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_10" module="common" version="3.0.0"><![CDATA[10 hours]]></phrase>
+        <phrase key="booking_escort_duration_10.5" module="common" version="3.2.0"><![CDATA[10 hours 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_11" module="common" version="3.0.0"><![CDATA[11 hours]]></phrase>
+        <phrase key="booking_escort_duration_11.5" module="common" version="3.2.0"><![CDATA[11 hours 30 minutes]]></phrase>
+        <phrase key="booking_escort_duration_12" module="common" version="3.0.0"><![CDATA[12 hours]]></phrase>
+        <phrase key="booking_escort_check_in_only" module="frontEnd" version="3.2.0"><![CDATA[The profile is available on <b>{days}</b>.]]></phrase>
+        <phrase key="booking_sys_field_protected" module="admin" version="3.2.0" target="booking"><![CDATA[The option is not available for the system field (<b>{field}</b>).]]></phrase>
+        <phrase key="booking_empty_regular" module="common" version="3.0.0"><![CDATA[Please make sure the listing is selected for Rent from the Rental Period field and a rental is specified to calculate and show a standard rate per night. If it doesn't help, please contact the Administrator.]]></phrase>
+        <phrase key="booking_terms_and_conditions_notice" module="frontEnd" version="3.2.0" target="booking_order"><![CDATA[By clicking "Next" you agree to our {terms}.]]></phrase>
+        <phrase key="booking_requests_comments" module="frontEnd" version="3.2.0" target="booking_requests"><![CDATA[Comments]]></phrase>
+        <phrase key="booking_wrong_percent" module="system" version="3.2.0"><![CDATA[You've entered an incorrect payment % rate; please select in the range 1 to 100.]]></phrase>
+        <phrase key="booking_time_am" module="common" version="3.0.0"><![CDATA[am]]></phrase>
+        <phrase key="booking_time_pm" module="common" version="3.0.0"><![CDATA[pm]]></phrase>
+        <phrase key="booking_short_price_k" module="common" version="3.1.0"><![CDATA[k]]></phrase>
+        <phrase key="booking_short_price_m" module="common" version="3.1.0"><![CDATA[m]]></phrase>
+        <phrase key="booking_short_price_b" module="common" version="3.1.0"><![CDATA[b]]></phrase>
+        <phrase key="config+option+booking_clock_system_12-hour" module="admin" version="3.2.0"><![CDATA[12 hour]]></phrase>
+        <phrase key="config+option+booking_clock_system_24-hour" module="admin" version="3.2.0"><![CDATA[24 hour]]></phrase>
+        <phrase key="config+option+booking_first_day_monday" module="admin" version="3.2.0"><![CDATA[Monday]]></phrase>
+        <phrase key="config+option+booking_first_day_sunday" module="admin" version="3.2.0"><![CDATA[Sunday]]></phrase>
+        <phrase key="booking_availability" module="common" version="3.2.1"><![CDATA[Opening hours]]></phrase>
+        <phrase key="booking_rates" module="common" version="3.2.1"><![CDATA[Price-list]]></phrase>
+        <phrase key="booking_rate_title" module="common" version="3.2.1"><![CDATA[Service name]]></phrase>
+        <phrase key="booking_emptyHourlyRanges" module="common" version="3.2.1"><![CDATA[Please fill data of Opening hours and Price-list.]]></phrase>
+        <phrase key="booking_addNewHourlyRate" module="common" version="3.2.1"><![CDATA[Add a new value]]></phrase>
+        <phrase key="booking_rate_hour" module="frontEnd" version="3.2.0"><![CDATA[hour(s)]]></phrase>
+        <phrase key="booking_rate_selector" module="common" version="3.2.1"><![CDATA[Duration]]></phrase>
+        <phrase key="booking_login_popup_title" module="frontEnd" target="listing_details" js="1" version="3.2.0"><![CDATA[Sign in to book]]></phrase>
+        <phrase key="booking_repeatedly_service" module="admin" target="listing_types" version="3.2.0"><![CDATA[Repeatedly service]]></phrase>
+        <phrase key="booking_single_rate" module="common" version="3.2.1"><![CDATA[Single master]]></phrase>
+        <phrase key="booking_multi_rate" module="common" version="3.2.1"><![CDATA[Common team]]></phrase>
+    </phrases>
+
+    <configs key="booking" name="Booking"><![CDATA[]]>
+        <config key="booking_calendar_position" name="Calendar position" values="listing,box" type="select" version="3.2.0"><![CDATA[listing]]></config>
+        <config key="booking_notify_email" name="Email listing owners about new booking requests" type="bool" version="3.0.0"><![CDATA[1]]></config>
+        <config key="booking_notify_admin_by_email" name="Email Administrator about new booking requests" type="bool" version="3.0.0"><![CDATA[1]]></config>
+        <config key="booking_reservations_per_page" name="Number of bookings per page" type="text" version="3.0.0"><![CDATA[10]]></config>
+        <config key="booking_clock_system" name="Clock system" type="select" values="12-hour,24-hour" description="&lt;div&gt;The format is available for all the booking modes except for escorts.&lt;br&gt; In escort it must be configured via properties of Availability system field.&lt;/div&gt;" version="3.2.0"><![CDATA[12-hour]]></config>
+        <config key="booking_first_day" name="First day" type="select" values="sunday,monday" description="&lt;div&gt;First day will be used for all booking modes except Escort software.&lt;br&gt; In escort it must be configured via properties of Availability system field.&lt;/div&gt;" version="3.2.0"><![CDATA[monday]]></config>
+    </configs>
+
+    <updates>
+        <update version="2.0.1" files="admin/booking.inc.php,rlBooking.class.php"><![CDATA[]]></update>
+        <update version="2.0.2" files="rlBooking.class.php,availability_block.tpl"><![CDATA[]]></update>
+        <update version="2.1.0" files="booking_details.tpl,booking_requests.tpl,nav_bar.tpl,rlBooking.class.php,booking_requests.inc.php,availability_block.tpl,admin/booking.tpl"><![CDATA[]]></update>
+        <update version="3.0.0" files="admin/.htaccess,admin/booking.inc.php,admin/booking.tpl,admin/booking_type_properties.tpl,smarty_blocks/.htaccess,smarty_blocks/binding_days.tpl,smarty_blocks/calendar.tpl,smarty_blocks/checkin_checkout.tpl,smarty_blocks/configs.tpl,smarty_blocks/escort_data.tpl,smarty_blocks/fields.tpl,smarty_blocks/js_script.tpl,smarty_blocks/listing_data.tpl,smarty_blocks/message.tpl,smarty_blocks/rate_ranges.tpl,smarty_blocks/requests.tpl,smarty_blocks/styles.tpl,static/.htaccess,static/admin_style.css,static/book.png,static/lib.js,static/moment-timezone-with-data.min.js,static/moment.min.js,static/style.css,.htaccess,availability_block.tpl,booking_details.tpl,booking_details.inc.php,booking_group.tpl,booking_order.tpl,booking_order.inc.php,booking_requests.tpl,booking_requests.inc.php,booking_reservations.tpl,booking_reservations.inc.php,ca_js_handler.tpl,icon.tpl,nav_bar.tpl,rate_ranges.tpl,rlBooking.class.php,rlBoookingFields.class.php,user-navbar.tpl,rate_ranges.tpl"><![CDATA[]]></update>
+        <update version="3.1.0" files="availability_block.tpl,booking_requests.tpl,booking_reservations.tpl,ca_js_handler.tpl,nav_bar.tpl,rlBooking.class.php,smarty_blocks/js_script.tpl,smarty_blocks/listing_data.tpl,smarty_blocks/rate_ranges.tpl,static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="3.1.1" files="booking_reservations.tpl,rlBooking.class.php,smarty_blocks/escort_data.tpl,smarty_blocks/listing_data.tpl,static/style.css"><![CDATA[]]></update>
+        <update version="3.2.0" files="admin/booking.inc.php,admin/booking.tpl,admin/booking_type_properties.tpl,availability_block.tpl,booking_details.inc.php,booking_details.tpl,booking_group.tpl,booking_order.tpl,booking_requests.inc.php,booking_requests.tpl,booking_reservations.inc.php,booking_reservations.tpl,rate_ranges.tpl,rlBooking.class.php,rlBoookingFields.class.php,smarty_blocks/calendar.tpl,smarty_blocks/checkin_checkout.tpl,smarty_blocks/configs.tpl,smarty_blocks/escort_data.tpl,smarty_blocks/fields.tpl,smarty_blocks/js_script.tpl,smarty_blocks/listing_data.tpl,smarty_blocks/message.tpl,smarty_blocks/rate_ranges.tpl,smarty_blocks/requests.tpl,smarty_blocks/styles.tpl,static/hour.png,static/lib.js,static/style.css,nav_bar.tpl,i18n/ru.json,smarty_blocks/binding_days.tpl,static/admin_style.css,ca_js_handler.tpl"><![CDATA[]]></update>
+        <update version="3.2.1" files="availability_block.tpl,ca_js_handler.tpl,smarty_blocks/js_script.tpl,static/lib.js,rate_ranges.tpl,rlBooking.class.php"><![CDATA[]]></update>
+        <update version="3.3.0" files="availability_block.tpl,booking_requests.tpl,ca_js_handler.tpl,static/moment-timezone-with-data.min.js,static/moment.min.js,rlBooking.class.php,static/lib.js,static/style.css,admin/booking.tpl"><![CDATA[]]></update>
+        <update version="3.3.1" files="booking_reservations.tpl,rlBooking.class.php,static/style.css"><![CDATA[]]></update>
+        <update version="3.3.2" files="rlBooking.class.php"><![CDATA[]]></update>
+        <update version="3.4.0" files="booking_requests.tpl,rlBooking.class.php,rlBoookingFields.class.php,smarty_blocks/escort_data.tpl,smarty_blocks/js_script.tpl,static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="3.4.1" files="availability_block.tpl,booking_order.tpl,booking_reservations.tpl,static/lib.js,rlBooking.class.php,nav_bar.tpl,smarty_blocks/requests.tpl"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

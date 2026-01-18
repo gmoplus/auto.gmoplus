@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="banners">
+    <title>Banners</title>
+    <description>Allows users and the Administrator to post banners</description>
+    <author>Alex</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.10.0</version>
+    <date>12.02.2012</date>
+    <class>Banners</class>
+    <controller>banners</controller>
+    <compatible>4.8.2</compatible>
+
+    <files>
+        <file>add_banner.inc.php</file>
+        <file>add_banner.tpl</file>
+        <file>admin/banners.inc.php</file>
+        <file>admin/banners.tpl</file>
+        <file>admin/banner_boxes.inc.php</file>
+        <file>admin/banner_boxes.tpl</file>
+        <file>admin/banner_plans.inc.php</file>
+        <file>admin/banner_plans.tpl</file>
+        <file>admin/mf_locations.tpl</file>
+        <file>banner.tpl</file>
+        <file>banner_plans.tpl</file>
+        <file>banners_box.tpl</file>
+        <file>delete_preparing_banner_plan.tpl</file>
+        <file>edit_banner.inc.php</file>
+        <file>edit_banner.tpl</file>
+        <file>my_banners.inc.php</file>
+        <file>my_banners.tpl</file>
+        <file>renew.inc.php</file>
+        <file>renew.tpl</file>
+        <file>rlBanners.class.php</file>
+        <file>static/jquery.cycle.js</file>
+        <file>upload/account.php</file>
+        <file>upload/account_manager.tpl</file>
+        <file>upload/admin.php</file>
+        <file>upload/manager.tpl</file>
+        <file>upload/upload.php</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install version="2.8.0"><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="2.8.0" name="apExtBlocksUpdate"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="apExtBlocksSql"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="apExtBlocksData"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="apExtTransactionsSql" ><![CDATA[]]></hook>
+        <hook version="2.8.0" name="apExtTransactionsData"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="phpPaymentHistoryLoop"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="pageinfoArea"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="specialBlock"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="cronAdditional"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="listingDetailsTop"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="2.8.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="2.9.0" name="phpUrlBottom"><![CDATA[]]></hook>
+    </hooks>
+
+    <emails version="2.1.0">
+        <email version="2.1.0" key="banners_admin_banner_added" subject="A banner added at {site_name}">
+        <![CDATA[
+A user added a new banner at {site_name}
+<b><u>Details</u></b>
+Owner: <b>{username}</b>,
+Creation Date: <b>{date}</b>,
+Status: <b>{status}</b>,
+Link: {link}]]>
+        </email>
+        <email version="2.6.1" key="banners_banner_activated" subject="Your banner enabled at {site_name}">
+        <![CDATA[
+Hello {name},
+
+Your banner at {site_name} has been enabled.
+
+______________________________
+Thank you,
+{site_name}
+Administration Team
+        ]]>
+        </email>
+        <email version="2.6.1" key="banners_banner_deactivated" subject="Your banner disabled at {site_name}">
+        <![CDATA[
+Hello {name},
+
+The Administrator has disabled your banner at {site_name}.
+Please contact the Administrator to resolve the issue.
+{site_email}
+
+______________________________
+Thank you,
+{site_name}
+Administration Team
+        ]]>
+        </email>
+        <email version="2.7.0" key="banners_cron_banner_expired" subject="Your banner expired at {site_name}">
+        <![CDATA[
+Hello {name},
+
+Your {banner} banner at {site_name} has expired.
+
+______________________________
+Thank you,
+{site_name}
+Administration Team
+        ]]>
+        </email>
+        <email version="2.1.0" key="banners_admin_banner_edited" subject="Banner edited at {site_name}">
+        <![CDATA[
+The banner at {site_name} has been edited
+<b><u>Details</u></b>
+Owner: <b>{username}</b>,
+Creation Date: <b>{date}</b>,
+Status: <b>{status}</b>,
+Link: {link}
+        ]]>
+        </email>
+    </emails>
+
+    <pages>
+        <page key="my_banners" name="My Banners" type="system" path="my-banners" controller="my_banners" menus="2" tpl="1" login="1"><![CDATA[]]></page>
+        <page key="add_banner" name="Add a Banner" type="system" path="add-banner" controller="add_banner" menus="" tpl="1" login="1"><![CDATA[]]></page>
+        <page version="2.1.0" key="banners_renew" name="Renew Banner Plan" type="system" path="renew-banner-plan" controller="renew" tpl="1" login="1"><![CDATA[]]></page>
+        <page version="2.1.0" key="banners_edit_banner" name="Edit a Banner" type="system" path="edit-banner" controller="edit_banner" tpl="1" login="1"><![CDATA[]]></page>
+    </pages>
+
+    <configs version="2.1.0" key="banners" name="Banners">
+        <![CDATA[]]>
+        <config version="2.1.0" key="banners_auto_approval" name="Auto approval of banners" type="bool"><![CDATA[1]]></config>
+        <config version="2.5.0" key="banners_hide_empty_boxes" name="Hide empty content boxes" description="Hide empty content boxes without banners" type="bool"><![CDATA[0]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="banners_listOfBanners" module="admin"><![CDATA[All Banners]]></phrase>
+        <phrase key="banners_listOfPlans" module="admin"><![CDATA[All Plans]]></phrase>
+        <phrase key="banners_listOfBoxes" module="admin"><![CDATA[All Boxes]]></phrase>
+        <phrase key="banners_addPlan" module="admin"><![CDATA[Add a plan]]></phrase>
+        <phrase key="banners_addBanner" module="common"><![CDATA[Add a banner]]></phrase>
+        <phrase key="banners_addBox" module="admin"><![CDATA[Add a box]]></phrase>
+        <phrase key="banners_editPlan" module="admin"><![CDATA[Edit Plan]]></phrase>
+        <phrase version="2.1.0" key="banners_editBanner" module="common"><![CDATA[Edit banner]]></phrase>
+        <phrase key="banners_editBox" module="admin"><![CDATA[Edit box]]></phrase>
+        <phrase key="banners_bannersTitleOfManager" module="ext"><![CDATA[Banner Manager]]></phrase>
+        <phrase key="banners_bannerBoxesTitleOfManager" module="ext"><![CDATA[Banner Box Manager]]></phrase>
+        <phrase key="banners_bannerPlansTitleOfManager" module="ext"><![CDATA[Banner Plan Manager]]></phrase>
+        <phrase key="banners_bannerLiveFor" module="admin"><![CDATA[Banners live for]]></phrase>
+        <phrase key="banners_bannerLiveForHint" module="common"><![CDATA[Enter <b>0</b> to make the banner active for an unlimited period.]]></phrase>
+        <phrase version="2.1.0" key="banners_bannerLiveForHintViews" module="common"><![CDATA[Enter <b>0</b> to make the banner active for unlimited views.]]></phrase>
+        <phrase key="banners_bannerLink" module="common"><![CDATA[Banner URL]]></phrase>
+        <phrase key="banners_bannerType" module="common"><![CDATA[Banner type]]></phrase>
+        <phrase key="banners_bannerType_image" module="common"><![CDATA[Image]]></phrase>
+        <phrase version="2.1.0" key="banners_bannerType_html" module="common"><![CDATA[HTML/Javascript]]></phrase>
+        <phrase key="banners_bannerBox" module="common"><![CDATA[Banner box]]></phrase>
+        <phrase key="banners_boxes" module="admin"><![CDATA[Content boxes]]></phrase>
+        <phrase key="banners_boxesDesc" module="admin"><![CDATA[Check the box to enable the content box(es) for the plan.]]></phrase>
+        <phrase version="2.4.0" key="banners_showCountries" module="admin"><![CDATA[Geo Filter]]></phrase>
+        <phrase key="banners_addBoxHint" module="admin"><![CDATA[Click [here] to add a banner box]]></phrase>
+        <phrase key="banners_addPlanHint" module="admin"><![CDATA[Click [here] to add a banner plan]]></phrase>
+        <phrase key="banners_ownerDoesNotExistsNotice" module="admin"><![CDATA[The owner does not exist; please, check the field.]]></phrase>
+        <phrase key="banners_boxSettingsLimit" module="admin"><![CDATA[Number of banners in box]]></phrase>
+        <phrase key="banners_boxSettingsLimitDesc" module="admin"><![CDATA[Sets a number of banners rotated in the content box.]]></phrase>
+        <phrase key="banners_boxSettingsWidth" module="admin"><![CDATA[Width]]></phrase>
+        <phrase key="banners_boxSettingsHeight" module="admin"><![CDATA[Height]]></phrase>
+        <phrase key="banners_bannerSettings" module="common"><![CDATA[Settings]]></phrase>
+        <phrase key="banners_bannerPlansEmpty" module="common"><![CDATA[There are no banner plans; please, contact the Administrator to resolve the issue]]></phrase>
+        <phrase key="banners_bannerLastShow" module="ext"><![CDATA[Last displayed]]></phrase>
+        <phrase key="banners_bannerShows" module="common"><![CDATA[Shows]]></phrase>
+        <phrase key="banners_bannerNeverShow" module="ext"><![CDATA[Never]]></phrase>
+        <phrase key="banners_bannerNeverShow" module="frontEnd"><![CDATA[Never]]></phrase>
+        <phrase key="banners_planType" module="common"><![CDATA[Banners]]></phrase>
+        <phrase key="banners_bannerBoxNotice" module="common"><![CDATA[Position: <b>{side}</b>, Dimensions: <b>{width}</b>px by <b>{height}</b>px]]></phrase>
+        <phrase key="banners_transactionsPlanRemoved" module="admin"><![CDATA[You've removed the plan.]]></phrase>
+        <phrase key="banners_noBannersHere" module="frontEnd"><![CDATA[No banners added yet. Click [here] to add a banner.]]></phrase>
+        <phrase key="banners_bannerClicks" module="common"><![CDATA[Clicks]]></phrase>
+        <phrase key="banners_banner" module="common"><![CDATA[Banners]]></phrase>
+        <phrase key="banners_sortBy" module="frontEnd"><![CDATA[Sort banners by]]></phrase>
+        <phrase key="banners_noticeBannerDeleted" module="common"><![CDATA[You've removed the banner.]]></phrase>
+        <phrase version="2.1.0" key="banners_noticeAfterBannerAdding" module="common"><![CDATA[Сongratulations! The banner you added has been enabled.]]></phrase>
+        <phrase version="2.1.0" key="banners_noticeAfterBannerAddingPending" module="common"><![CDATA[Congratulations! The banner that you've added is awaiting to be reviewed by the Administrator.]]></phrase>
+        <phrase key="banners_addOneMoreBanner" module="common"><![CDATA[Click [here] to add another banner]]></phrase>
+        <phrase key="banners_noticeDeleteEmptyBannerPlan" module="admin"><![CDATA[Are you sure you want to remove the <b>{plan}</b> plan irreversibly?]]></phrase>
+        <phrase key="banners_deleteBannersPlan" module="admin"><![CDATA[Removing the plan]]></phrase>
+        <phrase key="banners_preBannerPlanDeleteNotice" module="admin"><![CDATA[The <b>{plan}</b> banner plan contains:]]></phrase>
+        <phrase key="banners_fullBannersPlanDelete" module="admin"><![CDATA[Remove the banner plan with all the related data listed above]]></phrase>
+        <phrase key="banners_deleteBannersBox" module="admin"><![CDATA[Removing the box]]></phrase>
+        <phrase key="banners_noticeDeleteEmptyBannerBox" module="admin"><![CDATA[Are you sure you want to remove the <b>{box}</b> box?]]></phrase>
+        <phrase key="banners_fullBannersBoxDelete" module="admin"><![CDATA[Remove the banner box with all the related data listed above]]></phrase>
+        <phrase key="banners_preBannerBoxDeleteNotice" module="admin"><![CDATA[The <b>{box}</b> banner box contains:]]></phrase>
+        <phrase key="banners_managePictures" module="admin"><![CDATA[Manage images]]></phrase>
+        <phrase key="banners_bannerDetails" module="admin"><![CDATA[Banner Details]]></phrase>
+        <phrase key="banners_bannerAdded" module="admin"><![CDATA[You've added a banner.]]></phrase>
+        <phrase key="banners_bannerEdited" module="admin"><![CDATA[You've edited the banner.]]></phrase>
+        <phrase key="bannersNoticePaymentCanceled" module="frontEnd"><![CDATA[Your payment has been canceled; please, contact the Administrator for getting details]]></phrase>
+        <phrase key="banners_bannerPlansEmptyCP" module="admin"><![CDATA[There are no banner plans; please, add a plan]]></phrase>
+        <phrase key="banners_bannerBoxesEmptyCP" module="admin"><![CDATA[There are no banner boxes; please, click [here] to add a box.]></phrase>
+        <phrase key="banners_bannerEdit" module="frontEnd"><![CDATA[Edit the banner]]></phrase>
+        <phrase key="banners_allowToAll" module="admin"><![CDATA[All countries]]></phrase>
+        <phrase key="banners_allowToSelected" module="admin"><![CDATA[Selected countries]]></phrase>
+        <phrase key="banners_addMedia" module="frontEnd"><![CDATA[Add Media]]></phrase>
+        <phrase key="banners_changeBannersBoxAlert" module="admin"><![CDATA[If you change the position or dimensions of the banner box, all the banners in the content box will be disabled.]]></phrase>
+        <phrase key="banners_boxLimit" module="ext"><![CDATA[Banners Limit]]></phrase>
+        <phrase version="2.9.0" key="banners_boxPosition" module="admin" js="1"><![CDATA[Position]]></phrase>
+        <phrase key="banners_boxSize" module="ext"><![CDATA[Box Dimensions]]></phrase>
+        <phrase key="banners_massActionsNotice" module="ext"><![CDATA[You are sure you want to proceed?]]></phrase>
+        <phrase key="banners_noticeBannerMassAction_activate" module="admin"><![CDATA[You've enabled the selected banners.]]></phrase>
+        <phrase key="banners_noticeBannerMassAction_approve" module="admin"><![CDATA[You've disabled the selected banners.]]></phrase>
+        <phrase key="banners_noticeBannerMassAction_delete" module="admin"><![CDATA[You've removed the selected banners.]]></phrase>
+        <phrase version="2.1.0" key="banners_addBannerContent" module="common"><![CDATA[Add Banner Content]]></phrase>
+        <phrase version="2.1.0" key="banners_liveTypePeriod" module="common"><![CDATA[Period]]></phrase>
+        <phrase version="2.1.0" key="banners_liveTypeViews" module="common"><![CDATA[Views]]></phrase>
+        <phrase version="2.1.0" key="banners_waitingApproval" module="common"><![CDATA[The banner is waiting Administrator approval.]]></phrase>
+        <phrase version="2.1.0" key="banners_renewPlan" module="common"><![CDATA[Renew Banner Plan]]></phrase>
+        <phrase version="2.1.0" key="banners_noticeBannerUpgraded" module="common"><![CDATA[You've upgraded the banner plan.]]></phrase>
+        <phrase version="2.1.0" key="banners_showsLeft" module="common"><![CDATA[Shows left]]></phrase>
+        <phrase version="2.1.0" key="banners_notice_banner_edited" module="common"><![CDATA[You've edited the banner.]]></phrase>
+        <phrase version="2.1.0" key="banners_unsaved_photos_notice" module="common"><![CDATA[You haven't yet uploaded any images; please, upload an image.]]></phrase>
+        <phrase version="2.2.0" key="banners_boxBetweenCategories_side" module="admin"><![CDATA[<b>Between categories</b>]]></phrase>
+        <phrase version="2.2.0" key="banners_categoryBoxNoticeInGrid" module="admin"><![CDATA[You can't change the value for the banner box.]]></phrase>
+        <phrase version="2.2.0" key="banners_changeBannersCategoryBoxAlert" module="admin"><![CDATA[If you change the dimensions of the box, the banners rotated in the box will be disabled.]]></phrase>
+        <phrase version="2.2.0" key="banners_boxType" module="admin"><![CDATA[Box Type]]></phrase>
+        <phrase version="2.2.0" key="banners_boxType_default" module="admin"><![CDATA[Default]]></phrase>
+        <phrase version="2.2.0" key="banners_boxType_betweenCategories" module="admin"><![CDATA[Between categories]]></phrase>
+        <phrase version="2.2.0" key="banners_betweenCategories_field" module="admin"><![CDATA[Select a category]]></phrase>
+        <phrase version="2.2.3" key="banners_plan_without_boxes" module="ext"><![CDATA[You will be able to change the status after adding a content box to the plan. You have to add at least a box to make it work.]]></phrase>
+        <phrase version="2.4.0" key="banners_countries" module="admin"><![CDATA[Geo Filter]]></phrase>
+        <phrase version="2.4.0" key="banners_excludeSelected" module="admin"><![CDATA[Block countries]]></phrase>
+        <phrase version="2.3.0" key="banners_changeBannerPlanNotice" module="ext"><![CDATA[If you change the plan at this stage, the banner will be removed. Are you sure you want to proceed?]]></phrase>
+        <phrase version="2.3.2" key="banners_tag_nofollow" module="admin"><![CDATA[Enable the <b>nofollow</b> tag]]></phrase>
+        <phrase version="2.4.0" key="banners_mf_locations" module="admin"><![CDATA[By location]]></phrase>
+        <phrase version="2.5.1" key="banners_remove_banner_confirm" module="common"><![CDATA[Are you sure you want to remove the banner with all the details?]]></phrase>
+        <phrase version="2.5.2" key="banners_boxSettingsSlider" module="admin"><![CDATA[Slider with fading effect]]></phrase>
+        <phrase version="2.5.3" key="banners_file_missing" module="admin"><![CDATA[<br />The file is missing! Please, make sure it has been loaded.]]></phrase>
+        <phrase version="2.5.3" key="banners_html_code_blank_flange" module="admin"><![CDATA[HTML/Javascript code]]></phrase>
+        <phrase version="2.5.3" key="banners_noBannersYet" module="frontEnd"><![CDATA[No banners added yet.]]></phrase>
+        <phrase version="2.5.3" key="banners_noBannerPlansAvailable" module="frontEnd"><![CDATA[Unfortunately, there are no available plans for posting banners; please, contact the Administrator to resolve the issue.]]></phrase>
+        <phrase version="2.6.0" key="banners_html_responsive" module="common"><![CDATA[Responsive banner]]></phrase>
+        <phrase version="2.7.0" key="banners" module="common"><![CDATA[Banners]]></phrase>
+        <phrase version="2.7.0" key="banners_error_upload_banner" module="common"><![CDATA[Failed to upload the banner file; please contact the Administrator.]]></phrase>
+        <phrase version="2.7.0" key="banners_flash_deprecated" module="common"><![CDATA[Flash was deprecated.]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="2.1.0" files="add_banner.inc.php,add_banner.tpl,admin/.htaccess,admin/banners.inc.php,admin/banners.tpl,admin/banner_boxes.inc.php,admin/banner_boxes.tpl,admin/banner_plans.inc.php,admin/banner_plans.tpl,banner.tpl,banner_plans.tpl,banners_box.tpl,edit_banner.inc.php,edit_banner.tpl,my_banners.tpl,renew.inc.php,renew.tpl,rlBanners.class.php,upload/.htaccess,upload/account.php,upload/account_manager.tpl,upload/admin.php,upload/manager.tpl,upload/upload.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="banner_plans.tpl"><![CDATA[]]></update>
+        <update version="2.1.2" files="rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.1.3" files="admin/banner_plans.inc.php,admin/banner_plans.tpl,admin/banners.tpl,banners_box.tpl,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.2.0" files="admin/banner_boxes.inc.php,admin/banner_boxes.tpl,admin/banner_plans.inc.php,admin/banner_plans.tpl,admin/banners.inc.php,admin/banners.tpl,upload/account_manager.tpl,upload/manager.tpl,add_banner.inc.php,add_banner.tpl,banners_box.tpl,renew.inc.php,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.2.1" files="admin/banner_boxes.tpl,admin/banners.inc.php,upload/account_manager.tpl,upload/manager.tpl,add_banner.inc.php,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.2.2" files="admin/banners.inc.php,admin/banners.tpl,banners_box.tpl"><![CDATA[]]></update>
+        <update version="2.2.3" files="admin/banners.inc.php,admin/banner_plans.tpl,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.3.0" files="admin/banner_boxes.inc.php,admin/banner_plans.inc.php,admin/banner_plans.tpl,admin/banners.inc.php,admin/banners.tpl,upload/upload.php,add_banner.inc.php,banners_box.tpl,renew.inc.php,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.3.1" files="rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.3.2" files="admin/banners.inc.php,admin/banners.tpl,banners_box.tpl,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.3.3" files="rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.3.4" files="admin/banners.tpl,upload/upload.php,add_banner.inc.php,add_banner.tpl,banners_box.tpl,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.4.0" files="admin/banner_plans.inc.php,admin/banner_plans.tpl,admin/mf_locations.tpl,banners_box.tpl,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.5.0" files="add_banner.inc.php,admin/banner_boxes.inc.php,admin/banner_plans.inc.php,admin/banners.inc.php,admin/banners.tpl,upload/account_manager.tpl,upload/manager.tpl,banners_box.tpl,my_banners.inc.php,my_banners.tpl,renew.inc.php,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.5.1" files="add_banner.inc.php,add_banner.tpl,admin/banner_boxes.inc.php,admin/banner_boxes.tpl,banners_box.tpl,edit_banner.tpl,my_banners.tpl,renew.tpl,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.5.2" files="rlBanners.class.php,banners_box.tpl"><![CDATA[]]></update>
+        <update version="2.5.3" files="admin/banners.inc.php,admin/banners.tpl,edit_banner.inc.php,edit_banner.tpl,my_banners.inc.php,my_banners.tpl,rlBanners.class.php,static/jquery.cycle.js,upload/upload.php"><![CDATA[]]></update>
+        <update version="2.5.4" files="banners_box.tpl"><![CDATA[]]></update>
+        <update version="2.5.5" files="my_banners.tpl"><![CDATA[]]></update>
+        <update version="2.6.0" files="add_banner.inc.php,add_banner.tpl,admin/banner_boxes.inc.php,admin/banner_boxes.tpl,admin/banners.inc.php,admin/banners.tpl,banners_box.tpl,edit_banner.inc.php,edit_banner.tpl,renew.inc.php,renew.tpl,rlBanners.class.php,upload/manager.tpl,upload/upload.php"><![CDATA[]]></update>
+        <update version="2.6.1" files="rlBanners.class.php,admin/banners.inc.php"><![CDATA[]]></update>
+        <update version="2.7.0" files="add_banner.inc.php,add_banner.tpl,admin/.htaccess,admin/banner_boxes.inc.php,admin/banner_boxes.tpl,admin/banner_plans.inc.php,admin/banner_plans.tpl,admin/banners.inc.php,admin/banners.tpl,admin/mf_locations.tpl,banner.tpl,banner_plans.tpl,banners_box.tpl,delete_preparing_banner_plan.tpl,edit_banner.inc.php,edit_banner.tpl,footer.tpl,my_banners.inc.php,my_banners.tpl,renew.inc.php,renew.tpl,rlBanners.class.php,static/renew-icon-x2.png,static/renew-icon.png,static/style.css,upload/account.php,upload/account_manager.tpl,upload/admin.php,upload/manager.tpl,upload/upload.php"><![CDATA[]]></update>
+        <update version="2.7.1" files="add_banner.tpl,admin/banners.inc.php,admin/banner_plans.tpl,admin/mf_locations.tpl,banners_box.tpl,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.7.2" files="rlBanners.class.php,admin/banners.inc.php,banners_box.tpl"><![CDATA[]]></update>
+        <update version="2.8.0" files="admin/banners.tpl,banner_plans.tpl,admin/banner_boxes.tpl,admin/banner_plans.tpl,upload/account_manager.tpl,upload/manager.tpl,edit_banner.inc.php,rlBanners.class.php"><![CDATA[]]></update>
+        <update version="2.9.0" files="rlBanners.class.php,i18n/ru.json,admin/banner_boxes.inc.php,admin/banner_boxes.tpl,admin/banner_plans.inc.php,admin/banner_plans.tpl,admin/banners.tpl,edit_banner.tpl,my_banners.inc.php,static/style.css,upload/account.php"><![CDATA[]]></update>
+        <update version="2.10.0" files="add_banner.inc.php,renew.tpl,renew.inc.php,my_banners.inc.php,edit_banner.tpl,edit_banner.inc.php,banner.tpl,add_banner.tpl,admin/banner_boxes.inc.php,admin/banner_plans.inc.php,admin/banner_plans.tpl,banner_plans.tpl,rlBanners.class.php,upload/account.php,upload/admin.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

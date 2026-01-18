@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="js_blocks">
+    <title>Remote Ads</title>
+    <description>Enables showing ads of a Flynax powered site on another site.</description>
+    <author>Mike Fletcher</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.0.3</version>
+    <date>24.07.2009</date>
+    <controller>remote_adverts</controller>
+    <class>RemoteAdverts</class>
+    <compatible>4.8.1</compatible>
+
+    <files>
+        <file>admin/remote_adverts.inc.php</file>
+        <file>admin/remote_adverts.tpl</file>
+        <file>static/lib.js</file>
+        <file>static/remote_adverts.css</file>
+        <file>static/responsive.css</file>
+        <file>blocks.inc.php</file>
+        <file>blocks.tpl</file>
+        <file>remote_adverts.inc.php</file>
+        <file>remote_adverts.tpl</file>
+        <file>rlRemoteAdverts.class.php</file>
+        <file>vendor/autoload.php</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="apTplListingPlansForm" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansPost" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansBeforeAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingPlansBeforeEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplMembershipPlansForm" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansPost" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansBeforeAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpMembershipPlansBeforeEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplAccountTypesForm" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpAccountTypesPost" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpAccountTypesBeforeAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpAccountTypesBeforeEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="staticDataRegister" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="ajaxRequest" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="init" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="listingsModifyWhere" version="3.0.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="jl_box_code" module="common"><![CDATA[Box code]]></phrase>
+        <phrase key="jl_remote_adverts" module="admin"><![CDATA[Enable remote adverts]]></phrase>
+        <phrase key="jl_box_preview" module="common"><![CDATA[Box preview]]></phrase>
+        <phrase key="jl_box_styling" module="common"><![CDATA[Box style]]></phrase>
+        <phrase key="jl_box_settings" module="common"><![CDATA[Box settings]]></phrase>
+        <phrase key="jl_advert_bg" module="common"><![CDATA[Ad background color]]></phrase>
+        <phrase key="jl_field_first_color" module="common"><![CDATA[Ad title color]]></phrase>
+        <phrase key="jl_field_color" module="common"><![CDATA[Field value color]]></phrase>
+        <phrase key="jl_price_field_color" module="common"><![CDATA[Price value color]]></phrase>
+        <phrase key="jl_per_page" module="common"><![CDATA[Ads on page]]></phrase>
+        <phrase key="jl_limit" module="common"><![CDATA[Ads in box]]></phrase>
+        <phrase key="jl_border_color" module="common" version="3.0.0"><![CDATA[Ad border color]]></phrase>
+        <phrase key="jl_box_view" module="common" version="3.0.0"><![CDATA[Box view]]></phrase>
+        <phrase key="jl_list_view" module="common" version="3.0.0"><![CDATA[List]]></phrase>
+        <phrase key="jl_grid_view" module="common" version="3.0.0"><![CDATA[Grid]]></phrase>
+        <phrase key="jl_advert_radius" module="common" version="3.0.0"><![CDATA[Border radius]]></phrase>
+        <phrase key="jl_image_bg" module="common" version="3.0.0"><![CDATA[Image background color]]></phrase>
+        <phrase key="jl_per_row" module="common" version="3.0.0"><![CDATA[Ads per row]]></phrase>
+    </phrases>
+
+    <pages>
+        <page key="remote_adverts" name="Remote Adverts" type="system" path="remote-adverts" get="" controller="remote_adverts" menus="2" tpl="1"><![CDATA[]]></page>
+    </pages>
+
+    <updates>
+        <update version="2.0.1" files="admin/remote_adverts.inc.php,admin/remote_adverts.tpl,blocks.tpl,rlRemoteAdverts.class.php,static/lib.js,static/remote_adverts.css"><![CDATA[]]></update>
+        <update version="2.0.2" files="remote_adverts.inc.php,remote_adverts.tpl,admin/remote_adverts.tpl,blocks.tpl,rlRemoteAdverts.class.php,static/lib.js,static/remote_adverts.css"><![CDATA[]]></update>
+        <update version="2.0.3" files="blocks.tpl,remote_adverts.inc.php,remote_adverts.tpl,admin/remote_adverts.tpl,blocks.tpl,rlRemoteAdverts.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="2.0.4" files="blocks.tpl,remote_adverts.tpl,remote_adverts.tpl,blocks.inc.php,rlRemoteAdverts.class.php,static/lib.js,static/responsive.css"><![CDATA[]]></update>
+        <update version="2.0.5" files="blocks.tpl,blocks.inc.php,rlRemoteAdverts.class.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="vendor/tholu/php-packer/src/Packer.php,vendor/composer/autoload_classmap.php,vendor/composer/autoload_namespaces.php,vendor/composer/autoload_psr4.php,vendor/composer/autoload_real.php,vendor/composer/autoload_static.php,vendor/composer/ClassLoader.php,vendor/autoload.php,.htaccess,admin/.htaccess,admin/remote_adverts.inc.php,admin/remote_adverts.tpl,blocks.inc.php,blocks.tpl,remote_adverts.inc.php,remote_adverts.tpl,rlRemoteAdverts.class.php,static/.htaccess,static/lib.js,static/remote_adverts.css,static/responsive.css"><![CDATA[]]></update>
+        <update version="3.0.1" files="rlRemoteAdverts.class.php,static/remote_adverts.css"><![CDATA[]]></update>
+        <update version="3.0.2" files="admin/remote_adverts.tpl,blocks.inc.php,blocks.tpl,i18n/ru.json,remote_adverts.tpl,rlRemoteAdverts.class.php"><![CDATA[]]></update>
+        <update version="3.0.3" files="blocks.inc.php,static/remote_adverts.css"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

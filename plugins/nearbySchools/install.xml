@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="nearbySchools">
+    <title>Nearby Schools</title>
+    <description>Shows nearby schools around listing location</description>
+    <author>Alan Wake</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.2.0</version>
+    <date>11.01.2016</date>
+    <class>NearbySchools</class>
+    <compatible>4.7.1</compatible>
+
+     <notice><![CDATA[For stable performance of the plugin you need to get API keys. USA schools API key is available &lt;a target='_blank' href='http://www.greatschools.org/api/registration.page' &gt;here&lt;/a&gt;, UK schools API key is available &lt;a target="_blank" href="https://propertydata.co.uk/pricing?x=sign_up" &gt;here&lt;/a&gt;;]]></notice>
+    </notices>
+
+    <files>
+        <file>nearbyschools_block.tpl</file>
+        <file>rlNearbySchools.class.php</file>
+        <file>static/style.css</file>
+        <file>static/.htaccess</file>
+        <file>.htaccess</file>
+        <file>school.tpl</file>
+        <file>row.tpl</file>
+        <file>nbs_tab.tpl</file>
+    </files>
+
+    <configs key="nearbySchool" name="Nearby Schools">
+        <![CDATA[]]>
+        <config key="nbs_radius" name="Search radius" description="miles (max 50)" type="text"><![CDATA[5]]></config>
+        <config key="nbs_limit" name="Total schools in box" type="text"><![CDATA[10]]></config>
+        <config key="nbs_visible_schools" name="Visible schools in box" type="text"><![CDATA[3]]></config>
+        <config version="1.1.0" key="nbs_country_key" name="Country field" type="select"><![CDATA[country]]></config>
+        <config version="1.1.0" key="nbs_mode" name="Display mode" type="select" values="box,tab"><![CDATA[box]]></config>
+        <config version="1.1.0" key="nbs_usa" name="USA School" type="divider"><![CDATA[]]></config>
+        <config key="nbs_api_key" name="GreatSchools.org API key" type="text" description="For stable performance of the plugin we strongly recommend to get an API key. You can get an instruction &lt;a target='_blank' href='http://www.greatschools.org/api/registration.page' &gt;here &lt;/a&gt;"><![CDATA[]]></config>
+        <config version="1.1.0" key="nbs_uk" name="UK School" type="divider"><![CDATA[]]></config>
+        <config version="1.1.0" key="nbs_uk_api_key" name="UK Api Key" type="text" description="For stable performance of the plugin we strongly recommend to get an API key. You can get an instruction &lt;a target='_blank' href='https://propertydata.co.uk/pricing?x=sign_up' &gt;here &lt;/a&gt;" ><![CDATA[]]></config>
+        <config version="1.1.0" key="nbs_post_key" name="Postal Code field" type="select"><![CDATA[zip]]></config>
+    </configs>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('NearbySchools', null, 'nearbySchools');
+        $GLOBALS['rlNearbySchools']->nbsInstall();
+    ]]></install>
+
+    <hooks>
+        <hook name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook name="tplFooter"><![CDATA[]]></hook>
+        <hook name="staticDataRegister"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBeforeUpdate"><![CDATA[]]></hook>
+        <hook version="1.0.1" name="afterListingEdit"><![CDATA[]]></hook>
+        <hook name="apPhpListingsAfterEdit"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="listingDetailsBottom"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="listingDetailsBottomTpl"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apTplListingTypesForm"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apPhpListingTypesPost"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apPhpListingTypesBeforeAdd"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apPhpListingTypesBeforeEdit"><![CDATA[]]></hook>
+        <hook version="1.1.0" name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="rating_label" module="common"><![CDATA[Rating/School]]></phrase>
+        <phrase key="grades_label" module="common"><![CDATA[Grades]]></phrase>
+        <phrase key="distance_label" module="common"><![CDATA[Distance]]></phrase>
+        <phrase key="nbs_miles" module="common"><![CDATA[mi]]></phrase>
+        <phrase key="nbs_view_more" module="common"><![CDATA[View More Schools]]></phrase>
+        <phrase key="nbs_hide_schools" module="common"><![CDATA[Hide Schools]]></phrase>
+        <phrase version="1.1.0" key="nbs_option_name" module="admin"><![CDATA[Nearby Schools]]></phrase>
+    </phrases>
+
+    <blocks>
+        <block key="nearbyschools" login="0" readonly="1" name="Nearby Schools" side="bottom" type="php" tpl="1"><![CDATA[
+            $GLOBALS['rlSmarty']->display(RL_PLUGINS . 'nearbySchools' . RL_DS . 'nearbyschools_block.tpl');
+        ]]></block>
+    </blocks>
+
+    <updates>
+        <update version="1.0.1" files="rlNearbySchools.class.php,static/.htaccess,.htaccess"><![CDATA[]]></update>
+        <update version="1.0.2" files="rlNearbySchools.class.php"><![CDATA[]]></update>
+        <update version="1.1.0" files="rlNearbySchools.class.php,nearbyschools_block.tpl,school.tpl,row.tpl,nbs_tab.tpl,static/style.css"><![CDATA[
+            // remove config
+            $configs_to_be_removed = array(
+                'nbs_enable_module'
+            );
+            $GLOBALS['rlDb']->query(
+                "UPDATE `".RL_DBPREFIX."blocks`
+                SET `Sticky` = '0',
+                `Cat_sticky` = '" . (version_compare($GLOBALS['config']['rl_version'], '4.8.1', '>=') ? 0 : 1) . "'
+                WHERE `Key` = 'nearbyschools'"
+            );
+            $GLOBALS['rlDb']->query("
+                DELETE FROM `" . RL_DBPREFIX . "config`
+                WHERE `Key` IN ('" . implode("','", $configs_to_be_removed) . "')
+            ");
+            // remove phrases
+            $phrases = array(
+                'config+name+nbs_enable_module',
+            );
+            $GLOBALS['rlDb']->query(
+                "DELETE FROM `" . RL_DBPREFIX . "lang_keys` 
+                WHERE `Plugin` = 'nearbySchools' 
+                AND `Key` IN ('" . implode("','", $phrases) . "')
+            ");
+            $GLOBALS['rlDb']->query("
+                DELETE FROM `{db_prefix}hooks` 
+                WHERE `Plugin` = 'nearbySchools' 
+                AND `Name` = 'specialBlock'
+            ");
+            $GLOBALS['rlDb']->query(
+                "UPDATE `{db_prefix}config` SET `Position` = 6
+                WHERE `Key` = 'nbs_api_key' LIMIT 1"
+            );
+            $GLOBALS['rlDb']->query(
+                "UPDATE `{db_prefix}config` SET `Position` = 7
+                WHERE `Key` = 'nbs_state_key' LIMIT 1"
+            );
+            $GLOBALS['rlDb']->addColumnToTable(
+                'isNearScl',
+                "ENUM('0', '1') NOT NULL DEFAULT '1' AFTER `Status`",
+                'listing_types'
+            );
+        ]]></update>
+        <update version="1.2.0" files="nearbyschools_block.tpl,rlNearbySchools.class.php,school.tpl,static/style.css"><![CDATA[
+            $GLOBALS['rlDb']->query("
+                DELETE FROM `" . RL_DBPREFIX . "config`
+                WHERE `Key` = 'nbs_state_key'
+            ");
+            $GLOBALS['rlDb']->query(
+                "DELETE FROM `" . RL_DBPREFIX . "lang_keys` 
+                WHERE `Plugin` = 'nearbySchools' 
+                AND `Key` = 'config+name+nbs_state_key'
+            ");
+            $GLOBALS['rlDb']->query("
+                DELETE FROM `{db_prefix}hooks` 
+                WHERE `Plugin` = 'nearbySchools' 
+                AND `Name` = 'listingDetailsTop'
+            ");
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('NearbySchools', null, 'nearbySchools');
+        $GLOBALS['rlNearbySchools']->nbsUninstall();
+    ]]></uninstall>
+</plugin>

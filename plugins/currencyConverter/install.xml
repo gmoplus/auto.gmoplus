@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin name="currencyConverter">
+    <title>Currency Converter</title>
+    <description>Converts prices to a user's local currency based on his location</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.3.3</version>
+    <date>17.04.2012</date>
+    <controller>currencyConverter</controller>
+    <class>CurrencyConverter</class>
+    <compatible>4.8.1</compatible>
+
+    <files>
+        <file>header.tpl</file>
+        <file>user_navbar.tpl</file>
+        <file>rlCurrencyConverter.class.php</file>
+        <file>admin/currencyConverter.inc.php</file>
+        <file>admin/currencyConverter.tpl</file>
+        <file>static/lib.js</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+        $GLOBALS['rlCurrencyConverter']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="3.3.2" name="seoBase"><![CDATA[
+            // cache content will be generated automatically
+        ]]></hook>
+        <hook version="3.0.0" name="cronAdditional"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookCronAdditional();
+        ]]></hook>
+        <hook version="3.0.0" name="listingsModifyWhereSearch"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookListingsModifyWhereSearch();
+        ]]></hook>
+        <hook version="3.0.0" name="listingsModifyJoinSearch"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookListingsModifyJoinSearch();
+        ]]></hook>
+        <hook version="3.0.0" name="listingsModifyFieldSearch"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookListingsModifyFieldSearch();
+        ]]></hook>
+        <hook version="3.0.0" name="listingsModifyJoin"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookListingsModifyJoin();
+        ]]></hook>
+        <hook version="3.0.0" name="listingsModifyField"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookListingsModifyField();
+        ]]></hook>
+        <hook version="3.0.0" name="tplHeaderUserNav"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookTplHeaderUserNav();
+        ]]></hook>
+        <hook version="3.0.0" name="tplHeader"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookTplHeader();
+        ]]></hook>
+        <hook version="3.0.0" name="staticDataRegister"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookStaticDataRegister();
+        ]]></hook>
+        <hook version="3.0.0" name="tplPrintPage"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookTplPrintPage();
+        ]]></hook>
+        <hook version="3.0.0" name="apAjaxRequest"><![CDATA[
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->hookApAjaxRequest();
+        ]]></hook>
+    </hooks>
+
+    <configs key="currencyConverter" name="Currency Converter">
+        <![CDATA[]]>
+        <config key="currencyConverter_update" name="Update rates automatically" type="bool"><![CDATA[1]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="currencyConverter_update_rate" target="currencyConverter" module="admin"><![CDATA[Update Rates]]></phrase>
+        <phrase key="currencyConverter_add_currency" target="currencyConverter" module="admin"><![CDATA[Add a Currency]]></phrase>
+        <phrase version="3.2.0" target="currencyConverter" key="currencyConverter_code" module="admin"><![CDATA[Code]]></phrase>
+        <phrase version="3.2.0" target="currencyConverter" key="currencyConverter_rate" module="admin"><![CDATA[Exchange rate (to USD)]]></phrase>
+        <phrase key="currencyConverter_ext_caption" target="currencyConverter" module="admin" js="1"><![CDATA[Currency rate list (USD Exchange)]]></phrase>
+        <phrase key="currencyConverter_code_wrong" module="system"><![CDATA[The currency code format is wrong, please use ISO codes format (<b>USD</b> for example)]]></phrase>
+        <phrase key="currencyConverter_rate_wrong" module="system"><![CDATA[The currency rate is wrong, please use double or integer numbers only]]></phrase>
+        <phrase key="currencyConverter_code_exists" module="system"><![CDATA[The <b>{code}</b> code already exists.]]></phrase>
+        <phrase version="3.3.1" key="currencyConverter_rates_updated" target="currencyConverter" module="admin" js="1"><![CDATA[Currency rates have been successfully updated.]]></phrase>
+        <phrase version="3.3.1" key="currencyConverter_added_notice" target="currencyConverter" module="admin" js="1"><![CDATA[You've successfully added a new currency.]]></phrase>
+        <phrase version="3.3.1" key="currencyConverter_update_confirm_notice" target="currencyConverter" module="admin" js="1"><![CDATA[Are you sure you want to update/import currency rates?]]></phrase>
+        <phrase key="currencyConverter_update_rss_fail" module="system"><![CDATA[Rate update failed, system is unable to reach currency server]]></phrase>
+        <phrase version="3.3.1" key="currencyConverter_ext_position_rejected" target="currencyConverter" module="admin" js="1"><![CDATA[You cannot change positions of non-sticky currencies]]></phrase>
+        <phrase version="3.3.1" key="currencyConverter_symbols" target="currencyConverter" module="admin" js="1"><![CDATA[Symbols]]></phrase>
+        <phrase version="3.3.1" key="currencyConverter_symbols_hint" target="currencyConverter" module="admin" js="1"><![CDATA[(use commas to separate values)]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="2.0.1" files="header.block.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="2.0.2" files="rlCurrencyConverter.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="2.0.3" files="static/lib.js"><![CDATA[]]></update>
+        <update version="2.1.0" files="static/lib.js,static/style.css,header.block.tpl,rlCurrencyConverter.class.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="rlCurrencyConverter.class.php,static/flags/khr.png"><![CDATA[]]></update>
+        <update version="2.1.2" files="rlCurrencyConverter.class.php,currency.block.tpl,header.block.tpl,nav_responsive_42.tpl,static/lib.js,static/lib_responsive_42.js,static/style_responsive_42.css"><![CDATA[]]></update>
+        <update version="2.1.3" files="static/lib.js,static/lib_responsive_42.js"><![CDATA[]]></update>
+        <update version="2.1.4" files="static/lib_responsive_42.js"><![CDATA[]]></update>
+        <update version="2.2.0" files="rlCurrencyConverter.class.php,static/lib.js,static/lib_responsive_42.js"><![CDATA[]]></update>
+        <update version="2.2.1" files="nav_responsive_42.tpl,static/lib_responsive_42.js"><![CDATA[]]></update>
+        <update version="2.2.2" files="nav_responsive_42.tpl,static/lib_responsive_42.js,admin/currencyConverter.tpl"><![CDATA[]]></update>
+        <update version="2.2.3" files="nav_responsive_42.tpl"><![CDATA[]]></update>
+        <update version="2.2.4" files="rlCurrencyConverter.class.php,nav_responsive_42.tpl,static/lib_responsive_42.js,static/flags/awg.png,static/flags/bam.png,static/flags/awg.png,static/flags/tnd.png"><![CDATA[]]></update>
+        <update version="2.2.5" files="rlCurrencyConverter.class.php"><![CDATA[
+            /* set new feed for current update */
+            $GLOBALS['config']['currencyConverter_rss'] = 'http://www.floatrates.com/daily/usd.xml';
+
+            /* remove old rates */
+            $GLOBALS['rlDb']->query("DELETE FROM `" . RL_DBPREFIX . "currency_rate`");
+
+            /* insert default dollar rate */
+            $this->query("INSERT INTO `" . RL_DBPREFIX . "currency_rate` (`Rate`, `Key`, `Country`, `Date`, `Code`, `Symbol`) VALUES ('1', 'dollar', 'United States', NOW(), 'USD', '$') ");
+
+            /* update rates */
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->updateRates();
+        ]]></update>
+        <update version="2.2.6" files="header.block.tpl"><![CDATA[]]></update>
+        <update version="2.2.7" files="rlCurrencyConverter.class.php"><![CDATA[]]></update>
+        <update version="2.2.8" files="rlCurrencyConverter.class.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="rlCurrencyConverter.class.php,header.tpl,user_navbar.tpl,admin/currencyConverter.inc.php,admin/currencyConverter.tpl,static/lib.js"><![CDATA[
+            global $rlDb;
+
+            // remove hooks
+            $hooks_to_be_removed = array(
+                'apTplHeader',
+                'listingDetailsBottom',
+                'ajaxRecentlyAddedLoadPost'
+            );
+            $rlDb->query("
+                DELETE FROM `" . RL_DBPREFIX . "hooks`
+                WHERE `Plugin` = 'currencyConverter'
+                AND `Name` IN ('" . implode("','", $hooks_to_be_removed) . "')
+            ");
+
+            // remove block
+            $rlDb->query("
+                DELETE FROM `" . RL_DBPREFIX . "blocks`
+                WHERE `Plugin` = 'currencyConverter'
+                AND `Key` = 'currencyConvertor_block' LIMIT 1
+            ");
+
+            // remove legacy config
+            $configs_to_be_removed = array(
+                'currencyConverter_rss',
+                'currencyConverter_position',
+                'currencyConverter_featured',
+                'currencyConverter_price_field',
+                'currencyConverter_show_flag'
+            );
+            $rlDb->query("
+                DELETE FROM `" . RL_DBPREFIX . "config`
+                WHERE `Key` IN ('" . implode("','", $configs_to_be_removed) . "')
+            ");
+
+            // remove phrases
+            $phrases = array(
+                'config+name+currencyConverter_rss',
+                'config+name+currencyConverter_position',
+                'config+name+currencyConverter_price_field',
+                'config+name+currencyConverter_show_flag',
+                'config+name+currencyConverter_featured',
+                'blocks+name+currencyConvertor_block',
+                'currencyConverter_location',
+                'currencyConverter_converted',
+                'currencyConverter_choose',
+                'currencyConverter_na',
+                'currencyConverter_change',
+                'currencyConverter_currency'
+            );
+            $rlDb->query(
+                "DELETE FROM `" . RL_DBPREFIX . "lang_keys`
+                WHERE `Plugin` = 'currencyConverter'
+                AND `Key` IN ('" . implode("','", $phrases) . "')
+            ");
+
+            // add new fields to the main table
+            $rlDb->query("
+                ALTER TABLE `" . RL_DBPREFIX . "currency_rate`
+                ADD `Sticky` ENUM('0', '1') NOT NULL DEFAULT '0' AFTER `Symbol` ,
+                ADD `Position` INT(3) NOT NULL AFTER `Sticky`,
+                ADD INDEX (`Sticky`)
+            ");
+
+            // prepare hook for cache
+            $rlDb->updateOne([
+                'fields' => ['Class' => ''],
+                'where'  => ['Name' => 'seoBase', 'Plugin' => 'currencyConverter']
+            ], 'hooks');
+
+            // update hook
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->updateHook();
+        ]]></update>
+        <update version="3.1.0" files="rlCurrencyConverter.class.php,user_navbar.tpl,header.tpl,static/lib.js,admin/currencyConverter.tpl"><![CDATA[
+            // update hook
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->updateHook();
+        ]]></update>
+        <update version="3.1.1" files="rlCurrencyConverter.class.php,header.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="3.1.2" files="rlCurrencyConverter.class.php,user_navbar.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="3.1.3" files="rlCurrencyConverter.class.php"><![CDATA[]]></update>
+        <update version="3.2.0" files="admin/currencyConverter.inc.php,admin/currencyConverter.tpl,static/lib.js,header.tpl,rlCurrencyConverter.class.php"><![CDATA[
+            global $rlDb;
+
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $rlDb->setTable('currency_rate');
+
+            foreach ($rlDb->fetch('*') as $item) {
+                if ($item['Symbol']) {
+                    continue;
+                }
+
+                $rlDb->query("
+                    UPDATE `" . RL_DBPREFIX . "currency_rate` SET `Symbol` = '" . $GLOBALS['rlCurrencyConverter']->getSign($item['Code']) . "'
+                    WHERE `ID` = {$item['ID']} LIMIT 1
+                ");
+            }
+
+            $GLOBALS['rlCurrencyConverter']->updateHook();
+
+            // remove phrases
+            $phrases = array(
+                'currencyConverter_code_ext',
+                'currencyConverter_rate_ext',
+                'currencyConverter_name_ext',
+                'currencyConverter_symbol_ext'
+            );
+            $rlDb->query(
+                "DELETE FROM `" . RL_DBPREFIX . "lang_keys`
+                WHERE `Plugin` = 'currencyConverter'
+                AND `Key` IN ('" . implode("','", $phrases) . "')
+            ");
+        ]]></update>
+        <update version="3.3.0" files="admin/currencyConverter.tpl,rlCurrencyConverter.class.php"><![CDATA[
+            global $rlDb;
+
+            // Remove phrases
+            $phrases = array(
+                'currencyConverter_name',
+            );
+            $rlDb->query(
+                "DELETE FROM `" . RL_DBPREFIX . "lang_keys`
+                WHERE `Plugin` = 'currencyConverter'
+                AND `Key` IN ('" . implode("','", $phrases) . "')
+            ");
+        ]]></update>
+        <update version="3.3.1" files="admin/currencyConverter.inc.php,i18n/ru.json,rlCurrencyConverter.class.php,static/lib.js"><![CDATA[
+            global $rlDb;
+
+            if (in_array('ru', array_keys($GLOBALS['languages']))) {
+                $russianTranslation = json_decode(file_get_contents(RL_PLUGINS . 'currencyConverter/i18n/ru.json'), true);
+
+                foreach ($russianTranslation as $phraseKey => $phraseValue) {
+                    if (!$rlDb->getOne('ID', "`Key` = '{$phraseKey}' AND `Code` = 'ru'", 'lang_keys')) {
+                        $insertPhrase = $rlDb->fetch(
+                            ['Module', 'Key', 'Plugin', 'JS', 'Target_key'],
+                            ['Code' => $GLOBALS['config']['lang'], 'Key' => $phraseKey],
+                            null, 1, 'lang_keys', 'row'
+                        );
+
+                        $insertPhrase['Code']  = 'ru';
+                        $insertPhrase['Value'] = $phraseValue;
+
+                        $rlDb->insertOne($insertPhrase, 'lang_keys');
+                    } else {
+                        $rlDb->updateOne([
+                            'fields' => ['Value' => $phraseValue],
+                            'where' => ['Key' => $phraseKey, 'Code' => 'ru', 'Modified' => '0'],
+                        ], 'lang_keys');
+                    }
+                }
+            }
+        ]]></update>
+        <update version="3.3.2" files="rlCurrencyConverter.class.php,static/lib.js"><![CDATA[
+            global $rlDb;
+
+            $rlDb->delete(['Name' => 'specialBlock', 'Plugin' => 'currencyConverter'], 'hooks');
+
+            $rlDb->updateOne([
+                'fields' => ['Class' => ''],
+                'where'  => ['Name' => 'seoBase', 'Plugin' => 'currencyConverter']
+            ], 'hooks');
+
+            $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+            $GLOBALS['rlCurrencyConverter']->updateHook();
+        ]]></update>
+        <update version="3.3.3" files="static/lib.js"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('CurrencyConverter', null, 'currencyConverter');
+        $GLOBALS['rlCurrencyConverter']->uninstall();
+    ]]></uninstall>
+</plugin>

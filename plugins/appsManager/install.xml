@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="appsManager">
+    <title>Applications Manager</title>
+    <description>Flynax Applications</description>
+    <author>Dmitry Azavanichus</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.0.3</version>
+    <date>21.11.2023</date>
+    <class>AppsManager</class>
+    <compatible>4.8.2</compatible>
+
+    <notices>
+        <!-- <notice><![CDATA[]]></notice> -->
+    </notices>
+
+    <files>
+        <file>rlAppsManager.class.php</file>
+        <file>admin/settings.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>static/phrase_keys.php</file>
+        <file>static/config_keys.php</file>
+    </files>
+
+    <hooks>
+        <hook name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBeforeUpdate"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBottom"><![CDATA[]]></hook>
+        <hook name="apTplFooter"><![CDATA[]]></hook>
+        <hook name="apPhpIndexBottom"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="appsManager" name="Application Manager">
+        <![CDATA[]]>
+        <config key="app_manager_divider_common" name="Common" type="divider"><![CDATA[]]></config>
+        <config key="app_manager_billing_currency" name="Billing currency code" type="text" description="Use ISO codes only. Make sure all payment gateways on your site support the currency."><![CDATA[USD]]></config>
+        <config key="app_manager_grid_listings_number" name="Number of listings per page" type="text" validate="int"><![CDATA[10]]></config>
+        <config key="app_manager_listings_number_on_map" name="Number of listings on map" type="text" validate="int"><![CDATA[100]]></config>
+        <config key="app_divider_home_settings" name="Home Screen Settings" type="divider"><![CDATA[]]></config>
+        <config key="app_manager_home_page_listings" name="Home screen listings" type="select" values="featured,recently_added"><![CDATA[featured]]></config>
+        <config key="app_manager_main_listing_type" name="Basic listing type" description="If no listing type is selected, the App will show listings of different types." type="select" values=""><![CDATA[]]></config>
+        <config key="app_manager_main_types" name="Listing type/Category menu" type="select" values="default,mixed"><![CDATA[default]]></config>
+        <config version="1.0.1" key="app_manager_main_types_view" name="Listing type layout" type="select" values="horizontal,vertical"><![CDATA[horizontal]]></config>
+        <config key="app_divider_account_types" name="Account Type Settings for Home Screen" type="divider"><![CDATA[]]></config>
+        <config key="app_account_types_count" name="Number of accounts" description="The number of user accounts shown on the home screen." type="text" validate="int"><![CDATA[5]]></config>
+        <config key="app_account_types" name="Account view" type="text"><![CDATA[]]></config>
+        <config key="app_divider_yookassa" name="Yookassa billing" type="divider"><![CDATA[]]></config>
+        <config key="app_yookassa_module" name="Yookassa module" type="bool"><![CDATA[0]]></config>
+        <config key="app_yookassa_store_id" name="Store ID" type="text"><![CDATA[]]></config>
+        <config key="app_yookassa_secret_key" name="Secret Key live" type="text"><![CDATA[]]></config>
+        <config key="app_yookassa_secret_key_msdk" name="Secret Key mSDK" type="text"><![CDATA[]]></config>
+        <config key="app_yookassa_app_id" name="YooKassa app ID" type="text"><![CDATA[]]></config>
+        <config version="1.0.2" key="app_banners_divider" name="Banners" type="divider"><![CDATA[]]></config>
+        <config version="1.0.2" key="app_banners_provider" name="Providers" type="select" values="yandex,google"><![CDATA[google]]></config>
+        <config version="1.0.2" key="app_banners_android" name="Use for Android" type="bool" values="0"><![CDATA[]]></config>
+        <config version="1.0.2" key="app_banners_android_key" name="Android Key" type="text"><![CDATA[]]></config>
+        <config version="1.0.2" key="app_banners_ios" name="Use for IOS" type="bool"><![CDATA[0]]></config>
+        <config version="1.0.2" key="app_banners_ios_key" name="IOS Key" type="text"><![CDATA[]]></config>
+        <config version="1.0.2" key="app_banners_in_grid" name="Use in the grid" type="bool"><![CDATA[0]]></config>
+        <config version="1.0.2" key="app_banners_in_grid_interation" name="Grid iteration" type="text" validate="int"><![CDATA[3]]></config>
+        <config version="1.0.2" key="app_banners_pages" name="Pages" type="text"><![CDATA[]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="error_request_api" module="common"><![CDATA[Something went wrong, please try again later.]]></phrase>
+        <phrase key="field_is_empty" module="common"><![CDATA[Please fill in the field.]]></phrase>
+        <phrase key="clear" module="common"><![CDATA[Clear]]></phrase>
+        <phrase key="items_not_found" module="common"><![CDATA[No items were found.]]></phrase>
+        <phrase key="username_incorrect" module="common"><![CDATA[The username is incorrect.]]></phrase>
+        <phrase key="email_incorrect" module="common"><![CDATA[The email is incorrect.]]></phrase>
+        <phrase key="ok" module="common"><![CDATA[OK]]></phrase>
+        <phrase key="camera" module="common"><![CDATA[Camera]]></phrase>
+        <phrase key="email_settings" module="common"><![CDATA[Email Settings]]></phrase>
+        <phrase key="fill_required_fields" module="common"><![CDATA[Please fill in the fields.]]></phrase>
+        <phrase key="incorrect_file_format" module="common"><![CDATA[Incorrect file format.]]></phrase>
+        <phrase key="reset_password_link_sent_app" module="common"><![CDATA[Please follow the instructions sent to your email.]]></phrase>
+        <phrase key="view_all" module="common"><![CDATA[View all]]></phrase>
+        <phrase key="show_more" module="common"><![CDATA[Show more]]></phrase>
+        <phrase key="form_fields_empty" module="common"><![CDATA[The form does not contain any fields.]]></phrase>
+        <phrase key="dialog_lose_data" module="common"><![CDATA[You'll lose the data you've entered if you change the category, are you sure you want to proceed?]]></phrase>
+        <phrase key="contact_details_requests" module="common"><![CDATA[Contact details requests]]></phrase>
+        <phrase key="yookassa" module="common"><![CDATA[Yookassa]]></phrase>
+        <phrase key="yookassa_currenry_error" module="common"><![CDATA[Yookassa supports only the RUB currency.]]></phrase>
+        <phrase key="app_map_search" module="common"><![CDATA[Map Search]]></phrase>
+        <phrase key="app_ad_alert" module="common"><![CDATA[Ad Alert]]></phrase>
+        <phrase key="app_new_saved_search" module="common"><![CDATA[{count} new ads have been found.]]></phrase>
+        <phrase key="app_login_facebook" module="common"><![CDATA[Sign in with Facebook]]></phrase>
+        <phrase key="app_login_google" module="common"><![CDATA[Sign in with Google]]></phrase>
+        <phrase version="1.0.2" key="app_login_twitter" module="common"><![CDATA[Sign in with X]]></phrase>
+        <phrase key="app_login_vk" module="common"><![CDATA[Sign in with VK]]></phrase>
+        <phrase version="1.0.1" key="app_login_yandex" module="common"><![CDATA[Sign in with Yandex]]></phrase>
+        <phrase key="app_login_apple" module="common"><![CDATA[Sign in with Apple]]></phrase>
+        <phrase key="app_add_media" module="common"><![CDATA[Add media]]></phrase>
+        <phrase key="app_load_media" module="common"><![CDATA[Uploading {file} of {files} files]]></phrase>
+        <phrase key="app_make_payment" module="common"><![CDATA[Make a payment]]></phrase>
+        <phrase key="app_payment_pending_notice" module="common"><![CDATA[Your payment has gone through. The plan will appear in a minute, please refresh the screen.]]></phrase>
+        <phrase key="app_save_search" module="common"><![CDATA[You should have an account and be logged in to save the search.]]></phrase>
+        <phrase version="1.0.1" key="app_connect_to_another_site" module="common"><![CDATA[Connect to another site]]></phrase>
+        <phrase version="1.0.1" key="app_your_site_address" module="common"><![CDATA[Your site address]]></phrase>
+        <phrase version="1.0.1" key="app_try_demo" module="common"><![CDATA[or try Demo]]></phrase>
+        <phrase version="1.0.1" key="app_select_demo" module="common"><![CDATA[Select Demo]]></phrase>
+        <phrase version="1.0.1" key="config+option+app_manager_home_page_listings_featured" module="common"><![CDATA[Featured]]></phrase>
+        <phrase version="1.0.1" key="config+option+app_manager_home_page_listings_recently_added" module="common"><![CDATA[Recently added]]></phrase>
+        <phrase version="1.0.1" key="config+option+app_manager_main_types_default" module="common"><![CDATA[Default]]></phrase>
+        <phrase version="1.0.1" key="config+option+app_manager_main_types_mixed" module="common"><![CDATA[Mixed]]></phrase>
+        <phrase version="1.0.1" key="config+option+app_manager_main_types_view_horizontal" module="common"><![CDATA[Horizontal]]></phrase>
+        <phrase version="1.0.1" key="config+option+app_manager_main_types_view_vertical" module="common"><![CDATA[Vertical]]></phrase>
+        <phrase version="1.0.2" key="config+option+app_banners_provider_yandex" module="common"><![CDATA[Yandex]]></phrase>
+        <phrase version="1.0.2" key="config+option+app_banners_provider_google" module="common"><![CDATA[Google]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="1.0.1" files="rlAppsManager.class.php,i18n/ru.json,static/phrase_keys.php,static/config_keys.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="admin/settings.tpl,i18n/ru.json,rlAppsManager.class.php,static/config_keys.php"><![CDATA[]]></update>
+        <update version="1.0.3" files="static/config_keys.php,static/phrase_keys.php"><![CDATA[]]></update>
+    </updates>
+
+</plugin>

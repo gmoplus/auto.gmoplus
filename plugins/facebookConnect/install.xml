@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="facebookConnect">
+    <title>Facebook connect</title>
+    <description>Quick access to the website account are using Facebook account</description>
+    <author>Alex</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.3.3</version>
+    <date>20.12.2011</date>
+    <class>FBConnect</class>
+    <compatible>4.5.2</compatible>
+
+    <notices>
+        <notice version="2.3.0"><![CDATA[Go to "Basic Settings > Facebook connect" and properly configure the plugin.]]></notice>
+    </notices>
+
+    <files>
+        <file>static/fb_ico.png</file>
+        <file>static/fb_login.png</file>
+        <file>request.php</file>
+        <file>connect.tpl</file>
+        <file>registration.tpl</file>
+        <file>rlFBConnect.class.php</file>
+        <file>Facebook</file><!-- folder -->
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('FBConnect', null, 'facebookConnect');
+        $GLOBALS['rlFBConnect']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="2.3.0" name="phpBeforeLoginValidation"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="specialBlock"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="tplUserNavbar"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="phpRegistrationBeforeInsert"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="registerSuccess"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="registrationDone"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="tplRegistrationCheckbox"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="apPhpConfigBottom"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="phpSendRegistrationNotification"><![CDATA[]]></hook>
+        <hook version="2.3.0" name="reeflessRedirctVars"><![CDATA[]]></hook>
+        <hook version="2.3.1" name="phpQuickRegistrationBeforeInsert"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="facebookConnect" name="Facebook connect"><![CDATA[]]>
+        <config key="facebookConnect_module" name="Use module"  type="bool"><![CDATA[0]]></config>
+        <config version="2.3.0" key="facebookConnect_quick_registration" name="Quick sign-up" type="bool"><![CDATA[0]]></config>
+        <config key="facebookConnect_appid" name="App ID" type="text"><![CDATA[]]></config>
+        <config key="facebookConnect_secret" name="App secret" type="text"><![CDATA[]]></config>
+        <config key="facebookConnect_account_type" name="Default account type" description="The type will be assigned to all new members when signing up. The option will work with the &quot;Quick sign-up&quot; enabled." values="" type="select"><![CDATA[]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="fConnect_login_title" module="frontEnd"><![CDATA[Log in with Facebook]]></phrase>
+        <phrase version="2.1.4" key="fConnect_connect" module="frontEnd"><![CDATA[Connect]]></phrase>
+        <phrase version="2.2.7" key="fConnect_save_settings_error_notice" module="admin"><![CDATA[To use the Facebook module fill out the <b>%s</b>, <b>%s</b> and <b>%s</b>.]]></phrase>
+        <phrase version="2.3.0" key="fConnect_api_wrong_response" module="admin"><![CDATA[Wrong response from API received]]></phrase>
+        <phrase version="2.3.0" key="fConnect_api_wrong_configuration" module="admin"><![CDATA[API not configured properly]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="2.0.1"><![CDATA[]]></update>
+        <update version="2.0.2" files="connect.tpl,logout.tpl,rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.0.3" files="connect.tpl,rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.0.4" files="rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.0.5" files="connect.tpl,logout.tpl,static/fb_ico.png,static/fb_login.png,static/fb_logout.gif,static/.htaccess"><![CDATA[]]></update>
+        <update version="2.1.0" files="connect.tpl,rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="rlFBConnect.class.php,connect.tpl,logout.tpl"><![CDATA[]]></update>
+        <update version="2.1.2" files="rlFBConnect.class.php,connect.tpl"><![CDATA[]]></update>
+        <update version="2.1.3" files="fb_ca_chain_bundle.crt,base_facebook.php,connect.tpl,facebook.php,rlFBConnect.class.php"><![CDATA[
+            $sql  = "DELETE FROM `". RL_DBPREFIX ."hooks` WHERE `Name` = 'accountChangePassword' ";
+            $sql .= "AND `Plugin` = 'facebookConnect' LIMIT 1";
+
+            $GLOBALS['rlDb']->query($sql);
+            $GLOBALS['rlDb']->query("ALTER TABLE `". RL_DBPREFIX ."accounts` DROP `facebook_pass`");
+        ]]></update>
+        <update version="2.1.4" files="connect.tpl"><![CDATA[]]></update>
+        <update version="2.2.0" files=".htaccess,connect.tpl,registration.tpl,request.php,rlFBConnect.class.php,static/fb_logout.gif"><![CDATA[
+            function shortQueryForTable($table) {return "DELETE FROM `". RL_DBPREFIX ."{$table}` WHERE `Plugin` = 'facebookConnect'";}
+
+            $deprecated_config_keys = "'facebookConnect_divider','facebookConnect_autoRegPrevent','facebookConnect_accountEmailConfirmation','facebookConnect_accountAdminConfirmation','facebookConnect_account_type'";
+            $deprecated_lang_keys = "'fConnect_prompt', 'fConnect_try_again', 'fConnect_enter_password', 'fConnect_wrong_password'";
+
+            $GLOBALS['rlDb']->query(shortQueryForTable('config') ." AND `Key` IN ({$deprecated_config_keys})");
+            $GLOBALS['rlDb']->query(shortQueryForTable('lang_keys') ." AND `Key` IN ({$deprecated_lang_keys})");
+            $GLOBALS['rlDb']->query(shortQueryForTable('hooks') ." AND `Name` IN ('specialBlock','phpLogOut', 'apPhpConfigBottom')");
+
+            $GLOBALS['rlDb']->query("INSERT INTO `". RL_DBPREFIX ."config` (`Key`, `Default`, `Plugin`) VALUES ('facebookConnect_account_type', 'any', 'facebookConnect')");
+        ]]></update>
+        <update version="2.2.1" files="request.php,rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.2.2" files="base_facebook.php,connect.tpl,registration.tpl,request.php"><![CDATA[
+            $fg_id = intval($GLOBALS['rlDb']->getOne('ID', "`Key` = 'facebookConnect' AND `Plugin` = 'facebookConnect'", 'config_groups'));
+            $sql_update = "UPDATE `". RL_DBPREFIX ."config` SET `Group_ID` = {$fg_id}, `Default` = 'any', `Position` = 9 ";
+            $sql_update.= "WHERE `Key` = 'facebookConnect_account_type'";
+            $GLOBALS['rlDb']->query($sql_update);
+        ]]></update>
+        <update version="2.2.3" files="rlFBConnect.class.php,connect.tpl,request.php,registration.tpl"><![CDATA[]]></update>
+        <update version="2.2.4" files="connect.tpl,request.php,registration.tpl"><![CDATA[]]></update>
+        <update version="2.2.5" files="request.php,rlFBConnect.class.php,Facebook/FacebookAuthorizationException.php,Facebook/FacebookCanvasLoginHelper.php,Facebook/FacebookClientException.php,Facebook/FacebookJavaScriptLoginHelper.php,Facebook/FacebookOtherException.php,Facebook/FacebookPermissionException.php,Facebook/FacebookRedirectLoginHelper.php,Facebook/FacebookRequest.php,Facebook/FacebookRequestException.php,Facebook/FacebookResponse.php,Facebook/FacebookSDKException.php,Facebook/FacebookServerException.php,Facebook/FacebookSession.php,Facebook/FacebookThrottleException.php,Facebook/fb_ca_chain_bundle.crt,Facebook/GraphLocation.php,Facebook/GraphObject.php,Facebook/GraphSessionInfo.php,Facebook/GraphUser.php"><![CDATA[
+            $GLOBALS['rlDb']->query("DELETE FROM `" . RL_DBPREFIX . "config` WHERE `Key` = 'facebookConnect_divider'");
+        ]]></update>
+        <update version="2.2.6" files="request.php,rlFBConnect.class.php,Facebook/FacebookRedirectLoginHelper.php,Facebook/FacebookResponse.php,Facebook/FacebookSession.php,Facebook/GraphObject.php,Facebook/GraphSessionInfo.php"><![CDATA[
+            $group_id = intval($GLOBALS['rlDb']->getOne('ID', "`Key` = 'facebookConnect'", 'config_groups'));
+            $GLOBALS['rlDb']->query("INSERT INTO `" . RL_DBPREFIX . "config` (`Key`, `Default`, `Plugin`) VALUES 
+            ('facebookConnect_configs_group_id', '{$group_id}', 'facebookConnect')");
+        ]]></update>
+        <update version="2.2.7" files="rlFBConnect.class.php,Facebook/FacebookRedirectLoginHelper.php"><![CDATA[]]></update>
+        <update version="2.2.8" files="Facebook/FacebookRedirectLoginHelper.php,Facebook/FacebookRequest.php"><![CDATA[]]></update>
+        <update version="2.2.9" files="Facebook/FacebookRequest.php,request.php,rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.2.10" files="Facebook/FacebookRedirectLoginHelper.php"><![CDATA[]]></update>
+        <update version="2.2.11" files="rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.3.0" files="static/.htaccess,.htaccess,connect.tpl,registration.tpl,request.php,rlFBConnect.class.php"><![CDATA[
+            $GLOBALS['rlDb']->query("
+                UPDATE `" . RL_DBPREFIX . "config` SET `Position` = 0 
+                WHERE `Key` = 'facebookConnect_quick_registration'
+            ");
+        ]]></update>
+        <update version="2.3.1" files="rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.3.2" files="connect.tpl,rlFBConnect.class.php"><![CDATA[]]></update>
+        <update version="2.3.3" files="connect.tpl"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('FBConnect', null, 'facebookConnect');
+        $GLOBALS['rlFBConnect']->uninstall();
+    ]]></uninstall>
+</plugin>

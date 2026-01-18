@@ -1,0 +1,3 @@
+<FilesMatch "^auto_reg_prevent\.inc\.php$">
+	ALLOW FROM ALL
+</FilesMatch>

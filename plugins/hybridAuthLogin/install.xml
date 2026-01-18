@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="hybridAuthLogin">
+    <title>Social Network Login</title>
+    <description>Allows users to log in via social networks</description>
+    <author>Alan Wake</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.2.0</version>
+    <date>18.04.2018</date>
+    <class>HybridAuthLogin</class>
+    <controller>hybrid_auth_login</controller>
+    <compatible>4.8.2</compatible>
+
+    <files>
+        <file>.htaccess</file>
+        <file>admin/.htaccess</file>
+        <file>admin/hybrid_auth_login.inc.php</file>
+        <file>admin/hybrid_auth_login.tpl</file>
+        <file>bootstrap.php</file>
+        <file>requests.php</file>
+        <file>rlHybridAuthLogin.class.php</file>
+        <file>src/Adapters/VkontakteAdapter.php</file>
+        <file>src/Configs.php</file>
+        <file>src/FilesWorker.php</file>
+        <file>src/HybridAuth.php</file>
+        <file>src/Interfaces/ProviderInterface.php</file>
+        <file>src/ModulesManager.php</file>
+        <file>src/ProviderResolver.php</file>
+        <file>src/Providers/AbstractProviderAdapter.php</file>
+        <file>src/Providers/Facebook.php</file>
+        <file>src/Providers/Google.php</file>
+        <file>src/Providers/Twitter.php</file>
+        <file>src/Providers/Vkontakte.php</file>
+        <file>src/Providers/Yandex.php</file>
+        <file>src/Providers/Mailru.php</file>
+        <file>src/Providers/Odnoklassniki.php</file>
+        <file>src/Providers/Telegram.php</file>
+        <file>src/Traits/UrlTrait.php</file>
+        <file>src/Uid.php</file>
+        <file>static/.htaccess</file>
+        <file>static/admin_style.css</file>
+        <file>static/icons.svg</file>
+        <file>static/lib.js</file>
+        <file>static/style.css</file>
+        <file>view/apTplHeader.tpl</file>
+        <file>view/escortGenderFields.tpl</file>
+        <file>view/footer.tpl</file>
+        <file>view/iconsContainer.tpl</file>
+        <file>view/module_configs.tpl</file>
+        <file>view/registrationBottomTpl.tpl</file>
+        <file>vendor/autoload.php</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook name="apTplFooter"><![CDATA[]]></hook>
+        <hook name="apTplHeader"><![CDATA[]]></hook>
+        <hook name="staticDataRegister"><![CDATA[]]></hook>
+        <hook name="registrationBottomTpl"><![CDATA[]]></hook>
+        <hook name="phpBeforeLoginValidation"><![CDATA[]]></hook>
+        <hook name="deleteAccountSetItems"><![CDATA[]]></hook>
+        <hook name="apExtPluginsUpdate"><![CDATA[]]></hook>
+        <hook name="apPhpTrashBottom"><![CDATA[]]></hook>
+        <hook name="tplUserNavbar"><![CDATA[]]></hook>
+        <hook name="tplFooter"><![CDATA[]]></hook>
+        <hook name="phpDeleteAccountDetails"><![CDATA[]]></hook>
+        <hook name="apTplPluginsGrid"><![CDATA[]]></hook>
+        <hook name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook name="phpLogOut" version="2.2.0"><![CDATA[]]></hook>
+        <hook name="phpMailSend" version="2.2.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="2.1.2" key="ha_copy" module="admin" target="hybrid_auth_login"><![CDATA[Copy]]></phrase>
+        <phrase version="2.1.2" key="ha_copy_link" module="admin" target="hybrid_auth_login"><![CDATA[Redirect OAuth link]]></phrase>
+        <phrase version="2.1.2" key="ha_link_has_been_copied" module="admin" target="hybrid_auth_login"><![CDATA[The link has been successfully copied.]]></phrase>
+        <phrase version="2.1.2" key="ha_ap_edit_module_page" module="admin" target="hybrid_auth_login"><![CDATA[Edit {provider_name} Provider]]></phrase>
+        <phrase version="2.1.2" key="ha_please_select_account_type" module="frontEnd" target="registration"><![CDATA[Please select an account type to continue logging in.]]></phrase>
+        <phrase key="ha_social_login" module="common"><![CDATA[Social Login]]></phrase>
+        <phrase key="ha_email_doesnt_exist" module="common"><![CDATA[The user with the email address doesn't exist. You may sign up via a social network; please select an account type to proceed.]]></phrase>
+        <phrase key="ha_select_account_type" module="common"><![CDATA[- Select account type -]]></phrase>
+        <phrase key="ha_provider_without_email" module="common"><![CDATA[The provider hasn't returned your email address; please make sure you added and verified it in the social network.]]></phrase>
+        <phrase key="ha_user_isnt_synchonized" module="common"><![CDATA[The account with the email address already exists on the site. To synchronize with Social Network Login plugin please enter the password to your account on the site.]]></phrase>
+        <phrase key="ha_verify_account" module="common"><![CDATA[Verify Account]]></phrase>
+        <phrase key="ha_cant_synchronize" module="common"><![CDATA[Failed to synchronize your account; please make sure you've entered the correct password.]]></phrase>
+        <phrase key="ha_user_inactive_or_in_trash" module="common"><![CDATA[The user account is either disabled or moved to the Trash Box; please contact the Administrator to get the problem resolved.]]></phrase>
+        <phrase key="ha_fb_connect_plugin_conflict" module="common"><![CDATA[The Social Network Login plugin has been disabled because it can't run simultaneously with the Facebook Connect plugin.]]></phrase>
+        <phrase key="ha_fb_cant_enable_plugin" module="admin" version="2.0.0"><![CDATA[The Social Network Login can't run simultaneously with the Facebook Connect plugin. Uninstall the Facebook Connect and try again.]]></phrase>
+        <phrase version="2.1.2" key="ha_ap_modules" module="admin" target="hybrid_auth_login"><![CDATA[Providers Manager]]></phrase>
+        <phrase version="2.1.2" key="ha_modules_list" module="admin" target="hybrid_auth_login"><![CDATA[All Providers]]></phrase>
+        <phrase version="2.1.2" key="ha_configurations_has_been_saved" module="admin" target="hybrid_auth_login"><![CDATA[The changes were successfully saved and provider enabled.]]></phrase>
+        <phrase version="2.1.2" key="ha_provider_guide_link" module="admin" target="hybrid_auth_login"><![CDATA[The {provider} guide is available [here].]]></phrase>
+        <phrase key="ha_select_gender" module="common"><![CDATA[- Select gender -]]></phrase>
+        <phrase version="2.1.2" key="ha_apple_configuration_notice" module="admin" target="hybrid_auth_login"><![CDATA[No need to configure anything from the admin panel. Follow the link above to configure the provider.]]></phrase>
+        <phrase version="2.1.2" key="ha_module" module="admin" target="hybrid_auth_login"><![CDATA[Module]]></phrase>
+    </phrases>
+
+    <configs key="ha_configurations" name="Social Network Login">
+        <![CDATA[]]>
+        <config key="ha_enable_avatar_uploading" name="Upload thumbnails from social networks" type="bool"><![CDATA[1]]></config>
+        <config key="ha_enable_password_synchronization" description="When disabled, verification will take place automatically." name="Account synchronization with password" type="bool"><![CDATA[0]]></config>
+        <config key="ha_vkontakte_app_id" name="Application ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_vkontakte_app_key" name="Secure key" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_vkontakte_app_secret" name="Service token" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_twitter_app_id" name="Consumer Key (API Key)" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_twitter_app_secret" name="Consumer Secret (API Secret)" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_facebook_app_id" name="App ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_facebook_app_secret" name="App Secret" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_google_app_key" name="App ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_google_app_id" name="App Secret" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_yandex_app_id" name="App ID" type="text" group="0" version="2.1.5"><![CDATA[]]></config>
+        <config key="ha_yandex_app_secret" name="App Secret" type="text" group="0" version="2.1.5"><![CDATA[]]></config>
+        <config key="ha_mailru_app_id" name="App ID" type="text" group="0" version="2.1.5"><![CDATA[]]></config>
+        <config key="ha_mailru_app_secret" name="App Secret" type="text" group="0" version="2.1.5"><![CDATA[]]></config>
+        <config key="ha_odnoklassniki_app_id" name="App ID" type="text" group="0" version="2.1.5"><![CDATA[]]></config>
+        <config key="ha_odnoklassniki_app_key" name="App Key" type="text" group="0" version="2.1.5"><![CDATA[]]></config>
+        <config key="ha_odnoklassniki_app_secret" name="App Secret" type="text" group="0" version="2.1.5"><![CDATA[]]></config>
+        <config key="ha_telegram_bot" name="Bot" type="text" group="0" version="2.2.0"><![CDATA[]]></config>
+        <config key="ha_telegram_bot_token" name="Token" type="text" group="0" version="2.2.0"><![CDATA[]]></config>
+    </configs>
+
+    <updates>
+        <update version="1.1.0" files="static/icons.svg,src/Providers/Google.php,src/HybridAuth.php,requests.php,vendor"><![CDATA[]]></update>
+        <update version="1.1.1" files="static/icons.svg"><![CDATA[]]></update>
+        <update version="2.0.0" files="requests.php,rlHybridAuthLogin.class.php,src/API.php,src/ModulesManager.php,src/ProviderResolver.php,static/icons.svg,static/style.css"><![CDATA[]]></update>
+        <update version="2.1.0" files="admin/hybrid_auth_login.inc.php,admin/hybrid_auth_login.tpl,bootstrap.php,requests.php,src/HybridAuth.php,src/ProviderResolver.php,static/icons.svg"><![CDATA[]]></update>
+        <update version="2.1.1" files="requests.php,src/Providers/Facebook.php,src/Uid.php,src/ProviderResolver.php,rlHybridAuthLogin.class.php,admin/hybrid_auth_login.inc.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="bootstrap.php,rlHybridAuthLogin.class.php,i18n/ru.json,static/lib.js,view/apTplHeader.tpl,view/footer.tpl,vendor"><![CDATA[]]></update>
+        <update version="2.1.3" files="rlHybridAuthLogin.class.php,view/registrationBottomTpl.tpl,vendor"><![CDATA[]]></update>
+        <update version="2.1.4" files="admin/hybrid_auth_login.inc.php,requests.php,rlHybridAuthLogin.class.php,src/ModulesManager.php,src/ProviderResolver.php,src/Providers/Facebook.php,src/Providers/Google.php,src/Providers/Twitter.php,src/Providers/Vkontakte.php,vendor"><![CDATA[]]></update>
+        <update version="2.1.5" files="bootstrap.php,static/icons.svg,src/Providers/Yandex.php,src/Providers/Mailru.php,src/Providers/Odnoklassniki.php,rlHybridAuthLogin.class.php"><![CDATA[]]></update>
+        <update version="2.1.6" files="vendor,requests.php,static/icons.svg"><![CDATA[]]></update>
+        <update version="2.1.7" files="bootstrap.php,src/Adapters/VkontakteAdapter.php,src/Providers/Vkontakte.php"><![CDATA[]]></update>
+        <update version="2.1.8" files="src/Providers/Vkontakte.php"><![CDATA[]]></update>
+        <update version="2.2.0" files="rlHybridAuthLogin.class.php,src/Providers/Telegram.php,static/icons.svg,bootstrap.php,requests.php,i18n/ru.json,static/lib.js,admin/hybrid_auth_login.inc.php,src/ProviderResolver.php,src/API.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

@@ -1,0 +1,15 @@
+{
+    "street_view_tab": "Панорама улиц",
+    "street_view_no_location": "Не удалось найти запрашиваемый адрес <b>{address}</b>, через сервис отображения панорамы улиц по причине отсутствия данных у провайдера услуг.",
+    "config+option+street_view_mode_tab": "Вкладке",
+    "config+option+street_view_mode_gallery": "Фото галерее",
+    "config+option+street_view_mode_box": "Деталях объявления",
+    "street_view_no_api_keys": "Не указаны ключи Панорамы улиц. Пожалуйста, настройте ключи API в [Базовых настройках].",
+    "config+des+street_view_provider": "Читать инструкцию <a href='https://www.flynax.com/files/manuals/How%20to%20configure%20Street%20View%20provider.pdf' target='_blank'>здесь</a>",
+    "blocks+name+street_view": "Панорама улиц",
+    "config_groups+name+street_view": "Панорама улиц",
+    "config+name+street_view_provider": "Провайдер услуг",
+    "config+name+street_view_google_key": "Ключ Google API",
+    "config+name+street_view_yandex_key": "Ключ Яндекс API",
+    "config+name+street_view_mode": "Отображать панораму улиц в"
+}

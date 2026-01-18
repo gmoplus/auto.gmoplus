@@ -1,0 +1,5 @@
+# Deny all external requests
+<FilesMatch ".(htaccess|tpl|php|xml)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="categories_icons">
+    <title>Categories Icons</title>
+    <description>Allows the Administrator to add custom icons to categories</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.0.1</version>
+    <date>03.01.2012</date>
+    <class>CategoriesIcons</class>
+    <compatible>4.9.3</compatible>
+
+    <files>
+        <file>admin/add_category_block.tpl</file>
+        <file>rlCategoriesIcons.class.php</file>
+        <file>icon.tpl</file>
+        <file>subcat_icons.tpl</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="3.0.0" name="getCategoriesModifySelect"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplPreCategory"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplPostCategory"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplPreSubCategory"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplCategoriesForm"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpCategoriesBeforeAdd"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpCategoriesBeforeEdit"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpCategoriesBottom"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpCategoriesPost"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplListingTypesForm"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingTypesPost"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingTypesBeforeAdd"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingTypesBeforeEdit"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apPhpListingTypesBottom"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="simulateCatBlocks"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplPreCategoryName"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplPostSubCategory"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apMixConfigItem"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="3.0.0" key="category_icon_notice" module="admin"><![CDATA[The icon will be resized relative to the following sizes: <b>{width}px</b>/<b>{height}px</b>, click [here] to edit sizes.]]></phrase>
+        <phrase version="2.2.2" key="category_icon_icon_deleted" module="admin"><![CDATA[Category icon has been successfully deleted.]]></phrase>
+        <phrase version="2.2.2" key="category_icon" module="admin"><![CDATA[Icon]]></phrase>
+        <phrase version="2.2.2" key="current_icon" module="admin"><![CDATA[Current Icon]]></phrase>
+        <phrase version="3.0.0" key="category_icon_choose_from_gallery" module="admin"><![CDATA[Choose from gallery]]></phrase>
+        <phrase version="2.2.2" key="config+option+categories_icons_position_left" target="settings" module="admin"><![CDATA[Left]]></phrase>
+        <phrase version="2.2.2" key="config+option+categories_icons_position_right" target="settings" module="admin"><![CDATA[Right]]></phrase>
+        <phrase version="2.2.2" key="config+option+categories_icons_position_top" target="settings" module="admin"><![CDATA[Top]]></phrase>
+        <phrase version="2.2.2" key="config+option+categories_icons_position_bottom" target="settings" module="admin"><![CDATA[Bottom]]></phrase>
+        <phrase version="3.0.0" key="config+option+categories_icons_subcategory_position_left" target="settings" module="admin"><![CDATA[Left]]></phrase>
+        <phrase version="3.0.0" key="config+option+categories_icons_subcategory_position_right" target="settings" module="admin"><![CDATA[Right]]></phrase>
+    </phrases>
+
+    <configs version="2.2.2" key="categories_icons" name="Categories Icons">
+        <![CDATA[]]>
+        <config version="2.2.2" key="categories_icons_crop_module" name="Use Crop" type="bool"><![CDATA[1]]></config>
+        <config version="2.2.2" key="categories_icons_position" name="Icon position around category name" values="left,right,top,bottom" type="select"><![CDATA[left]]></config>
+        <config version="3.0.0" key="categories_icons_subcategory_divider" name="Subcategory icons" type="divider"><![CDATA[]]></config>
+        <config version="3.0.0" key="categories_icons_subcategory_icons" name="Show icons in subcategories" type="bool"><![CDATA[1]]></config>
+        <config version="3.0.0" key="categories_icons_subcategory_position" name="Icon position around subcategory name" values="left,right" type="select"><![CDATA[left]]></config>
+        <config version="3.0.0" key="categories_main_box_divider" name="Icons in box on the home page" type="divider"><![CDATA[]]></config>
+        <config version="2.2.2" key="categories_icons_width" name="Icon width" type="text" validate="int"><![CDATA[40]]></config>
+        <config version="2.2.2" key="categories_icons_height" name="Icon height" type="text" validate="int"><![CDATA[40]]></config>
+        <config version="3.0.0" key="categories_type_box_divider" name="Icons in box on the listing type page" type="divider"><![CDATA[]]></config>
+        <config version="3.0.0" key="categories_icons_type_page" name="Show icons" type="bool"><![CDATA[0]]></config>
+        <config version="3.0.0" key="categories_icons_width_type_page" name="Icon width" type="text" validate="int"><![CDATA[30]]></config>
+        <config version="3.0.0" key="categories_icons_height_type_page" name="Icon height" type="text" validate="int"><![CDATA[30]]></config>
+    </configs>
+
+    <updates>
+        <update version="2.1.0" files="admin/add_category_block.tpl,admin/apPhpCategoriesBeforeAdd.php,admin/apPhpCategoriesBeforeEdit.php,rlCategoriesIcons.class.php,admin/apPhpConfigAfterUpdate.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="admin/apPhpCategoriesBeforeAdd.php,admin/apPhpCategoriesBeforeEdit.php,rlCategoriesIcons.class.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="rlCategoriesIcons.class.php,subcat_icons.tpl"><![CDATA[]]></update>
+        <update version="2.1.3" files="admin/apPhpCategoriesBeforeAdd.php,subcat_icons.tpl"><![CDATA[]]></update>
+        <update version="2.2.0" files="admin/add_category_block.tpl,rlCategoriesIcons.class.php"><![CDATA[]]></update>
+        <update version="2.2.1" files="subcat_icons.tpl"><![CDATA[]]></update>
+        <update version="2.2.2" files="i18n/ru.json,admin/add_category_block.tpl,icon.tpl,subcat_icons.tpl,rlCategoriesIcons.class.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="admin/add_category_block.tpl,i18n/ru.json,icon.tpl,rlCategoriesIcons.class.php,subcat_icons.tpl"><![CDATA[]]></update>
+        <update version="3.0.1" files="rlCategoriesIcons.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

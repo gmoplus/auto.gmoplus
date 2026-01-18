@@ -1,0 +1,6 @@
+# deny all external requests
+DENY FROM ALL
+
+<Files request.php>
+    ALLOW FROM ALL
+</Files>

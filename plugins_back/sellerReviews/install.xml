@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="sellerReviews">
+    <title>Seller Reviews/Rating</title>
+    <description>Allows users to add reviews and ratings on seller pages</description>
+    <author>Curtis Jackson</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.1.0</version>
+    <date>25.03.2022</date>
+    <class>SellerReviews</class>
+    <controller>seller_reviews</controller>
+    <compatible>4.7.2</compatible>
+
+    <install><![CDATA[]]></install>
+
+    <files>
+        <file>admin/view/comments.tpl</file>
+        <file>admin/view/edit_form.tpl</file>
+        <file>admin/view/navbar.tpl</file>
+        <file>admin/view/search.tpl</file>
+        <file>admin/.htaccess</file>
+        <file>admin/seller_reviews.inc.php</file>
+        <file>admin/seller_reviews.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>src/SellerComment.php</file>
+        <file>src/SellerReviews.php</file>
+        <file>static/.htaccess</file>
+        <file>static/_pagination.js</file>
+        <file>static/lib.js</file>
+        <file>vendor/autoload.php</file>
+        <file>view/account_rating.tpl</file>
+        <file>view/comments.tpl</file>
+        <file>view/comments-list.tpl</file>
+        <file>view/footer.tpl</file>
+        <file>view/header.tpl</file>
+        <file>view/new_comment_form.tpl</file>
+        <file>view/pagination.tpl</file>
+        <file>view/stars.tpl</file>
+        <file>.htaccess</file>
+        <file>rlSellerReviews.class.php</file>
+    </files>
+
+    <hooks>
+        <hook name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook name="tplHeader"><![CDATA[]]></hook>
+        <hook name="tplFooter"><![CDATA[]]></hook>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook name="listingDetailsSellerBox"><![CDATA[]]></hook>
+        <hook name="tplSellerBoxAfterName" version="1.1.0"><![CDATA[]]></hook>
+        <hook name="staticDataRegister"><![CDATA[]]></hook>
+        <hook name="phpDeleteAccountDetails"><![CDATA[]]></hook>
+        <hook name="deleteAccountSetItems"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="srr_add_comment" module="frontEnd" js="1"><![CDATA[Leave Review]]></phrase>
+        <phrase key="srr_author" module="common" js="1"><![CDATA[Author]]></phrase>
+        <phrase key="srr_title" module="common"><![CDATA[Title]]></phrase>
+        <phrase key="srr_notice_comment_added" module="system"><![CDATA[You've added a review.]]></phrase>
+        <phrase key="srr_notice_comment_added_approval" module="system"><![CDATA[Your review has been added and is awaiting to be reviewed by the Administrator.]]></phrase>
+        <phrase key="srr_tab" module="frontEnd" js="1" version="1.1.0"><![CDATA[Reviews]]></phrase>
+        <phrase key="srr_rating" module="admin" js="1"><![CDATA[Rating]]></phrase>
+        <phrase key="srr_set" module="common"><![CDATA[Set {stars} stars]]></phrase>
+        <phrase key="srr_comments_count" module="frontEnd"><![CDATA[{count} review(s)]]></phrase>
+        <phrase key="srr_login_to_post" module="frontEnd" js="1"><![CDATA[Please log in or sign up to leave a review.]]></phrase>
+        <phrase key="srr_login_to_see_comments" module="frontEnd" js="1"><![CDATA[Please log in or sign up to view reviews.]]></phrase>
+        <phrase key="config+option+srr_display_mode_popup" module="admin" target="settings"><![CDATA[Pop-up]]></phrase>
+        <phrase key="config+option+srr_display_mode_tab" module="admin" target="settings"><![CDATA[Tab]]></phrase>
+        <phrase key="srr_comments_number" module="system"><![CDATA[based on {number} rating(s)]]></phrase>
+        <phrase key="srr_comments_empty" module="system"><![CDATA[No reviews yet; be the first to add a review.]]></phrase>
+        <phrase key="srr_rating_empty" module="system"><![CDATA[Please rate the seller.]]></phrase>
+    </phrases>
+
+    <emails>
+        <email key="srr_comment_email" subject="Someone left a review on your profile" type="html"><![CDATA[Hello {seller},
+
+Someone has added a review to your profile; please, see the details below:
+
+<b>Author:</b> {author}
+<b>Title:</b> {title}
+<b>Review:</b>
+
+{message}
+
+______________________________
+]]></email>
+    </emails>
+
+    <configs key="sellerReviews" name="Seller Review/Rating">
+        <![CDATA[]]>
+        <config key="srr_comment_block" name="Reviews in seller details" type="divider"><![CDATA[]]></config>
+        <config key="srr_display_mode" name="Appearance" type="select" values="tab,popup"><![CDATA[tab]]></config>
+        <config key="srr_login_access" name="Prevent unlogged users from viewing reviews" type="bool"><![CDATA[0]]></config>
+        <config key="srr_per_page" name="Number of reviews per page" type="text" validate="int"><![CDATA[10]]></config>
+        <config key="srr_show_time" name="Show hours and minutes in reviews" type="bool" validate="int"><![CDATA[1]]></config>
+        <config key="srr_posting_group" name="Review Settings" type="divider"><![CDATA[]]></config>
+        <config key="srr_message_symbols_number" name="Review maximum length" type="text" validate="int"><![CDATA[500]]></config>
+        <config key="srr_send_email_after_added_comment" name="Send email notifications to sellers" type="bool"><![CDATA[1]]></config>
+        <config key="srr_captcha" name="Captcha" type="bool"><![CDATA[1]]></config>
+        <config key="srr_auto_approval" name="Auto approval of reviews" type="bool"><![CDATA[1]]></config>
+        <config key="srr_login_post" name="Prevent unlogged users from adding reviews" type="bool"><![CDATA[1]]></config>
+        <config key="srr_one_comment_only" version="1.1.0" name="Prevent users from adding more than one seller review" type="bool"><![CDATA[0]]></config>
+        <config key="srr_rating_group" name="Rating Settings" type="divider"><![CDATA[]]></config>
+        <config key="srr_rating_module" name="Rating" type="bool"><![CDATA[1]]></config>
+        <config key="srr_stars_number" name="Number of stars" type="select" values="3,5,10" validate="int"><![CDATA[5]]></config>
+    </configs>
+
+    <updates>
+        <update version="1.1.0" files="i18n/ru.json,src/SellerComment.php,src/SellerReviews.php,rlSellerReviews.class.php,view/comments-list.tpl,static/lib.js,view/comments.tpl,view/header.tpl,view/account_rating.tpl,view/stars.tpl"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

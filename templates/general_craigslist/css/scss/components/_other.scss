@@ -1,0 +1,210 @@
+/*** Other ***/
+
+// Keyword search
+.kws-block {
+  input[type="text"] {
+    width: 100%;
+  }
+
+  .controls {
+    margin-top: $spacer;
+
+    input {
+      margin-right: $spacer;
+    }
+
+    a {
+      line-height: $button-height;
+    }
+  }
+
+  .options {
+    padding: $spacer 0 0 0;
+
+    ul > li {
+      margin-top: $spacer / 2;
+    }
+
+    & + div {
+      line-height: initial;
+      padding-top: $spacer / 2;
+    }
+  }
+}
+
+form.kws-block {
+    padding-bottom: $spacer*3;
+}
+
+// Seach input
+input.search {
+  width: $input-height;
+  height: $input-height;
+  background: $color-main-light;
+  border: none;
+  position: relative;
+
+  @include transition(background);
+
+  &:after {
+    content: "";
+    display: inline-block;
+    width: $icon-size-lg;
+    height: $icon-size-lg;
+    background: url(../img/gallery.png) 0 0 no-repeat;
+
+    @include absolute_center($icon-size-lg, $icon-size-lg);
+
+    @include gallery_retina;
+  }
+
+  &#lf_search {
+    background: $color-main-light url(../img/gallery.png) 0 -500px no-repeat;
+
+    &:hover {
+      background-color: $color-main;
+    }
+  }
+
+  &:hover {
+    background-color: $color-main;
+  }
+}
+
+// Pills
+span.pills {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0;
+
+  > label {
+    padding: 0 ($grid-gutter / 2) !important;
+    height: $pills-height !important;
+    line-height: $pills-height;
+    border-right: $border-width-wide solid $pills-border-color;
+    display: inline-block;
+    text-align: center;
+
+    &:last-child {
+      border: none;
+    }
+
+    &:not(.active) {
+      cursor: pointer;
+      color: $color-main;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    > span {
+      display: none !important;
+    }
+  }
+
+  input[type=radio]:checked + label {
+    background: $pills-checked-bg;
+    text-decoration: none;
+    color: $color-white;
+    cursor: default;
+  }
+}
+
+// Payment
+#payment_gateways {
+  padding: $spacer 0;
+
+  > li {
+    display: inline-block;
+    width: $payment-box-width;
+    height: $payment-box-height;
+    text-align: center;
+    padding: ($spacer * 1.5) 0 0 0;
+    margin: 0 $spacer $spacer 0;
+    box-shadow: inset 0 0 0 $border-width-wide $color-gray-lightest;
+    cursor: pointer;
+
+    @include transition(background);
+
+    p {
+      padding: ($spacer / 2) 0 0;
+    }
+
+    input {
+      opacity: 1;
+      position: relative;
+      width: auto;
+      height: auto;
+    }
+
+    &:hover,
+    &.active {
+      background: $color-gray-lightest;
+    }
+  }
+}
+
+// Statuses
+.statuses {
+  .paid,
+  .unpaid,
+  .active,
+  .approval,
+  .incomplete,
+  .pending,
+  .expired {
+    color: $statuses-color;
+    font-size: 0.813rem;
+  }
+
+  .approval {
+    color: $statuses-color-approval;
+  }
+
+  .incomplete {
+    color: $statuses-color-incomplete;
+  }
+
+  .pending {
+    color: $statuses-color-pending;
+  }
+
+  .expired {
+    color: $statuses-color-expired;
+  }
+
+  .paid {
+    color: #63b53b;
+  }
+
+  .unpaid {
+    color: #fb0000;
+  }
+
+  .active:before,
+  .approval:before,
+  .incomplete:before,
+  .pending:before,
+  .expired:before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: $statuses-bg;
+    margin-right: 8px;
+  }
+
+  .incomplete:before {
+    background: $statuses-color-incomplete;
+  }
+
+  .pending:before {
+    background: $statuses-color-pending;
+  }
+
+  .expired:before {
+    background: $statuses-color-expired;
+  }
+}

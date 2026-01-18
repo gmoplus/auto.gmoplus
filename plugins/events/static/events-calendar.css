@@ -1,0 +1,104 @@
+#events-calendar {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.calender-header {
+    margin-bottom: 6px;
+    display: flex;
+}
+.calender-header > div {
+    display: inline-block;
+}
+.calendar-arrow {
+    width: 30px;
+    padding-bottom: 4px;
+}
+.calendar-arrow svg {
+    width: 7px;
+    height: 12px;
+    opacity: .7;
+}
+.calendar-arrow:hover svg {
+    opacity: 1;
+}
+.calendar-arrow.left svg {
+    transform: scaleX(-1);
+}
+.calender-header > div:hover,
+.calendar-body .month > .item:hover,
+.calendar-body .years > .item:hover {
+    cursor: pointer;
+}
+.calender-header .title {
+    flex: 1;
+}
+
+.calendar-body .dates > .item,
+.calendar-body .weeks > .item {
+    width: 14.285%;
+    display: inline-block;
+    text-align: center;
+    padding: 3px 0 4px;
+}
+.calendar-body .weeks > .item {
+    padding: 0 0 5px 0;
+    font-size: 12px;
+}
+.calendar-body .dates > .item a {
+    display: inline-block;
+    width: 27px;
+    height: 26px;
+    line-height: 25px;
+}
+.calendar-body.active-preloader {
+    opacity: 0.2;
+}
+#events-calendar .item:not(.has-event) > a {
+    cursor: default;
+    text-decoration: none;
+    color: initial;
+}
+.calendar-body .dates > div.inactive-month a {
+    opacity: .6;
+}
+.calendar-body .dates > div.passed-day a {
+    opacity: .3;
+}
+.calendar-body .dates > div.selected-day a {
+    background: rgba(121,121,121,.2);
+    border-radius: 50%;
+}
+
+.calendar-body .month > .item,
+.calendar-body .years > .item {
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
+
+.events-days-view > div.month,
+.events-days-view > div.years {
+    display: none;
+}
+.events-month-view > div.dates,
+.events-month-view > div.weeks,
+.events-month-view > div.years {
+    display: none;
+}
+.events-years-view > div.dates,
+.events-years-view > div.weeks,
+.events-years-view > div.month {
+    display: none;
+}
+
+body[dir="rtl"] .calendar-arrow.right svg {
+    transform: scaleX(-1);
+}
+body[dir="rtl"] .calendar-arrow.left svg {
+    transform: scaleX(1);
+}

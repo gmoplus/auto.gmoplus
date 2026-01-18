@@ -1,0 +1,110 @@
+/* monetize plugin styles */
+
+#area_highlight .navigation-column {
+    display: none;
+}
+#listings.my-listings div.navigation ul > li.nav-icon.bump-up > a:before {
+    background: url(../static/gallery.png) 0 1px no-repeat;
+}
+#listings.my-listings div.navigation ul > li.nav-icon.higlight > a:before {
+    background: url(../static/gallery.png) 0 -17px no-repeat;
+}
+.m-statistic {
+    padding-bottom: 15px;
+    border-bottom: 2px solid #cbcbcb;
+    margin-bottom: 15px;
+}
+.m-statistic .bu-info {
+    display: inline-block;
+    margin-right: 40px;
+    vertical-align: bottom;
+}
+body[dir=rtl] .m-statistic .bu-info {
+    margin-right: 0;
+    margin-left: 40px;
+}
+
+body[dir=rtl] .my-listings div.navigation ul li.nav-icon > a:before {
+    left: auto;
+    right: 0;
+}
+
+.m-statistic .credits-count {
+    font-size: 96px;
+    line-height: 1;
+}
+.m-statistic .button {
+    margin: 10px 0;
+}
+.m-statistic .credits-text {
+    display: inline-block;
+}
+.m-statistic .credits-text .date {
+    font-size: inherit;
+}
+.rb-ads {
+    margin-bottom: 10px;
+}
+
+article.highlight a.link-large, article.highlight ul.ad-info > li.title > a,
+article.highlight a.link-large, article.highlight ul.card-info > li.title > a {
+    background: #ffec6c;
+    box-shadow: 5px 0 0 #ffec6c, -5px 0 0 #ffec6c;
+    color: #555555!important;
+}
+
+#recently-bumped-up ul.nav-column, #recently-highlighted ul.nav-column {
+    padding-top: 0 !important;
+    width: auto !important;
+}
+#recently-highlighted > .fieldset, #recently-bumped-up > .fieldset {
+    margin-top: 15px;
+}
+#recently-bumped-up .navigation-column {
+    width: auto !important;
+}
+article.highlight > div.title a {
+    background: #ffec6c;
+    box-shadow: 5px 0 0 #ffec6c, -5px 0 0 #ffec6c;
+    color: #555555;
+}
+#area_bump_up li.highlight-date {
+    display: none !important;
+}
+#area_highlight li.bump-date {
+    display: none !important;
+}
+
+div.fieldset.divider > header {
+    display: block !important;
+}
+
+ul.rating-bar.hide {
+    display: none;
+}
+
+.monetize-block .card-info .icons {
+    display: none;
+}
+
+#recently-highlighted ul.nav-column > li, #recently-bumped-up ul.nav-column > li{
+    cursor: default !important;
+}
+
+/*** MOBILE VIEW ***/
+@media screen and (max-width: 767px) {
+    #area_highlight section#listings.list ul.card-info > ol {
+        display: block !important;
+    }
+	section#listings.monetize-recent-tab ul.ad-info,
+    section#listings.monetize-recent-tab ul.card-info {
+        height: 75px !important;
+    }
+    section#listings.monetize-recent-tab ul.ad-info  > li.title,
+    section#listings.monetize-recent-tab ul.card-info  > li.title {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

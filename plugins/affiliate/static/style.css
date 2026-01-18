@@ -1,0 +1,139 @@
+/*** AFFILIATE STYLES ***/
+
+/* affiliate program page */
+.content-padding.affiliate {
+    padding-bottom: 30px;
+    max-width: 800px;
+}
+.affiliate .login-form .divider {
+    display: none;
+}
+.register-form-affiliate .name.accept_checkbox label {
+    white-space: normal;
+}
+.aff-referral-link {
+    max-width: 600px;
+}
+.aff-referral-link input {
+    width: 100%;
+}
+.aff-referral-link > div:first-child {
+    padding-left: 10px;
+}
+.affiliate .cell > div > div:not(.caption) {
+    padding: 15px 0 5px;
+}
+.register-form-affiliate .name.accept_checkbox {
+    padding: 0 0 10px 0;
+}
+.register-form-affiliate input[type=text],
+.register-form-affiliate input[type=password] {
+    width: 250px;
+    display: block;
+    margin: 0 0 20px;
+}
+/* affiliate program page end */
+
+/* affiliate stats page */
+.affiliate-stats h3 {
+    padding-top: 25px;
+    padding-bottom: 15px;
+}
+.affiliate-stats div.table-cell.small > div.name {
+    width: 210px;
+}
+.affiliate-stats div.table-cell.small > div.value > span {
+    padding: 0px 5px 1px;
+    border-radius: 2px;
+}
+.affiliate-stats div.col-sm-5 > div:nth-child(2) > div.value > span {
+    background: rgba(246,47,52,.8);
+}
+.affiliate-stats div.col-sm-5 > div:nth-child(3) > div.value > span {
+    background: rgba(253,172,75,.8);
+}
+.affiliate-stats div.col-sm-5 > div:nth-child(4) > div.value > span {
+    background: rgba(52,174,172,.8);
+}
+/* affiliate stats page end */
+
+/* commissions page */
+.transactions img.qtip {
+    margin-left: 0 !important;
+    margin-right: 5px !important;
+}
+/* commissions page end */
+
+/* payment history page (payout details) */
+body.aff-payment-history-page .transactions {
+    margin-top: 30px;
+}
+body.aff-payment-history-page #controller_area {
+    position: relative;
+}
+/* payment history page (payout details) end */
+
+/* banners page */
+div.aff-banners.list-table .image-code div.aff-banner {
+    padding: 5px 0 10px;
+}
+div.aff-banners.list-table .image-code img {
+    width: auto;
+    max-width: 100%;
+}
+/* banners page end */
+
+/* my profile page */
+#fs_aff_billing_area {
+    margin: 13px 0 0;
+}
+/* my profile page end */
+
+/* RTL */
+body[dir=rtl] .aff-referral-link > div:first-child {
+    padding-left: 0;
+    padding-right: 10px;
+}
+body[dir=rtl] .transactions img.qtip {
+    margin-right: 0!important;
+    margin-left: 5px!important;
+}
+/* RTL end */
+
+/*** ALL TABLET/DESKTOP VIEWS ***/
+@media screen and (min-width: 768px) {
+    .print_payout {
+        position: absolute;
+        top: 0;
+        right: 15px;
+    }
+    body[dir=rtl] .print_payout {
+        right: unset;
+        left: 0;
+    }
+    body.aff-payment-history-page div.table-cell > div.name {
+        width: 140px!important;
+    }
+}
+/*** MOBILE VIEW ***/
+@media screen and (max-width: 767px) {
+    .affiliate-stats div.col-sm-7 {
+        padding-top: 10px;
+    }
+
+    div.aff-banners.list-table > div.row > div {
+        padding-left: 0!important;
+    }
+    div.aff-banners.list-table .image-code > div.name {
+        width: 100%;
+        float: none;
+    }
+    div.aff-banners.list-table .image-code > div.value {
+        padding-left: 0;
+    }
+    .print_payout {
+        margin-top: 30px;
+    }
+}
+
+/*** AFFILIATE STYLES END ***/

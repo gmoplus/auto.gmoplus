@@ -1,0 +1,7 @@
+{
+    "title_api": "RESTful API",
+    "description_api": "RESTful API Флайнекса",
+    "config_groups+name+api": "Настройки API",
+    "config+name+api_firebase_service": "Учетная запись Firebase",
+    "config+des+api_firebase_service": "https://console.firebase.google.com/project/ Your project / Project settings / Service Accounts / Generate new private key. Скачайте файл, откройте его, скопируйте данные и вставьте их в текстовое поле"
+}

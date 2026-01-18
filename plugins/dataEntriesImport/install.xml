@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="dataEntriesImport">
+    <title>Data Entries Import</title>
+    <description>Import Data Entries through TXT,CSV,XLS,XLSX files</description>
+    <author>Alex</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.2.3</version>
+    <date>05.03.2012</date>
+    <controller>dataEntriesImport</controller>
+    <compatible>4.8.1</compatible>
+    <class>DataEntriesImport</class>
+
+    <files>
+        <file>rlDataEntriesImport.class.php</file>
+        <file>admin/dataEntriesImport.inc.php</file>
+        <file>admin/dataEntriesImport.tpl</file>
+        <file>vendor/autoload.php</file>
+        <file>admin/static/import-csv.jpg</file>
+        <file>admin/static/sample-xls.jpg</file>
+        <file>admin/static/sample-txt.jpg</file>
+        <file>admin/static/.htaccess</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <phrases>
+        <phrase key="dataEntriesImport_upload" module="admin"><![CDATA[Upload]]></phrase>
+        <phrase key="dataEntriesImport_import" module="admin"><![CDATA[Import]]></phrase>
+        <phrase key="dataEntriesImport_import_to" module="admin"><![CDATA[Import To]]></phrase>
+        <phrase key="dataEntriesImport_import_to_new" module="admin"><![CDATA[New]]></phrase>
+        <phrase key="dataEntriesImport_import_to_exists" module="admin"><![CDATA[Exists]]></phrase>
+        <phrase key="dataEntriesImport_data_entry" module="admin"><![CDATA[Data Entry]]></phrase>
+        <phrase key="dataEntriesImport_source" module="admin"><![CDATA[Source]]></phrase>
+        <phrase key="dataEntriesImport_delimiter" module="admin"><![CDATA[Delimiter]]></phrase>
+        <phrase key="dataEntriesImport_delimiter_new_line" module="admin"><![CDATA[New line]]></phrase>
+        <phrase key="dataEntriesImport_delimiter_tab" module="admin"><![CDATA[Tab]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_extensions_desc" module="admin"><![CDATA[Compatible extensions: <b>txt, csv, xls, xlsx</b>]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_notice" module="admin"><![CDATA[<b>{count}</b> data entries have been successfully imported.]]></phrase>
+        <phrase key="dataEntriesImport_error_upload" module="admin"><![CDATA[Failed to copy the file for parsing]]></phrase>
+        <phrase version="1.1.0" key="dataEntriesImport_df_parent" module="admin"><![CDATA[Parent Entry]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_nothingToSave" module="admin"><![CDATA[Nothing to save]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_ignoreDuplicates" module="admin"><![CDATA[Ignore duplicates]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_zipArchiveRequired" module="admin"><![CDATA[To import <b>XLSX</b> files, please make sure the <b>ZipArchive</b> PHP extension is installed on your server.]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_unsupportedFileType" module="admin"><![CDATA[Unsupported file type! The plugin can import only TXT, CSV, XLS and XLSX files.]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_newEntryNameIsTooShort" module="admin"><![CDATA[Please enter the name of the new entry, at least 3 characters long.]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_entryAlreadyExist" module="admin"><![CDATA[The <b>{entry}</b> entry is already in use, please consider using a different one.]]></phrase>
+        <phrase version="1.2.0" key="dataEntriesImport_noticeNotingToImport" module="admin"><![CDATA[No new entries have been added.]]></phrase>
+        <phrase version="1.2.2" key="dataEntriesImport_sample" module="admin"><![CDATA[File content sample]]></phrase>
+        <phrase version="1.2.2" key="dataEntriesImport_mf_notice" module="admin"><![CDATA[Entries marked <b> * </b> related to MultiField and can`t be used for import.]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="1.0.1" files="rlDataEntriesImport.class.php"><![CDATA[]]></update>
+        <update version="1.1.0" files="rlDataEntriesImport.class.php,admin/dataEntriesImport.tpl,admin/dataEntriesImport.inc.php"><![CDATA[]]></update>
+        <update version="1.1.1" files="admin/dataEntriesImport.inc.php,admin/dataEntriesImport.inc.php"><![CDATA[]]></update>
+        <update version="1.1.2" files="admin/dataEntriesImport.inc.php"><![CDATA[]]></update>
+        <update version="1.1.3" files="rlDataEntriesImport.class.php,admin/dataEntriesImport.inc.php"><![CDATA[]]></update>
+        <update version="1.2.0" files="admin/dataEntriesImport.inc.php,admin/dataEntriesImport.tpl,rlDataEntriesImport.class.php"><![CDATA[]]></update>
+        <update version="1.2.1" files="rlDataEntriesImport.class.php"><![CDATA[]]></update>
+        <update version="1.2.2" files="rlDataEntriesImport.class.php,admin/dataEntriesImport.inc.php,admin/dataEntriesImport.tpl,admin/static/.htaccess,admin/static/sample-txt.jpg,admin/static/sample-xls.jpg,admin/static/import-csv.jpg,i18n/ru.json"><![CDATA[]]></update>
+        <update version="1.2.3" files="admin/dataEntriesImport.inc.php,admin/dataEntriesImport.tpl,rlDataEntriesImport.class.php"><![CDATA[]]></update>
+    </updates>
+</plugin>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="sitemap">
+    <title>XML Sitemap Generator</title>
+    <description>The plugin generates XML sitemap files helping search engines to better index your site</description>
+    <author>Curtis Jackson</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.3.1</version>
+    <date>14.08.2012</date>
+    <compatible>4.8.0</compatible>
+    <class>Sitemap</class>
+
+    <notices>
+        <notice version="3.2.0">
+            <![CDATA[<br><ul><li style="list-style: initial;">The sitemap gets updated once a day; please make sure cron jobs are properly configured on your server.</li><li style="list-style: initial;">You also can update the sitemap from the Admin Panel > Refresh > Update sitemap.xml file.</li></ul>]]>
+        </notice>
+    </notices>
+
+    <files>
+        <file>admin/view/settings.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>.htaccess</file>
+        <file>rlSitemap.class.php</file>
+        <file>sitemap.php</file>
+    </files>
+
+    <install version="3.0.0"><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="cronAdditional" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplControlsForm" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplPagesForm" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpPagesPost" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpPagesBeforeAdd" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpPagesBeforeEdit" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplPagesGrid" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBottom" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBeforeUpdate" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplLanguagesGrid" version="3.0.0"><![CDATA[]]></hook>
+        <hook name="apTplFooter" version="3.3.0"><![CDATA[]]></hook>
+        <hook name="tplHeader" version="3.3.0"><![CDATA[]]></hook>
+        <hook name="phpUrlBottom" version="3.3.1"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="sm_rebuild_title" module="admin" version="3.0.0"><![CDATA[Update sitemap.xml file]]></phrase>
+        <phrase key="sm_xml_rebuilt" module="admin" version="3.0.0"><![CDATA[The XML files have been successfully updated.]]></phrase>
+        <phrase key="sm_rebuild_notify_fail" module="admin" version="3.0.0"><![CDATA[Failed to update the XML file; please contact Flynax helpdesk.]]></phrase>
+        <phrase key="sm_page" module="admin" version="3.0.0"><![CDATA[Add to sitemap.xml]]></phrase>
+        <phrase key="sm_page_in_grid" module="admin" version="3.0.0"><![CDATA[Sitemap]]></phrase>
+        <phrase key="sm_blocked_page" module="admin" version="3.0.0"><![CDATA[The page cannot be added to the sitemap.]]></phrase>
+        <phrase key="sm_page_notice" module="admin" version="3.0.0"><![CDATA[The change will be applied after updating the sitemap by Cron (Or you can do it from AP > Refresh > {rebuild_title}).]]></phrase>
+        <phrase key="sm_robots_rules_desc" module="admin" version="3.0.0"><![CDATA[<br><br>
+            To block certain URLs from search bots, you may add custom rules to the robots.txt file. 255 characters maximum.<br><br>
+            IMPORTANT: Be very careful when adding new rules because errors may result in dropping of rankings or blocking the site by search engines.<br><br>
+            Check <a href="https://support.google.com/webmasters/answer/6062596" alt="Basic robots.txt guidelines">Google Guidelines</a> before adding rules.<br><br>]]></phrase>
+        <phrase key="sm_deactivate_language_notice" module="admin" version="3.2.0"><![CDATA[Disabling the language will remove all language-related URLs of pages, listings, accounts and others from the sitemap in the next update. Are you sure you want to proceed?]]></phrase>
+        <phrase key="sm_dryrun_rebuild_fail" module="admin" version="3.1.0"><![CDATA[Failed to update the sitemap.<br>Please increase the PHP parameters - memory_limit and max_execution_time, and try again.]]></phrase>
+        <phrase key="sm_dryrun_rebuild_in_process" module="admin" version="3.1.0"><![CDATA[Updating the sitemap; please, keep the page open until updating is complete.]]></phrase>
+        <phrase key="sm_robots_tag_description" module="admin" target="settings" version="3.3.0"><![CDATA[The plugin will add the <meta name="robots" content="..." /> tag to all category pages. Categories containing ads will have the "index, follow" value.]]></phrase>
+    </phrases>
+
+    <configs key="sitemap" name="Sitemap" version="3.0.1">
+        <![CDATA[]]>
+        <config key="sm_robots_rules" name="Custom rules for robots.txt" type="textarea" description="{sm_robots_rules_desc}" version="3.0.1"><![CDATA[]]></config>
+        <config key="sm_photos" name="Add image URLs to the sitemap" type="bool" description="The option allows you to add URLs of user thumbnails and listing photos to the sitemap." version="3.0.1"><![CDATA[1]]></config>
+        <config key="sm_indexing" name="Follow/Index meta tag for category pages" type="divider" version="3.3.0"><![CDATA[]]></config>
+        <config key="sm_robots_tag" name="Use the follow/index meta tag" type="bool" version="3.3.0"><![CDATA[0]]></config>
+        <config key="sm_robots_noindex" name="Tag value for category pages without ads" type="select" values="" description="Category pages with the &quot;noindex, nofollow&quot; value will also be removed from the sitemap." version="3.3.0"><![CDATA[index, follow]]></config>
+    </configs>
+
+    <updates>
+        <update version="2.0.1" files="rlSitemap.class.php,sitemap.php"><![CDATA[]]></update>
+        <update version="2.1.0" files="rlSitemap.class.php,sitemap.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="2.1.3" files="sitemap.php"><![CDATA[]]></update>
+        <update version="2.2.0" files="rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="2.3.0" files="rlSitemap.class.php,sitemap.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="rlSitemap.class.php,sitemap.php,.htaccess"><![CDATA[]]></update>
+        <update version="3.0.1" files="rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="3.0.2" files="rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="3.0.3" files="rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="3.1.0" files="rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="3.2.0" files="i18n/ru.json,rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="3.2.1" files="rlSitemap.class.php,sitemap.php"><![CDATA[]]></update>
+        <update version="3.2.2" files="rlSitemap.class.php"><![CDATA[]]></update>
+        <update version="3.3.0" files="rlSitemap.class.php,admin/view/settings.tpl,i18n/ru.json"><![CDATA[]]></update>
+        <update version="3.3.1" files="rlSitemap.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall version="3.0.0"><![CDATA[]]></uninstall>
+</plugin>

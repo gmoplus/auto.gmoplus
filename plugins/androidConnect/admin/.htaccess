@@ -1,0 +1,10 @@
+# allow all external requests for php
+<FilesMatch "\.php$">
+  ALLOW FROM ALL
+</FilesMatch>
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#problem with ajax and json in ie
+AddDefaultCharset UTF-8

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="loanMortgageCalculator">
+    <title>Loan/Mortgage Calculator</title>
+    <description>Calculates payments for loan/mortgage amounts, interest rates, and terms</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.1.3</version>
+    <date>08.03.2012</date>
+    <class>LoanCalc</class>
+    <compatible>4.7.2</compatible>
+    
+    <files>
+        <file>static/loan_calc.js</file>
+        <file>static/print.css</file>
+        <file>static/style-box.css</file>
+        <file>static/style-tab.css</file>
+        <file>box.tpl</file>
+        <file>js_data.tpl</file>
+        <file>print.inc.php</file>
+        <file>print.tpl</file>
+        <file>rlLoanCalc.class.php</file>
+        <file>row.tpl</file>
+        <file>tab.tpl</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="3.1.0" name="listingDetailsBottom"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="listingDetailsBottomTpl"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="listingDetailsTop"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="apTplListingTypesForm"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="apPhpListingTypesPost"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="apPhpListingTypesBeforeAdd"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="apPhpListingTypesBeforeEdit"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="sitemapExcludedPages"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="boot"><![CDATA[]]></hook>
+        <hook version="3.1.2" name="apMixConfigItem"><![CDATA[]]></hook>
+    </hooks>
+    
+    <configs key="loanMortgage" name="Loan/Mortgage">
+        <![CDATA[]]>
+        <config version="3.1.2" key="loanMortgage_mode" name="Appearance" type="select" values="box,tab"><![CDATA[tab]]></config>
+        <config version="3.1.2" key="loanMortgage_loan_divider" name="Loan Form Settings" type="divider"><![CDATA[]]></config>
+        <config version="3.1.2" key="loanMortgage_loan_term_mode" name="Estimate loan term in" type="select" values="years,months"><![CDATA[years]]></config>
+        <config key="loanMortgage_loan_term" name="Default loan term" validate="int" description="years/months" type="text"><![CDATA[12]]></config>
+        <config version="3.1.2" key="loanMortgage_loan_rate" name="Default interest rate" validate="varchar" description="%" type="text"><![CDATA[10]]></config>
+    </configs>
+    
+    <phrases>
+        <phrase key="loanMortgage_tab_caption" module="frontEnd"><![CDATA[Loan / Mortgage]]></phrase>
+        <phrase key="loanMortgage_switch" module="frontEnd"><![CDATA[Switch]]></phrase>
+        <phrase key="loanMortgage_calculate" module="frontEnd"><![CDATA[Calculate]]></phrase>
+        <phrase key="loanMortgage_reset" module="frontEnd"><![CDATA[Reset]]></phrase>
+        <phrase key="loanMortgage_loan_terms" module="frontEnd"><![CDATA[Loan Terms]]></phrase>
+        <phrase key="loanMortgage_loan_amount" module="frontEnd"><![CDATA[Loan Amount]]></phrase>
+        <phrase key="loanMortgage_loan_term" module="frontEnd"><![CDATA[Loan Term]]></phrase>
+        <phrase key="loanMortgage_years" module="frontEnd"><![CDATA[years]]></phrase>
+        <phrase key="loanMortgage_months" module="frontEnd"><![CDATA[months]]></phrase>
+        <phrase key="loanMortgage_interest_rate" module="frontEnd"><![CDATA[Interest Rate]]></phrase>
+        <phrase key="loanMortgage_first_pmt_date" module="frontEnd"><![CDATA[First Payment Date]]></phrase>
+        <phrase key="loanMortgage_payments" module="frontEnd"><![CDATA[Payments]]></phrase>
+        <phrase version="3.1.2" key="loanMortgage_start_message" module="frontEnd"><![CDATA[Fill in the form and click "Calculate"]]></phrase>
+        <phrase key="loanMortgage_amz_schedule" module="frontEnd"><![CDATA[Amortization Schedule]]></phrase>
+        <phrase key="loanMortgage_num_payments" module="frontEnd"><![CDATA[Num Payments]]></phrase>
+        <phrase key="loanMortgage_monthly_payment" module="frontEnd"><![CDATA[Monthly Payment]]></phrase>
+        <phrase key="loanMortgage_total_paid" module="frontEnd"><![CDATA[Total Paid]]></phrase>
+        <phrase key="loanMortgage_total_interest" module="frontEnd"><![CDATA[Total Interest]]></phrase>
+        <phrase key="loanMortgage_payoff_date" module="frontEnd"><![CDATA[Payoff Date]]></phrase>
+        <phrase key="loanMortgage_pmt_date" module="frontEnd"><![CDATA[Pmt. Date]]></phrase>
+        <phrase key="loanMortgage_amount" module="frontEnd"><![CDATA[Amount]]></phrase>
+        <phrase key="loanMortgage_interest" module="frontEnd"><![CDATA[Interest]]></phrase>
+        <phrase key="loanMortgage_principal" module="frontEnd"><![CDATA[Principal]]></phrase>
+        <phrase key="loanMortgage_balance" module="frontEnd"><![CDATA[Balance]]></phrase>
+        <phrase key="loanMortgage_error_amount" module="frontEnd"><![CDATA[Please enter a valid loan amount.]]></phrase>
+        <phrase key="loanMortgage_error_term" module="frontEnd"><![CDATA[Please enter a valid loan term.]]></phrase>
+        <phrase key="loanMortgage_error_rate" module="frontEnd"><![CDATA[Please enter a valid loan rate.]]></phrase>
+        <phrase version="3.1.2" key="loanMortgage_option_name" module="admin"><![CDATA[Loan/Mortgage Calculator]]></phrase>
+        <phrase version="3.1.2" key="loanMortgage_listing_unavailable" module="frontEnd"><![CDATA[The listing you requested is no longer available.]]></phrase>
+        <phrase version="2.2.0" key="loanMortgage_calculation" module="frontEnd"><![CDATA[Loan Mortgage Calculation]]></phrase>
+        <phrase version="3.0.0" key="loanMortgage_print" module="frontEnd"><![CDATA[Print]]></phrase>
+        <phrase version="3.1.2" key="config+option+loanMortgage_mode_box" module="admin" target="settings"><![CDATA[Box]]></phrase>
+        <phrase version="3.1.2" key="config+option+loanMortgage_mode_tab" module="admin" target="settings"><![CDATA[Tab]]></phrase>
+        <phrase version="3.1.2" key="config+option+loanMortgage_loan_term_mode_years" module="admin" target="settings"><![CDATA[Years]]></phrase>
+        <phrase version="3.1.2" key="config+option+loanMortgage_loan_term_mode_months" module="admin" target="settings"><![CDATA[Months]]></phrase>
+    </phrases>
+    
+    <pages>
+        <page version="2.2.0" key="loanMortgage_print" readonly="1" name="Print Loan/Mortgage Schedule" type="system" path="print-loan-schedule" controller="print" login="0" tpl="0"><![CDATA[]]></page>
+    </pages>
+
+    <blocks>
+        <block version="3.1.0" key="loan_mortgage" name="Loan / Mortgage" side="middle" type="smarty" tpl="1" header="1"><![CDATA[
+            {include file=$smarty.const.RL_PLUGINS|cat:'loanMortgageCalculator/box.tpl'}
+        ]]></block>
+    </blocks>
+    
+    <updates>
+        <update version="2.0.1" files="tab.tpl"><![CDATA[]]></update>
+        <update version="2.0.2" files="tab.tpl,static/loan_calc.js"><![CDATA[]]></update>
+        <update version="2.1.0" files="row.tpl,tab.tpl"><![CDATA[]]></update>
+        <update version="2.2.0" files="tab.tpl,print.inc.php,print.tpl,static/print.css,static/loan_calc.js"><![CDATA[]]></update>
+        <update version="2.2.1" files="tab.tpl"><![CDATA[]]></update>
+        <update version="2.2.2" files="tab.tpl"><![CDATA[]]></update>
+        <update version="2.3.0" files="tab_responsive_42.tpl,print.tpl,static/loan_calc.js,static/print.css,static/style.css"><![CDATA[]]></update>
+        <update version="2.3.1" files="tab_responsive_42.tpl,static/loan_calc.js"><![CDATA[]]></update>
+        <update version="2.3.2" files="static/loan_calc.js"><![CDATA[]]></update>
+        <update version="3.0.0" files="tab_responsive_42.tpl,box.tpl,js_data.tpl,print.tpl,static/loan_calc.js,static/style.css"><![CDATA[]]></update>
+        <update version="3.0.1" files="box.tpl,box_responsive_42.tpl,static/style_responsive_42.css,static/style.css,static/loan_calc.js"><![CDATA[]]></update>
+        <update version="3.0.2" files="static/style_responsive_42.css"><![CDATA[]]></update>
+        <update version="3.0.3"><![CDATA[]]></update>
+        <update version="3.0.4"><![CDATA[]]></update>
+        <update version="3.0.5" files="tab_responsive_42.tpl,static/style_responsive_42.css"><![CDATA[]]></update>
+        <update version="3.0.6" files="tab_responsive_42.tpl,tab.tpl,box.tpl,box_responsive_42.tpl"><![CDATA[]]></update>
+        <update version="3.1.0" files="static/loan_calc.js,static/print.css,static/style-box.css,static/style-tab.css,box.tpl,js_data.tpl,print.inc.php,print.tpl,rlLoanCalc.class.php,tab.tpl"><![CDATA[]]></update>
+        <update version="3.1.1" files="static/loan_calc.js,print.inc.php"><![CDATA[]]></update>
+        <update version="3.1.2" files="box.tpl,i18n/ru.json,js_data.tpl,print.tpl,rlLoanCalc.class.php,static/loan_calc.js,static/style-box.css,static/style-tab.css,tab.tpl"><![CDATA[]]></update>
+        <update version="3.1.3" files="print.inc.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

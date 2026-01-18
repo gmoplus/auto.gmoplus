@@ -1,0 +1,14 @@
+{
+    "title_similarListings": "Похожие объявления",
+    "description_similarListings": "Выводит блок с похожими объявлениями на странице деталей объявления",
+    "blocks+name+sl_similar_listings": "Похожие объявления",
+    "sl_form_title": "Построить форму похожих объявлений для категории {category}",
+    "sl_form": "Форма похожих объявлений",
+    "sl_build_form": "Построить форму похожих объявлений",
+    "config_groups+name+similar_listings_config": "Похожие объявления",
+    "config+name+sl_listings_in_box": "Количество объявлений в блоке",
+    "config+name+sl_relevance_mode": "Средняя релевантность",
+    "config+des+sl_relevance_mode": "Если отключено, плагин будет показывать только точные совпадения.",
+    "config+name+sl_category_exact_match": "Релевантность по категории",
+    "config+des+sl_category_exact_match": "Показывает объявления из той же категории."
+}

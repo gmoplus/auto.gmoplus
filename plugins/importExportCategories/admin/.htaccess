@@ -1,0 +1,3 @@
+<Files ~ "importExportCategories\.inc\.php$">
+    ALLOW FROM ALL
+</Files>

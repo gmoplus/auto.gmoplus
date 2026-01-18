@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="accountSync">
+    <title>Account Synchronizer</title>
+    <description>Synchronizes user accounts of a few Flynax-powered sites</description>
+    <author>Dmitry Azavanichus</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.0.1</version>
+    <date>14.01.2019</date>
+    <controller>account_sync</controller>
+    <class>AccountSync</class>
+    <compatible>4.8.2</compatible>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('AccountSync', null, 'accountSync');
+        $GLOBALS['rlAccountSync']->install();
+        ]]></install>
+
+    <files>
+        <file>admin/account_sync.inc.php</file>
+        <file>admin/account_sync.tpl</file>
+        <file>src/Adapters/AccountFieldsAdapter.php</file>
+        <file>src/Adapters/AccountTypesAdapter.php</file>
+        <file>src/Adapters/UserAdapter.php</file>
+        <file>src/Controllers/ApiController.php</file>
+        <file>src/Controllers/CacheController.php</file>
+        <file>src/Controllers/UserController.php</file>
+        <file>src/Files/FilesWorker.php</file>
+        <file>src/Helpers/DBHelper.php</file>
+        <file>src/Http/Request.php</file>
+        <file>src/Http/Response.php</file>
+        <file>src/Models/MetaData.php</file>
+        <file>src/Models/Token.php</file>
+        <file>src/Traits/SingletonTrait.php</file>
+        <file>src/AccountSync.php</file>
+        <file>src/API.php</file>
+        <file>src/Controller.php</file>
+        <file>src/Events.php</file>
+        <file>src/functions.php</file>
+        <file>src/Router.php</file>
+        <file>src/routes.php</file>
+        <file>vendor/autoload.php</file>
+        <file>static/admin/pages/account_fields.js</file>
+        <file>static/admin/pages/account_types_grid.js</file>
+        <file>static/admin/pages/manage_users.js</file>
+        <file>static/admin.js</file>
+        <file>static/style.css</file>
+        <file>view/pages/admin/build_fields.tpl</file>
+        <file>view/pages/admin/build.tpl</file>
+        <file>view/pages/admin/manage_users.tpl</file>
+        <file>view/apTplFooter.tpl</file>
+        <file>bootstrap.php</file>
+        <file>requests.php</file>
+        <file>rlAccountSync.class.php</file>
+        <file>admin/.htaccess</file>
+        <file>static/.htaccess</file>
+        <file>.htaccess</file>
+    </files>
+
+    <phrases>
+        <phrase key="as_manage_a_type" module="admin"><![CDATA[Manage account types]]></phrase>
+        <phrase key="as_manage_users" module="admin"><![CDATA[Manage user accounts]]></phrase>
+        <phrase key="as_manage_domains" module="admin"><![CDATA[Manage websites]]></phrase>
+        <phrase key="as_manage_fields" module="admin"><![CDATA[Manage fields]]></phrase>
+        <phrase key="as_admin_username" module="admin"><![CDATA[Admin username]]></phrase>
+        <phrase key="as_fetch_data" module="admin"><![CDATA[Fetch data]]></phrase>
+        <phrase key="as_does_plugin_installed" module="admin"><![CDATA[Please make sure the Plugin is installed on the site you've entered.]]></phrase>
+        <phrase key="as_incorrect_data" module="admin"><![CDATA[Please make sure you've entered the correct admin logins.]]></phrase>
+        <phrase key="as_something_wrong" module="admin"><![CDATA[Something went wrong, please try again later.]]></phrase>
+        <phrase key="as_disconnected" module="admin"><![CDATA[You have successfully disconnected the website.]]></phrase>
+        <phrase key="as_disconnected_confirm" module="admin"><![CDATA[Are you sure you want to disconnect the website?]]></phrase>
+        <phrase key="as_af_synchronized" module="admin"><![CDATA[The registration field has been successfully synced.]]></phrase>
+        <phrase key="as_synchronize_confirm" module="admin"><![CDATA[Are you sure you want to sync users between the websites?]]></phrase>
+        <phrase key="as_synchronize_in_progress" module="admin"><![CDATA[Synchronization in progress]]></phrase>
+        <phrase key="as_synchronize_to_websites" module="admin"><![CDATA[Synchronizing the users between the websites]]></phrase>
+        <phrase key="as_synchronize_to_websites_completed" module="admin"><![CDATA[The users have been successfully synced across the websites.]]></phrase>
+        <phrase key="as_total_unique" module="admin"><![CDATA[(Total/Unique)]]></phrase>
+        <phrase key="as_remote_source_added" module="admin"><![CDATA[You have successfully added the website.]]></phrase>
+        <phrase key="as_account_synchronization" module="admin"><![CDATA[Account Synchronizer]]></phrase>
+        <phrase key="as_synchronize_with_domains" module="admin"><![CDATA[Sync between sites]]></phrase>
+        <phrase key="as_sync" module="admin"><![CDATA[Sync]]></phrase>
+        <phrase key="as_fields_synchronized" module="admin"><![CDATA[The registration fields have been successfully synced.]]></phrase>
+        <phrase key="as_do_you_want_sync_field" module="admin"><![CDATA[Are you sure you want to sync the field?]]></phrase>
+        <phrase key="as_account_type_missing" module="admin"><![CDATA[The account type is missing.]]></phrase>
+        <phrase key="as_account_type_creation_error" module="admin"><![CDATA[Failed to sync the account type.]]></phrase>
+        <phrase key="as_account_type_created" module="admin"><![CDATA[The account type has been successfully created.]]></phrase>
+        <phrase key="as_account_type_exist" module="admin"><![CDATA[Please consider a different name because the account type with the key already exists.]]></phrase>
+        <phrase key="as_fields_not_found" module="admin"><![CDATA[The registration fields are not available to the account type.]]></phrase>
+        <phrase key="as_bad_field_key" module="admin"><![CDATA[Please make sure you've entered a correct field value.]]></phrase>
+        <phrase key="as_account_field_not_found" module="admin"><![CDATA[Failed to find the registration field.]]></phrase>
+        <phrase key="as_plugin_successfully" module="admin"><![CDATA[The Plugin is functional.]]></phrase>
+        <phrase key="as_user_missing" module="admin"><![CDATA[The user hasn't been found or you've entered an incorrect email address.]]></phrase>
+        <phrase key="as_account_type_doesnt_exist" module="admin"><![CDATA[The account type doesn't exist.]]></phrase>
+        <phrase key="as_user_update_missing_email" module="admin"><![CDATA[The email address is missing.]]></phrase>
+        <phrase key="as_user_update_missing_account" module="admin"><![CDATA[The user account with the email address hasn't been found.]]></phrase>
+        <phrase key="as_remove_email_missing" module="admin"><![CDATA[The email address you've entered doesn't exist.]]></phrase>
+        <phrase key="as_user_update_success" module="admin"><![CDATA[The profile has been successfully updated.]]></phrase>
+        <phrase key="as_user_update_password_success" module="admin"><![CDATA[Password has been successfully changed.]]></phrase>
+        <phrase key="as_user_change_wrong_change_status" module="admin"><![CDATA[Invalid status]]></phrase>
+        <phrase key="as_status_changed" module="admin"><![CDATA[Status changed]]></phrase>
+        <phrase key="as_upload_avatar_success" module="admin"><![CDATA[You've successfully uploaded the image.]]></phrase>
+        <phrase key="as_not_found" module="admin"><![CDATA[Not found]]></phrase>
+        <phrase key="as_sync_new_site" module="admin"><![CDATA[Sync with a new Flynax site]]></phrase>
+        <phrase key="as_duplicate_user_info" module="admin"><![CDATA[Failed to sync the account with the username because it already exists with a different email address.]]></phrase>
+    </phrases>
+
+    <configs key="account_sync_config" name="Account Synchronizer">
+        <![CDATA[]]>
+        <config key="as_user_limit" name="Limit for user synchronization" type="text"><![CDATA[50]]></config>
+    </configs>
+
+    <hooks>
+        <hook name="apTplFooter"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook name="registerSuccess"><![CDATA[]]></hook>
+        <hook name="phpQuickRegistrationBeforeInsert"><![CDATA[]]></hook>
+        <hook name="apPhpAccountsAfterAdd"><![CDATA[]]></hook>
+        <hook name="deleteAccountSetItems"><![CDATA[]]></hook>
+        <hook name="apPhpTrashBottom"><![CDATA[]]></hook>
+        <hook name="profileEditAccountValidate"><![CDATA[]]></hook>
+        <hook name="apPhpAccountsAfterEdit"><![CDATA[]]></hook>
+        <hook name="accountChangePassword"><![CDATA[]]></hook>
+        <hook name="apExtAccountsUpdate"><![CDATA[]]></hook>
+        <hook name="ajaxRequestProfileThumbnailAfterUpdate"><![CDATA[]]></hook>
+    </hooks>
+
+    <updates>
+        <update version="1.0.1" files=".htaccess,admin/account_sync.inc.php,rlAccountSync.class.php,requests.php,src/routes.php,src/AccountSync.php,src/Adapters/AccountTypesAdapter.php,src/Adapters/AccountFieldsAdapter.php,src/Adapters/UserAdapter.php,src/Controllers/ApiController.php,src/Controllers/UserController.php,src/Models/MetaData.php,src/Http/Request.php,static/admin/pages/manage_users.js"><![CDATA[
+            $GLOBALS['reefless']->loadClass('AccountSync', null, 'accountSync');
+            $GLOBALS['rlAccountSync']->update101();
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('AccountSync', null, 'accountSync');
+        $GLOBALS['rlAccountSync']->uninstall();
+    ]]></uninstall>
+</plugin>

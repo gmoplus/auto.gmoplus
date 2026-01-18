@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="openAI">
+    <title>AI Text Generation</title>
+    <description>Generates ad descriptions with artificial intelligence</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.1.0</version>
+    <date>30.01.2024</date>
+    <class>OpenAI</class>
+    <compatible>4.8.2</compatible>
+
+    <files>
+        <file>admin/option.tpl</file>
+        <file>admin/settings_js.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>src/Providers/OpenAI.php</file>
+        <file>src/Providers/Provider.php</file>
+        <file>src/Providers/YandexGPT.php</file>
+        <file>src/Providers/DeepSeek.php</file>
+        <file>src/ProviderResolver.php</file>
+        <file>static/icon.svg</file>
+        <file>vendor/autoload.php</file>
+        <file>.htaccess</file>
+        <file>field_handler.tpl</file>
+        <file>rlOpenAI.class.php</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+    <uninstall><![CDATA[]]></uninstall>
+
+    <hooks>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook name="apTplFieldsFormTextarea"><![CDATA[]]></hook>
+        <hook name="apNotifications"><![CDATA[]]></hook>
+        <hook name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook name="apPhpListingFieldsAfterAdd"><![CDATA[]]></hook>
+        <hook name="apPhpListingFieldsAfterEdit"><![CDATA[]]></hook>
+        <hook name="apPhpListingFieldsBottom"><![CDATA[]]></hook>
+        <hook name="apTplContentBottom"><![CDATA[]]></hook>
+        <hook name="tplStepFormAfterForm"><![CDATA[]]></hook>
+        <hook name="afterListingDone"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="1.1.0" key="openai_error_curl_required" module="system"><![CDATA[The cURL extension is required for the AI Text Generation plugin.]]></phrase>
+        <phrase key="openai_error_short_title" module="system"><![CDATA[The value of the Title field is too short, please add more text.]]></phrase>
+        <phrase key="openai_error_no_data" module="system"><![CDATA[There is not enough data to generate text, please fill in more fields in the form.]]></phrase>
+        <phrase key="openai_error_empty_response" module="system"><![CDATA[Failed to receive data from the openAI server, please contact the Administrator.]]></phrase>
+        <phrase key="openai_error_system_message_template" module="system"><![CDATA[The "System Message" template phrase is empty, please contact the Administrator.]]></phrase>
+        <phrase key="openai_error_user_message_template_title" module="system"><![CDATA[An error has occurred with the "User Message" template phrase, please contact the Administrator.]]></phrase>
+        <phrase version="1.1.0" key="openai_field_option_name" module="admin" target="listing_fields"><![CDATA[AI text generation]]></phrase>
+        <phrase version="1.1.0" key="openai_generate_button_text" module="system"><![CDATA[Generate a description with AI]]></phrase>
+        <phrase key="openai_generated_button_text" module="system"><![CDATA[Generated with AI]]></phrase>
+        <phrase key="openai_generated_popup_hint" module="system"><![CDATA[How do you want to prepare data for text generation?]]></phrase>
+        <phrase key="openai_generated_automatically" module="system"><![CDATA[Automatically]]></phrase>
+        <phrase key="openai_generated_manually" module="system"><![CDATA[Manually]]></phrase>
+        <phrase key="openai_message_system_template" module="system"><![CDATA[Imagine you are a classified ad description writer.]]></phrase>
+        <phrase key="openai_message_user_template" module="system"><![CDATA[Write a compelling description for "{title}" with the following options: "{options}"]]></phrase>
+        <phrase key="openai_system_message" module="system"><![CDATA[AI Role]]></phrase>
+        <phrase key="openai_user_message" module="system"><![CDATA[Your Prompt]]></phrase>
+        <phrase key="openai_generate" module="system"><![CDATA[Generate]]></phrase>
+        <phrase key="openai_documentation" module="system"><![CDATA[OpenAI documentation]]></phrase>
+        <phrase key="openai_manual_popup_hint" module="system"><![CDATA[* This is a PRO text generation manager. You should be good at the openAI and know how to fill in the "System message" and "User message" fields, otherwise you'd better use the automatic mode.<br />** You can generate the text only once, so please make sure you fill in all the fields correctly.]]></phrase>
+        <phrase key="membership_services+name+openai" module="common"><![CDATA[Text generation with AI]]></phrase>
+        <phrase key="config+option+openai_access_all" module="admin" target="settings"><![CDATA[Visitors and users]]></phrase>
+        <phrase key="config+option+openai_access_authorized" module="admin" target="settings"><![CDATA[Authorized users]]></phrase>
+        <phrase key="config+option+openai_access_membership" module="admin" target="settings"><![CDATA[Subscription users]]></phrase>
+        <phrase key="config+option+openai_provider_openai" module="admin" target="settings"><![CDATA[OpenAI API]]></phrase>
+        <phrase key="config+option+openai_provider_yandex" module="admin" target="settings"><![CDATA[YandexGPT API]]></phrase>
+        <phrase key="config+des+openai_provider" module="admin" target="settings"><![CDATA[Find a guide <a href='https://blog.flynax.com/manuals/openai-plugin-configuration-guide/' target='_blank'>here</a>]]></phrase>
+        <phrase version="1.1.0" key="config+option+openai_provider_deepseek" module="admin" target="settings"><![CDATA[DeepSeek API]]></phrase>
+    </phrases>
+
+    <configs version="1.1.0" key="openAI" name="AI Text Generation">
+        <![CDATA[]]>
+        <config version="1.1.0" key="openai_provider" name="Service Provider" type="select" values="openai,yandex,deepseek"><![CDATA[openai]]></config>
+        <config key="openai_openai_api_key" name="OpenAI API key" type="textarea"><![CDATA[]]></config>
+        <config key="openai_yandex_oauth_token" name="YandexGPT oauth token" type="textarea"><![CDATA[]]></config>
+        <config key="openai_yandex_catalog_id" name="YandexGPT catalog ID" type="text"><![CDATA[]]></config>
+        <config version="1.1.0" key="openai_deepseek_api_key" name="DeepSeek API key" type="textarea"><![CDATA[]]></config>
+        <config key="openai_access" name="Module available for" type="select" values="all,authorized,membership"><![CDATA[authorized]]></config>
+        <config key="openai_title_field" name="Title field" type="select"><![CDATA[title]]></config>
+        <config key="openai_ignore_fields" name="Fields to ignore" type="textarea" description="List field keys separated by comma"><![CDATA[vin,zip,address]]></config>
+        <config key="openai_documentation" name="Documentation link" type="text"><![CDATA[https://platform.openai.com/docs/introduction]]></config>
+    </configs>
+
+    <updates>
+        <update version="1.1.0" files="admin/settings_js.tpl,i18n/ru.json,rlOpenAI.class.php,src/ProviderResolver.php,src/Providers/DeepSeek.php,src/Providers/OpenAI.php,src/Providers/Provider.php,src/Providers/YandexGPT.php"><![CDATA[]]></update>
+    </updates>
+</plugin>

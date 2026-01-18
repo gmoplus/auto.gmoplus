@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="remoteStorage">
+    <title>Remote Storage</title>
+    <description>Allows the Administrator to store listing multimedia and user thumbnails in cloud storage services</description>
+    <author>Curtis Jackson</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.0.2</version>
+    <date>27.07.2022</date>
+    <class>RemoteStorage</class>
+    <controller>remote_storage</controller>
+    <compatible>4.9.0</compatible>
+
+    <install><![CDATA[]]></install>
+
+    <files>
+        <file>admin/view/bucket_down_notice.tpl</file>
+        <file>admin/view/form.tpl</file>
+        <file>admin/view/main_plugin_notice.tpl</file>
+        <file>admin/view/migration.tpl</file>
+        <file>admin/view/navbar.tpl</file>
+        <file>admin/view/servers.tpl</file>
+        <file>admin/.htaccess</file>
+        <file>admin/remote_storage.inc.php</file>
+        <file>admin/remote_storage.tpl</file>
+        <file>cron/index.php</file>
+        <file>i18n/ru.json</file>
+        <file>src/Interfaces/ServerInterface.php</file>
+        <file>src/Servers/Handlers/S3.php</file>
+        <file>src/Servers/Amazon_s3.php</file>
+        <file>src/Servers/Digitaloceanspaces_s3.php</file>
+        <file>src/Servers/Other_s3.php</file>
+        <file>src/Servers/Vk_s3.php</file>
+        <file>src/Servers/Wasabi_s3.php</file>
+        <file>src/Servers/Yandex_s3.php</file>
+        <file>src/Media.php</file>
+        <file>src/Migration.php</file>
+        <file>src/RemoteStorage.php</file>
+        <file>src/Server.php</file>
+        <file>src/ServerResolver.php</file>
+        <file>vendor/autoload.php</file>
+        <file>rlRemoteStorage.class.php</file>
+    </files>
+
+    <hooks>
+        <hook name="apNotifications"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook name="requestAjaxBeforeSwitchCase"><![CDATA[]]></hook>
+        <hook name="listingMediaDeletePicture"><![CDATA[]]></hook>
+        <hook name="smartyFetchHook"><![CDATA[]]></hook>
+        <hook name="listingMediaTmpRotate"><![CDATA[]]></hook>
+        <hook name="phpListingMediaUpdatePictureTop"><![CDATA[]]></hook>
+        <hook name="phpListingMediaUpdatePictureAfterResize"><![CDATA[]]></hook>
+        <hook name="phpListingsAjaxDeleteListing"><![CDATA[]]></hook>
+        <hook name="phpAjaxDelProfileThumbnailBeforeUpdate"><![CDATA[]]></hook>
+        <hook name="phpUploadBeforeSaveData"><![CDATA[]]></hook>
+        <hook name="apTplFooter"><![CDATA[]]></hook>
+        <hook name="phpUploadDelete"><![CDATA[]]></hook>
+        <hook name="reeflessRedirctVars"><![CDATA[]]></hook>
+        <hook name="apPhpIndexBottom"><![CDATA[]]></hook>
+        <hook name="ajaxRequestProfileThumbnailAfterUpdate"><![CDATA[]]></hook>
+        <hook name="ajaxRequestAccountThumbnailBeforeInsert"><![CDATA[]]></hook>
+        <hook name="apExtListingsData"><![CDATA[]]></hook>
+        <hook name="apExtAccountsData"><![CDATA[]]></hook>
+        <hook name="phpDeleteAccountDetails"><![CDATA[]]></hook>
+        <hook name="deleteAccountSetItems"><![CDATA[]]></hook>
+        <hook name="phpDeleteListingData"><![CDATA[]]></hook>
+        <hook name="listingMediaUpdateCropData"><![CDATA[]]></hook>
+        <hook name="addListingBeforeInit"><![CDATA[]]></hook>
+        <hook name="addListingBottom"><![CDATA[]]></hook>
+        <hook name="phpGetProfileData"><![CDATA[]]></hook>
+        <hook name="tplFooter"><![CDATA[]]></hook>
+        <hook name="phpPdfExportHtml"><![CDATA[]]></hook>
+        <hook name="listingMediaPrepare"><![CDATA[]]></hook>
+        <hook name="accountMediaPrepare" version="1.0.1"><![CDATA[]]></hook>
+        <hook name="phpAddListingRemoveBlankListing" version="1.0.1"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="rs_server_configuration" module="admin" target="remote_storage"><![CDATA[Configuration]]></phrase>
+        <phrase key="rs_service_provider" module="admin" target="remote_storage" js="1"><![CDATA[Service Provider]]></phrase>
+        <phrase key="rs_bucket" module="admin" target="remote_storage" js="1"><![CDATA[Bucket]]></phrase>
+        <phrase key="rs_new_bucket_notice" module="admin" target="remote_storage"><![CDATA[A new bucket will be created automatically.]]></phrase>
+        <phrase key="rs_main_server" module="admin" target="remote_storage" js="1"><![CDATA[Main Bucket]]></phrase>
+        <phrase key="rs_main_server_notice" module="admin" target="remote_storage" js="1"><![CDATA[Select a bucket for new media files.]]></phrase>
+        <phrase key="rs_main_server_down_notice" module="system"><![CDATA[Unfortunately, your bucket <b>"{bucket}"</b> is not available anymore. Fix the issue and try again.]]></phrase>
+        <phrase key="rs_server_type_amazon_s3" module="admin" js="1" target="remote_storage"><![CDATA[Amazon S3]]></phrase>
+        <phrase key="rs_server_type_digitaloceanspaces_s3" module="admin" js="1" target="remote_storage"><![CDATA[DigitalOcean Spaces]]></phrase>
+        <phrase key="rs_server_type_yandex_s3" module="admin" js="1" target="remote_storage"><![CDATA[Yandex Object Storage]]></phrase>
+        <phrase key="rs_server_type_wasabi_s3" module="admin" js="1" target="remote_storage"><![CDATA[Wasabi Hot Cloud Storage]]></phrase>
+        <phrase key="rs_server_type_vk_s3" module="admin" js="1" target="remote_storage"><![CDATA[VK Cloud Storage]]></phrase>
+        <phrase key="rs_server_type_other_s3" module="admin" js="1" target="remote_storage"><![CDATA[Other S3 server]]></phrase>
+        <phrase key="rs_other_s3_REGION_notice" module="admin" target="remote_storage"><![CDATA[The key must look like this: us-east-1, eu-west-1 and etc.]]></phrase>
+        <phrase key="rs_base_s3_REGION" module="admin" target="remote_storage"><![CDATA[REGION]]></phrase>
+        <phrase key="rs_base_s3_ENDPOINT" module="admin" target="remote_storage"><![CDATA[ENDPOINT]]></phrase>
+        <phrase key="rs_base_s3_ACCESS_KEY_ID" module="admin" target="remote_storage"><![CDATA[ACCESS KEY ID]]></phrase>
+        <phrase key="rs_base_s3_SECRET_ACCESS_KEY" module="admin" target="remote_storage"><![CDATA[SECRET ACCESS KEY]]></phrase>
+        <phrase key="rs_number_of_files" module="admin" target="remote_storage" js="1"><![CDATA[Number of files]]></phrase>
+        <phrase key="rs_migration" module="admin" target="remote_storage"><![CDATA[Transfer]]></phrase>
+        <phrase key="rs_files_not_migrated" module="admin" target="remote_storage"><![CDATA[{count} untransferred files found on the site.<br>There are two ways you can move them to the remote storage server:<br> - Configure a Cron task for moving 10 files a minute: <i>* * * * * /usr/bin/php /home/website/public_html/plugins/remoteStorage/cron/index.php</i><br> - Click the Transfer button below]]></phrase>
+        <phrase key="rs_start" module="admin" target="remote_storage" js="1"><![CDATA[Transfer]]></phrase>
+        <phrase key="rs_all_files_migrated" module="admin" target="remote_storage" js="1"><![CDATA[All the files were successfully transferred.]]></phrase>
+        <phrase key="rs_migration_status" module="admin" target="remote_storage"><![CDATA[{percent}% completed...]]></phrase>
+        <phrase key="rs_file_upload_info" module="admin" target="remote_storage" js="1"><![CDATA[Moving {file} files of {files}]]></phrase>
+        <phrase key="rs_migration_completed" module="admin" target="remote_storage" js="1"><![CDATA[The file transfer has been successfully completed.]]></phrase>
+        <phrase key="rs_k" module="admin" js="1"><![CDATA[ k]]></phrase>
+        <phrase key="rs_m" module="admin" js="1"><![CDATA[ m]]></phrase>
+        <phrase key="rs_b" module="admin" js="1"><![CDATA[ b]]></phrase>
+        <phrase key="rs_server_guide" module="admin" target="remote_storage"><![CDATA[Read the instruction <a href='{link}' target='_blank'>here</a> to get credentials]]></phrase>
+        <phrase key="rs_bucket_remove_notice" module="admin" target="remote_storage" js="1"><![CDATA[<b>Attention! You're going to remove the "{bucket}" bucket with the files already uploaded.</b><br><br>Removal of the bucket will result in losing all uploaded media files irreversibly.<br>To prevent losing the uploaded media files you must migrate them back to your web server.<br><br><i>Make sure your web server has enough disc space before transferring the files.</i><br><i>The process will take some time.<br>We recommend enabling the under-construction mode for the site. Do not reload the page during the process.</i>]]></phrase>
+        <phrase key="rs_main_notice" module="admin" target="remote_storage"><![CDATA[<b>When using the Plugin, you should fully realize:</b><br><br>- Pricing policy for storing files on a cloud storage service;<br>- Files will be stored on a third-party server. No copies will be made and stored on your web server;<br>- Removal of a bucket in the cloud storage console will result in losing all your files irreversibly;<br>- Inability to pay for the bucket may result in losing all your files;<br>- Uninstalling the Plugin without transferring the files to your web server will result in losing all your files too;<br>- Before transferring numerous media files of your site to your web server, make sure it offers enough space.<br><br>Before using the Plugin, you should clearly realize what the Remote Storage is designed for and how it works!<br><br>Recommended: Enable the WEBP format for images (available since Flynax 4.8.2) to save more space on the server for storing files.<br>You may change the image format from the Basic Settings > Pictures > Output image format.]]></phrase>
+        <phrase key="rs_plugin_uninstall" module="admin" target="plugins" js="1"><![CDATA[Uninstalling the Remote Storage plugin will automatically remove all empty buckets on the cloud storage server.<br>Are you sure you want to uninstall the Plugin?]]></phrase>
+        <phrase key="rs_plugin_uninstall_blocked" module="admin" target="plugins" js="1"><![CDATA[You cannot uninstall the Plugin because it has buckets on cloud storage filled with files.<br>To uninstall the Plugin proceed to the plugin manager and remove the buckets, which will initiate the transfer of the files from the buckets to your server.<br>Once the buckets are removed and all files transferred, try again to complete uninstalling the Plugin.]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="1.0.1" files="rlRemoteStorage.class.php,src/Media.php,admin/remote_storage.inc.php,src/Servers/Handlers/S3.php,src/Servers/Digitaloceanspaces_s3.php,src/Server.php,vendor/,admin/view/migration.tpl,cron/index.php,src/Migration.php,src/RemoteStorage.php,src/Servers/Amazon_s3.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="src/Media.php,rlRemoteStorage.class.php,src/Server.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="FAQs">
+    <title>FAQs</title>
+    <description>Allows the Administrator to add frequently asked questions</description>
+    <author>Dmitry Azavanichus</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.2.1</version>
+    <date>16.12.2012</date>
+    <controller>faqs</controller>
+    <class>FAQs</class>
+    <compatible>4.8.2</compatible>
+
+    <notice></notice>
+    <files>
+        <file>admin/faqs.tpl</file>
+        <file>admin/faqs.inc.php</file>
+        <file>faqs.box.tpl</file>
+        <file>faqs.tpl</file>
+        <file>faqs.inc.php</file>
+        <file>rlFAQs.class.php</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('FAQs', null,'FAQs');
+        $GLOBALS['rlFAQs']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="1.1.2" name="specialBlock"><![CDATA[]]></hook>
+        <hook version="1.1.2" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="1.1.2" name="sitemapAddPluginUrls"><![CDATA[]]></hook>
+    </hooks>
+
+    <pages>
+        <page key="faqs" name="FAQs" type="system" path="faqs" get="" login="0" controller="faqs" menus="3" tpl="1"><![CDATA[]]></page>
+    </pages>
+
+    <configs key="faqs" name="FAQs">
+        <![CDATA[]]>
+        <config key="faqs_block_in_block" name="Number of FAQs in the box" type="text" validate="int" ><![CDATA[4]]></config>
+        <config key="faqs_block_content_length" name="FAQs box content length" type="text" validate="int" ><![CDATA[60]]></config>
+        <config key="faqs_at_page" name="Number of FAQs on page" type="text" validate="int" ><![CDATA[6]]></config>
+        <config key="faqs_page_content_length" name="FAQs page content length" type="text" validate="int" ><![CDATA[200]]></config>
+    </configs>
+
+    <phrases>
+        <phrase key="faq_add_faqs" module="admin"><![CDATA[Add a FAQ]]></phrase>
+        <phrase key="faq_edit_faqs" module="admin"><![CDATA[Edit FAQ]]></phrase>
+        <phrase key="faq_faqs_list" module="admin"><![CDATA[All FAQs]]></phrase>
+        <phrase key="faq_page_url" module="admin"><![CDATA[Page URL]]></phrase>
+        <phrase key="faq_faqs_added" module="admin"><![CDATA[You've successfully added a FAQ.]]></phrase>
+        <phrase key="faq_faqs_edited" module="admin"><![CDATA[You've successfully edited the FAQ.]]></phrase>
+        <phrase key="faq_deleted" module="admin"><![CDATA[The FAQ has been successfully deleted.]]></phrase>
+        <phrase key="ext_faqs_manager" module="ext"><![CDATA[FAQs Manager]]></phrase>
+        <phrase key="no_faqs" module="common"><![CDATA[There are no FAQs.]]></phrase>
+        <phrase key="back_to_faqs" module="common"><![CDATA[Go back to the FAQs page.]]></phrase>
+        <phrase key="view_all_faqs" module="common"><![CDATA[View all FAQs]]></phrase>
+    </phrases>
+
+    <blocks>
+        <block version="1.0.2" key="faqs_box" name="FAQs" side="left" type="smarty" tpl="1">
+        <![CDATA[
+            {include file=$smarty.const.RL_PLUGINS|cat:'FAQs'|cat:$smarty.const.RL_DS|cat:'faqs.box.tpl'}
+        ]]>
+        </block>
+    </blocks>
+
+    <updates>
+        <update version="1.0.1" files="rlFAQs.class.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="faqs.inc.php,rlFAQs.class.php"><![CDATA[]]></update>
+        <update version="1.1.0" files="faqs.box.tpl,faqs.tpl,rlFAQs.class.php"><![CDATA[]]></update>
+        <update version="1.1.1" files="admin/faqs.inc.php"><![CDATA[]]></update>
+        <update version="1.1.2" files="admin/faqs.inc.php,admin/faqs.tpl,faqs.box.tpl,faqs.tpl,faqs.inc.php,rlFAQs.class.php,i18n/ru.json"><![CDATA[
+            $GLOBALS['reefless']->loadClass('FAQs', null,'FAQs');
+            $GLOBALS['rlFAQs']->update112();
+        ]]></update>
+        <update version="1.2.0" files="rlFAQs.class.php,admin/faqs.tpl,admin/faqs.inc.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('FAQs', null,'FAQs');
+            $GLOBALS['rlFAQs']->update120();
+        ]]></update>
+        <update version="1.2.1" files="faqs.box.tpl,faqs.inc.php,faqs.tpl,rlFAQs.class.php,admin/faqs.inc.php,admin/faqs.tpl"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall>
+        <![CDATA[
+            $GLOBALS['reefless']->loadClass('FAQs', null,'FAQs');
+            $GLOBALS['rlFAQs']->uninstall();
+        ]]>
+    </uninstall>
+
+</plugin>

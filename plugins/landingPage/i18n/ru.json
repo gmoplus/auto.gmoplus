@@ -1,0 +1,17 @@
+{
+    "title_landingPage": "Посадочные страницы",
+    "description_landingPage": "Создание посадочных страниц с уникальными метаданными и повышение конверсии",
+    "lp_manager": "Посадочные страницы",
+    "lp_landing_page_url": "URL-адрес посадочной страницы",
+    "lp_landing_page_subdomain": "Поддомен посадочной страницы",
+    "lp_original_page_subdomain": "Поддомен оригинальной страницы",
+    "lp_original_page_url": "URL-адрес оригинальной страницы",
+    "lp_seo_text": "SEO-текст в блоке",
+    "lp_use_subdomains": "Использовать поддомены",
+    "lp_error_landing_page_exists": "Такой адрес посадочной страницы {language} уже используется.",
+    "lp_error_original_page_exists": "Такой адрес оригинальной страницы {language} уже используется.",
+    "lp_error_fill_in_all_languages": "Заполните поле <b>{field}</b> на всех языках.",
+    "lp_error_no_mod_rewrite": "Включите \"Модуль Apache\" в базовых настройках, чтобы посадочные страницы начали работать.",
+    "lp_error_url_has_host": "URL-адрес страницы не должен начинаться/содержать с доменного имени.",
+    "lp_error_url_ending_by_ext": "URL-адрес страницы не должен заканчиваться файловым расширением."
+}

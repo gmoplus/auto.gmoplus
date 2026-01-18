@@ -1,0 +1,225 @@
+div.loan-table-cont {
+    margin-bottom: -15px;
+}
+div.loan-table-cont > div {
+    vertical-align: top;
+    padding: 0 20px 15px 0;
+    display: inline-block;
+}
+div.loan-table-cont > div:last-child {
+    padding-right: 0;
+}
+div.loan-table-cont > div > span {
+    height: 20px;
+    margin-bottom: 4px;
+    font-size: 0.929em;
+    display: inline-block;
+    vertical-align: text-top;
+}
+div.loan-table-cont > div input[type=text] {
+    width: 100%;
+}
+div.loan-table-cont > div > div.field > select {
+    width: 100px;
+    margin-right: 20px;
+}
+div.loan-table-cont > div > div.switcher {
+    padding-top: 4px;
+    font-size: 0.929em;
+    white-space: nowrap;
+    text-align: right;
+    cursor: pointer;
+}
+div.lm-payment-cont {
+    margin-top: 25px;
+}
+div.lm-payment-cont span.link {
+    display: inline-block;
+}
+.loan-box #lm_details_area {
+    margin-bottom: 5px;
+}
+.loan-box #lm_details_area > div {
+    width: 33.333%;
+    float: left;
+    margin-bottom: 13px;
+}
+.side_block .loan-box #lm_details_area > div {
+    width: 50%;
+}
+.loan-box #lm_details_area div.name {
+    height: 20px;
+    margin-bottom: 2px;
+    font-size: 0.929em;
+}
+.loan-box #lm_details_area div.value {
+    font-size: 1.071em;
+    font-weight: bold;
+}
+.modal_block div.inner div.modal_content {
+    position: inherit;
+}
+#lm_amortization_area {
+    position: absolute;
+    overflow: auto;
+    top: 60px;
+    bottom: 25px;
+    right: 30px;
+    left: 30px;
+}
+#lm_amortization_area .row {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+body[dir=rtl] #area_loanMortgage a.print {
+    right: auto;
+    left: 0;
+}
+
+body[dir=rtl] div.loan-table-cont > div {
+    padding: 0 0 15px 20px;
+}
+body[dir=rtl] div.loan-table-cont > div:last-child {
+    padding-left: 0;
+}
+body[dir=rtl] div.loan-table-cont > div > div.field > select {
+    width: 45%;
+    margin-right: 0;
+    margin-left: 10%;
+}
+body[dir=rtl] div.lm-payment-cont span.link {
+    margin-left: 0;
+    margin-right: 10px;
+}
+body[dir=rtl] .loan-box #lm_details_area > div {
+    float: right;
+}
+
+/*** LARGE DESKTOP VIEW ***/
+@media screen and (min-width: 1230px) {
+    .content_block div.loan-table-cont {
+        display: table;
+        margin-bottom: 0;
+    }
+    .content_block div.loan-table-cont > div {
+        display: table-cell;
+        padding-bottom: 0;
+    }
+    .content_block div.loan-table-cont > div > div.field > select {
+        width: 45%;
+        margin-right: 10%;
+    }
+    .content_block div.loan-table-cont > div:nth-child(2),
+    .content_block div.loan-table-cont > div:nth-child(5) {
+        width: 10%;
+    }
+
+    body[dir=rtl] .content_block div.loan-table-cont > div > div.field > select {
+        margin-right: 0;
+        margin-left: 10%;
+    }
+}
+
+/*** TABLET VIEW ***/
+@media screen and (min-width: 768px) and (max-width: 959px) {
+    .content_block div.loan-table-cont {
+        display: table;
+        margin-bottom: 0;
+    }
+    .content_block div.loan-table-cont > div {
+        display: table-cell;
+        padding-bottom: 0;
+    }
+    .content_block div.loan-table-cont > div > div.field > select {
+        width: 45%;
+        margin-right: 10%;
+    }
+    .content_block div.loan-table-cont > div:nth-child(2),
+    .content_block div.loan-table-cont > div:nth-child(5) {
+        width: 10%;
+    }
+}
+/*** MOBILE VIEW ***/
+@media screen and (max-width: 767px) {
+    .loan-box div.list-table > div.row {
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0;
+    }
+    #lm_details_area > div {
+        width: 50%!important;
+    }
+    #controller_area div.fieldset > header {
+        padding: 0;
+    }
+    .modal_content div.list-table > div.row > div:before {
+        text-align: left;
+    }
+    .modal_content div.list-table > div.row > div {
+        text-align: right;
+        padding-left: 150px !important;
+    }
+    .modal_content div.list-table > div.row > div:before {
+        width: 140px;
+    }
+    body[dir=rtl] .modal_content div.list-table > div.row > div:before {
+        text-align: right !important;
+        left: auto;
+        right: 0;
+    }
+    body[dir=rtl] .modal_content div.list-table > div.row > div {
+        text-align: left !important;
+        padding: 5px 150px 5px 0!important;
+    }
+}
+@media screen and (max-width: 320px) {
+    div.loan-table-cont > div {
+        display: block;
+        *zoom: 1;
+    }
+    div.loan-table-cont > div:before,
+    div.loan-table-cont > div:after {
+        display: table;
+        content: " ";
+    }
+    div.loan-table-cont > div:after {
+        clear: both;
+    }
+
+    div.loan-table-cont > div > span {
+        display: block;
+    }
+    div.loan-table-cont > div > div.field {
+        max-width: 150px;
+        float: left;
+    }
+    div.loan-table-cont > div:nth-child(4) > div.field {
+        max-width: 100%;
+    }
+    div.loan-table-cont > div > div.switcher {
+        padding: 8px 0 0 10px;
+        text-align: left;
+        float: left;
+    }
+
+    div.loan-table-cont > div:last-child > span {
+        display: none;
+    }
+
+    body[dir=rtl] div.loan-table-cont > div > div.field {
+        float: right;
+    }
+    body[dir=rtl] div.loan-table-cont > div > div.switcher {
+        padding: 8px 10px 0 0;
+        text-align: right;
+        float: right;
+    }
+}
+
+div.loan-table-cont > div > div.field > select:last-child {
+    margin-right: 0!important;
+}
+body[dir=rtl] div.loan-table-cont > div > div.field > select:last-child {
+    margin-left: 0!important;
+}

@@ -1,0 +1,99 @@
+:root {
+  --body-background-color: #111111;
+  --body-font-color: #DADADA;
+  
+  --link-color: #989898;
+  --alt-link-color: #deb300;
+  --alt-box-bg-color: rgba(250, 203, 5, 0.25);
+  --content-background-color: #2F2F2F;
+  --content-box-table-cell-border-color: #111111;
+  --content-box-table-cell-active-text-color: white;
+  --highlight-border-color: #4D4D4D;
+  --button-color: #d9b20b;
+  --button-hover-color: #EFD04C;
+  --button-text-color: #222222;
+  --menu-active-bg: #222222;
+  --logo-filter: invert(0.87);
+  --category-menu-item-bg-color: #191919;
+  --category-menu-view-more-button-bg-color: #222222;
+
+  --smart-search-cont-bg-color: #222222;
+  --smart-search-icon-stroke: #4D4D4D;
+  --smart-search-item-bg-color-hover: #2F2F2F;
+
+  --top-navigation-background-color: #2F2F2F;
+  --top-navigation-selector-color: #DADADA;
+  --top-navigation-selector-box-shadow-color: rgba(17, 17, 17, 0.1);
+  --top-navigation-menu-border-color: #111111;
+  --top-navigation-arrow-filter: brightness(0) invert(69%) sepia(7%) saturate(0%) hue-rotate(162deg) brightness(88%) contrast(83%);;
+  
+  --header-background-color: #111111;
+  --header-tabs-icon-active-filter: brightness(1); 
+  --header-search-form-title-color: #DADADA;
+  --header-icon-fill: #989898;
+
+  --form-disabled-background-color: #2F2F2F;
+  --form-disabled-border-color: #c4c4c4;
+  --form-checked-background-color: #d9b20b;
+  --form-checked-background-color-hover: #EFD04C;
+  --form-checked-background-color-active: #EFD04C;
+  --form-checked-text-color: #222222;
+  --form-background-color: #424242;
+  --form-field-line-color: #d9b20b;
+  --form-field-line-color-hover: #d9b20b;
+  --form-field-line-color-focus: #EFD04C;
+  --form-error-background-color: #742327;
+  --form-error-text-color: #d7c0c0;
+
+  --featured-no-sidebar-background-color: #222222;
+  --featured-background-color: #222222;
+  --featured-title-color: #ffffff;
+  --featured-accounts-background-color: #222222;
+
+  --listing-card-icon-color: #d9b20b;
+  --listing-card-active-icon-color: #b3b3b3;
+
+  --listing-print-icon: url("../img/print-dark.svg");
+  --listing-favorite-icon: url("../img/like-dark.svg");
+  --listing-favorite-icon-active: url("../img/like-dark-active.svg");
+  --listing-compare-icon: url("../img/compare-dark.svg");
+  --listing-compare-icon-active: url("../img/compare-dark-active.svg");
+  --listing-gallery-media-background-color: #2e2e2e;
+  --listing-mask-background-color: rgba(34, 34, 34, 0.6);
+  --listing-thumbnail-background-color: #4D4D4D;
+  --listing-background-color: #2F2F2F;
+
+  --info-field-color: #DADADA;
+  --empty-category-color: #DADADA;
+  --fieldset-header-background-color: #2F2F2F;
+  --icon-favorite-fill: #a8a8a8;
+  --icon-favorite-fill-active: #d9b20b;
+  --icon-filter: brightness(2.5);
+  --icon-filter-background: brightness(0) invert(23%) sepia(90%) saturate(0%) hue-rotate(233deg) brightness(101%) contrast(90%);
+  --icon-filter-img-background: brightness(0) invert(72%) sepia(99%) saturate(393%) hue-rotate(356deg) brightness(91%) contrast(83%);
+  --upload-zone-background-color: #222222;
+  --plans-border-color: #111111;
+  --steps-background-color: #d9b20b;
+  --popup-mask-background-color: rgba(0, 0, 0, 0.6);
+  --table-list-border-color: #989898;
+  --table-list-me-border-color: #989898;
+  --tabs-active-background-color: #222222;
+  --tabs-side-block-active-background-color: #111111;
+  --tabs-side-block-border-color: #111111;
+  --favorite-background-color: #222222;
+  --listings-box-background-color: #2F2F2F;
+  --placeholder-color: #989898;
+  --border-color: #111111;
+  --menu-shadow: 0 5px 17px rgba(17, 17, 17, 0.2), 0 17px 41px rgba(17, 17, 17, 0.2), 0 47px 80px rgba(17, 17, 17, 0.2);
+  --dropdown-arrow: url("../img/dropdown-arrow-dark.svg");
+
+  --card-corner-svg: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2017%2016%22%3E%3Cpath%20d%3D%22M0%200c8.837%200%2016%207.163%2016%2016h1V-1H0v1Z%22%20fill%3D%22%23222%22%2F%3E%3C%2Fsvg%3E');
+
+  --footer-background-color: #2F2F2F;
+  --footer-text-color: #989898;
+  --footer-title-color: #DADADA;
+  --footer-link-color: #989898;
+  --footer-link-hover-color: #777777;
+  --footer-link-active-color: #DADADA;
+  --footer-icon-color: #707070;
+}

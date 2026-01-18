@@ -1,0 +1,351 @@
+/* weather forecast styles */
+
+@font-face {
+  font-family: 'iconvault';
+  src: url('font/iconvault_forecastfont.eot');
+  src: url('font/iconvault_forecastfont.eot?#iefix') format('embedded-opentype'),
+       url('font/iconvault_forecastfont.woff') format('woff'),
+       url('font/iconvault_forecastfont.ttf') format('truetype'),
+       url('font/iconvault_forecastfont.svg#iconvault') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.weather-box .current-cond {
+    margin-bottom: 15px;
+}
+.weather-widget .location {
+    font-size: 1.125em;
+    padding-bottom: 7px;
+}
+.weather-widget .hborder {
+    border-width: 0;
+    border-bottom-width: 2px;
+    border-style: solid;
+}
+.weather-widget .hborder .weather-icon {
+    font-size: 6.000em;
+}
+.weather-widget .weather-info {
+    padding-left: 20px;
+    display: inline-block;
+}
+.weather-widget .weather-info > .temp {
+    font-size: 2.300em;
+}
+.weather-widget .weather-info > .cond {
+    font-size: 1.125em;
+}
+
+.weather-widget ul.forecast > li:not(:last-child) {
+    padding: 0 0 10px;
+}
+.weather-widget ul.forecast > li .day {
+    width: 59px;
+    padding-top: 12px;
+    text-transform: capitalize;
+}
+.weather-widget ul.forecast > li .day-forecast {
+    position: relative;
+    padding: 0 0 0 55px;
+}
+.weather-widget ul.forecast > li .weather-icon {
+    width: 30px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 3.000em;
+}
+.weather-widget ul.forecast > li .weather-icon > li:before,
+.weather-widget ul.forecast > li .weather-icon > li:after {
+    line-height: 43px;
+}
+.weather-widget ul.forecast > li .cond {
+    font-size: 1.125em;
+}
+.weather-widget ul.forecast > li .temp > span {
+    display: inline-block;
+}
+.weather-widget ul.forecast > li .temp > span > span {
+    opacity: .7;
+    font-size: 0.929em;
+}
+.weather-widget .weather-cp > div {
+    padding-top: 25px;
+}
+
+/*** ICONS ***/
+.weather-icon {
+    width: 94px;
+    height: 90px;
+    position: relative;
+}
+.weather-icon > li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.weather-icon > li:before,
+.weather-icon > li:after {
+    font-family: 'iconvault';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: inherit;
+    line-height: 80px;
+    position: absolute;
+}
+.weather-icon > li.base:before {
+    content: '\f105';
+    color: #cccccc;
+}
+
+/* clear sky */
+.weather-icon.w01d > li.base:before {
+    content: '\f113';
+    color: #ffa500;
+}
+.weather-icon.w01n > li.base:before {
+    content: '\f10d';
+    color: #867a90;
+}
+
+/* few clouds */
+.weather-icon.w02d > li.pheno:before {
+    content: '\f101';
+    color: #ffa500;
+}
+.weather-icon.w02n > li.pheno:before {
+    content: '\f100';
+    color: #867a90;
+}
+
+/* scattered clouds */
+.weather-icon[class*=w03] > li.base:before {
+    content: '\f106';
+}
+
+/* broken clouds */
+.weather-icon[class*=w04] > li.base:before {
+    content: '\f106';
+}
+
+/* shower rain */
+.weather-icon[class*=w09] > li.pheno:before {
+    content: '\f104';
+    color: #4681c3;
+}
+
+/* drizzle rain */
+.weather-icon.w10d > li.pheno:before {
+    content: '\f101';
+    color: #ffa500;
+}
+.weather-icon.w10n > li.pheno:before {
+    content: '\f100';
+    color: #867a90;
+}
+.weather-icon[class*=w10] > li.pheno:after {
+    content: '\f10a';
+    color: #82b2e8;
+}
+
+/* thunderstrm rain */
+.weather-icon[class*=w11] > li.base:before {
+    color: #888888;
+}
+.weather-icon[class*=w11] > li.pheno:before {
+    content: '\f114';
+    color: #4681c3;
+}
+
+/* snow */
+.weather-icon[class*=w13] > li.pheno:before {
+    content: '\f10b';
+    color: #91c1e9;
+}
+
+/* mist */
+.weather-icon[class*=w50] > li.base:before {
+    content: '\f108';
+}
+
+/*** RTL ***/
+body[dir=rtl] .weather-widget .weather-info {
+    padding-left: 0;
+    padding-right: 20px;
+}
+body[dir=rtl] .weather-widget ul.forecast > li .day-forecast {
+    padding: 0 55px 0 0;
+}
+body[dir=rtl] .weather-widget ul.forecast > li .weather-icon {
+    left: auto;
+    right: 0;
+}
+
+/*** LARGE DESKTOP VIEW ***/
+@media screen and (min-width: 1200px) {
+    /*** MIDDLE BOX ***/
+    body.no-sidebar aside.two-middle .weather-box .current-cond {
+        float: left;
+    }
+    body.no-sidebar aside.two-middle .weather-box .forecast {
+        overflow: hidden;
+        padding-top: 20px;
+    }
+    body.no-sidebar aside.two-middle .weather-box .hborder {
+        border-width: 0;
+        border-right-width: 2px;
+        padding-right: 30px;
+        margin-right: 30px;
+    }
+    body.no-sidebar aside.two-middle .weather-box .hborder .weather-icon {
+        font-size: 5.200em;
+        width: 75px;
+    }
+    body.no-sidebar aside.two-middle .weather-box .weather-info > .temp {
+        font-size: 2.000em;
+    }
+    body.no-sidebar aside.two-middle .weather-box ul.forecast > li .day {
+        width: 50px;
+    }
+
+    body[dir=rtl] body.no-sidebar aside.two-middle .weather-box .current-cond {
+        float: right;
+    }
+    body[dir=rtl] body.no-sidebar aside.two-middle .weather-box .hborder {
+        border-width: 0;
+        border-left-width: 2px;
+        padding-right: 0;
+        margin-right: 0;
+        padding-left: 30px;
+        margin-left: 30px;
+    }
+    body.no-sidebar aside.two-middle .weather-box .weather-cp {
+        margin-top: -29px;
+        position: absolute;
+        max-width: 220px;
+    }
+    body.no-sidebar aside.two-middle .weather-box .weather-cp > div {
+        padding-top: 0;
+    }
+}
+
+/*** MIDDLE DESKTOP VIEW ***/
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .weather-widget .hborder .weather-icon {
+        font-size: 5.500em;
+        width: 80px;
+        height: 85px;
+    }
+    .weather-widget ul.forecast > li .day {
+        width: 45px;
+    }
+}
+/*** TABLET VIEW ***/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .weather-box .current-cond {
+        float: left;
+    }
+    .weather-box .forecast {
+        overflow: hidden;
+        padding-top: 20px;
+    }
+    .weather-box .hborder {
+        border-width: 0;
+        border-right-width: 2px;
+        padding-right: 30px;
+        margin-right: 30px;
+    }
+
+    body[dir=rtl] .weather-box .current-cond {
+        float: right;
+    }
+    body[dir=rtl] .weather-box .hborder {
+        border-width: 0;
+        border-left-width: 2px;
+        padding-right: 0;
+        margin-right: 0;
+        padding-left: 30px;
+        margin-left: 30px;
+    }
+    .weather-box .weather-cp {
+        margin-top: -29px;
+        position: absolute;
+        max-width: 220px;
+    }
+    .weather-box .weather-cp > div {
+        padding-top: 0;
+    }
+}
+/*** ALL TABLET/DESKTOP VIEWS ***/
+@media screen and (min-width: 768px) {
+    /*** LISTING DETAILS WIDGET ***/
+    .weather-listing .current-cond {
+        float: left;
+    }
+    .weather-listing .forecast {
+        overflow: hidden;
+    }
+    .weather-listing .hborder {
+        border-width: 0;
+        border-right-width: 2px;
+        padding-right: 30px;
+        margin-right: 30px;
+    }
+
+    body[dir=rtl] .weather-listing .current-cond {
+        float: right;
+    }
+    body[dir=rtl] .weather-listing .hborder {
+        border-width: 0;
+        border-left-width: 2px;
+        padding-right: 0;
+        margin-right: 0;
+        padding-left: 30px;
+        margin-left: 30px;
+    }
+    .weather-listing .weather-cp {
+        max-width: 220px;
+    }
+    /*** LISTING DETAILS WIDGET END ***/
+}
+/*** MOBILE VIEW ***/
+@media screen and (max-width: 767px) {
+    .weather-listing {
+        position: relative;
+        padding-bottom: 40px;
+    }
+    .weather-listing .current-cond {
+        margin-bottom: 15px;
+    }
+    .weather-listing .weather-cp {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+/*** MODERN/SIMPLE TEMPLATES ***/
+/*** ALL TABLET/DESKTOP VIEWS ***/
+@media screen and (min-width: 768px) {
+    #area_listing > div.row > div[class^=col-sm-] .weather-widget .hborder .weather-icon,
+    #area_listing > div.area-listing-content .weather-widget .hborder .weather-icon {
+        float: none!important;
+    }
+}
+#area_listing > div.row > div[class^=col-sm-] .weather-widget .weather-info,
+#area_listing > div.area-listing-content .weather-widget .weather-info {
+    padding: 0!important;
+}
+#area_listing > div.row > div[class^=col-sm-] .weather-widget ul.forecast > li .weather-icon,
+#area_listing > div.area-listing-content .weather-widget ul.forecast > li .weather-icon {
+    font-size: 2.600em!important;
+}
+
+/* weather forecast styles end */

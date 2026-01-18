@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="PdfExport">
+    <title>PDF Export</title>
+    <description>Allows users to save listings in the PDF format</description>
+    <author>Curtis Jackson</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.5.1</version>
+    <date>20.01.2012</date>
+    <class>PdfExport</class>
+    <compatible>4.8.1</compatible>
+
+    <files>
+        <file>i18n/ru.json</file>
+        <file>static/.htaccess</file>
+        <file>static/no-photo.jpg</file>
+        <file>static/icon.png</file>
+        <file>vendor/autoload.php</file>
+        <file>static/Roboto-Regular.ttf</file>
+        <file>.htaccess</file>
+        <file>MYPDF.class.php</file>
+        <file>PdfExport.inc.php</file>
+        <file>PdfExport.tpl</file>
+        <file>PdfExport_icon.tpl</file>
+        <file>rlPdfExport.class.php</file>
+    </files>
+
+    <hooks>
+        <hook name="listingDetailsAfterStats"><![CDATA[]]></hook>
+        <hook name="sitemapExcludedPages" version="2.2.0"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBeforeUpdate" version="2.3.0"><![CDATA[]]></hook>
+        <hook name="apMixConfigItem" version="2.4.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="title_pdf_export" module="frontend"><![CDATA[Save as PDF]]></phrase>
+        <phrase key="pdf_export_image_error" module="admin"><![CDATA[The image is not available! Make sure the file name and permissions are set correctly.]]></phrase>
+        <phrase key="config+option+pdf_account_form_registration" module="admin" version="2.4.0"><![CDATA[Registration]]></phrase>
+        <phrase key="config+option+pdf_account_form_browse" module="admin" version="2.4.0"><![CDATA[Browse]]></phrase>
+    </phrases>
+
+    <configs key="pdf_export" name="PDF Export" version="2.3.0"><![CDATA[]]>
+        <config key="pdf_export_logo" name="Logo file name" type="text" description="If you want to replace the logo in PDF files upload the file to the plugin subdirectory - /plugins/PdfExport/static/." version="2.3.0"><![CDATA[]]></config>
+        <config key="pdf_account_form" name="Account form" type="select" values="registration,browse" description="Account details will be added to PDF based on the form selected" version="2.4.0"><![CDATA[browse]]></config>
+    </configs>
+
+    <updates>
+        <update version="2.0.2" files="PdfExport.inc.php"><![CDATA[]]></update>
+        <update version="2.0.3" files="PdfExport_icon.tpl"><![CDATA[]]></update>
+        <update version="2.0.4" files="PdfExport_icon.tpl"><![CDATA[]]></update>
+        <update version="2.0.5" files="PdfExport.inc.php"><![CDATA[]]></update>
+        <update version="2.0.6" files="PdfExport.inc.php"><![CDATA[]]></update>
+        <update version="2.1.0" files="PdfExport.inc.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="PdfExport.inc.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="PdfExport.inc.php,PdfExport_icon.tpl"><![CDATA[]]></update>
+        <update version="2.2.0" files="PdfExport.inc.php,PdfExport_icon.tpl,rlPdfExport.class.php"><![CDATA[]]></update>
+        <update version="2.3.0" files="PdfExport.inc.php,rlPdfExport.class.php,MYPDF.class.php,PdfExport.tpl,static/.htaccess,static/no-photo.jpg,static/icon.png,.htaccess,PdfExport_icon.tpl,vendor/"><![CDATA[]]></update>
+        <update version="2.4.0" files="rlPdfExport.class.php,i18n/ru.json"><![CDATA[]]></update>
+        <update version="2.5.0" files="rlPdfExport.class.php,vendor/"><![CDATA[]]></update>
+        <update version="2.5.1" files="rlPdfExport.class.php,static/Roboto-Regular.ttf,vendor/"><![CDATA[]]></update>
+    </updates>
+
+    <pages>
+        <page key="PdfExport" name="PDF Export" type="system" path="pdf-export" login="0" controller="PdfExport" tpl="1"><![CDATA[]]></page>
+    </pages>
+</plugin>

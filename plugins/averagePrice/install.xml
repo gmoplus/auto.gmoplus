@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="averagePrice">
+    <title>Average Price</title>
+    <description>Calculates average prices based on a range of prices of similar items</description>
+    <author>Curtis Jackson</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.0.4</version>
+    <date>04.03.2019</date>
+    <class>AveragePrice</class>
+    <controller>ap_fields_form</controller>
+    <compatible>4.7.1</compatible>
+
+    <files>
+        <file>admin/ap_fields_form.inc.php</file>
+        <file>admin/ap_fields_form.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>static/style.css</file>
+        <file>block.tpl</file>
+        <file>footer.tpl</file>
+        <file>rlAveragePrice.class.php</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="staticDataRegister"><![CDATA[]]></hook>
+        <hook name="listingDetailsBottom"><![CDATA[]]></hook>
+        <hook name="tplFooter"><![CDATA[]]></hook>
+        <hook name="phpSearchBuildSearchTop"><![CDATA[]]></hook>
+        <hook name="phpSearchBuildSearchBottom"><![CDATA[]]></hook>
+        <hook name="listingsModifyFieldSearch"><![CDATA[]]></hook>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook name="apTplContentBottom"><![CDATA[]]></hook>
+        <hook name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook name="apTplCategoriesNavBar"><![CDATA[]]></hook>
+        <hook name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook name="phpListingsAjaxDeleteListing"><![CDATA[]]></hook>
+        <hook name="apAjaxRequest"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="ap_title" module="frontEnd"><![CDATA[For <b>{title}</b>]]></phrase>
+        <phrase key="ap_price" module="frontEnd"><![CDATA[Average Price]]></phrase>
+        <phrase key="ap_great_price" module="frontEnd"><![CDATA[Perfect Price]]></phrase>
+        <phrase key="ap_bad_price" module="frontEnd"><![CDATA[High Price]]></phrase>
+        <phrase key="ap_link_text1" module="frontEnd"><![CDATA[We used {link}]]></phrase>
+        <phrase key="ap_link_text2" module="frontEnd"><![CDATA[{count} listings]]></phrase>
+        <phrase key="config+option+ap_fields_form_short" module="admin"><![CDATA[Category browse form]]></phrase>
+        <phrase key="config+option+ap_fields_form_similar" module="admin"><![CDATA[Similar ads form]]></phrase>
+        <phrase key="config+option+ap_fields_form_own" module="admin"><![CDATA[Plugin custom form]]></phrase>
+        <phrase key="ap_form_title" module="admin"><![CDATA[Build an Average Price form for the [category] category]]></phrase>
+        <phrase key="ap_form" module="admin"><![CDATA[Average Price Form]]></phrase>
+        <phrase key="ap_build_form" module="admin"><![CDATA[Build Average Price Form]]></phrase>
+        <phrase key="ap_denied_fields" module="admin"><![CDATA[The following field types are not available for the Plugin: {types}]]></phrase>
+        <phrase key="ap_copy_form_relations" module="admin"><![CDATA[The Average Price form has been successfully enabled. Do you want to populate it with fields from the Browse form?]]></phrase>
+        <phrase key="ap_fields_copied" module="admin"><![CDATA[The Browse form fields have been successfully copied to the Average Price form.]]></phrase>
+    </phrases>
+
+    <configs key="averagePrice" name="Average Price Calculation"><![CDATA[]]>
+        <config key="ap_update_period" name="Price recalculation interval" validate="int" type="text" description="(days). The data is saved to the database and gets updated periodically to speed up page loading. To get prices updated regularly, enter 0 (not recommended)."><![CDATA[7]]></config>
+        <config key="ap_hide_box" name="Hide box if price higher than average" type="bool" description="The Plugin will hide the Average Price box on Listing Details if the price is higher than the average value."><![CDATA[0]]></config>
+        <config key="ap_hide_footer" name="Hide count of used listings" type="bool" description="Hiding makes sense if you don't have enough listings for calculating a good average price."><![CDATA[0]]></config>
+        <config key="ap_fields_form" name="Forms for average price" type="select" description="Fields of the selected form will be used for calculating the average price." values="short,similar,own"><![CDATA[short]]></config>
+    </configs>
+
+    <blocks>
+        <block key="averagePrice" name="Average Price" side="left" type="smarty" tpl="1">
+        <![CDATA[{include file=$smarty.const.RL_PLUGINS|cat:'averagePrice/block.tpl'}]]>
+        </block>
+    </blocks>
+
+    <updates>
+        <update version="1.0.1" files="rlAveragePrice.class.php,footer.tpl,admin/ap_fields_form.inc.php,i18n/ru.json"><![CDATA[]]></update>
+        <update version="1.0.2" files="rlAveragePrice.class.php"><![CDATA[]]></update>
+        <update version="1.0.3" files="admin/ap_fields_form.tpl,rlAveragePrice.class.php"><![CDATA[]]></update>
+        <update version="1.0.4" files="rlAveragePrice.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

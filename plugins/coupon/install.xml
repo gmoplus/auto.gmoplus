@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="coupon">
+    <title>Coupon Code</title>
+    <description>Allows the Administrator to give coupon codes on packages and plans</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.5.2</version>
+    <date>16.03.2012</date>
+    <controller>coupon</controller>
+    <class>CouponCode</class>
+    <compatible>4.8.2</compatible>
+
+    <notice><![CDATA[To generate coupon codes for your users go to the Admin Panel > Plugins > Coupon Code Manager.]]></notice>
+    <files>
+        <file>coupon.block.tpl</file>
+        <file>coupon_price_info.tpl</file>
+        <file>rlCouponCode.class.php</file>
+        <file>rlInstall.class.php</file>
+        <file>admin/coupon.inc.php</file>
+        <file>admin/coupon.tpl</file>
+        <file>admin/.htaccess</file>
+        <file>admin/info.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>.htaccess</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'coupon');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="2.5.0" name="phpGetPaymentGatewaysAfter"><![CDATA[]]></hook>
+        <hook version="2.5.0" name="preCheckoutPayment"><![CDATA[]]></hook>
+        <hook version="2.5.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="2.5.0" name="loadPaymentForm"><![CDATA[]]></hook>
+        <hook version="2.5.0" name="apExtTransactionItem"><![CDATA[]]></hook>
+        <hook version="2.5.0" name="apExtHeader"><![CDATA[]]></hook>
+        <hook version="2.5.0" name="phpPaymentHistoryBottom"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="ext_coupon_code" module="ext"><![CDATA[Coupon code]]></phrase>
+        <phrase key="ext_coupon_discount" module="ext"><![CDATA[Discount]]></phrase>
+        <phrase version="2.5.0" key="ext_coupon_percent" module="ext"><![CDATA[Percent]]></phrase>
+        <phrase key="ext_coupon_cost" module="ext"><![CDATA[Amount]]></phrase>
+        <phrase key="ext_edit_date" module="ext"><![CDATA[Click here to update]]></phrase>
+        <phrase version="2.5.0" key="ext_overdue" module="ext"><![CDATA[Expired]]></phrase>
+        <phrase version="2.5.0" key="ext_using_limit" module="ext"><![CDATA[Usage limit]]></phrase>
+        <phrase version="2.5.0" key="coupon_percent" module="admin"><![CDATA[Percent]]></phrase>
+        <phrase key="coupon_generate_code" module="admin"><![CDATA[Generate automatically]]></phrase>
+        <phrase version="2.5.0" key="add_coupon" module="admin"><![CDATA[Add Coupon Code]]></phrase>
+        <phrase key="edit_coupon" module="admin"><![CDATA[Edit Coupon]]></phrase>
+        <phrase key="available_coupone" module="admin"><![CDATA[Available from]]></phrase>
+        <phrase key="used_date" module="admin"><![CDATA[Time-limited]]></phrase>
+        <phrase key="using_limit" module="admin"><![CDATA[Usage limit]]></phrase>
+        <phrase key="coupon_for" module="admin"><![CDATA[Make available to]]></phrase>
+        <phrase key="coupon_using_limit_tip" module="admin"><![CDATA[Enter 0 to make it unlimited]]></phrase>
+        <phrase key="coupon_type" module="admin"><![CDATA[Discount type]]></phrase>
+        <phrase key="coupon_cost" module="admin"><![CDATA[Amount]]></phrase>
+        <phrase key="coupon_discount" module="common"><![CDATA[Discount]]></phrase>
+        <phrase key="coupon_reject" module="common"><![CDATA[Cancel]]></phrase>
+        <phrase key="coupon_code" module="common"><![CDATA[Coupon code]]></phrase>
+        <phrase key="coupon_code_limit" module="common"><![CDATA[A coupon code must be at least 2 characters long.]]></phrase>
+        <phrase key="your_coupon_limit_is_over" module="common"><![CDATA[You've exceeded the usage limit for the coupon code; please use another coupon.]]></phrase>
+        <phrase version="2.5.0" key="coupon_not_found" module="common"><![CDATA[No coupon codes found.]]></phrase>
+        <phrase key="coupon_not_account" module="common"><![CDATA[The coupon code is not available to your account type.]]></phrase>
+        <phrase key="coupon_expired" module="common"><![CDATA[The coupon code has expired or is disabled.]]></phrase>
+        <phrase version="2.5.0" key="coupon_not_plan" module="common"><![CDATA[The coupon code is not available for your package.]]></phrase>
+        <phrase version="2.1.0" key="listing_plans" module="admin"><![CDATA[Listing packages]]></phrase>
+        <phrase version="2.1.0" key="banner_plans" module="admin"><![CDATA[Banner plans]]></phrase>
+        <phrase version="2.3.0" key="membership_plans" module="admin"><![CDATA[Membership plans]]></phrase>
+        <phrase version="2.3.0" key="credit_packages" module="admin"><![CDATA[Credit packages]]></phrase>
+        <phrase version="2.3.0" key="coupon_available_for" module="admin"><![CDATA[Select packages/plans]]></phrase>
+        <phrase version="2.3.0" key="coupon_services" module="admin"><![CDATA[Services]]></phrase>
+        <phrase version="2.3.0" key="coupon_listing_plans" module="admin"><![CDATA[Listing packages]]></phrase>
+        <phrase version="2.3.0" key="coupon_membership_plans" module="admin"><![CDATA[Membership plans]]></phrase>
+        <phrase version="2.3.0" key="coupon_banner_plans" module="admin"><![CDATA[Banner plans]]></phrase>
+        <phrase version="2.3.0" key="coupon_credit_packages" module="admin"><![CDATA[Credit packages]]></phrase>
+        <phrase version="2.3.0" key="coupon_plans" module="admin"><![CDATA[Plans]]></phrase>
+        <phrase version="2.3.0" key="coupon_packages" module="admin"><![CDATA[Packages]]></phrase>
+        <phrase version="2.5.0" key="service_not_selected" module="admin"><![CDATA[Please select {service}.]]></phrase>
+        <phrase version="2.3.0" key="coupon_enable_for" module="admin"><![CDATA[Select account type]]></phrase>
+        <phrase version="2.5.0" key="coupon_added" module="admin"><![CDATA[You’ve added a coupon code.]]></phrase>
+        <phrase version="2.5.0" key="coupon_edited" module="admin"><![CDATA[You’ve edited the coupon code.]]></phrase>
+        <phrase version="2.5.0" key="coupon_deleted" module="admin"><![CDATA[You’ve removed the coupon code.]]></phrase>
+        <phrase version="2.3.0" key="coupons_list" module="admin"><![CDATA[All Coupons]]></phrase>
+        <phrase version="2.3.0" key="coupon_account" module="admin"><![CDATA[User account]]></phrase>
+        <phrase version="2.3.0" key="coupon_enter_username" module="admin"><![CDATA[Enter username]]></phrase>
+        <phrase version="2.4.0" key="coupon_monetize_bumpup_packages" module="admin"><![CDATA[Bump-up packages]]></phrase>
+        <phrase version="2.4.0" key="coupon_monetize_highlight_packages" module="admin"><![CDATA[Highlight packages]]></phrase>
+        <phrase version="2.5.0" key="coupon_not_package" module="common"><![CDATA[The coupon code is not available for the item.]]></phrase>
+        <phrase version="2.5.0" key="coupon_not_applied" module="frontEnd"><![CDATA[You haven't applied a coupon code.]]></phrase>
+        <phrase version="2.5.0" key="coupon_shopping" module="admin"><![CDATA[Shopping Cart &amp; Bidding]]></phrase>
+        <phrase version="2.5.0" key="coupon_booking" module="admin"><![CDATA[Booking]]></phrase>
+        <phrase version="2.5.0" key="coupon_shopping_tip" module="admin"><![CDATA[The coupon code will be available conditioned that the Seller is set as a recipient of payments.]]></phrase>
+        <phrase version="2.5.0" key="coupon_price_discount" module="common"><![CDATA[Discount price]]></phrase>
+        <phrase version="2.5.0" key="coupon_used_count" module="admin" js="1"><![CDATA[Used # of times]]></phrase>
+        <phrase version="2.5.1" key="coupon_service_empty" module="admin" target="coupon"><![CDATA[No packages/plans added or selected. Please add or select a package/plan to enable the coupon code.]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="2.0.1" files="coupon.block.tpl,rlCouponCode.class.php"><![CDATA[]]></update>
+        <update version="2.0.2" files="rlCouponCode.class.php"><![CDATA[]]></update>
+        <update version="2.0.3" files="admin/coupon.tpl"><![CDATA[]]></update>
+        <update version="2.1.0" files="admin/coupon.tpl,admin/coupon.inc.php,coupon.block.tpl,coupon_price_info_responsive_42.tpl,rlCouponCode.class.php"><![CDATA[
+            $GLOBALS['rlDb'] -> query( "ALTER TABLE `".RL_DBPREFIX."coupon_code` ADD `BannersPlan_ID` TINYTEXT NOT NULL AFTER `Sticky` ");
+            $GLOBALS['rlDb'] -> query( "ALTER TABLE `".RL_DBPREFIX."coupon_code` ADD `StickyBanners` ENUM( '1', '0' ) NOT NULL AFTER `Sticky` ");
+            $GLOBALS['rlDb'] -> query( "ALTER TABLE `".RL_DBPREFIX."coupon_users` ADD `BannersPlan_ID` INT( 10 ) NOT NULL ");
+        ]]></update>
+        <update version="2.1.1" files="rlCouponCode.class.php,coupon.block.tpl"><![CDATA[]]></update>
+        <update version="2.1.2" files="rlCouponCode.class.php"><![CDATA[]]></update>
+        <update version="2.2.0" files="rlCouponCode.class.php,coupon.block_44.tpl,admin/coupon.inc.php"><![CDATA[
+            $GLOBALS['rlDb'] -> query( "DELETE FROM `".RL_DBPREFIX."hooks` WHERE `Name` = 'topPaymentPage' AND `Plugin` = 'coupon'");
+            ]]></update>
+        <update version="2.2.1" files="admin/coupon.tpl"><![CDATA[]]></update>
+        <update version="2.3.0" files="admin/coupon.inc.php,admin/coupon.tpl,coupon.block.tpl,coupon_price_info.tpl,rlCouponCode.class.php,rlInstall.class.php,">
+            <![CDATA[
+                global $rlDb;
+
+                if (version_compare($GLOBALS['config']['rl_version'], '4.4.0') >= 0) {
+                    $sql = "DELETE FROM `" . RL_DBPREFIX . "hooks` WHERE `Plugin` = 'coupon' AND (`Name` = 'paymentGateway' OR `Name` = 'specialBlock' OR `Name` = 'addListingCheckoutPreRedirect' OR `Name` = 'addBannerCheckoutPreRedirect' OR `Name` = 'addInvoiceCheckoutPreRedirect' OR `Name` = 'paymentController' OR `Name` = 'addListingBeforeSteps' OR `Name` = 'afterListingDone' OR `Name` = 'phpListingsUpgradePlanInfo' OR `Name` = 'phpMyPackagesTop')";
+                    $rlDb->query($sql);
+
+                    $rlDb->query("ALTER TABLE `" . RL_DBPREFIX . "coupon_code` ADD `MPPlan_ID` tinytext NOT NULL");
+                    $rlDb->query("ALTER TABLE `" . RL_DBPREFIX . "coupon_code` ADD `PAYGCPlan_ID` tinytext NOT NULL");
+                    $rlDb->query("ALTER TABLE `" . RL_DBPREFIX . "coupon_code` ADD `Services` tinytext NOT NULL");
+                    $rlDb->query("ALTER TABLE `" . RL_DBPREFIX . "coupon_code` ADD `StickyMP` enum('1','0') NOT NULL default '0'");
+                    $rlDb->query("ALTER TABLE `" . RL_DBPREFIX . "coupon_code` ADD `StickyPAYGC` enum('1','0') NOT NULL default '0'");
+                }
+            ]]>
+        </update>
+        <update version="2.3.1"><![CDATA[]]></update>
+        <update version="2.4.0" files=".htaccess,rlCouponCode.class.php,rlInstall.class.php,admin/coupon.inc.php,admin/coupon.tpl,coupon.block.tpl">
+            <![CDATA[
+                $GLOBALS['rlDb']->addColumnsToTable(
+                    array(
+                        'BumpupPlan_ID' => "tinytext NOT NULL",
+                        'HighlightPlan_ID' => "tinytext NOT NULL",
+                        'StickyBumpup' => "enum('1','0') NOT NULL default '0'",
+                        'StickyHighlight' => "enum('1','0') NOT NULL default '0'",
+                    ),
+                    'coupon_code'
+                );
+            ]]>
+        </update>
+        <update version="2.5.0" files="coupon.block.tpl,rlCouponCode.class.php,rlInstall.class.php,admin/coupon.inc.php,admin/coupon.tpl,admin/info.tpl,i18n/ru.json"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'coupon');
+            $GLOBALS['rlInstall']->update250();
+        ]]></update>
+        <update version="2.5.1" files="admin/coupon.inc.php,admin/coupon.tpl,i18n/ru.json,rlCouponCode.class.php"><![CDATA[]]></update>
+        <update version="2.5.2" files="admin/coupon.inc.php,rlCouponCode.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'coupon');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

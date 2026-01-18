@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="invoices">
+    <title>Invoices</title>
+    <description>Allows the Administrator to invoice customers for services that are not monetized on the site</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.1.3</version>
+    <date>16.06.2012</date>
+    <controller>invoices</controller>
+    <class>Invoices</class>
+    <compatible>4.8.0</compatible>
+
+    <files>
+        <file>admin/invoices.inc.php</file>
+        <file>admin/invoices.tpl</file>
+        <file>admin/invoice_details.tpl</file>
+        <file>invoices.inc.php</file>
+        <file>invoices.tpl</file>
+        <file>rlInstall.class.php</file>
+        <file>rlInvoices.class.php</file>
+        <file>tplFooter.tpl</file>
+        <file>invoice_details.tpl</file>
+        <file>list.tpl</file>
+        <file>invoice_in_pdf.inc.php</file>
+        <file>payment_invoice.tpl</file>
+        <file>payment_invoice.source</file>
+        <file>static/aStyle.css</file>
+        <file>static/style.css</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'invoices');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="2.1.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apExtTransactionsData"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="postPaymentComplete"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apTplTransactionsGrid"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apExtTransactionsData"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="phpMailSend"><![CDATA[]]></hook>
+        <hook version="2.1.1" name="apPhpPagesValidate"><![CDATA[]]></hook>
+        <hook version="2.1.1" name="specialBlock"><![CDATA[]]></hook>
+    </hooks>
+
+    <emails>
+        <email key="create_invoice" subject="{site_name} Invoice: {subject}"><![CDATA[Dear {name},
+
+You've received an invoice in your account.
+
+<b>Invoice Details:</b>
+Invoice ID: {invoice_id}
+Subject: {subject}
+Amount: <b>{amount}</b>
+Date: {date}
+Description:
+{description}
+
+
+You may pay the invoice at the link below:
+
+{link}
+______________________________
+Thank you,
+{site_name} Team
+        ]]></email>
+    </emails>
+
+    <pages>
+        <page key="invoices" name="My Invoices" type="system" path="invoices" login="1" controller="invoices" menus="2" tpl="1"><![CDATA[]]></page>
+        <page version="1.1.0" key="invoice_in_pdf" name="Invoice in PDF" type="system" path="invoice-in-pdf" login="1" controller="invoice_in_pdf" tpl="0"><![CDATA[]]></page>
+    </pages>
+
+    <phrases>
+        <phrase key="invoices" module="common"><![CDATA[All Invoices]]></phrase>
+        <phrase key="invoices_payment_completed" module="common"><![CDATA[Your payment has successfully gone through.]]></phrase>
+        <phrase key="invoices_payment_canceled" module="common"><![CDATA[Your payment has been canceled, please contact the Administrator for more details.]]></phrase>
+        <phrase key="invoice_txn_id" module="common"><![CDATA[Invoice ID]]></phrase>
+        <phrase key="invoice_total" module="common"><![CDATA[Amount]]></phrase>
+        <phrase key="invoice_subject" module="common"><![CDATA[Subject]]></phrase>
+        <phrase key="invoice_description" module="common"><![CDATA[Invoice Details]]></phrase>
+        <phrase key="invoice_info" module="common"><![CDATA[Invoice Info]]></phrase>
+        <phrase key="no_account_invoices" module="common"><![CDATA[No invoices]]></phrase>
+        <phrase key="invoice_pay" module="common"><![CDATA[Checkout]]></phrase>
+        <phrase key="invoice_details" module="frontEnd"><![CDATA[Details]]></phrase>
+        <phrase key="invoice_paid_with" module="frontEnd"><![CDATA[Paid with]]></phrase>
+        <phrase key="invoice_paid_date" module="frontEnd"><![CDATA[Date of payment]]></phrase>
+        <phrase key="invoice_payment_info" module="frontEnd"><![CDATA[Payment details]]></phrase>
+        <phrase key="unpaid_invoices_message" module="common"><![CDATA[You have pending invoices; you may click [here] to pay them.]]></phrase>
+        <phrase key="invoices_add_item" module="admin"><![CDATA[Add an Invoice]]></phrase>
+        <phrase key="invoices_edit_item" module="admin"><![CDATA[Edit Invoice]]></phrase>
+        <phrase key="invoices_item_added" module="admin"><![CDATA[You've successfully added an invoice.]]></phrase>
+        <phrase key="invoices_item_edited" module="admin"><![CDATA[You've successfully edited the invoice.]]></phrase>
+        <phrase key="invoice_details" module="admin"><![CDATA[Invoice Details]]></phrase>
+        <phrase key="invoice_view_details" module="admin"><![CDATA[View Invoice Details]]></phrase>
+        <phrase key="ext_invoices_manager" module="ext"><![CDATA[Invoice Manager]]></phrase>
+        <phrase key="ext_subject" module="ext"><![CDATA[Subject]]></phrase>
+        <phrase version="1.1.0" key="invoice_in_pdf" module="common"><![CDATA[PDF invoice]]></phrase>
+        <phrase version="1.1.0" key="invoice" module="common"><![CDATA[Invoice]]></phrase>
+        <phrase version="2.0.0" key="invoice_view" module="common"><![CDATA[View invoice in PDF]]></phrase>
+        <phrase version="2.0.0" key="invoice_in" module="common"><![CDATA[in PDF]]></phrase>
+        <phrase version="2.0.0" key="invoice_subtotal" module="common"><![CDATA[Subtotal]]></phrase>
+        <phrase version="2.0.0" key="invoice_tax" module="common"><![CDATA[Tax]]></phrase>
+        <phrase version="2.0.0" key="invoice_number" module="common"><![CDATA[Invoice #]]></phrase>
+        <phrase version="2.0.0" key="invoice_quantity" module="common"><![CDATA[Quantity]]></phrase>
+        <phrase version="2.0.0" key="invoice_buyer_info" module="common"><![CDATA[Buyer Info]]></phrase>
+        <phrase version="2.0.0" key="invoice_seller_info" module="common"><![CDATA[Seller Info]]></phrase>
+        <phrase version="2.1.0" key="payment_in_pdf" module="common"><![CDATA[Payment in PDF]]></phrase>
+        <phrase version="2.1.0" key="invoices_price_error" module="common"><![CDATA[The value of price incorrect.]]></phrase>
+        <phrase version="2.1.0" key="invoices_payment_bank_transfer" module="common"><![CDATA[You have added a payment request via the Bank Transfer gateway; please, make the payment in your bank and send the details to the administrator. Your invoice will be marked as paid afterward.]]></phrase>
+    </phrases>
+
+    <configs key="invoices" name="Invoices">
+        <![CDATA[]]>
+        <config key="invoices_txn_tpl" name="Txn template" type="text"><![CDATA[INV*******]]></config>
+        <config version="1.1.0" key="invoices_per_page" name="Number of invoices per page" type="text"><![CDATA[20]]></config>
+        <config version="2.0.0" key="invoices_send_pdf" name="Send PDF invoices after payment" type="bool"><![CDATA[1]]></config>
+        <config version="2.0.0" key="invoices_billing" name="Your billing details" description="Your billing details will be added to PDF invoices" type="textarea"><![CDATA[]]></config>
+        <config version="2.0.0" key="invoices_include_tax" name="Tax rate in PDF invoices" description="The option is mainly intended for European countries." type="bool"><![CDATA[0]]></config>
+        <config version="2.0.0" key="invoices_tax_value" name="Tax rate" description="%" type="text"><![CDATA[]]></config>
+    </configs>
+
+    <updates>
+        <update version="1.1.0" files="admin/invoices.inc.php,invoice_in_pdf.inc.php,invoices.inc.php,invoices.tpl,rlInvoices.class.php"><![CDATA[]]></update>
+        <update version="1.1.1" files="static/pdf.png,invoices.inc.php"><![CDATA[]]></update>
+        <update version="2.0.0" files="rlInstall.class.php,rlInvoices.class.php,invoice_in_pdf.inc.php,invoices.inc.php,payment_invoice.tpl"><![CDATA[]]></update>
+        <update version="2.1.0" files=".htaccess,install.xml,invoice_in_pdf.inc.php,invoices.inc.php,invoices.tpl,payment_invoice.source,payment_invoice.tpl,rlInstall.class.php,rlInvoices.class.php,tplFooter.tpl,admin/invoice_details.tpl,admin/invoices.inc.php,admin/invoices.tpl,static/pdf.png,admin/.htaccess,static/.htaccess,static/aStyle.css,static/style.css"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'invoices');
+            $GLOBALS['rlInstall']->update210();
+        ]]></update>
+        <update version="2.1.1" files="rlInvoices.class.php,rlInstall.class.php,payment_invoice.tpl,i18n/ru.json,admin/invoices.inc.php,invoices.inc.php,invoices.tpl,tplFooter.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'invoices');
+            $GLOBALS['rlInstall']->update211();
+        ]]></update>
+        <update version="2.1.2" files="i18n/ru.json,invoice_details.tpl,invoices.tpl,list.tpl,payment_invoice.tpl,rlInvoices.class.php,tplFooter.tpl,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'invoices');
+            $GLOBALS['rlInstall']->update212();
+        ]]></update>
+        <update version="2.1.3" files="i18n/ru.json,rlInstall.class.php,payment_invoice.source,list.tpl,payment_invoice.tpl,rlInvoices.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'invoices');
+            $GLOBALS['rlInstall']->update213();
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'invoices');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

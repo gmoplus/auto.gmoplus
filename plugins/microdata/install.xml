@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="microdata">
+    <title>Microdata</title>
+    <description>Allows you to enable microdata for different pages of your site</description>
+    <author>Dmitry Az</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.0.0</version>
+    <date>20.10.2021</date>
+    <class>Microdata</class>
+    <compatible>4.7.0</compatible>
+
+    <files>
+        <file>box.tpl</file>
+        <file>enable_box.tpl</file>
+        <file>rlMicrodata.class.php</file>
+    </files>
+    
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Microdata', null, 'microdata');
+        $GLOBALS['rlMicrodata']->install();
+    ]]></install>
+    
+    <hooks>
+        <hook name="tplHeader"><![CDATA[]]></hook>
+        <hook name="apTplListingTypesForm"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesPost"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesBeforeAdd"><![CDATA[]]></hook>
+        <hook name="apPhpListingTypesBeforeEdit"><![CDATA[]]></hook>
+        <hook name="listingDetailsSql"><![CDATA[]]></hook>
+    </hooks>
+    
+    <phrases>
+        <phrase key="md_enable" module="common"><![CDATA[Enable microdata]]></phrase>
+    </phrases>
+    
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Microdata', null, 'microdata');
+        $GLOBALS['rlMicrodata']->uninstall();
+    ]]></uninstall>
+</plugin>

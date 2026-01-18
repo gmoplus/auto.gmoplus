@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="bankWireTransfer">
+    <title>Offline Payments</title>
+    <description>Allows the Administrator to collect offline payments (money transfers) for listing packages, plans and other products</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.1.1</version>
+    <date>31.07.2012</date>
+    <class>BankWireTransfer</class>
+    <compatible>4.8.1</compatible>
+
+    <files>
+        <file>account_settings.tpl</file>
+        <file>footer.tpl</file>
+        <file>form.tpl</file>
+        <file>payment_details_block.tpl</file>
+        <file>print.inc.php</file>
+        <file>print.tpl</file>
+        <file>request_details.tpl</file>
+        <file>requests.inc.php</file>
+        <file>requests.tpl</file>
+        <file>rlBankWireTransfer.class.php</file>
+        <file>rlBankWireTransferGateway.class.php</file>
+        <file>rlInstall.class.php</file>
+        <file>type_by_transfer.tpl</file>
+        <file>txn_details.tpl</file>
+        <file>upload.tpl</file>
+        <file>static/bankWireTransfer.png</file>
+        <file>static/.htaccess</file>
+        <file>static/icons.svg</file>
+        <file>admin/payment_gateways.tpl</file>
+        <file>static/for_example.png</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'bankWireTransfer');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="2.0.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="pageinfoArea"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="phpPaymentHistoryBottom"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="shoppingCartAccountSettings"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="getPhrase"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apTplTransactionsGrid"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apExtTransactionItem"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="registrationDone"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apTplTransactionsBottom"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPhpGatewayUpdateSettings"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPaymentGatewaysSimulatePost"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="apPaymentGatewaysValidate"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="boot"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apExtTransactionsData"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplHeaderUserNav"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplHeaderNavBar"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="addListingBottom"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="shcSaveAccountSettings"><![CDATA[]]></hook>
+    </hooks>
+
+    <emails>
+        <email version="3.0.0" key="bwt_create_new_transaction" subject="You added an offline payment request made at {site_name}">
+            <![CDATA[
+Hello {name},
+
+Your request for payment has been generated and is awaiting to be paid at {site_name}.
+
+Order Details:
+{details}
+
+Please make a payment and send a receipt from the {payment_history} section that you may find in your Account Area. Find your unpaid transaction and upload proof of payment.
+
+Recipient's Payment Details:
+{payment_details}
+ ______________________________________
+Thank you,
+{site_name} Administration
+            ]]>
+        </email>
+        <email version="3.0.0" key="bwt_create_new_transaction_admin" subject="A new offline payment request">
+            <![CDATA[
+Hello Administrator,
+
+{buyer} has sent you an offline payment request. Please find the details below.
+
+Order Details:
+{details}
+
+Once the user sends his proof of payment, you will need to mark the transaction as paid and enable the product from the Admin Panel > Monetization > Transactions by clicking the green button in the Actions column.
+______________________________________
+Thank you,
+{site_name}
+            ]]>
+        </email>
+        <email version="3.0.0" key="bwt_create_new_transaction_dealer" subject="A new offline payment request at {site_name}">
+            <![CDATA[
+Hello {name},
+
+{buyer} has sent you an offline payment request. Please find the details below.
+
+Order Details:
+{details}
+
+Once {buyer} sends his proof of payment, you will need to mark the transaction as paid and enable the product from the Offline Payments section that you may find in your Account Area.
+______________________________________
+Thank you,
+{site_name} Administration
+            ]]>
+        </email>
+    </emails>
+
+    <pages>
+        <page key="bwt_print" name="Print payment details" type="system" path="bwt-print" get="" login="1" controller="print" menus="" tpl="1"><![CDATA[]]></page>
+        <page version="3.0.0" key="bwt_requests" name="Offline Payments" type="system" path="bwt-requests" get="" login="1" controller="requests" menus="2" tpl="1"><![CDATA[]]></page>
+    </pages>
+
+    <phrases>
+        <phrase version="3.0.0" key="bwt_order_information" module="common"><![CDATA[Order Details]]></phrase>
+        <phrase version="3.0.0" key="bwt_complete" module="common"><![CDATA[You've added a request for payment.]]></phrase>
+        <phrase version="3.0.0" key="bwt_complete_please_wait" module="common"><![CDATA[Your request for payment has been generated and is awaiting to be paid. Once you make a payment, please send a receipt from [Payment History].]]></phrase>
+        <phrase version="3.0.0" key="bwt_session_finished" module="common"><![CDATA[Your session is over. Please start a new one.]]></phrase>
+        <phrase version="1.1.0" key="bwt_item_id" module="common"><![CDATA[Item ID]]></phrase>
+        <phrase version="3.0.0" key="bwt_by_check_notice" module="common"><![CDATA[You need to send a receipt including other details confirming your payment and a transaction ID after making the payment.]]></phrase>
+        <phrase version="3.0.0" key="bwt_txn_exists" module="common"><![CDATA[You've already placed the order for the item; please pay the order first]]></phrase>
+        <phrase version="3.0.0" key="bwt_payment_details" module="common"><![CDATA[Payment Details]]></phrase>
+        <phrase version="2.0.0" key="bwt_continue" module="frontEnd"><![CDATA[Continue]]></phrase>
+        <phrase version="3.0.0" key="bwt_missing_payment_details" module="common"><![CDATA[Recipient bank details are not available, please contact the Administrator.]]></phrase>
+        <phrase version="1.1.0" key="bwt_view_details" module="common"><![CDATA[View transaction details]]></phrase>
+        <phrase version="3.0.0" key="bwt_no_requests" module="common"><![CDATA[There are no requests for offline payments.]]></phrase>
+        <phrase version="3.0.0" key="bwt_activate" module="common"><![CDATA[Mark Paid]]></phrase>
+        <phrase version="3.0.0" key="bwt_request_activated_successfully" module="common"><![CDATA[You marked the transaction as paid and enabled the product.]]></phrase>
+        <phrase version="3.0.0" key="bwt_request_activated_failed" module="common"><![CDATA[Failed to mark the transaction as paid.]]></phrase>
+        <phrase version="1.1.0" key="bwt_payment_details" module="common"><![CDATA[Payment details]]></phrase>
+        <phrase version="3.0.0" key="bwt_request_details" module="common"><![CDATA[Transaction Details]]></phrase>
+        <phrase version="3.0.0" key="bwt_after_payment" module="frontEnd"><![CDATA[You've sent a request for payment. The Administrator will enable the product you've selected once you send a payment and proof of payment.]]></phrase>
+        <phrase version="3.0.0" key="bwt_activate_success" module="common"><![CDATA[You marked the transaction as paid and enabled the product.]]></phrase>
+        <phrase version="3.0.0" key="ext_bwt_notice_activate" module="ext"><![CDATA[Are you sure you want to mark the transaction as paid and enable the requested product?]]></phrase>
+        <phrase version="3.0.0" key="bwt_click_activate" target="transactions" module="admin" js="1"><![CDATA[Please click the green button in the Actions column to change the status to paid and enable the product.]]></phrase>
+        <phrase version="3.0.0" key="bwt_doc" target="transactions" module="admin" js="1"><![CDATA[Proof of payment]]></phrase>
+        <phrase version="3.0.0" key="bwt_doc_file" target="payment_history" module="common"><![CDATA[Proof of payment]]></phrase>
+        <phrase version="3.0.0" key="bwt_view_doc" target="payment_history" module="common"><![CDATA[Download]]></phrase>
+        <phrase version="3.0.0" key="bwt_file_uploaded" target="payment_history" module="frontEnd"><![CDATA[The file has been uploaded.]]></phrase>
+        <phrase version="3.0.0" key="bwt_file_upload_error" target="payment_history" module="frontEnd"><![CDATA[You haven't uploaded the file or the system failed to upload it.]]></phrase>
+        <phrase version="3.0.0" key="bwt_doc_file_available" target="payment_history" module="frontEnd"><![CDATA[Acceptable file extensions]]></phrase>
+        <phrase version="3.0.0" key="bwt_file_not_selected" target="payment_history" module="frontEnd"><![CDATA[You haven't selected a file.]]></phrase>
+        <phrase version="3.0.0" key="bwt_file_delete_ok" target="payment_history" module="frontEnd"><![CDATA[You've removed the file.]]></phrase>
+        <phrase version="3.0.0" key="bwt_file_delete_error" target="payment_history" module="frontEnd"><![CDATA[Failed to remove the file.]]></phrase>
+        <phrase version="3.0.0" key="bwt_payment_details_notice" target="profile" module="common"><![CDATA[The details above will be offered to users in the checkout step. ]]></phrase>
+        <phrase version="3.0.0" key="bwt_for_example" target="payment_gateways" module="common"><![CDATA[View Screenshot]]></phrase>
+        <phrase version="3.1.0" key="bwt_payment_details_content" target="payment_gateways" module="common"><![CDATA[<strong>There are two ways you can make a payment.</strong><br />1. You may send a money transfer using the details below:<br /><br />Western Union<br />John Dow<br /><br />2. Or you can send a payment to the following bank account:<br />- Bank Name: My Bank<br />- Routing Number: 1234567890<br />- Account Number: 1234567890<br /><br />Note: Make sure you pay a commission.]]></phrase>
+    </phrases>
+
+    <config version="3.0.0" key="bankWireTransfer_lenght_txn_id" name="Transaction ID length" type="text" group="6"><![CDATA[12]]></config>
+    <config version="3.0.0" key="bankWireTransfer_payment_details" name="Recipient payment details" type="textarea" group="6"><![CDATA[]]></config>
+
+    <updates>
+        <update version="1.0.1" files=""><![CDATA[]]></update>
+        <update version="1.0.2" files=""><![CDATA[]]></update>
+        <update version="1.1.0" files="">
+            <![CDATA[]]>
+        </update>
+        <update version="1.1.1" files="">
+            <![CDATA[]]>
+        </update>
+        <update version="1.2.0" files="">
+            <![CDATA[
+                global $rlDb, $reefless;
+
+                $sql = "SELECT `ID` FROM `{db_prefix}payment_gateways` WHERE `Key` = 'bankWireTransfer' LIMIT 1";
+                $payment_gateway = $rlDb->getRow($sql);
+
+                if (empty($payment_gateway['ID'])) {
+                    $gateway_info = array(
+                        'Key' => 'bankWireTransfer',
+                        'Recurring_editable' => 0,
+                        'Plugin' => 'bankWireTransfer',
+                        'Type' => 'offline'
+                    );
+
+                    if ($rlDb->insertOne($gateway_info, 'payment_gateways')) {
+                        if ($GLOBALS['languages']) {
+                            foreach ((array) $GLOBALS['languages'] as $lKey => $lValue) {
+                                if ($rlDb->getOne('ID', "`Key` = 'payment_gateways+name+bankWireTransfer' AND `Code` = '{$lValue['Code']}'", 'lang_keys')) {
+                                    $update_names = array(
+                                        'fields' => array(
+                                            'Value' => 'Bank Transfer Payment'
+                                        ),
+                                        'where' => array(
+                                            'Code' => $lValue['Code'],
+                                            'Key' => 'listing_groups+name+bankWireTransfer'
+                                        )
+                                    );
+                                    $rlDb->updateOne($update_names, 'lang_keys');
+                                } else {
+                                    $insert_names = array(
+                                        'Code' => $lValue['Code'],
+                                        'Module' => 'common',
+                                        'Key' => 'payment_gateways+name+bankWireTransfer',
+                                        'Value' => 'Bank Transfer Payment',
+                                        'Plugin' => 'bankWireTransfer'
+                                    );
+                                    $rlDb->insertOne($insert_names, 'lang_keys');
+                                }
+                            }
+                        }
+                    }
+                }
+                // delete old configs
+                $sql = "DELETE FROM `{db_prefix}config` WHERE `Key` = 'bwt_module' OR `Key` = 'bwt_divider' ";
+                $rlDb->query($sql);
+
+                // delete page
+                $sql = "DELETE FROM `{db_prefix}pages` WHERE `Key` = 'bank_wire_transfer' ";
+                $rlDb->query($sql);
+            ]]>
+        </update>
+        <update version="1.2.1" files=""><![CDATA[]]></update>
+        <update version="1.2.2" files=""><![CDATA[
+            $GLOBALS['rlDb']->query("UPDATE `{db_prefix}lang_keys` SET `Value` = REPLACE(`Value`, '{username}', '{name}') WHERE `Key` = 'email_templates+body+bwt_create_new_transaction_dealer' OR `Key` = 'email_templates+body+bwt_create_new_transaction'");
+        ]]></update>
+        <update version="2.0.0" files="footer.tpl,form.tpl,payment_details_block.tpl,print.inc.php,print.tpl,requests.inc.php,rlBankWireTransfer.class.php,rlBankWireTransferGateway.class.php,rlInstall.class.php,txn_details.tpl"><![CDATA[
+            $update = array(
+                'fields' => array(
+                    'Form_type' => 'custom',
+                    'Required_options' => 'bankWireTransfer_type'
+                ),
+                'where' => array(
+                    'Key' => 'bankWireTransfer'
+                )
+            );
+            $GLOBALS['rlDb']->updateOne($update, 'payment_gateways');
+
+            $GLOBALS['rlDb']->addColumnToTable('Item_data', "Text NOT NULL default ''", 'transactions');
+        ]]></update>
+        <update version="2.1.0" files="requests.inc.php,requests.tpl,rlBankWireTransfer.class.php,rlBankWireTransferGateway.class.php,rlInstall.class.php,type_by_transfer.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'bankWireTransfer');
+            $GLOBALS['rlInstall']->update210();
+        ]]></update>
+        <update version="2.1.1" files=""><![CDATA[]]></update>
+        <update version="2.1.2" files="rlBankWireTransfer.class.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="account_settings.tpl,footer.tpl,form.tpl,payment_details_block.tpl,print.inc.php,print.tpl,request_details.tpl,requests.inc.php,requests.tpl,rlBankWireTransfer.class.php,rlBankWireTransferGateway.class.php,rlInstall.class.php,txn_details.tpl,type_by_transfer.tpl,upload.tpl,static/bankWireTransfer.png,static/icons.svg,admin/payment_gateways.tpl,static/for_example.png,i18n/ru.json"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'bankWireTransfer');
+            $GLOBALS['rlInstall']->update300();
+        ]]></update>
+        <update version="3.1.0" files="admin/payment_gateways.tpl,i18n/ru.json,rlBankWireTransfer.class.php,rlBankWireTransferGateway.class.php,rlInstall.class.php,footer.tpl,static/for_example_ru.png"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'bankWireTransfer');
+            $GLOBALS['rlInstall']->update310();
+        ]]></update>
+        <update version="3.1.1" files="rlBankWireTransfer.class.php,rlBankWireTransferGateway.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'bankWireTransfer');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

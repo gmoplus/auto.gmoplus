@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="compare">
+    <title>Compare listings</title>
+    <description>Allows users to select a few listings and compare them in a table</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.1.2</version>
+    <date>20.08.2009</date>
+    <class>Compare</class>
+    <compatible>4.8.1</compatible>
+
+    <files>
+        <file>block.tpl</file>
+        <file>compare.inc.php</file>
+        <file>compare.tpl</file>
+        <file>details_icon.tpl</file>
+        <file>grid_icon.tpl</file>
+        <file>featured_icon.tpl</file>
+        <file>icon.tpl</file>
+        <file>rlCompare.class.php</file>
+        <file>tab.tpl</file>
+        <file>static/icons.svg</file>
+        <file>static/lib.js</file>
+        <file>static/page-lib.js</file>
+        <file>static/style.css</file>
+        <file>static/page-style.css</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="3.0.0" name="boot"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingNavIcons"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingsModifyGroupMyFavorite"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="listingDetailsNavIcons"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="ajaxRecentlyAddedLoadPre"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="sitemapExcludedPages"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="tplFeaturedItemIcon"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="apPhpConfigBottom"><![CDATA[]]></hook>
+        <hook version="3.1.1" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="3.1.2" name="tplHeaderUserNav"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="compare" name="Compare Listings">
+        <![CDATA[]]>
+        <config version="3.0.0" key="compare_cache" name="Use browser local cache" type="bool"><![CDATA[1]]></config>
+        <config version="3.0.0" key="compare_cache_period" name="Cache period" description="hours" type="text" validate="int"><![CDATA[6]]></config>
+        <config version="3.1.0" key="compare_featured_ad_icon" name="Compare icon on ads in the featured box" type="bool"><![CDATA[1]]></config>
+    </configs>
+
+    <pages>
+        <page key="compare_listings" name="Comparison Table" type="system" path="comparision-tables" controller="compare" menus="2" tpl="1"><![CDATA[]]></page>
+    </pages>
+
+    <blocks>
+        <block key="compare_results" name="My Comparison Tables" side="left" type="smarty" tpl="1"><![CDATA[
+            {include file=$smarty.const.RL_PLUGINS|cat:'compare'|cat:$smarty.const.RL_DS|cat:'block.tpl'}
+        ]]></block>
+    </blocks>
+
+    <phrases>
+        <phrase version="3.1.2" key="compare_add_to_compare" module="common"><![CDATA[Add for comparison]]></phrase>
+        <phrase version="3.1.2" key="compare_comparison_table" module="common"><![CDATA[Comparison Table]]></phrase>
+        <phrase version="3.1.2" key="compare_compare" module="common"><![CDATA[Compare]]></phrase>
+        <phrase version="3.1.2" key="compare_remove_from_compare" module="common"><![CDATA[Remove from comparison]]></phrase>
+        <phrase version="3.1.2" key="compare_listings_to_be_compare" module="common"><![CDATA[Listings to be compared]]></phrase>
+        <phrase version="3.1.2" key="compare_no_listings_to_compare" module="frontEnd"><![CDATA[No listings added to the comparison table.]]></phrase>
+        <phrase version="3.1.2" key="compare_save_results" module="frontEnd"><![CDATA[Save Table]]></phrase>
+        <phrase version="3.1.2" key="compare_title" module="frontEnd"><![CDATA[Title]]></phrase>
+        <phrase version="3.1.2" key="compare_save_as" module="frontEnd"><![CDATA[Save as]]></phrase>
+        <phrase version="3.1.2" key="compare_public" module="frontEnd"><![CDATA[Public]]></phrase>
+        <phrase version="3.1.2" key="compare_private" module="frontEnd"><![CDATA[Private]]></phrase>
+        <phrase version="3.1.2" key="compare_remove_notice" module="frontEnd"><![CDATA[Are you sure you want to remove the listing from the comparison table?]]></phrase>
+        <phrase version="3.1.2" key="compare_fullscreen" module="frontEnd"><![CDATA[Fullscreen]]></phrase>
+        <phrase version="3.1.2" key="compare_default_view" module="frontEnd"><![CDATA[Default view]]></phrase>
+        <phrase version="3.1.2" key="compare_save_table_login_notice" module="frontEnd"><![CDATA[You should have an account and be logged in to save the comparison table.]]></phrase>
+        <phrase version="3.1.2" key="compare_save_completed_notice" module="frontEnd"><![CDATA[You've successfully saved the comparison results as <b>{name}</b>.]]></phrase>
+        <phrase version="3.1.2" key="compare_table_not_found" module="frontEnd"><![CDATA[The requested comparison table hasn't been found.]]></phrase>
+        <phrase version="3.1.2" key="compare_table_private_only" module="frontEnd"><![CDATA[You are not allowed to view private comparison tables.]]></phrase>
+        <phrase version="3.1.2" key="compare_delete_table_notice" module="frontEnd"><![CDATA[Are you sure you want to remove the table?]]></phrase>
+        <phrase version="3.1.2" key="compare_table_removed" module="frontEnd"><![CDATA[You have removed the table.]]></phrase>
+        <phrase version="3.1.2" key="compare_name_error" module="frontEnd"><![CDATA[The value must be at least 3 and more characters long.]]></phrase>
+        <phrase version="3.1.2" key="compare_listings_unavailable" module="frontEnd"><![CDATA[The ads in the table are no longer available; please, select other listings for comparison.]]></phrase>
+        <phrase version="3.1.2" key="compare_no_listings_to_save" module="frontEnd"><![CDATA[You haven't saved any comparison tables.]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="2.0.1"><![CDATA[]]></update>
+        <update version="2.0.2" files="compare.inc.php,static/lib.js,static/style.css,static/rtl.css"><![CDATA[]]></update>
+        <update version="2.0.3" files="static/style.css,rlCompare.class.php,tab.tpl"><![CDATA[]]></update>
+        <update version="2.0.4" files="compare.tpl,static/style.css,static/rtl.css,static/lib.js"><![CDATA[]]></update>
+        <update version="2.0.5" files="icon.tpl,static/style.css,static/lib.js"><![CDATA[]]></update>
+        <update version="2.0.6" files="rlCompare.class.php"><![CDATA[]]></update>
+        <update version="2.0.7" files="static/lib.js"><![CDATA[]]></update>
+        <update version="2.0.8" files="static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="2.1.0" files="rlCompare.class.php,compare.inc.php,static/lib.js,block.tpl,icon.tpl,static/style.css,static/gallery.png"><![CDATA[]]></update>
+        <update version="2.1.1" files="rlCompare.class.php,compare.inc.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="static/style.css,static/lib.js"><![CDATA[]]></update>
+        <update version="2.1.3" files="compare.inc.php,compare.tpl,icon_responsive_42.tpl,rlCompare.class.php,tab.tpl,static/gallery_responsive_42.png,static/gallery_responsive_42_x2.png,static/lib.js,static/style_responsive42.css"><![CDATA[]]></update>
+        <update version="2.1.4" files="static/lib.js"><![CDATA[]]></update>
+        <update version="2.1.5" files="icon_responsive_42.tpl"><![CDATA[]]></update>
+        <update version="2.1.6" files="static/style_responsive42.css"><![CDATA[]]></update>
+        <update version="2.1.7" files="compare.inc.php"><![CDATA[]]></update>
+        <update version="2.1.8" files="compare.inc.php,rlCompare.class.php"><![CDATA[]]></update>
+        <update version="2.1.9" files=""><![CDATA[]]></update>
+        <update version="2.1.10" files="static/lib.js"><![CDATA[]]></update>
+        <update version="2.1.11" files="rlCompare.class.php,static/lib.js"><![CDATA[]]></update>
+        <update version="2.1.12" files="static/style_responsive42.css"><![CDATA[]]></update>
+        <update version="3.0.0" files="static/icons.svg,static/lib.js,static/page-lib.js,static/page-style.css,static/style.css,block.tpl,compare.inc.php,compare.tpl,details_icon.tpl,grid_icon.tpl,rlCompare.class.php,tab.tpl"><![CDATA[]]></update>
+        <update version="3.0.1" files="rlCompare.class.php,static/page-style.css,static/style.css"><![CDATA[]]></update>
+        <update version="3.0.2" files="rlCompare.class.php,tab.tpl,static/page-lib.js,static/page-style.css,static/style.css"><![CDATA[]]></update>
+        <update version="3.1.0" files="details_icon.tpl,grid_icon.tpl,rlCompare.class.php,static/icons.svg,static/lib.js,static/style.css,tab.tpl,featured_icon.tpl,icon.tpl"><![CDATA[]]></update>
+        <update version="3.1.1" files="rlCompare.class.php,tab.tpl,block.tpl,static/style.css"><![CDATA[]]></update>
+        <update version="3.1.2" files="compare.tpl,i18n/ru.json,icon.tpl,rlCompare.class.php,static/page-style.css,static/style.css,tab.tpl"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

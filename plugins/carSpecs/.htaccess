@@ -1,0 +1,15 @@
+Order deny,allow
+Deny from all
+
+#<Files "import.php">
+#  Allow from all
+#</Files>
+
+<Files "export.php">
+  Allow from all
+</Files>
+
+# allow all external requests for php|png|gif
+<FilesMatch "request\.php$">
+  ALLOW FROM ALL
+</FilesMatch>

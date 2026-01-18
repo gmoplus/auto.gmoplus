@@ -1,0 +1,82 @@
+/*** ADMIN STYLES ***/
+
+#group_booking_rates table.form div.list-table {
+    display: table;
+}
+#group_booking_rates table.form div.header > div {
+    text-transform: uppercase;
+    border-bottom: 2px #e9e9e9 solid;
+}
+#group_booking_rates table.form div.row {
+    height: 30px;
+}
+#group_booking_rates table.form div.row > div {
+    padding-top: 10px;
+}
+#group_booking_rates table.form div.header, #group_booking_rates table.form div.row {
+    display: table-row;
+}
+#group_booking_rates table.form div.header > div, #group_booking_rates table.form div.row > div {
+    min-width: 130px;
+    display: table-cell;
+}
+#group_booking_rates table.form #booking_rate_ranges_list input {
+    width: 70px;
+}
+#group_booking_rates table.form div.row img.qtip {
+    vertical-align: text-bottom;
+}
+#group_booking_rates table.form #rrange_regular div:nth-child(1),
+#group_booking_rates table.form #rrange_regular div:nth-child(3) {
+    font-weight: 600;
+}
+.manage-photo.light-inputs.admin .two-inline > *:first-child {
+    float: right;
+}
+.manage-photo.light-inputs.admin .two-inline > *:first-child input {
+    margin-top: 0;
+}
+.manage-photo.light-inputs.admin .two-inline > *:last-child {
+    overflow: hidden;
+}
+.modal-window .prompt.admin {
+    padding: 20px 0 0 0;
+}
+.modal-window .prompt.admin input {
+    margin: 0 15px 0 0;
+}
+.modal-window .prompt.admin .close {
+    color: #e44848 !important;
+}
+#group_booking_rates #availability, #group_booking_rates #rates {
+    display: table-row;
+}
+#group_booking_rates #availability.hide, #group_booking_rates #rates.hide {
+    display: none;
+}
+#group_booking_rates div.name {
+    display: table-cell;
+}
+#group_booking_rates .availability-field-container > div {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+#group_booking_rates .availability-field-container > div > div {
+    min-width: 100px;
+}
+#group_booking_rates .availability-field-container > div > div:not(:first-child) {
+    padding-right: 10px;
+}
+#group_booking_rates .rates-field-container .rates {
+    margin-bottom: 10px;
+}
+#group_booking_rates .rates-field-container input, #group_booking_rates .rates-field-container select {
+    margin-right: 10px;
+}
+#group_booking_rates .rates-field-container select.hourly-rates-duration,
+#group_booking_rates .rates-field-container select[id*=hourly-rate-currency-] {
+    width: 70px;
+}
+
+/*** ADMIN STYLES END ***/

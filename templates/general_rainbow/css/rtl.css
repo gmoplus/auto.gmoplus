@@ -1,0 +1,295 @@
+/* RTL direction styles */
+.fleft {
+    float: right; /* reversed */
+}
+.fright {
+    float: left; /* reversed */
+}
+.ralign {
+    text-align: left !important; /* reversed */
+}
+.lalign {
+    text-align: right !important; /* reversed */
+}
+.red.margin {
+    padding-left: 0 !important;
+    padding-right: 10px !important;
+}
+img.remove {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+body {
+    direction: rtl;
+}
+
+body.static-page section#controller_area ul, 
+body.static-page section#controller_area ol,
+section.side_block.html-block ul, 
+section.side_block.html-block ol,
+section.content_block.html-block ul, 
+section.content_block.html-block ol {
+	padding: 10px 40px 10px 0;
+}
+
+select {
+    background-position: 10px center;
+    padding-right: 10px;
+    padding-left: 28px;
+}
+
+input[type="number"] {
+    background-position: left -1319px;
+}
+
+input[type="checkbox"]:not(.default) + label > span,
+input[type="radio"]:not(.default) + label > span {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+/* user navbar */
+div.top-navigation > div > span.circle:first-of-type {
+    margin-left: 0;
+    margin-right: -12px;
+}
+.circle > .default:after {
+    margin-left: 0;
+    margin-right: 10px;
+}
+/* user navbar end */
+
+.circle > .default:after {
+    margin-left: 0;
+    margin-right: 10px;
+}
+.circle_opened > .content {
+    left: auto;
+    right: 0;
+}
+div.fright > .circle {
+    float: right;
+}
+div.fright > .circle_opened > .content {
+    right: auto;
+    left: 0;
+}
+.user-navbar .circle_opened > .content {
+    right: auto;
+    left: 0;
+}
+#user-navbar ul > li {
+    padding-right: 0;
+    padding-left: 25px;
+}
+/*** HORIZONTAL SEARCH ***/
+
+/*** PAGE CONTENT ***/
+.newsletter .submit-cell input#newsletter_email {
+    background: url("../img/email.svg") right 12px no-repeat white;
+    padding-left: 10px;
+    padding-right: 44px;
+}
+
+/* sidebar search block */
+/* two */
+.search-item.two-fields > select,
+.search-item.two-fields > input[type="text"] {
+    margin-right: 0;
+    margin-left: 4%;
+}
+.search-item.two-fields > select:last-child,
+.search-item.two-fields > input[type="text"]:last-child {
+    margin-left: 0;
+}
+/* three */
+.search-item.three-field > select {
+    margin-right: 0;
+    margin-left: 4%;
+}
+.search-item.three-field > input {
+    margin-right: 0;
+    margin-left: 4%;
+}
+.search-item.three-field > *:last-child {
+    margin-left: 0;
+}
+.search-button > a {
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+/* checkbox */
+.search-item.checkbox-field > .custom-input > label {
+    padding-right: 0;
+    padding-left: 5px;
+}
+/*** PAGE CONTENT END ***/
+
+/*** PAGE FOOTER ***/
+.footer-data .icons {
+    text-align: left;
+}
+body.search-on-map-page .footer-data a {
+    margin-left: 0;
+    margin-right: 5px;
+}
+.map-listing .favorite {
+    left: auto;
+    right: 15px;
+}
+@media screen and (max-width: 767px) {
+    .footer-data .icons {
+        text-align: right;
+    }
+}
+/*** PAGE FOOTER END ***/
+
+/*** PAGINATION ***/
+ul.pagination {
+    text-align: left;
+}
+ul.pagination > li.navigator a {
+    padding-right: 15px;
+    padding-left: 13px;
+}
+
+.h1-nav nav {
+    float: left;
+}
+/*** PAGINATION END ***/
+
+/*** MISCELLANEOUS ***/
+
+div.textarea_counter_default,
+div.textarea_counter_warning {
+    text-align: left;
+}
+/* enlarge media */
+span.media-enlarge {
+    right: auto;
+    left: 0;
+}
+span.media-enlarge > span {
+    left: auto;
+    right: 14px;
+}
+/* enlarge media end */
+
+/* close bars */
+div.close-black {
+    right: auto;
+    left: 0;
+}
+div.close-black > div {
+    right: auto;
+    left: 14px;
+}
+
+div.notification div.close-black {
+    right: auto;
+    left: 3px;
+}
+/* close bars end */
+
+span.pills > label {
+    border-right: 0;
+    border-left: 2px var(--header-background-color) solid;
+}
+span.pills > label:last-child {
+    border: 0;
+}
+/*** MISCELLANEOUS END ***/
+
+/*** ALPHABETIC SEARCH ***/
+div.alphabetic-saerch > div {
+    margin: 2px 2px 0 0;
+}
+div.alphabetic-saerch > div > a {
+    margin: -2px -2px 0 0;
+}
+/*** ALPHABETIC SEARCH END ***/
+
+/*** SUBMIT FORM ELEMENTS ***/
+div.submit-cell > div.name {
+    padding: 0 0 0 10px;
+}
+
+div.password_strength {
+    padding: 0 10px 0 0;
+}
+
+/* inline */
+.field.inline-fields > span.custom-input {
+    padding: 0 0 0 30px;
+}
+/* two */
+.field.two-fields > select,
+.field.two-fields > input[type="text"] {
+    margin-right: 0;
+    margin-left: 4%;
+}
+.field.two-fields > select:last-child,
+.field.two-fields > input[type="text"]:nth-child(2n) {
+    margin-left: 0;
+}
+/* combo */
+.field.combo-field > input {
+    margin-right: 0;
+    margin-left: 20px;
+}
+/* three */
+.field.three-field > select {
+    margin-right: 0;
+    margin-left: 4%;
+}
+.field.three-field > input {
+    margin-right: 0;
+    margin-left: 4%;
+}
+.field.three-field > *:last-child {
+    margin-left: 0;
+}
+.form-buttons.right {
+    text-align: left;
+}
+.form-buttons.form a {
+    text-align: left;
+}
+
+.search-form-cell > div > div {
+    display: flex;
+}
+.search-form-cell.two-fields > div > div select:last-of-type {
+    margin-left: 0;
+}
+.search-form-cell.three-field > div > div > *:not(:last-child) {
+    margin-right: 0;
+    margin-left: 3%;
+}
+.search-form-cell.two-fields > div > div select {
+    margin-right: 0;
+    margin-left: 3%;
+}
+.search-form-cell.two-fields > div > div select:last-of-type {
+    margin-left: 0;
+}
+
+/* qtip */
+img.qtip {
+    margin: -3px 10px 0 0;
+}
+/* qtip end */
+
+/* multilingual tabs */
+div.scrolling div.left {
+    left: auto;
+    right: 0;
+}
+div.scrolling div.right {
+    right: auto;
+    left: 0;
+}
+/* multilingual tabs end */
+/*** SUBMIT FORM ELEMENTS END ***/

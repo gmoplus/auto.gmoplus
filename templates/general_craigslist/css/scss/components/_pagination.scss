@@ -1,0 +1,96 @@
+/*** Pagination ***/
+ul.pagination {
+  width: 100%;
+  margin: ($spacer * 3) 0 ($spacer * 3);
+  text-align: center;
+
+  > li {
+    display: inline-block;
+    vertical-align: top;
+    height: map_get($tap-zone, lg);
+
+    @include respond_to(tablet) {
+      height: map_get($tap-zone, sm);
+    }
+
+    &.transit {
+      padding: 0 20px;
+    }
+
+    &.icon {
+      > a {
+        position: relative;
+        display: inline-block;
+
+        @include tap_square;
+
+        @include icon_hover;
+
+        &:before,
+        &:after {
+          content: "";
+          width: 7px;
+          height: 12px;
+          background: url(../img/gallery.png) right -158px no-repeat;
+
+          @include absolute_center(7px, 12px);
+
+          @include gallery_retina;
+        }
+
+        &:after {
+          content: none;
+        }
+      }
+    }
+
+    @if $isLtr {
+      &.prev {
+        > a {
+          &:before {
+            @include transform(scaleX(-1));
+          }
+        }
+      }
+    }
+    @else {
+      &.next {
+        > a {
+          &:before {
+            @include transform(scaleX(-1));
+          }
+        }
+      }
+    }
+
+    &.first {
+      > a {
+        &:before,
+        &:after {
+          @if $isLtr {
+            @include transform(scaleX(-1));
+          }
+
+          margin-#{$space}: -2px;
+        }
+
+        &:after {
+          margin-#{$space}: -9px;
+          content: "";
+        }
+      }
+    }
+
+    > a {
+      display: block;
+      position: relative;
+      font-size: 28px;
+      line-height: 36px;
+    }
+
+    > span {
+      opacity: 0.7;
+      display: inline-block;
+    }
+  }
+}

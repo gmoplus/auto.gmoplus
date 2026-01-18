@@ -1,0 +1,21 @@
+{
+    "pages+name+faqs": "ЧаВо",
+    "pages+title+faqs": "ЧаВо",
+    "blocks+name+faqs_box": "ЧаВо",
+    "config_groups+name+faqs": "ЧаВо",
+    "config+name+faqs_block_in_block": "Количество ЧаВо в блоке",
+    "config+name+faqs_block_content_length": "Количество знаков в ЧаВо в блоке",
+    "config+name+faqs_at_page": "Количество ЧаВо на странице",
+    "config+name+faqs_page_content_length": "Количество знаков в ЧаВо на странице",
+    "faq_add_faqs": "Добавить ЧаВо",
+    "faq_edit_faqs": "Редактировать ЧаВо",
+    "faq_faqs_list": "Все ЧаВо",
+    "faq_page_url": "URL адрес страницы",
+    "faq_faqs_added": "ЧаВо был успешно добавлен.",
+    "faq_faqs_edited": "ЧаВо был успешно отредактирован.",
+    "faq_deleted": "ЧаВо был успешно удален.",
+    "ext_faqs_manager": "Менеджер ЧаВо",
+    "no_faqs": "На сайте отсутствуют ЧаВо.",
+    "back_to_faqs": "Вернуться на страницу с ЧаВо.",
+    "view_all_faqs": "Просмотреть все ЧаВо"
+}

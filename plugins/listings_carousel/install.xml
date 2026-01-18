@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="listings_carousel">
+    <title>Listing Carousel</title>
+    <description>Scrolls premium, popular, recently added and random ads in a separate content box</description>
+    <author>Dmitry Azavanichus</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>4.1.0</version>
+    <date>20.02.2012</date>
+    <controller>listings_carousel</controller>
+    <class>ListingsCarousel</class>
+    <compatible>4.9.1</compatible>
+
+    <files>
+        <file>i18n/ru.json</file>
+        <file>rlListingsCarousel.class.php</file>
+        <file>carousel.block.tpl</file>
+        <file>static/carousel.js</file>
+        <file>admin/listings_carousel.tpl</file>
+        <file>admin/listings_carousel.inc.php</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="3.3.0" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="init"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="specialBlock"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="listingsAfterSelectFeatured"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="listingsModifyWhereFeatured"><![CDATA[]]></hook>
+        <hook version="4.0.0" name="tplHeader"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="4.0.0" key="listings_carousel_direction" module="admin" target="listings_carousel" js="1"><![CDATA[Direction]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_disabled_box" module="admin" target="listings_carousel"><![CDATA[Select a box for carousel (greyed out boxes cannot be used for specified direction)]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_number" module="admin" target="listings_carousel" js="1"><![CDATA[Total listings]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_delay" module="admin" target="listings_carousel" js="1"><![CDATA[Delay]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_per_slide" module="admin" target="listings_carousel" js="1"><![CDATA[Listings per Slide]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_visible" module="admin" target="listings_carousel" js="1"><![CDATA[Visible listings]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_vertical" module="admin" target="listings_carousel"><![CDATA[Vertical]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_horizontal" module="admin" target="listings_carousel"><![CDATA[Horizontal]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_box" module="admin" target="listings_carousel" js="1"><![CDATA[Carousel box]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_round" module="admin" target="listings_carousel"><![CDATA[Cyclic rotation]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_in_sec" module="admin" target="listings_carousel"><![CDATA[in seconds, 0 - disable auto scrolling]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_block_added" module="admin" target="listings_carousel"><![CDATA[You’ve successfully added a carousel.]]></phrase>
+        <phrase version="4.0.0" key="listings_carousel_block_edited" module="admin" target="listings_carousel"><![CDATA[You’ve successfully edited the carousel.]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="3.0.1" files="static/carousel.js,carousel.block.tpl,rlListingsCarousel.class.php"><![CDATA[]]></update>
+        <update version="3.0.2" files="admin/listings_carousel.tpl,static/carousel.js,carousel.block.tpl,carousel.listing.tpl,rlListingsCarousel.class.php"><![CDATA[]]></update>
+        <update version="3.1.0" files="admin/listings_carousel.tpl,static/carousel.js,carousel.block.tpl,carousel.listing.tpl,rlListingsCarousel.class.php"><![CDATA[]]></update>
+        <update version="3.1.1" files="static/carousel.js,carousel.block.tpl,rlListingsCarousel.class.php"><![CDATA[]]></update>
+        <update version="3.1.2" files="carousel.block.tpl,carousel.listing.tpl"><![CDATA[]]></update>
+        <update version="3.1.3" files="rlListingsCarousel.class.php"><![CDATA[]]></update>
+        <update version="3.1.4" files="admin/listings_carousel.tpl"><![CDATA[]]></update>
+        <update version="3.1.5" files="rlListingsCarousel.class.php"><![CDATA[]]></update>
+        <update version="3.2.0" files="admin/listings_carousel.tpl,admin/listings_carousel.inc.php,rlListingsCarousel.class.php,static/carousel_44.css,static/carousel_44.js,static/carousel_45.css,static/carousel_45.js,carousel.block_44.tpl"><![CDATA[]]></update>
+        <update version="3.2.1" files=""><![CDATA[]]></update>
+        <update version="3.3.0" files="admin/listings_carousel.tpl,admin/listings_carousel.inc.php,rlListingsCarousel.class.php,static/carousel.js,carousel.block.tpl,.htaccess,admin/.htaccess,static/.htaccess"><![CDATA[]]></update>
+        <update version="3.4.0" files="static/carousel.js,rlListingsCarousel.class.php,admin/listings_carousel.inc.php"><![CDATA[]]></update>
+        <update version="3.4.1" files="admin/listings_carousel.inc.php,admin/listings_carousel.tpl"><![CDATA[]]></update>
+        <update version="4.0.0" files="carousel.block.tpl,rlListingsCarousel.class.php,static/carousel.js,admin/listings_carousel.inc.php,admin/listings_carousel.tpl,i18n/ru.json"><![CDATA[]]></update>
+        <update version="4.0.1" files="carousel.block.tpl,rlListingsCarousel.class.php,static/carousel.js"><![CDATA[]]></update>
+        <update version="4.0.2" files="rlListingsCarousel.class.php"><![CDATA[]]></update>
+        <update version="4.0.3" files="carousel.block.tpl"><![CDATA[]]></update>
+        <update version="4.1.0" files="static/carousel.js,rlListingsCarousel.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

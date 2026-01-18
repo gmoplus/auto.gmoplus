@@ -1,0 +1,119 @@
+{
+    "listing_type_name": "Events",
+    "listing_type_name_ru": "События",
+        "categories": [
+        {
+            "en": "Art / Exhibition",
+            "ru": "Искусство / Выставки"
+        },{
+            "en": "Comedy / Stand Up",
+            "ru": "Комедии / Стендап"
+        },{
+            "en": "Conferences",
+            "ru": "Конференции"
+        },{
+            "en": "Dance",
+            "ru": "Танцы"
+        },{
+            "en": "Fair & Show",
+            "ru": "Ярмарки и показы"
+        },{
+            "en": "Family Activity",
+            "ru": "Семья"
+        },{
+            "en": "Food and Drink",
+            "ru": "Еда и напитки"
+        },{
+            "en": "Festival",
+            "ru": "Фестивали"
+        },{
+            "en": "Networking Events",
+            "ru": "Нетворкинг"
+        },{
+            "en": "Movie",
+            "ru": "Фильмы"
+        },{
+            "en": "Music",
+            "ru": "Музыка"
+        },{
+            "en": "Product Launches",
+            "ru": "Запуск продуктов"
+        },{
+            "en": "Seminars",
+            "ru": "Семинары"
+        },{
+            "en": "Sightseeing Tour",
+            "ru": "Туры"
+        },{
+            "en": "Special Event",
+            "ru": "Особые события"
+        },{
+            "en": "Sport",
+            "ru": "Спорт"
+        },{
+            "en": "Theatre",
+            "ru": "Театр"
+        }
+    ],
+    "listing_fields": [
+        {
+            "Key": "event_title",
+            "Type": "text",
+            "Values": "255",
+            "Default": "",
+            "Details_page": "1",
+            "Condition": "",
+            "Field_type": "VARCHAR(255) NOT NULL"
+        },{
+            "Key": "event_type",
+            "Type": "radio",
+            "Values": "1,2",
+            "Default": "1",
+            "Details_page": "0",
+            "Condition": "",
+            "Field_type": "VARCHAR(10) NOT NULL DEFAULT '1' NOT NULL"
+        },{
+            "Key": "event_date",
+            "Type": "date",
+            "Values": "",
+            "Default": "multi",
+            "Details_page": "1",
+            "Condition": "",
+            "Field_type": "date NOT NULL"
+        },{
+            "Key": "event_desc",
+            "Type": "textarea",
+            "Values": "1500",
+            "Default": "",
+            "Details_page": "1",
+            "Condition": "html",
+            "Field_type": "TEXT NOT NULL"
+        },{
+            "Key": "event_price_type",
+            "Type": "bool",
+            "Values": "",
+            "Default": "1",
+            "Details_page": "1",
+            "Condition": "",
+            "Field_type": "ENUM('0','1') NULL DEFAULT '0'"
+        }
+    ],
+    "event_rates": [
+        {
+            "en": "Single Price",
+            "ru": "Единая цена"
+        },{
+            "en": "Child",
+            "ru": "Детский"
+        },{
+            "en": "Adult",
+            "ru": "Взрослый"
+        },{
+            "en": "Group up to 5",
+            "ru": "Группа до 5"
+        },{
+            "en": "Group up to 10",
+            "ru": "Групп до 10"
+        }
+    ]
+}

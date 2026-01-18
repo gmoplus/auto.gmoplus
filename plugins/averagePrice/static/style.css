@@ -1,0 +1,60 @@
+/*** Average Price styles ***/
+
+.ap-container {
+    margin-top: 20px;
+}
+.ap-absolute {
+    position: relative;
+    padding: 50px 0 0 0;
+}
+.ap-container.without-footer {
+    margin-bottom: 30px;
+}
+.ap-graph {
+    width: 100%;
+    vertical-align: top;
+}
+.ap-price {
+    padding: 10px 0 20px;
+}
+.ap-absolute:before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    border: 1px #444 solid;
+    left: 50%;
+    bottom: -5px;
+    margin-left: -5px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px #ccc;
+}
+.ap-listing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.ap-listing-cont {
+    padding-left: 10px;
+    margin-top: -3px;
+}
+.ap-listing-cont.higher {
+    margin-left: -100px;
+    text-align: right;
+    float: left;
+}
+.ap-listing-line {
+    position: absolute;
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    background: #444;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(54,54,54,1) 100%);
+}
+.ap-caption {
+    font-size: 1.063rem;
+}
+
+/*** Average Price styles end ***/

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="xmlFeeds">
+    <title>XML Import/Export</title>
+    <description>The Plugin allows you to both import and export XML and JSON Feeds from other sites and resources using advanced mapping tools</description>
+    <author>Mike Fletcher</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.6.1</version>
+    <date>1.04.2012</date>
+    <controller>xml_feeds</controller>
+    <class>XmlFeeds</class>
+    <compatible>4.8.2</compatible>
+
+    <notices>
+        <notice><![CDATA[To learn how to use the plugin please download the <a target="_blank" href="http://www.flynax.com/files/manuals/XML%20Feeds%20Speed%20Configuration%20Guide.pdf">XML Feed Import/Export Plugin Guide</a>]]></notice>
+        <notice version="3.2.0"><![CDATA[To learn how to apply multilingual descriptions please check<a target="_blank" href="http://forum.flynax.com/showthread.php?4521-XML-Feeds-MultiLingual-Descriptions-Guide"> XML Feeds Multilingual Description Guide</a>]]></notice>
+    </notices>
+
+    <files>
+        <file>admin/.htaccess</file>
+        <file>admin/xml_feeds.inc.php</file>
+        <file>admin/xml_feeds.tpl</file>
+        <file>admin/import_frame.tpl</file>
+        <file>static/.htaccess</file>
+        <file>static/style.css</file>
+        <file>static/import_progress.css</file>
+        <file>static/gallery.png</file>
+        <file>static/examples/path-to-field-data.png</file>
+        <file>vendor/autoload.php</file>
+        <file>user_feeds.inc.php</file>
+        <file>user_feeds.tpl</file>
+        <file>rlXmlMapping.class.php</file>
+        <file>rlXmlImport.class.php</file>
+        <file>rlXmlFeeds.class.php</file>
+        <file>rlXmlExport.class.php</file>
+        <file>import.php</file>
+        <file>export.php</file>
+        <file>cron_photos.php</file>
+        <file>control.inc.php</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook name="apTplHeader" version="3.2.0"><![CDATA[]]></hook>
+        <hook name="apTplListingsSearch2" version="3.2.0"><![CDATA[]]></hook>
+        <hook name="apExtListingsFilters" version="3.2.0"><![CDATA[]]></hook>
+        <hook name="apTplListingsRemoteFilter" version="3.2.0"><![CDATA[]]></hook>
+        <hook name="apPhpListingsBottom" version="3.2.0"><![CDATA[]]></hook>
+        <hook name="apExtListingsSql" version="3.6.1"><![CDATA[]]></hook>
+        <hook name="cronAdditional" version="3.2.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="ext_xml_feeds_manager" module="ext"><![CDATA[Feed Manager]]></phrase>
+        <phrase key="ext_xml_formats_manager" module="ext"><![CDATA[Format Manager]]></phrase>
+        <phrase key="ext_notice_delete_feed" module="ext"><![CDATA[Are you sure you want to remove the feed?]]></phrase>
+        <phrase version="3.5.0" key="xf_add_feed" module="common"><![CDATA[Add a Feed]]></phrase>
+        <phrase key="xf_add_format" module="admin"><![CDATA[Add a Format]]></phrase>
+        <phrase key="xf_edit_feed" module="admin"><![CDATA[Edit Feed]]></phrase>
+        <phrase key="xf_edit_format" module="admin"><![CDATA[Edit Format]]></phrase>
+        <phrase key="xf_manage_feeds" module="admin"><![CDATA[Manage Feeds]]></phrase>
+        <phrase key="xf_manage_formats" module="admin"><![CDATA[Manage Formats]]></phrase>
+        <phrase key="xf_format" module="common"><![CDATA[Feed format]]></phrase>
+        <phrase key="xf_notice_url_exist" module="common"><![CDATA[A feed with the same URL already exists.]]></phrase>
+        <phrase key="xf_notice_url_incorrect" module="admin"><![CDATA[The URL is incorrect.]]></phrase>
+        <phrase key="xf_notice_format_empty" module="admin"><![CDATA[Please select a format for the feed.]]></phrase>
+        <phrase key="xf_default_category" module="admin"><![CDATA[Default category]]></phrase>
+        <phrase key="xf_statistics" module="admin"><![CDATA[Manage feed]]></phrase>
+        <phrase key="xf_import" module="admin"><![CDATA[Proceed]]></phrase>
+        <phrase key="xf_stats_feed" module="admin"><![CDATA[XML feed name]]></phrase>
+        <phrase key="xf_stats_date" module="admin"><![CDATA[Importing date]]></phrase>
+        <phrase key="xf_stats_updated" module="admin"><![CDATA[Listings updated]]></phrase>
+        <phrase key="xf_stats_inserted" module="admin"><![CDATA[Listings imported]]></phrase>
+        <phrase key="xf_stats_deleted" module="admin"><![CDATA[Listings removed]]></phrase>
+        <phrase key="xf_clear_statistics" module="admin"><![CDATA[Clear Stats]]></phrase>
+        <phrase key="xf_stats_cleared" module="admin"><![CDATA[You've successfully cleared the stats.]]></phrase>
+        <phrase key="xf_view_listings" module="admin"><![CDATA[View Imported Ads]]></phrase>
+        <phrase key="xf_run_import" module="admin"><![CDATA[Run Import]]></phrase>
+        <phrase key="xf_filter_by_feed" module="admin"><![CDATA[XML feed]]></phrase>
+        <phrase key="xf_build_mapping" module="admin"><![CDATA[Map Fields & Options]]></phrase>
+        <phrase version="3.4.0" key="xf_xpath" module="admin" target="xml_feeds"><![CDATA[Path to data fields]]></phrase>
+        <phrase key="xf_map_example_value" module="admin"><![CDATA[Sample value]]></phrase>
+        <phrase key="xf_no_stats" module="admin"><![CDATA[There are no stats.]]></phrase>
+        <phrase key="xf_export" module="admin"><![CDATA[Export]]></phrase>
+        <phrase key="xf_export_type" module="admin"><![CDATA[Export from]]></phrase>
+        <phrase key="xf_etype_one" module="admin"><![CDATA[A user]]></phrase>
+        <phrase key="xf_etype_all" module="admin"><![CDATA[All users]]></phrase>
+        <phrase key="xf_htrule_edit" module="admin"><![CDATA[Edit Rule]]></phrase>
+        <phrase key="xf_rewrite_hint" module="admin"><![CDATA[Rewrite rule is optional, and is uniform to all export URLs.]]></phrase>
+        <phrase key="xf_rewrite_rule" module="admin"><![CDATA[.htaccess rewrite rule template]]></phrase>
+        <phrase key="xf_export_limit" module="admin"><![CDATA[Number of exported ads]]></phrase>
+        <phrase key="xf_add_mapping_item" module="admin"><![CDATA[Add a Mapping Item]]></phrase>
+        <phrase key="xf_listingfields_label" module="admin"><![CDATA[Regular fields]]></phrase>
+        <phrase key="xf_sysfields_label" module="admin"><![CDATA[System fields]]></phrase>
+        <phrase key="xf_remote_field" module="admin"><![CDATA[Source field]]></phrase>
+        <phrase key="xf_local_field" module="admin"><![CDATA[Target field]]></phrase>
+        <phrase key="xf_remote_data" module="admin"><![CDATA[Source data]]></phrase>
+        <phrase key="xf_local_data" module="admin"><![CDATA[Target data]]></phrase>
+        <phrase key="xf_feed_url" module="common"><![CDATA[XML feed URL]]></phrase>
+        <phrase key="xf_configure_formats" module="frontEnd" target="user_feeds"><![CDATA[XML feed format is not yet configured; please contact the Administrator.]]></phrase>
+        <phrase key="xf_feed_submitted" module="frontEnd"><![CDATA[You've successfully submitted a feed.]]></phrase>
+        <phrase key="xf_help_no_format" module="admin"><![CDATA[To import a feed, you have to add a format first. Go to Manage Formats to add a format.]]></phrase>
+        <phrase key="xf_help_export" module="admin"><![CDATA[Here you can build a URL for an exported feed.]]></phrase>
+        <phrase key="xf_help_select_field_mapping" module="admin"><![CDATA[You need to link source data items to corresponding target data items.]]></phrase>
+        <phrase version="3.1.0" key="xf_clear_mapping" module="admin"><![CDATA[Clear Mapping Manager]]></phrase>
+        <phrase key="xf_progress_start" module="admin"><![CDATA[Importing in process]]></phrase>
+        <phrase key="xf_progress_imported" module="admin"><![CDATA[The feed has been successfully imported.]]></phrase>
+        <phrase key="xf_progress_fail" module="admin"><![CDATA[Importing the feed failed due to the following reasons:]]></phrase>
+        <phrase version="3.1.0" key="xf_progress_mapping" module="admin"><![CDATA[The mapping manager has been successfully populated with source fields.]]></phrase>
+        <phrase key="xf_progress_ad_inserted" module="admin"><![CDATA[Listing ID=[id] imported]]></phrase>
+        <phrase key="xf_progress_ad_updated" module="admin"><![CDATA[Listing ID=[id] updated]]></phrase>
+        <phrase key="xf_progress_map_item_added" module="admin"><![CDATA[{xml_value} mapping item has been added to the {xml_field} field.]]></phrase>
+        <phrase version="3.1.0" key="xf_progress_map_field_added" module="admin"><![CDATA[{xml_field} field has been added to mapping manager.]]></phrase>
+        <phrase key="xf_progress_category_not_found" module="admin"><![CDATA[Failed to find {listing_cat_data} in categories of the {ckey} level on Flynax site.]]></phrase>
+        <phrase key="xf_progress_category_item_added" module="admin"><![CDATA[{listing_cat_data} mapping item has been added to category field.]]></phrase>
+        <phrase key="xf_progress_no_account" module="admin"><![CDATA[Importing failed: No account found.]]></phrase>
+        <phrase key="xf_progress_no_ref" module="admin"><![CDATA['Flynax feed reference id’ field  is not linked; failed to import the listing.]]></phrase>
+        <phrase key="xf_rewrite_success" module="admin"><![CDATA[You've successfully applied a rewrite rule to .htaccess.]]></phrase>
+        <phrase key="xf_progress_xpath_fail" module="admin"><![CDATA[The path to listing fields is incorrect; please check it again in the XML feed.]]></phrase>
+        <phrase key="xf_progress_file_fail" module="admin"><![CDATA[The file cannot be accessed or it doesn't exist.]]></phrase>
+        <phrase key="xf_progress_map_item_not_mapped" module="admin"><![CDATA[You need to map {xml_field} > {xml_value} data item to corresponding local value.]]></phrase>
+        <phrase key="xf_format_for" module="admin"><![CDATA[Format is for]]></phrase>
+        <phrase key="xf_import_label" module="admin"><![CDATA[Import]]></phrase>
+        <phrase key="xf_export_label" module="admin"><![CDATA[Export]]></phrase>
+        <phrase key="xf_read_method" module="admin"><![CDATA[File reading method]]></phrase>
+        <phrase key="xf_read_hint" module="admin"><![CDATA[You can change it if you have difficulty accessing the file when importing.]]></phrase>
+        <phrase key="xf_read_type_direct" module="admin"><![CDATA[Direct]]></phrase>
+        <phrase key="xf_read_type_copy" module="admin"><![CDATA[Copy the file and proceed to importing (default)]]></phrase>
+        <phrase key="xf_read_type_stream_copy" module="admin"><![CDATA[Copy the file using stream-to-stream method]]></phrase>
+        <phrase key="xf_read_auth" module="admin"><![CDATA[HTTP authorization]]></phrase>
+        <phrase key="xf_auth_details" module="admin"><![CDATA[HTTP authorization details]]></phrase>
+        <phrase key="xf_progress_file_copied" module="admin"><![CDATA[The file has been successfully copied; file size: {filesize} bytes.]]></phrase>
+        <phrase key="xf_progress_file_copied_stream" module="admin"><![CDATA[The file has been successfully copied using stream-to-stream method; file size: {filesize} bytes.]]></phrase>
+        <phrase key="xf_progress_file_expired" module="admin"><![CDATA[The local file is out of date; trying to get a recent copy.]]></phrase>
+        <phrase key="xf_progress_no_local_file" module="admin"><![CDATA[There is no file; trying to get a recent copy.]]></phrase>
+        <phrase key="xf_progress_local_file_alive" module="admin"><![CDATA[The local file is up to date; processing it.]]></phrase>
+        <phrase key="xf_progress_file_copy_failed" module="admin"><![CDATA[Failed to copy the XML file; trying to read the file directly.]]></phrase>
+        <phrase key="xf_progress_account_assigned" module="admin"><![CDATA[Listing has been assigned to {account} based on {field} data.]]></phrase>
+        <phrase key="xf_help_xml_ref_mapping" module="admin"><![CDATA[XML Reference ID field needs to be mapped. Please select a corresponding field, which is a unique listing identifier field. Otherwise you won't be able to import ads.]]></phrase>
+        <phrase key="xf_progress_deleted" module="admin"><![CDATA[{count} listings removed]]></phrase>
+        <phrase key="xf_mapping_default" module="admin"><![CDATA[Default (It will be used if a value is missing in XML)]]></phrase>
+        <phrase version="3.0.0" key="xf_copy_mapping_item" module="ext"><![CDATA[Copy the item to the site]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_photos" module="admin"><![CDATA[Photos]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_type" module="admin"><![CDATA[System XML field]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_dealer_id" module="admin"><![CDATA[Dealer ID]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_dealer_name" module="admin"><![CDATA[Dealer name]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_dealer_email" module="admin"><![CDATA[Dealer email]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_date" module="admin"><![CDATA[Posted date]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_loc_latitude" module="admin"><![CDATA[Latitude]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_loc_longitude" module="admin"><![CDATA[Longitude]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_video" module="admin"><![CDATA[Video]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_explode_comma" module="admin"><![CDATA[Split value into two fields by comma]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_duplicate" module="admin"><![CDATA[Duplicate value into two separate fields]]></phrase>
+        <phrase version="3.0.0" key="xf_autocreate_format" module="admin"><![CDATA[Create a clean format for the feed]]></phrase>
+        <phrase version="3.0.0" key="xf_type_unit" module="admin"><![CDATA[Measurement unit]]></phrase>
+        <phrase version="3.0.0" key="xf_skip_imported" module="admin"><![CDATA[Import only new ads]]></phrase>
+        <phrase version="3.0.0" key="xf_delayed_photos" module="admin"><![CDATA[Delayed photo import]]></phrase>
+        <phrase version="3.0.0" key="xf_delayed_photos_hint" module="admin"><![CDATA[Photos will be imported later with the Cron Job task manager; configure a cron task for the xmlFeeds/cron_photos.php file. ]]></phrase>
+        <phrase version="3.0.0" key="xf_default_category_hint" module="admin"><![CDATA[Default category might come in handy if detecting a set category by mapped values fails.]]></phrase>
+        <phrase version="3.0.0" key="xf_sys_status" module="admin"><![CDATA[Status of imported ads]]></phrase>
+        <phrase version="3.0.0" key="xf_username_hint" module="admin"><![CDATA[You also can set different owners based on a field, by which owners can be identified.]]></phrase>
+        <phrase version="3.0.0" key="xf_progress_skipped" module="admin"><![CDATA[Listing already imported; xml reference id = {xml_ref}, Listing ID = {listing_id}]]></phrase>
+        <phrase version="3.0.0" key="xf_import_limit" module="admin"><![CDATA[Number of imported listings per session]]></phrase>
+        <phrase version="3.0.0" key="xf_import_limit_hint" module="admin"><![CDATA[Leave the field empty or enter 0 to import all available listings.]]></phrase>
+        <phrase version="3.0.0" key="xf_progress_limit_reached" module="admin"><![CDATA[You've reached the limit set to {limit} imported listings; importing has been stopped.]]></phrase>
+        <phrase version="3.0.0" key="xf_progress_no_data" module="admin"><![CDATA[Failed to parse the XML data.]]></phrase>
+        <phrase version="3.0.0" key="xf_bad_photo" module="admin"><![CDATA[The photo is not accessible, skipping]]></phrase>
+        <phrase version="3.0.0" key="xf_not_delayed_photos_number" module="admin"><![CDATA[Number of photos to be imported in this session]]></phrase>
+        <phrase version="3.0.0" key="xf_not_delayed_photos_number_hint" module="admin"><![CDATA[Number of photos of a particular ad; the others will be imported later. Leave the field empty or enter 0 to delay all photos.]]></phrase>
+        <phrase version="3.0.0" key="xf_no_categories_mapping" module="admin"><![CDATA[There is no mapping field for 0 level categories. To map the categories, select a field or add a mapping item with a default value.]]></phrase>
+        <phrase version="3.0.0" key="xf_update_photos" module="admin"><![CDATA[Update photos when updating listings]]></phrase>
+        <phrase version="3.1.0" key="xf_removed_ads_action" module="admin"><![CDATA[Select action for ads no longer available in feed]]></phrase>
+        <phrase version="3.1.0" key="xf_raa_no_action" module="admin"><![CDATA[Leave on site]]></phrase>
+        <phrase version="3.1.0" key="xf_raa_remove" module="admin"><![CDATA[Remove]]></phrase>
+        <phrase version="3.1.0" key="xf_raa_expire" module="admin"><![CDATA[Set as expired]]></phrase>
+        <phrase version="3.1.0" key="ext_notice_delete_xml_format" module="ext"><![CDATA[Are you sure you want to remove the format with all feeds assigned?]]></phrase>
+        <phrase version="3.1.0" key="xf_sys_lang_codes" module="admin"><![CDATA[Lang codes]]></phrase>
+        <phrase version="3.1.0" key="xf_copy_mapping_item_confirm" module="ext"><![CDATA[Are you sure you want to copy the data to the site?]]></phrase>
+        <phrase version="3.1.0" key="xf_format_rule_incorrect" module="admin"><![CDATA[The rewrite rule is incorrect; please make sure that it has [format] and [params] variables.]]></phrase>
+        <phrase version="3.1.0" key="xf_mbs_plan_not_assigned" module="admin"><![CDATA[The user account to which you're trying to import the listings didn't select a membership plan; please assign a plan to the user.]]></phrase>
+        <phrase version="3.1.0" key="xf_mbs_plan_no_add_service" module="admin"><![CDATA[The membership plan doesn't allow you to import listings.]]></phrase>
+        <phrase version="3.1.0" key="xf_mbs_plan_exceded_assigning_default" module="admin"><![CDATA[The membership plan has exceeded the limit for listings; listings will be assigned a default listing package.]]></phrase>
+        <phrase version="3.1.0" key="xf_mbs_plan_exceded" module="admin"><![CDATA[The membership plan has exceeded the limit for listings.]]></phrase>
+        <phrase version="3.1.0" key="xf_listing_package_exceded" module="admin"><![CDATA[The listing package has exceeded the limit for listings.]]></phrase>
+        <phrase version="3.1.0" key="xf_membership_intro_notice2" module="admin"><![CDATA[If all listings given by the membership plan are used up, the system will import the remaining listings under available listing package.]]></phrase>
+        <phrase version="3.1.0" key="xf_membership_no_default_plan_allowed_hint" module="admin"><![CDATA[With membership plans enabled and listing packages disabled you can import listings only to a user account, who owns a membership plan. Or proceed to Basic Settings to enable listing packages.]]></phrase>
+        <phrase version="3.2.0" key="xf_package_stats_advanced" module="admin"><![CDATA[Out of {remains} remaining listings, <b>{username}</b> has {featured} featured and {standart} standard listings.]]></phrase>
+        <phrase version="3.2.0" key="xf_ext_notice_delete_item" module="ext"><![CDATA[Are you sure you want to delete selected item?]]></phrase>
+        <phrase version="3.2.0" key="xf_package_stats" module="admin"><![CDATA[{username} has {remains} ads left.]]></phrase>
+        <phrase version="3.2.0" key="xf_membership_intro_notice" module="admin"><![CDATA[Membership plans are enabled; the system will import as many listings as provided by the user plan.]]></phrase>
+        <phrase version="3.3.0" key="xf_unset" module="admin"><![CDATA[Unset]]></phrase>
+        <phrase version="3.4.0" key="xf_example" module="admin" js="1" target="xml_feeds"><![CDATA[Example]]></phrase>
+        <phrase version="3.4.0" key="xf_progress_map_item_skipped" module="admin" target="xml_feeds"><![CDATA[{xml_value} mapping item has been skipped, no match found.]]></phrase>
+        <phrase version="3.6.1" key="xf_sys_xml_ref" module="admin" target="xml_feeds"><![CDATA[XML Feed Reference ID]]></phrase>
+        <phrase version="3.6.1" key="xf_sys_xml_back_url" module="admin" target="xml_feeds"><![CDATA[XML Feed Back URL]]></phrase>
+    </phrases>
+
+    <pages>
+        <page key="user_feeds" name="XML data feeds" type="system" path="xml-feeds" get="" controller="user_feeds" login="1" menus="" tpl="1"><![CDATA[]]></page>
+    </pages>
+
+    <configs key="xml_feeds" name="XML Feeds">
+        <![CDATA[]]>
+            <config version="2.2.1" key="xml_feeds_per_run" name="Number of XML feeds per session" description="" values="" type="text" validate=""><![CDATA[10]]></config>
+    </configs>
+
+    <updates>
+        <update version="2.1.0" files="admin/xml_feeds.inc.php,admin/xml_feeds.tpl,export.php,import.php,modules/flMap.format.php,rlXmlFeeds.class.php,rlXmlImport.class.php"><![CDATA[]]></update>
+        <update version="2.1.1" files="admin/xml_feeds.inc.php,admin/xml_feeds.tpl,modules/flMap.format.php,rlXmlImport.class.php,user_feeds.inc.php"><![CDATA[]]></update>
+        <update version="2.2.0" files="admin/xml_feeds.inc.php,admin/xml_feeds.tpl,import.php,modules/flMap.format.php,rlXmlImport.class.php,rlXmlFeeds.class.php,user_feeds.inc.php,user_feeds.tpl"><![CDATA[]]></update>
+        <update version="2.2.1" files="admin/xml_feeds.tpl,admin/xml_feeds.inc.php,modules/flMap.format.php,rlXmlImport.class.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="admin/xml_feeds.tpl,admin/xml_feeds.inc.php,rlXmlImport.class.php,rlXmlFeeds.class.php,rlXmlExport.class.php,rlXmlMapping.class.php,import.php,control.inc.php,static/import_progress.css,cron_photos.php,export.php,user_feeds.inc.php,user_feeds.tpl"><![CDATA[]]></update>
+        <update version="3.0.1" files="admin/xml_feeds.inc.php,admin/xml_feeds.tpl,rlXmlFeeds.class.php,rlXmlImport.class.php,rlXmlMapping.class.php"><![CDATA[]]></update>
+        <update version="3.0.2" files="rlXmlImport.class.php,rlXmlExport.class.php,rlXmlMapping.class.php"><![CDATA[]]></update>
+        <update version="3.0.3" files="rlXmlImport.class.php,rlXmlExport.class.php,rlXmlMapping.class.php"><![CDATA[]]></update>
+        <update version="3.0.4" files="rlXmlImport.class.php,rlXmlFeeds.class.php"><![CDATA[]]></update>
+        <update version="3.1.0" files="admin/xml_feeds.inc.php,admin/xml_feeds.tpl,static/import_progress.css,export.php,import.php,rlXmlExport.class.php,rlXmlFeeds.class.php,rlXmlImport.class.php,rlXmlMapping.class.php"><![CDATA[]]></update>
+        <update version="3.2.0" files="admin/import_frame.tpl,admin/xml_feeds.inc.php,admin/xml_feeds.tpl,control.inc.php,cron_photos.php,rlXmlFeeds.class.php,rlXmlImport.class.php,rlXmlMapping.class.php,user_feeds.inc.php"><![CDATA[]]></update>
+        <update version="3.3.0" files="admin/xml_feeds.inc.php,admin/xml_feeds.tpl,control.inc.php,import.php,rlXmlFeeds.class.php,rlXmlImport.class.php,user_feeds.inc.php,user_feeds.tpl"><![CDATA[]]></update>
+        <update version="3.4.0" files="admin/xml_feeds.inc.php,admin/xml_feeds.tpl,export.php,import.php,install.xml,rlXmlExport.class.php,rlXmlFeeds.class.php,rlXmlImport.class.php,rlXmlMapping.class.php,static/examples/path-to-field-data.png"><![CDATA[]]></update>
+        <update version="3.5.0" files="admin/xml_feeds.inc.php,admin/xml_feeds.tpl,export.php,import.php,rlXmlExport.class.php,rlXmlFeeds.class.php,rlXmlImport.class.php,static/examples/path-to-field-data.png,user_feeds.inc.php,user_feeds.tpl"><![CDATA[]]></update>
+        <update version="3.6.0" files="rlXmlImport.class.php"><![CDATA[]]></update>
+        <update version="3.6.1" files="vendor,admin/xml_feeds.tpl,admin/xml_feeds.inc.php,cron_photos.php,export.php,import.php,rlXmlExport.class.php,rlXmlFeeds.class.php,rlXmlImport.class.php,i18n/ru.json"><![CDATA[]]></update>
+    </updates>
+    <uninstall><![CDATA[]]>
+    </uninstall>
+</plugin>

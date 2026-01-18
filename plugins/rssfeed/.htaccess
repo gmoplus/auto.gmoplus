@@ -1,0 +1,3 @@
+# deny all external requests
+DENY FROM ALL
+

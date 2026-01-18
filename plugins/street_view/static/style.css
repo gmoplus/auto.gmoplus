@@ -1,0 +1,38 @@
+/* Street View gallery styles */
+
+#media.street-view .zoom,
+#media.street-view .map-group > *.street-view,
+#media.street-view .preview > *:not(.street-view),
+#media.street-view + div.thumbs {
+    display: none !important;
+}
+#media.street-view .preview {
+    display: block !important;
+}
+#media.street-view .preview .street-view {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    background-color: #e9e9e9;
+    position: absolute;
+}
+#media.street-view .preview #no_street_view {
+    padding: 100px 20px;
+}
+#street_view {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    div.gallery > div#media.street-view {
+        position: relative;
+        padding-bottom: 66%;
+    }
+    #media.street-view .preview {
+        position: absolute;
+        display: block !important;
+    }
+}
+
+/* Street View gallery styles end */

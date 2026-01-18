@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="coinGate">
+    <title>CoinGate</title>
+    <description>CoinGate payment gateway</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.1.0</version>
+    <date>18.03.2019</date>
+    <class>CoinGate</class>
+    <compatible>4.7.2</compatible>
+
+    <files>
+        <file>rlCoinGate.class.php</file>
+        <file>rlCoinGateGateway.class.php</file>
+        <file>rlInstall.class.php</file>
+        <file>account_settings.tpl</file>
+        <file>vendor/autoload.php</file>
+        <file>static/.htaccess</file>
+        <file>static/coinGate.png</file>
+        <file>.htaccess</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'coinGate');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook name="shoppingCartAccountSettings"><![CDATA[]]></hook>
+        <hook name="apPaymentGatewaysValidate"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="coinGate_payment" module="common"><![CDATA[CoinGate payment gateway]]></phrase>
+        <phrase key="coinGate_module" module="common"><![CDATA[CoinGate module]]></phrase>
+        <phrase key="coinGate_auth_token" module="common"><![CDATA[Auth Token]]></phrase>
+        <phrase key="coinGate_receive_currency" module="common"><![CDATA[Receive Currency]]></phrase>
+        <phrase key="coinGate_seller_payment_details_empty" module="common"><![CDATA[Seller not configured CoinGate Payment gateway or configured incorrectly]]></phrase>
+        <phrase key="coinGate_payment_waiting" module="common"><![CDATA[Your payment is pending to be reviewed. Once the payment is approved by CoinGate your transaction will be activated automatically. Please contact the administrator if you have any questions.]]></phrase>
+        <phrase key="coinGate_request_error" module="common"><![CDATA[Failed to send request; please [contact] the Administrator or try again later.]]></phrase>
+        <phrase key="coinGate_invalid_auth_token" module="common"><![CDATA[Incorrect API details; no App with the key found.]]></phrase>
+        <phrase key="coinGate_contact" module="common"><![CDATA[contact]]></phrase>
+    </phrases>
+
+    <config key="coinGate_auth_token" name="Auth Token" type="text" group="6"><![CDATA[]]></config>
+    <config key="coinGate_receive_currency" name="Receive Currency" type="text" group="6"><![CDATA[USD]]></config>
+    <config key="coinGate_test_mode" name="Test Mode" type="bool" group="6"><![CDATA[0]]></config>
+
+    <updates>
+        <update version="1.1.0" files="account_settings.tpl,rlCoinGate.class.php,rlInstall.class.php,rlCoinGateGateway.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'coinGate');
+            $GLOBALS['rlInstall']->update110();
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'coinGate');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

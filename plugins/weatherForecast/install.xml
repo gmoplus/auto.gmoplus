@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="weatherForecast">
+    <title>Weather Forecast</title>
+    <description>Gets up-to-date weather information for your website and listings.</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.3.1</version>
+    <date>17.03.2012</date>
+    <class>WeatherForecast</class>
+    <compatible>4.8.0</compatible>
+
+    <files>
+        <file>rlWeatherForecast.class.php</file>
+        <file>rlWeatherForecastAdmin.class.php</file>
+        <file>weatherForecast.listing.tpl</file>
+        <file>weatherForecast.block.tpl</file>
+        <file>js.tpl</file>
+        <file>admin/ap.js.tpl</file>
+        <file>admin/row.tpl</file>
+        <file>static/style.css</file>
+        <file>static/lib.js</file>
+        <file>static/font/iconvault_forecastfont.woff</file>
+        <file>static/font/iconvault_forecastfont.eot</file>
+        <file>static/font/iconvault_forecastfont.svg</file>
+        <file>static/font/iconvault_forecastfont.ttf</file>
+        <file>i18n/ru.json</file>
+    </files>
+    
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('WeatherForecastAdmin', null, 'weatherForecast');
+        $GLOBALS['rlWeatherForecastAdmin']->install();
+    ]]></install>
+    
+    <hooks>
+        <hook version="3.1.0" name="listingDetailsPreFields"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="listingDetailsBottom"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="3.1.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="apTplContentBottom"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="apPhpConfigBeforeUpdate"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="apTplListingTypesForm"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="apPhpListingTypesPost"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="apPhpListingTypesBeforeAdd"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="apPhpListingTypesBeforeEdit"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="3.1.0" class="WeatherForecastAdmin" name="apAjaxRequest"><![CDATA[]]></hook>
+    </hooks>
+    
+    <configs version="3.2.0" key="weatherForecast" name="Weather Forecast">
+        <![CDATA[]]>
+        <config version="3.2.0" key="weatherForecast_divider" name="Common Settings" type="divider"><![CDATA[]]></config>
+        <config version="3.2.0" key="weatherForecast_units" name="Default temperature unit" type="select" values="Celsius,Fahrenheit"><![CDATA[Fahrenheit]]></config>
+        <config version="3.3.0" key="weatherForecast_units_auto_detect" name="Show forecast in units appropriate to user location" type="bool"><![CDATA[1]]></config>
+        <config version="3.2.0" key="weatherForecast_apiid" name="OpenWeatherMap API Key" type="text" description="To get an API Key for your site click here: http://openweathermap.org/appid"><![CDATA[0ffe1a176aede5fcf1d86a8a899e2ddd]]></config>
+        <config version="3.2.0" key="weatherForecast_wb_divider" name="Weather Box Settings" type="divider"><![CDATA[]]></config>
+        <config version="3.2.0" key="weatherForecast_wb_location" name="Default location" type="text"><![CDATA[San Francisco, CA, United States]]></config>
+        <config version="3.2.0" key="weatherForecast_use_geo" name="Use visitor location" type="bool" description="Visitor location will be used for generating a weather forecast"><![CDATA[1]]></config>
+        <config version="3.2.0" key="weatherForecast_cache" name="Weather box caching" type="select"><![CDATA[2]]></config>
+        <config version="3.2.0" key="weatherForecast_la_divider" name="Weather Box Settings on Ad Details Page" type="divider"><![CDATA[]]></config>
+        <config version="3.2.0" key="weatherForecast_listing_module" name="Weather box on ad details" type="bool"><![CDATA[1]]></config>
+        <config version="3.2.0" key="weatherForecast_position" name="Weather box position" type="select"><![CDATA[bottom]]></config>
+        <config version="3.2.0" key="weatherForecast_group" name="Select a field group" type="select"><![CDATA[]]></config>
+        <config version="3.2.0" key="weatherForecast_group_possition" name="Position in field group" type="radio"><![CDATA[prepend]]></config>
+        <config version="3.2.0" key="weatherForecast_mapping_divider" name="Listing location fields mapping" type="divider"><![CDATA[]]></config>
+        <config version="3.2.0" key="weatherForecast_mapping_country" name="Country field" type="select"><![CDATA[b_country]]></config>
+        <config version="3.2.0" key="weatherForecast_mapping_region" name="State field" type="select"><![CDATA[b_country_level1]]></config>
+        <config version="3.2.0" key="weatherForecast_mapping_city" name="City field" type="select"><![CDATA[b_country_level2]]></config>
+    </configs>
+    
+    <phrases>
+        <phrase version="3.2.0" key="weatherForecast_weather_foreacst" module="common"><![CDATA[Weather Forecast]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_weather_in" module="frontEnd"><![CDATA[Weather in {location}]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_form_top" module="admin"><![CDATA[At the top of page]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_form_bottom" module="admin"><![CDATA[At the bottom of page]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cur_cond" module="common"><![CDATA[Current Conditions]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_high" module="common"><![CDATA[H]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_low" module="common"><![CDATA[L]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_no_wf" module="frontEnd"><![CDATA[Weather Forecast is not available for {location}]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_error_no_response" module="common"><![CDATA[No response has been received, please make sure that cURL or fopen() is enabled on the server, or contact Flynax Helpdesk.]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_error_no_city_found" module="common"><![CDATA[No weather feed has been found for the location you've specified, please try to narrow your location search to city.]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_place_in_form" module="admin"><![CDATA[Inside field groups]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_prepend" module="admin"><![CDATA[Above all fields]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_append" module="admin"><![CDATA[Below all fields]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_no_location" module="frontEnd"><![CDATA[You haven't specified a location in Admin Panel >> Basic Settings >> Weather Forecast]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_more_forecast" module="frontEnd"><![CDATA[View detailed forecast [here] ]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_hours" module="admin"><![CDATA[Hour(s)]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_light_rain" module="frontEnd"><![CDATA[Light Rain]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_rain" module="frontEnd"><![CDATA[Rain]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_heavy_rain" module="frontEnd"><![CDATA[Heavy Rain]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_freezing_rain" module="frontEnd"><![CDATA[Freezing Rain]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_thunderstorm" module="frontEnd"><![CDATA[Thunderstorm]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_drizzle" module="frontEnd"><![CDATA[Drizzle]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_light_snow" module="frontEnd"><![CDATA[Light Snow]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_snow" module="frontEnd"><![CDATA[Snow]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_heavy_snow" module="frontEnd"><![CDATA[Heavy Snow]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_sleet" module="frontEnd"><![CDATA[Sleet]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_snow_flurries" module="frontEnd"><![CDATA[Snow Flurries]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_mist" module="frontEnd"><![CDATA[Mist]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_smoky" module="frontEnd"><![CDATA[Smoky]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_haze" module="frontEnd"><![CDATA[Haze]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_dust" module="frontEnd"><![CDATA[Dust]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_sand_storm" module="frontEnd"><![CDATA[Sand Storm]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_foggy" module="frontEnd"><![CDATA[Foggy]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_volcanic_ash" module="frontEnd"><![CDATA[Volcanic Ash]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_squalls" module="frontEnd"><![CDATA[Squalls]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_tornado" module="frontEnd"><![CDATA[Tornado]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_clear_sky" module="frontEnd"><![CDATA[Clear Sky]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_sunny" module="frontEnd"><![CDATA[Sunny]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_partly_cloudy" module="frontEnd"><![CDATA[Partly Cloudy]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_mostly_cloudy" module="frontEnd"><![CDATA[Mostly Cloudy]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_cloudy" module="frontEnd"><![CDATA[Cloudy]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_storm" module="frontEnd"><![CDATA[Storm]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_hurricane" module="frontEnd"><![CDATA[Hurricane]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_cold" module="frontEnd"><![CDATA[Cold]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_hot" module="frontEnd"><![CDATA[Hot]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_windy" module="frontEnd"><![CDATA[Windy]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_hail" module="frontEnd"><![CDATA[Hail]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_calm" module="frontEnd"><![CDATA[Calm]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_breeze" module="frontEnd"><![CDATA[Breeze]]></phrase>
+        <phrase version="3.2.0" key="weatherForecast_cond_gale" module="frontEnd"><![CDATA[Gale]]></phrase>
+    </phrases>
+    
+    <blocks>
+        <block version="3.2.0" key="weatherForecast_block" name="Weather Forecast" side="left" type="php" tpl="1"><![CDATA[
+            global $rlSmarty;
+
+            $GLOBALS['reefless']->loadClass('WeatherForecast', null, 'weatherForecast');
+
+            $rlSmarty->assign('next_update', 1463147910);
+
+            $forecast = unserialize('a:3:{s:8:"location";s:13:"San Francisco";s:7:"city_id";i:5391959;s:8:"forecast";a:4:{i:0;a:9:{s:4:"date";i:1463083200;s:14:"week_day_short";s:3:"Thu";s:8:"week_day";s:1:"4";s:4:"temp";s:7:"+12 °C";s:8:"temp_min";s:7:"+12 °C";s:8:"temp_max";s:7:"+12 °C";s:4:"icon";s:3:"10n";s:7:"icon_id";i:500;s:4:"name";s:4:"Rain";}i:1;a:9:{s:4:"date";i:1463169600;s:14:"week_day_short";s:3:"Fri";s:8:"week_day";s:1:"5";s:4:"temp";s:7:"+23 °C";s:8:"temp_min";s:6:"+8 °C";s:8:"temp_max";s:7:"+23 °C";s:4:"icon";s:3:"01d";s:7:"icon_id";i:800;s:4:"name";s:5:"Clear";}i:2;a:9:{s:4:"date";i:1463256000;s:14:"week_day_short";s:3:"Sat";s:8:"week_day";s:1:"6";s:4:"temp";s:7:"+22 °C";s:8:"temp_min";s:6:"+9 °C";s:8:"temp_max";s:7:"+22 °C";s:4:"icon";s:3:"01d";s:7:"icon_id";i:800;s:4:"name";s:5:"Clear";}i:3;a:9:{s:4:"date";i:1463342400;s:14:"week_day_short";s:3:"Sun";s:8:"week_day";s:1:"0";s:4:"temp";s:7:"+19 °C";s:8:"temp_min";s:6:"+8 °C";s:8:"temp_max";s:7:"+23 °C";s:4:"icon";s:3:"01d";s:7:"icon_id";i:800;s:4:"name";s:5:"Clear";}}}');
+            $rlSmarty->assign('forecast', $forecast);
+
+            $rlSmarty->display(RL_PLUGINS . 'weatherForecast' . RL_DS . 'weatherForecast.block.tpl');
+        ]]></block>
+    </blocks>
+    
+    <updates>
+        <update version="2.0.1"><![CDATA[]]></update>
+        <update version="2.1.0" files="admin/weatherForecast.inc.php,admin/weatherForecast.tpl,rlWeatherForecast.class.php,weatherForecast.listing.tpl"><![CDATA[
+            global $rlDb;
+            
+            $sql = "INSERT INTO `".RL_DBPREFIX."config` (`Group_ID`, `Key`, `Default`, `Type`, `Plugin`) VALUES (0, 'weatherForecast_mapping_country', 'b_country', 'text', 'weatherForecast')";
+            $rlDb->query($sql);
+            
+            $sql = "INSERT INTO `".RL_DBPREFIX."config` (`Group_ID`, `Key`, `Default`, `Type`, `Plugin`) VALUES (0, 'weatherForecast_mapping_region', 'states', 'text', 'weatherForecast')";
+            $rlDb->query($sql);
+            
+            $sql = "INSERT INTO `".RL_DBPREFIX."config` (`Group_ID`, `Key`, `Default`, `Type`, `Plugin`) VALUES (0, 'weatherForecast_mapping_city', 'city', 'text', 'weatherForecast')";
+            $rlDb->query($sql);
+        ]]></update>
+        <update version="2.1.1" files="weatherForecast.listing.tpl"><![CDATA[]]></update>
+        <update version="2.1.2" files="static/lib.js"><![CDATA[]]></update>
+        <update version="2.2.0" files="request.php,weatherForecast.listing.tpl"><![CDATA[]]></update>
+        <update version="2.3.0" files="weatherForecast.listing.tpl,listing_responsive_42.tpl,static/style_responsive_42.css"><![CDATA[]]></update>
+        <update version="2.3.1" files="listing_responsive_42.tpl"><![CDATA[]]></update>
+        <update version="3.0.0" files="weatherForecast.listing.tpl,weatherForecast.block.tpl,rlWeatherForecast.class.php,request.php,js.tpl,admin/js.tpl,admin/ap.js.tpl,admin/row.tpl,static/lib.js,static/style.css,static/font/iconvault_forecastfont.woff,static/font/iconvault_forecastfont.eot,static/font/iconvault_forecastfont.svg,static/font/iconvault_forecastfont.ttf"><![CDATA[
+            global $rlDb;
+
+            // remove WOEID
+            $sql = "ALTER TABLE `".RL_DBPREFIX."listings` DROP `WOEID`";
+            $rlDb->query($sql);
+
+            // add hidden config
+            $sql = "INSERT INTO `".RL_DBPREFIX."config` (`Group_ID`, `Key`, `Default`, `Type`, `Plugin`) VALUES (0, 'weatherForecast_wb_location_id', '5391959', 'text', 'weatherForecast')";
+            $rlDb->query($sql);
+
+            // remove legacy configs
+            $config_keys = array('weatherForecast_woeid', 'weatherForecast_wb_units', 'weatherForecast_la_units');
+            $sql = "DELETE FROM `".RL_DBPREFIX."config` WHERE `Key` IN ('" . implode("','", $config_keys) . "')";
+            $rlDb->query($sql);
+
+            // show legacy hidden configs
+            $group_id = $rlDb->getOne('ID', "`key` = 'weatherForecast'", 'config_groups');
+            $config_keys = array('weatherForecast_mapping_country', 'weatherForecast_mapping_region', 'weatherForecast_mapping_city', 'weatherForecast_position');
+            $sql = "UPDATE `".RL_DBPREFIX."config` SET `Group_ID` = {$group_id} WHERE `Key` IN ('" . implode("','", $config_keys) . "')";
+            $rlDb->query($sql);
+
+            $sql = "UPDATE `".RL_DBPREFIX."config` SET `Default` = 'country_level2' WHERE `Key` = 'weatherForecast_mapping_city' LIMIT 1";
+            $rlDb->query($sql);
+
+            // remove plugin AP controller
+            $sql = "UPDATE `".RL_DBPREFIX."plugins` SET `Controller` = '' WHERE `Key` = 'weatherForecast' LIMIT 1";
+            $rlDb->query($sql);
+
+            // add listing type option
+            $sql = "ALTER TABLE `".RL_DBPREFIX."listing_types` ADD `Weather_forecast` ENUM('0', '1') NOT NULL DEFAULT '1' AFTER `Status`";
+            $rlDb -> query($sql);
+
+            // update positions
+            $config_positions = array(
+                'weatherForecast_divider' => 1,
+                'weatherForecast_units' => 2,
+                'weatherForecast_apiid' => 3,
+                'weatherForecast_wb_divider' => 4,
+                'weatherForecast_wb_location' => 5,
+                'weatherForecast_use_geo' => 6,
+                'weatherForecast_cache' => 7,
+                'weatherForecast_la_divider' => 8,
+                'weatherForecast_listing_module' => 9,
+                'weatherForecast_position' => 10,
+                'weatherForecast_group' => 11,
+                'weatherForecast_group_possition' => 12,
+                'weatherForecast_mapping_divider' => 13,
+                'weatherForecast_mapping_country' => 14,
+                'weatherForecast_mapping_region' => 15,
+                'weatherForecast_mapping_city' => 16
+            );
+
+            foreach($config_positions as $config_key => $config_position) {
+                $sql = "UPDATE `".RL_DBPREFIX."config` SET `Position` = '{$config_position}' WHERE `Key` = '{$config_key}'";
+                $rlDb->query($sql);
+            }
+
+            // remove phrases
+            $phrases = array(
+                'config+name+weatherForecast_la_units',
+                'weatherForecast_update_location',
+                'weatherForecast_location',
+                'weatherForecast_example',
+                'weatherForecast_update',
+                'weatherForecast_updated',
+                'weatherForecast_loading',
+                'weatherForecast_not_found',
+                'weatherForecast_listing_settings',
+                'weatherForecast_area_position',
+                'weatherForecast_place_after_group',
+                'weatherForecast_area_position_saved',
+                'weatherForecast_fields_mapping',
+                'weatherForecast_mapping_country',
+                'weatherForecast_mapping_region',
+                'weatherForecast_mapping_city',
+                'weatherForecast_fields_mapping_saved',
+                'weatherForecast_no_wf_la',
+                'weatherForecast_foreacst'
+            );
+            $sql = "DELETE FROM `".RL_DBPREFIX."lang_keys` WHERE `Plugin` = 'weatherForecast' AND `Key` IN ('" . implode("','", $phrases) . "')";
+            $rlDb->query($sql);
+
+            // remove legacy conditions
+            $sql = "DELETE FROM `".RL_DBPREFIX."lang_keys` WHERE `Plugin` = 'weatherForecast' AND `Key` LIKE 'weatherForecast_cond_%'";
+            $rlDb->query($sql);
+
+            // remove hooks
+            $hooks = array('specialBlock', 'tplHeader', 'afterListingEdit');
+            $sql = "DELETE FROM `".RL_DBPREFIX."hooks` WHERE `Plugin` = 'weatherForecast' AND `Name` IN ('" . implode("','", $hooks) . "')";
+            $rlDb->query($sql);
+        ]]></update>
+        <update version="3.0.1" files="weatherForecast.listing.tpl,weatherForecast.block.tpl"><![CDATA[]]></update>
+        <update version="3.0.2" files="rlWeatherForecast.class.php,admin/ap.js.tpl"><![CDATA[
+            // remove legacy tpl file
+            unlink(RL_PLUGINS . 'weatherForecast' . RL_DS . 'admin' . RL_DS . 'js.tpl');
+
+            // remove duplicate hook 
+            $sql = "DELETE FROM `".RL_DBPREFIX."hooks` WHERE `Name` = 'apTplContentBottom' AND `Plugin` = 'weatherForecast' AND `Code` RLIKE '^global \\$cInfo\\;' LIMIT 1";
+            $GLOBALS['rlDb']->query($sql);
+        ]]></update>
+        <update version="3.0.3"><![CDATA[]]></update>
+        <update version="3.0.4"><![CDATA[]]></update>
+        <update version="3.0.5" files="static/lib.js"><![CDATA[]]></update>
+        <update version="3.0.6" files="static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="3.1.0" files="admin/ap.js.tpl,static/lib.js,.htaccess,rlWeatherForecast.class.php,rlWeatherForecastAdmin.class.php,weatherForecast.block.tpl,weatherForecast.listing.tpl"><![CDATA[
+            // Remove useless files related to the previous version
+            unlink(RL_PLUGINS . 'weatherForecast' . RL_DS . 'request.php');
+            unlink(RL_PLUGINS . 'weatherForecast' . RL_DS . 'admin' . RL_DS . '.htaccess');
+        ]]></update>
+        <update version="3.1.1" files="js.tpl,rlWeatherForecastAdmin.class.php,static/lib.js,admin/ap.js.tpl"><![CDATA[]]></update>
+        <update version="3.2.0" files="rlWeatherForecast.class.php,rlWeatherForecastAdmin.class.php,weatherForecast.listing.tpl,admin/ap.js.tpl,admin/row.tpl,js.tpl,static/lib.js,i18n/ru.json"><![CDATA[
+            global $rlDb;
+
+            // Remove phrases
+            $phrases = array(
+                'weatherForecast_error',
+                'weatherForecast_option_name',
+            );
+            $sql = "
+                DELETE FROM `{db_prefix}lang_keys`
+                WHERE `Plugin` = 'weatherForecast' AND `Key` IN ('" . implode("','", $phrases) . "')
+            ";
+            $rlDb->query($sql);
+        ]]></update>
+        <update version="3.3.0" files="rlWeatherForecast.class.php,rlWeatherForecastAdmin.class.php,i18n/ru.json,weatherForecast.block.tpl"><![CDATA[
+            global $config, $rlDb;
+
+            $rlDb->updateOne([
+                'fields' => ['Position' => $rlDb->getOne('Position', "`Key` = 'weatherForecast_units'", 'config')],
+                'where'  => ['Key' => 'weatherForecast_units_auto_detect']
+                ],
+                'config'
+            );
+
+            if (!$config['weatherForecast_use_geo']) {
+                $GLOBALS['reefless']->loadClass('WeatherForecastAdmin', null, 'weatherForecast');
+
+                $forecast = $GLOBALS['rlWeatherForecastAdmin']->get('id', $config['weatherForecast_wb_location_id']);
+                $GLOBALS['rlWeatherForecastAdmin']->updateBox($forecast);
+            }
+        ]]></update>
+        <update version="3.3.1" files="rlWeatherForecastAdmin.class.php,weatherForecast.block.tpl"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['rlDb']->query("ALTER TABLE `".RL_DBPREFIX."listing_types` DROP `Weather_forecast`");
+    ]]></uninstall>
+</plugin>

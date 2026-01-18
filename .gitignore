@@ -1,0 +1,25 @@
+# Logs
+*.log
+error_log
+bot.log
+
+# Temporary files
+tmp/
+.ftpquota
+
+# Cache
+cache/
+
+# Uploads cache
+files/cache/
+
+# Backup (optional - remove if you want to include)
+backup/
+
+# IDE
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,68 @@
+/* slider */
+
+/* horizontal mode */
+div.carousel {
+    position: relative;
+}
+div.horizontal {
+    div.prev,
+    div.next {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 40px;
+        #{$space}: 0;
+        cursor: pointer;
+        background: white;
+        opacity: .7;
+
+        transition: all 0.3s ease;
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 10px;
+            top: 15px;
+            #{$space}: 16px;
+            @if $isLtr {
+              background: url('../img/gallery.png') right -200px no-repeat;
+            }
+            @else {
+              background: url('../img/gallery.png') -38px -200px no-repeat;
+            }
+
+            @include gallery_retina;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+    div.next {
+        #{$space}: auto;
+        #{$space-opposite}: 0;
+
+        &:before {
+            @if $isLtr {
+              background-position: -38px -200px;
+            }
+            @else {
+              background-position: right -200px;
+            }
+            #{$space}: auto;
+            #{$space-opposite}: 16px;
+        }
+    }
+
+    &:hover {
+        div.prev {
+            #{$space}: -10px;
+        }
+        div.next {
+            #{$space-opposite}: -10px;
+        }
+    }
+}
+
+/* slider end */

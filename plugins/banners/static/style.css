@@ -1,0 +1,47 @@
+.my-listings > article > div {
+    display: block !important;
+    width: auto !important;
+}
+.navigation .nav-icon .renew:before {
+    background-image: url('renew-icon.png') !important;
+    background-position: 0 0 !important;
+}
+.banner-item {
+    max-width: none !important;
+}
+.banner-item .navigation > ul,
+.banner-item .navigation > ul > li {
+    padding-top: 0 !important;
+}
+.banner-item .navigation > ul > li a {
+    vertical-align: top !important;
+}
+img.banner-horizontal {
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+img.banner-standard {
+    width: 190px;
+    object-fit: cover;
+    object-position: center;
+}
+@media screen and (max-width: 767px) {
+    img.banner-standard {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 144dpi) {
+    .navigation .nav-icon .renew:before {
+        background-image: url('renew-icon-x2.png') !important;
+        background-size: 100% auto !important;
+    }
+}
+
+body[dir=rtl] .navigation ul li.nav-icon > a:before {
+    left: auto;
+    right: 0;
+}

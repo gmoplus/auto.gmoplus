@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="export_import">
+    <title>XLSX/CSV Import/Export</title>
+    <description>Allows the Administrator and users to import/export listings in XLS(X) and CSV formats</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.10.0</version>
+    <date>16.08.2012</date>
+    <controller>export_import</controller>
+    <class>ExportImport</class>
+    <compatible>4.8.1</compatible>
+
+    <files>
+        <file>admin/export_import.inc.php</file>
+        <file>admin/export_import.tpl</file>
+        <file>admin/import.php</file>
+        <file>admin/import_interface.tpl</file>
+        <file>admin/search.tpl</file>
+        <file>admin/row.tpl</file>
+        <file>i18n/ru.json</file>
+        <file>static/gallery.png</file>
+        <file>static/lib.js</file>
+        <file>static/lib_admin.js</file>
+        <file>static/style.css</file>
+        <file>static/front-end.css</file>
+        <file>rlExportImport.class.php</file>
+        <file>controller.inc.php</file>
+        <file>controller.tpl</file>
+        <file>import.php</file>
+        <file>search.tpl</file>
+        <file>admin/export_grid.tpl</file>
+        <file>admin/grid.tpl</file>
+        <file>admin/pagination.tpl</file>
+        <file>pagination.tpl</file>
+        <file>static/pagination.js</file>
+        <file>src/Adapters/ProfileThumbnailUploadAdapter.php</file>
+        <file>src/Handlers/Escort.php</file>
+        <file>src/Handlers/File.php</file>
+        <file>src/Handlers/Jobs.php</file>
+        <file>src/Handlers/ListingPackages.php</file>
+        <file>vendor/autoload.php</file>
+        <file>src/Helpers.php</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <hooks>
+        <hook version="3.7.1" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="apPhpIndexBottom"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="listingsModifyFieldSearch"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="listingsModifyWhereSearch"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="apPhpAccountTypesTop"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="apTplAccountTypesForm"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="specialBlock"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="listingsModifyJoinSearch"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="sitemapExcludedPages"><![CDATA[]]></hook>
+        <hook version="3.10.0" name="apExtListingsSql"><![CDATA[]]></hook>
+        <hook version="3.10.0" name="apTplListingsGrid"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase key="eil_export" module="common"><![CDATA[Export]]></phrase>
+        <phrase version="3.6.1" key="eil_export_criteria" module="common"><![CDATA[Export Manager]]></phrase>
+        <phrase version="3.6.1" key="eil_file_format" module="common"><![CDATA[File format]]></phrase>
+        <phrase version="3.6.1" key="eil_csv" module="common"><![CDATA[CSV (comma-separated)]]></phrase>
+        <phrase version="3.6.1" key="eil_no_listings_found" module="common"><![CDATA[No listings were found by your criteria; please change the export criteria and try again.]]></phrase>
+        <phrase key="eil_import" module="common"><![CDATA[Import]]></phrase>
+        <phrase key="eil_export_listings" module="common"><![CDATA[Table of Listings]]></phrase>
+        <phrase key="eil_importing" module="common"><![CDATA[Importing]]></phrase>
+        <phrase key="eil_importing_caption" module="common"><![CDATA[Importing in process, please wait]]></phrase>
+        <phrase key="eil_preview" module="common"><![CDATA[Preview]]></phrase>
+        <phrase version="3.6.1" key="eil_no_categories_available" module="common"><![CDATA[There are no categories]]></phrase>
+        <phrase version="3.6.1" key="eil_start" module="common"><![CDATA[Import]]></phrase>
+        <phrase key="eil_back_to_import_form" module="common"><![CDATA[Back to Mapping Manager]]></phrase>
+        <phrase version="3.6.1" key="eil_back_to_export_criteria" module="common"><![CDATA[Back to Export Manager]]></phrase>
+        <phrase version="3.6.1" key="eil_file_for_import" module="common"><![CDATA[CSV/XLS(X) File]]></phrase>
+        <phrase version="3.6.1" key="eil_pictures_archive" module="common"><![CDATA[Zipped Photo Archive]]></phrase>
+        <phrase version="3.6.1" key="eil_pictures_archive_desc" module="common"><![CDATA[Upload only zipped files.]]></phrase>
+        <phrase version="3.6.1" key="eil_import_wrong_archive_format" module="common"><![CDATA[Failed to upload the zipped archive; please make sure you're loading a ZIP file.]]></phrase>
+        <phrase version="3.6.1" key="eil_import_no_content" module="common"><![CDATA[Listing details are missing in the uploaded file.]]></phrase>
+        <phrase version="3.6.1" key="eil_import_unable_to_upload" module="common"><![CDATA[Failed to upload the file; please check /tmp/upload/ directory permission or contact Flynax Support.]]></phrase>
+        <phrase version="3.6.1" key="eil_select_field" module="common"><![CDATA[- Select a field -]]></phrase>
+        <phrase key="eil_system_fields" module="common"><![CDATA[System Fields]]></phrase>
+        <phrase version="3.6.1" key="eil_pictures_by_url" module="common"><![CDATA[Pictures from URL*]]></phrase>
+        <phrase key="eil_pictures_urls" module="common"><![CDATA[Picture URL]]></phrase>
+        <phrase version="3.6.1" key="eil_pictures_by_url_note" module="common"><![CDATA[* - The column should contain comma-separated file names of pictures (from zipped file) or links to pictures.]]></phrase>
+        <phrase version="3.6.1" key="eil_pictures_from_zip" module="common"><![CDATA[Picture File Name from Zipped File*]]></phrase>
+        <phrase key="eil_owner_account" module="common"><![CDATA[Owner Username or ID]]></phrase>
+        <phrase version="3.6.1" key="eil_listing_wont_imported" module="common"><![CDATA[Import of the listing has been canceled.]]></phrase>
+        <phrase version="3.6.1" key="eil_column_wont_imported" module="common"><![CDATA[Import of the column has been canceled.]]></phrase>
+        <phrase version="3.6.1" key="eil_listing_wont_exported" module="common"><![CDATA[Export of the listing has been canceled.]]></phrase>
+        <phrase version="3.6.1" key="eil_column_wont_exported" module="common"><![CDATA[Export of the column has been canceled.]]></phrase>
+        <phrase version="3.6.1" key="eil_duplicate_fields_selected" module="common"><![CDATA[The field is mapped with more than one column.]]></phrase>
+        <phrase version="3.6.1" key="eil_default_category" module="common"><![CDATA[Default category]]></phrase>
+        <phrase version="3.6.1" key="eil_default_owner" module="common"><![CDATA[Default owner]]></phrase>
+        <phrase version="3.6.1" key="eil_default_plan" module="common"><![CDATA[Default package]]></phrase>
+        <phrase version="3.6.1" key="eil_default_status" module="common"><![CDATA[Default status]]></phrase>
+        <phrase version="3.6.1" key="eil_select_listing_type" module="common"><![CDATA[- First, select a listing type -]]></phrase>
+        <phrase key="eil_paid" module="common"><![CDATA[Mark as paid]]></phrase>
+        <phrase version="3.6.1" key="eil_no_listings" module="common"><![CDATA[There are no listings to be imported.]]></phrase>
+        <phrase version="3.6.1" key="eil_no_fields_checked" module="common"><![CDATA[Please select columns.]]></phrase>
+        <phrase version="3.6.1" key="eil_no_fields_selected" module="common"><![CDATA[Please map at least two columns with fields available on your site to continue importing.]]></phrase>
+        <phrase version="3.6.1" key="eil_completed" module="common"><![CDATA[Importing completed. <b>{count}</b> listing(s) imported.]]></phrase>
+        <phrase version="3.6.1" key="eil_per_run" module="common"><![CDATA[Listings per request]]></phrase>
+        <phrase version="3.6.1" key="eil_per_run_desc" module="common"><![CDATA[The number of listings to be imported per an AJAX request.]]></phrase>
+        <phrase key="eil_max_file_size" module="common"><![CDATA[The maximum file size:]]></phrase>
+        <phrase version="3.6.1" key="eil_import_table" module="common"><![CDATA[Mapping Manager]]></phrase>
+        <phrase version="3.6.1" key="eil_total_listings" module="common"><![CDATA[Total listings]]></phrase>
+        <phrase version="3.6.1" key="eil_fullscreen" module="common"><![CDATA[Full screen]]></phrase>
+        <phrase version="3.6.1" key="eil_default_view" module="common"><![CDATA[Exit full screen]]></phrase>
+        <phrase version="3.6.1" key="eil_option_name" module="common"><![CDATA[Allow users to import/export XLS(X)/CSV listings.]]></phrase>
+        <phrase version="3.8.1" key="eil_youtube_video_field" module="common"><![CDATA[YouTube video URLs or Embed Code]]></phrase>
+        <phrase version="3.8.1" key="eil_youtube_video_field_note" module="common"><![CDATA[** - The column must contain comma-separated video urls or embed code.]]></phrase>
+        <phrase version="3.2.0" key="eil_free_listing" module="common"><![CDATA[Free Plan]]></phrase>
+        <phrase version="3.2.0" key="eil_prepaid_package" module="common"><![CDATA[Prepaid Package]]></phrase>
+        <phrase version="3.6.1" key="eil_beforeunload_hint" module="ext"><![CDATA[Importing is in process; closing the page will stop the import process.]]></phrase>
+        <phrase version="3.5.0" key="eil_loc_latitude" module="common"><![CDATA[Latitude]]></phrase>
+        <phrase version="3.5.0" key="eil_loc_longitude" module="common"><![CDATA[Longitude]]></phrase>
+        <phrase version="3.6.1" key="eil_update_membership" module="common"><![CDATA[Updating membership plans...]]></phrase>
+        <phrase version="3.6.1" key="eil_import_form" module="common"><![CDATA[Mapping Manager]]></phrase>
+        <phrase version="3.6.1" key="eil_mp_updated" module="common"><![CDATA[The listings were imported and membership plans of the corresponding user accounts successfully updated. ]]></phrase>
+        <phrase version="3.6.1" key="eil_mp_cant_import" module="common"><![CDATA[You’ve exceeded the limit of listings allowed; please consider upgrading to another membership plan or reduce the number of listings in the file.]]></phrase>
+        <phrase version="3.6.1" key="eil_mp_restriction" module="common"><![CDATA[Your membership plan allows you to import ({listting_count}) listings.]]></phrase>
+        <phrase version="3.6.1" key="iel_cantimport" module="common"><![CDATA[Failed to import the listings because you've used up your membership plan and listing packages are disabled.]]></phrase>
+        <phrase version="3.6.1" key="eil_category_level_1" module="common"><![CDATA[Category]]></phrase>
+        <phrase version="3.6.1" key="eil_category_level_2" module="common"><![CDATA[Subcategory level 1]]></phrase>
+        <phrase version="3.6.1" key="eil_category_level_3" module="common"><![CDATA[Subcategory level 2]]></phrase>
+        <phrase version="3.6.1" key="eil_category_level_4" module="common"><![CDATA[Subcategory level 3]]></phrase>
+        <phrase version="3.6.1" key="eil_category_level_5" module="common"><![CDATA[Subcategory level 4]]></phrase>
+        <phrase version="3.6.1" key="eil_category_level_6" module="common"><![CDATA[Subcategory level 5]]></phrase>
+        <phrase version="3.5.0" key="eil_page" module="admin"><![CDATA[Page]]></phrase>
+        <phrase version="3.6.1" key="iel_account_type_cant_import" module="common"><![CDATA[Your account type doesn't allow you to import or export listings.]]></phrase>
+        <phrase version="3.6.1" key="eil_only_mp_allowed" module="admin"><![CDATA[You can import listings to a user account with an available membership plan. To import listings under a listing package go to the Basic Settings and enable Listing Packages. ]]></phrase>
+        <phrase version="3.6.1" key="eil_you_can_import_only_for_package" module="common"><![CDATA[Your listing package allows you to upload up to {number} listing(s).]]></phrase>
+        <phrase version="3.6.1" key="eil_you_didnt_bought_listing_package" module="common"><![CDATA[The listings will be marked as unpaid. Please purchase a listing package to publish them on the site.]]></phrase>
+        <phrase version="3.6.1" key="eil_cant_import_more_listings_to_package" module="common"><![CDATA[You’ve exceeded the limit of listings allowed; please consider upgrading to another package or reduce the number of listings in the file.]]></phrase>
+        <phrase version="3.6.1" key="eil_owned" module="common"><![CDATA[available]]></phrase>
+        <phrase version="3.6.1" key="eil_file_for_import_desc" module="common"><![CDATA[Upload only XLS(X) or CSV files]]></phrase>
+        <phrase version="3.6.1" key="eil_xls" module="common"><![CDATA[XLS (Excel 2003)]]></phrase>
+        <phrase version="3.6.1" key="eil_xlsx" module="common"><![CDATA[XLSX (Excel 2007)]]></phrase>
+        <phrase version="3.6.1" key="eil_import_wrong_file_format" module="common"><![CDATA[Failed to import the file; please make sure you're loading a CSV or XLS(X) file.]]></phrase>
+        <phrase version="3.8.0" key="eil_no_account_ms_plan_error" module="admin" target="export_import"><![CDATA[The user account you've selected doesn't have a membership plan. Grant him a plan or select another owner.]]></phrase>
+        <phrase version="3.9.0" key="eil_no_form_found" module="system"><![CDATA[Failed to find the listing form of the selected listing type; please, select a category.]]></phrase>
+    </phrases>
+
+    <pages>
+        <page version="3.0.0" key="xls_export_import" name="Import/Export Listings" type="system" path="excel-import-export" controller="controller" menus="2" tpl="1" login="1"><![CDATA[]]></page>
+    </pages>
+
+    <updates>
+        <update version="2.0.1" files="admin/export_import.inc.php,rlExportImport.class.php"><![CDATA[]]></update>
+        <update version="2.0.2" files="rlExportImport.class.php"><![CDATA[]]></update>
+        <update version="2.0.3" files="rlExportImport.class.php,admin/export_import.tpl"><![CDATA[]]></update>
+        <update version="2.0.4" files="rlExportImport.class.php,admin/export_import.inc.php,admin/export_import.tpl"><![CDATA[]]></update>
+        <update version="2.1.0" files="rlExportImport.class.php,admin/export_import.inc.php,admin/export_import.tpl"><![CDATA[]]></update>
+        <update version="3.0.0" files="search.tpl,import.php,controller.tpl,controller.inc.php,rlExportImport.class.php,admin/export_import.inc.php,admin/export_import.tpl,admin/import_interface.tpl,static/gallery.png,static/lib.js,static/style.css,static/lib_admin.js,static/front-end.css,.htaccess"><![CDATA[]]></update>
+        <update version="3.1.0" files="rlExportImport.class.php,controller.inc.php,admin/row.tpl,admin/export_import.inc.php"><![CDATA[]]></update>
+        <update version="3.1.1" files="rlExportImport.class.php,admin/export_import.tpl"><![CDATA[]]></update>
+        <update version="3.2.0" files="rlExportImport.class.php,admin/export_import.inc.php,admin/export_import.tpl,admin/search.tpl,controller.inc.php,controller.tpl,import.php,static/lib.js,static/lib_admin.js,static/front-end.css"><![CDATA[]]></update>
+        <update version="3.2.1" files="rlExportImport.class.php,admin/export_import.inc.php"><![CDATA[]]></update>
+        <update version="3.3.0" files="rlExportImport.class.php,admin/export_import.inc.php,controller.inc.php,controller.tpl,controller_responsive_42.tpl,static/front-end.css,static/lib.js"><![CDATA[]]></update>
+        <update version="3.3.1" files="rlExportImport.class.php,import.php,controller_responsive_42.tpl"><![CDATA[]]></update>
+        <update version="3.3.2"><![CDATA[]]></update>
+        <update version="3.3.3" files="rlExportImport.class.php,admin/export_import.inc.php,admin/export_import.tpl,controller.inc.php,controller.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="3.3.4" files="admin/export_import.inc.php"><![CDATA[]]></update>
+        <update version="3.3.5" files="admin/export_import.tpl,rlExportImport.class.php"><![CDATA[]]></update>
+        <update version="3.3.6" files="rlExportImport.class.php,static/lib_admin.js,admin/export_import.inc.php,admin/export_import.tpl"><![CDATA[]]></update>
+        <update version="3.3.7" files="rlExportImport.class.php"><![CDATA[]]></update>
+        <update version="3.3.8" files="rlExportImport.class.php,admin/export_import.tpl,static/lib_admin.js"><![CDATA[]]></update>
+        <update version="3.4.0" files="rlExportImport.class.php,controller.tpl,controller_responsive_42.tpl,static/front-end.css,admin/export_import.tpl,admin/export_import.inc.php"><![CDATA[]]></update>
+        <update version="3.4.1" files="rlExportImport.class.php"><![CDATA[]]></update>
+        <update version="3.5.0" files="rlExportImport.class.php,controller.inc.php,static/lib.js,static/lib_admin.js,admin/export_import.inc.php,admin/export_import.tpl,admin/import.php,admin/export_grid.tpl,admin/grid.tpl,admin/pagination.tpl,controller.tpl,import.php,pagination.tpl,search.tpl,static/front-end.css,static/pagination.js,static/style.css"><![CDATA[]]></update>
+        <update version="3.6.0" files="admin/export_import.inc.php,admin/export_import.tpl,admin/import.php,controller.inc.php,controller.tpl,import.php,rlExportImport.class.php,src/Adapters/ProfileThumbnailUploadAdapter.php,src/Handlers/Escort.php,src/Handlers/File.php,src/Handlers/Jobs.php,src/Handlers/ListingPackages.php,static/front-end.css,static/lib.js,static/style.css"><![CDATA[]]></update>
+        <update version="3.6.1" files="rlExportImport.class.php,admin/export_import.inc.php,admin/export_import.tpl,controller.inc.php,controller.tpl,src/Adapters/ZipArchiveAdapter.php"><![CDATA[]]></update>
+        <update version="3.6.2" files="admin/export_import.inc.php,controller.inc.php,rlExportImport.class.php,static/lib.js,static/pagination.js"><![CDATA[]]></update>
+        <update version="3.7.0" files="admin/export_import.inc.php,admin/export_import.tpl,controller.inc.php,rlExportImport.class.php,src/Helpers.php,static/lib_admin.js"><![CDATA[]]></update>
+        <update version="3.7.1" files="admin/export_import.inc.php,admin/export_import.tpl,rlExportImport.class.php,src/Helpers.php"><![CDATA[]]></update>
+        <update version="3.7.2" files="rlExportImport.class.php,admin/import.php,import.php"><![CDATA[]]></update>
+        <update version="3.8.0" files="i18n/ru.json,admin/export_import.inc.php,admin/import.php,admin/search.tpl,controller.inc.php,controller.tpl,import.php,rlExportImport.class.php,src/Handlers/Jobs.php,static/front-end.css,static/lib.js,static/lib_admin.js,static/pagination.js,static/style.css"><![CDATA[]]></update>
+        <update version="3.8.1" files="admin/export_import.inc.php,admin/export_import.tpl,controller.inc.php,controller.tpl,i18n/ru.json,rlExportImport.class.php"><![CDATA[]]></update>
+        <update version="3.9.0" files="admin/export_import.inc.php,controller.inc.php,controller.tpl,i18n/ru.json,import.php,rlExportImport.class.php,src/Helpers.php"><![CDATA[]]></update>
+        <update version="3.10.0" files="vendor,admin/export_import.tpl,admin/import.php,controller.inc.php,controller.tpl,i18n/ru.json,import.php,rlExportImport.class.php,static/lib_admin.js"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

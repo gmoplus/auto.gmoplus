@@ -1,0 +1,2 @@
+# allow all external requests
+Allow FROM ALL

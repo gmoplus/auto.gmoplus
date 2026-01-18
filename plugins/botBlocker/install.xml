@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="botBlocker">
+    <title>Bot Blocker</title>
+    <description>Allows you to prevent bots from scanning the site</description>
+    <author>Curtis Jackson</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.1.0</version>
+    <date>23.02.2020</date>
+    <class>BotBlocker</class>
+    <compatible>4.8.2</compatible>
+
+    <install><![CDATA[]]></install>
+
+    <files>
+        <file>i18n/ru.json</file>
+        <file>.htaccess</file>
+        <file>rlBotBlocker.class.php</file>
+    </files>
+
+    <hooks>
+        <hook name="init"><![CDATA[]]></hook>
+        <hook name="boot"><![CDATA[
+             // Here will be located list of bots, because the config have too short length
+        ]]></hook>
+        <hook name="apPhpConfigBeforeUpdate"><![CDATA[]]></hook>
+        <hook name="apPhpConfigBottom"><![CDATA[]]></hook>
+        <hook name="apTplContentBottom"><![CDATA[]]></hook>
+        <hook name="apMixConfigItem" version="1.1.0"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="botBlocker" name="Bot Blocker"><![CDATA[]]>
+        <config key="botB_restriction_mode" name="Restriction mode" type="radio" version="1.1.0"><![CDATA[allow]]></config>
+        <config key="botB_bots_list" name="List of disallowed bots" type="textarea" description="&lt;div style='margin-top: 7px;'&gt;Type in bots that you want to block separating them with commas. Bots will be identified in the User-Agent header.&lt;/div&gt;" version="1.1.0">
+            <![CDATA[Sogou,msnbot,daum.net,grapeshot,baidu,qwant,BLEXBot,DotBot,AhrefsBot,SemrushBot,mj12bot,trendictionbot,worldping-api,magpie-crawler,CCBot,Bytespider,Amazonbot,ClaudeBot,gptbot,meta-externalagent,Barkrowler,DataForSeoBot]]>
+        </config>
+        <config key="botB_allowed_bots_list" name="List of allowed bots" type="textarea" description="&lt;div style='margin-top: 7px;'&gt;Enter allowed bot names separated by commas. Bots will be identified in the User-Agent header.&lt;/div&gt;" version="1.1.0">
+            <![CDATA[google,yandex,facebookexternalhit]]>
+        </config>
+    </configs>
+
+    <phrases>
+        <phrase key="botB_deny" module="admin" target="settings" version="1.1.0"><![CDATA[Disallow]]></phrase>
+        <phrase key="botB_allow" module="admin" target="settings" version="1.1.0"><![CDATA[Allow]]></phrase>
+    </phrases>
+
+    <updates>
+        <update version="1.0.1" files="rlBotBlocker.class.php"><![CDATA[]]></update>
+        <update version="1.0.2" files="rlBotBlocker.class.php"><![CDATA[]]></update>
+        <update version="1.1.0" files="rlBotBlocker.class.php,i18n/ru.json"><![CDATA[]]></update>
+    </updates>
+</plugin>

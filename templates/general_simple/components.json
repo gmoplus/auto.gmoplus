@@ -1,0 +1,8 @@
+{
+    "listingDetailsGalleryComponents": [
+        "listing-details-fancyapps-gallery"
+    ],
+    "required": [
+        "search-on-map-box"
+    ]
+}

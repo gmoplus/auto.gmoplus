@@ -1,0 +1,66 @@
+/*** Reboot ***/
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+select,
+option,
+p,
+form,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+td,
+img,
+table {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+img {
+  vertical-align: middle;
+}
+
+label {
+  user-select: none;
+}
+
+b,
+strong {
+  font-weight: $font-weight-bold;
+}

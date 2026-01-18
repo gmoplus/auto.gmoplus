@@ -1,0 +1,19 @@
+{
+    "title_online": "В сети",
+    "description_online": "Показывает, кто в данный момент находится на сайте ",
+    "online_statistics_text": "Статистика",
+    "online_count_last_hour_text": "За последний час",
+    "online_count_last_day_text": "За последний день",
+    "online_count_all_text": "В сети [number] человек",
+    "online_count_users_text": "Пользователи",
+    "online_count_guests_text": "Гости",
+    "config_groups+name+online": "В сети",
+    "config+name+online_downtime": "Время",
+    "config+des+online_downtime": "минут",
+    "config+name+online_last_hour": "За последний час",
+    "config+des+online_last_hour": "часов",
+    "config+name+online_last_day": "За последний день",
+    "config+des+online_last_day": "часов",
+    "blocks+name+online_block": "В сети",
+    "admin_blocks+name+online_block": "Кто сейчас активен на сайте"
+}

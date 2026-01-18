@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="wordpressBridge">
+    <title>Wordpress Bridge</title>
+    <description>Shows recent WP posts on Flynax and recent ads on WordPress sites</description>
+    <author>Vladimir</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.1.2</version>
+    <date>28.04.2015</date>
+    <class>WordpressBridge</class>
+    <compatible>4.8.2</compatible>
+
+     <notices>
+        <notice version="2.0.0">
+            <![CDATA[If you updated the Plugin from 1.x to 2.0.0 do not forget to update the <b>\'WordPress site URL\'</b> option by entering the URL of the WordPress site. Make sure you updated the Flynax Bridge plugin in your blog site. ]]>
+        </notice>
+    </notices>
+
+    <files>
+        <file>recent_posts.tpl</file>
+        <file>header.tpl</file>
+        <file>requests.php</file>
+        <file>rlWordpressBridge.class.php</file>
+        <file>src/Controller.php</file>
+        <file>src/Controllers/APIController.php</file>
+        <file>src/Controllers/BlocksController.php</file>
+        <file>src/Controllers/ListingsController.php</file>
+        <file>src/DIContainer.php</file>
+        <file>src/PluginPathBuilder.php</file>
+        <file>src/Request.php</file>
+        <file>src/Response.php</file>
+        <file>src/Router.php</file>
+        <file>src/Traits/SingletonTrait.php</file>
+        <file>src/WordPressAPI/API.php</file>
+        <file>src/WordPressAPI/Token.php</file>
+        <file>src/helpers.php</file>
+        <file>src/routes.php</file>
+        <file>static/lib.js</file>
+        <file>view/admin/apTplControlsForm.tpl</file>
+        <file>vendor/autoload.php</file>
+        <file>bootstrap.php</file>
+        <file>src/Controllers/AccountController.php</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('WordpressBridge', null, 'wordpressBridge');
+        $GLOBALS['rlWordpressBridge']->install();
+    ]]></install>
+
+    <phrases>
+        <phrase key="wpb_user_exist" module="common"><![CDATA[The username is already in use on your <b>WordPress</b> site, please consider using a different one.]]></phrase>
+        <phrase key="wpb_email_exist" module="common"><![CDATA[The email address is already in use on the WordPress site.]]></phrase>
+        <phrase version="2.0.0" key="wp_flynax_root_path" module="admin"><![CDATA[Flynax root path]]></phrase>
+        <phrase version="2.0.0" key="wpb_refresh" module="admin"><![CDATA[Refresh]]></phrase>
+        <phrase version="2.0.0" key="wpb_refresh_cache_phrase" module="admin"><![CDATA[Refresh cache for the WordPress Bridge content box]]></phrase>
+        <phrase version="2.0.0" key="wpb_wrong_url" module="admin"><![CDATA[Please provide a valid URL.]]></phrase>
+        <phrase version="2.0.0" key="wpb_not_found" module="admin"><![CDATA[Failed to find the WordPress installation. Please make sure the WordPress site can be found at the URL you entered and the Flynax Bridge plugin installed.]]></phrase>
+        <phrase version="2.0.0" key="wpb_refresh_cache_success" module="admin"><![CDATA[WordPress Bridge cache has been successfully updated.]]></phrase>
+        <phrase version="2.1.2" key="wpb_check_connection" module="admin" target="settings" js="1"><![CDATA[Check the connection]]></phrase>
+        <phrase version="2.1.2" key="wpb_check_connection_text" module="admin" target="settings" js="1"><![CDATA[Please enter your WordPress admin panel logins to configure the connection between Flynax and WordPress.]]></phrase>
+        <phrase version="2.1.2" key="wpb_check_connection_success" module="system"><![CDATA[The sites are properly connected and synchronized.]]></phrase>
+    </phrases>
+
+    <configs key="wordpressBridge_config" name="WordPress Bridge">
+        <![CDATA[]]>
+        <config version="2.0.0" key="wp_path" name="WordPress site URL" type="text"><![CDATA[]]></config>
+        <config version="2.0.0" key="wp_post_count" name="Number of posts" type="text"><![CDATA[4]]></config>
+        <config version="2.1.0" key="wp_account_type" name="Account type" type="select"><![CDATA[dealer]]></config>
+        <config version="2.1.0" key="wp_delete_flynax_account" name="Delete flynax account" type="bool"><![CDATA[0]]></config>
+    </configs>
+
+    <hooks>
+        <hook version="2.0.0" name="apPhpConfigBottom"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPhpConfigBeforeUpdate"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="phpAjaxChangePassBeforeUpdate"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="beforeRegister"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="profileEditProfileValidate"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="profileEditProfileDone"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPhpAccountsBeforeEdit"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="profileEditAccountValidate"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPhpAccountsValidate"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apPhpAccountsAfterAdd"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="deleteAccountSetItems"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPhpIndexBeforeController"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="afterListingDone"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="afterListingEdit"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apExtListingsAfterUpdate"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="phpListingsAjaxDeleteListing"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apTplControlsForm"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="postPaymentComplete"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="phpAfterDeleteListing"><![CDATA[]]></hook>
+        <hook version="2.1.1" name="tplHeader"><![CDATA[]]></hook>
+    </hooks>
+    <blocks>
+        <block version="2.0.0" key="wpbridge_last_post" login="0" name="Recent Blog Posts" side="left" type="php" tpl="1"><![CDATA[
+            $GLOBALS['reefless']->loadClass('WordpressBridge', null, 'wordpressBridge');
+            $GLOBALS['rlWordpressBridge']->blockWPBridgeLastPost();
+        ]]></block>
+    </blocks>
+
+    <updates>
+        <update version="1.0.1" files="rlWordpressBridge.class.php"><![CDATA[ ]]></update>
+        <update version="2.0.0" files="bootstrap.php,recent_posts.tpl,requests.php,rlWordpressBridge.class.php,src/Controller.php,src/Controllers/APIController.php,src/Controllers/BlocksController.php,src/Controllers/ListingsController.php,src/DIContainer.php,src/PluginPathBuilder.php,src/Request.php,src/Response.php,src/Router.php,src/Traits/SingletonTrait.php,src/WordPressAPI/API.php,src/WordPressAPI/Token.php,src/helpers.php,src/routes.php,static/lib.js,view/admin/apTplControlsForm.tpl,vendor"><![CDATA[
+            global $rlDb;
+
+            // remove files and configs
+            $removingFiles = array(
+                'admin/wordpress_bridge.inc.php',
+                'admin/wordpress_bridge.tpl',
+            );
+
+            foreach ($removingFiles as $file) {
+                $file = RL_PLUGINS . 'wordpressBridge/' . $file;
+
+                if (file_exists($file)) {
+                    unlink($file);
+                }
+            }
+
+            $sql = "DELETE FROM `{db_prefix}config` WHERE (`Key` LIKE 'wp\_%' AND `Key` <> 'wp_path' AND `Key` <> 'wp_post_count') AND `Plugin` = 'wordpressBridge'";
+            $rlDb->query($sql);
+
+            $sql = "DELETE FROM `{db_prefix}lang_keys` WHERE (`Key` LIKE '%wp\_%' AND `Key` <> 'config+name+wp_path' AND `Key` <> 'config+name+wp_post_count') AND `Plugin` = 'wordpressBridge'";
+            $rlDb->query($sql);
+        ]]></update>
+        <update version="2.1.0" files="rlWordpressBridge.class.php,requests.php,src/Controllers/AccountController.php,src/Request.php,src/WordPressAPI/API.php,src/routes.php,src/helpers.php,i18n/ru.json"><![CDATA[]]></update>
+        <update version="2.1.1" files="recent_posts.tpl,rlWordpressBridge.class.php,header.tpl,/vendor/,src/Controllers/BlocksController.php,src/Traits/SingletonTrait.php"><![CDATA[
+            unlink(RL_PLUGINS . 'wordpressBridge/static/style.css');
+
+            $hooks_to_be_removed = array(
+                'staticDataRegister'
+            );
+            $GLOBALS['rlDb']->query("
+                DELETE FROM `{db_prefix}hooks`
+                WHERE `Plugin` = 'wordpressBridge'
+                AND `Name` IN ('" . implode("','", $hooks_to_be_removed) . "')
+            ");
+        ]]></update>
+        <update version="2.1.2" files="recent_posts.tpl,requests.php,rlWordpressBridge.class.php,src/Controllers/BlocksController.php,src/WordPressAPI/API.php,static/lib.js,i18n/ru.json"><![CDATA[
+            $filesystem = new \Flynax\Component\Filesystem();
+            $filesystem->remove(RL_PLUGINS . 'wordpressBridge/vendor/');
+            $filesystem->mirror(RL_UPLOAD . 'wordpressBridge/vendor/', RL_PLUGINS . 'wordpressBridge/vendor/');
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('WordpressBridge', null, 'wordpressBridge');
+        $GLOBALS['rlWordpressBridge']->uninstall();
+    ]]></uninstall>
+
+</plugin>

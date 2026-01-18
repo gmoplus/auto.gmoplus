@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="iFlynaxConnect">
+    <title>iFlynax Connect</title>
+    <description>Bridge between iOS device and your website.</description>
+    <author>Alex</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.7.5</version>
+    <date>29.06.2011</date>
+    <class>IFlynaxConnect</class>
+    <compatible>4.7.2</compatible>
+
+    <files>
+        <file>Adapter/ProfileThumbnailUploadAdapter.php</file>
+        <file>Adapter/ReportPointsAdapter.php</file>
+        <!--admin-->
+        <file>admin/iflynax_admob.inc.php</file>
+        <file>admin/iflynax_admob.tpl</file>
+        <file>admin/iflynax_languages.inc.php</file>
+        <file>admin/iflynax_languages.tpl</file>
+        <file>admin/iflynax_listing_types.inc.php</file>
+        <file>admin/iflynax_listing_types.tpl</file>
+        <file>admin/iflynax_settings.inc.php</file>
+        <file>admin/iflynax_settings.tpl</file>
+        <!--cert-->
+        <file>cert</file><!-- it's a folder -->
+        <!--controllers-->
+        <file>controllers/caching.inc.php</file>
+        <file>controllers/control.inc.php</file>
+        <file>controllers/favorites.inc.php</file>
+        <file>controllers/home.inc.php</file>
+        <file>controllers/listing_details.inc.php</file>
+        <file>controllers/login.inc.php</file>
+        <file>controllers/my_listings.inc.php</file>
+        <file>controllers/my_profile.inc.php</file>
+        <file>controllers/new_listings.inc.php</file>
+        <file>controllers/requests.inc.php</file>
+        <file>controllers/seller_details.inc.php</file>
+        <!--gateways-->
+        <file>gateways/apple.gateway.php</file>
+        <!--languages-->
+        <file>i18n/ru.json</file>
+        <file>languages/English(EN).xml</file>
+        <file>languages/Arabic(AR).xml</file>
+        <file>languages/Turkish(TR).xml</file>
+        <file>languages/Russian(RU).xml</file>
+        <!--static-->
+        <file>static</file><!-- it's a folder -->
+        <!--another files-->
+        <file>config.inc.php</file>
+        <file>request.php</file>
+        <file>rlIFlynaxConnect.class.php</file>
+        <file>rlIFlynaxLang.class.php</file>
+        <file>rlApplePush.class.php</file>
+        <file>rlInstall.class.php</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+        $GLOBALS['rlInstall']->install();
+    ]]></install>
+
+    <hooks>
+        <hook version="3.3.0" name="tplHeader"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="listingsModifyWhereFeatured"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="listingsModifyWhereByPeriod"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="getCatTreeFields"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="phpGetPlanSql"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apTplHeader"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apPhpIndexBeforeController"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apPhpIndexBottom"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apPhpConfigBottom"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apPhpEmailTemplatesTop"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apExtEmailTemplatesSql"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="rlMessagesAjaxAfterMessageSent"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="rlMessagesAjaxContactOwnerSend"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apExtSearchFormsData"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apExtPluginsUpdate"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apNotifications"><![CDATA[]]></hook>
+        <hook version="3.3.0" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="3.4.0" name="cronSavedSearchNotify"><![CDATA[]]></hook>
+        <hook version="3.4.0" name="cronAdditional"><![CDATA[]]></hook>
+        <hook version="3.4.0" name="listingsModifyWhereSearch"><![CDATA[]]></hook>
+        <hook version="3.4.0" name="rlAccountGetAccountTypesFields"><![CDATA[]]></hook>
+        <hook version="3.5.0" name="phpSelectAgreementFields"><![CDATA[]]></hook>
+        <hook version="3.7.1" name="listingTypesGetModifySql"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs version="3.0.0" key="iFlynaxConnect" name="iFlynax Connect">
+        <![CDATA[]]>
+        <config version="3.0.0" key="iflynax_divider_common" name="Common" type="divider"><![CDATA[]]></config>
+        <config version="3.7.3" key="iflynax_bundle_identifier" name="Bundle Identifier" type="text"><![CDATA[com.flynax.iFlynax]]></config>
+        <config version="3.0.0" key="iflynax_synch_code" name="Synchronize code" type="text"><![CDATA[7e576f277d633b2d5a28232540]]></config>
+        <config version="3.0.0" key="iflynax_billing_currency" name="Billing Currency Code" description="&nbsp;Use ISO codes only and make sure all payment gateways you are using supports this currency" type="text"><![CDATA[USD]]></config>
+        <config version="3.0.0" key="iflynax_ads_type_home_screen" name="Ads type on Home screen" type="select" values="featured,recently"><![CDATA[recently]]></config>
+        <config version="3.2.0" key="iflynax_home_featured_ltype" name="Listing Type" description="&nbsp;NOTE: Relevant only if the option above is &lt;b&gt;featured&lt;/b&gt;" type="select"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_divider_listing_grid" name="Listing Grid" type="divider"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_grid_listings_number" name="Number of listing per page" type="text" validate="int"><![CDATA[30]]></config>
+        <config version="3.5.0" key="iflynax_divider_accounts" name="Account Settings" type="divider"><![CDATA[]]></config>
+        <config version="3.5.0" key="iflynax_registration_2step" name="Second step of registration" type="bool"><![CDATA[0]]></config>
+        <config version="3.0.0" key="iflynax_divider_map" name="Map" type="divider"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_map_default_location_zoom" name="Location default zoom" type="select" values="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21"><![CDATA[13]]></config>
+        <config version="3.0.0" key="iflynax_google_map_api_key" name="Google Map API key" type="textarea"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_divider_ga" name="Google Analitics" type="divider"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_ga_enable" name="Status" type="bool"><![CDATA[0]]></config>
+        <config version="3.0.0" key="iflynax_ga_traking_id" name="Traking ID" type="text"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_ga_dispatch_interval" name="Dispatch Interval" description="&nbsp;seconds" type="text" validate="int"><![CDATA[120]]></config>
+        <config version="3.0.0" key="iflynax_divider_promoting" name="Promoting Apps with Smart App Banners" type="divider"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_promote_app" name="Promote the App" type="bool"><![CDATA[0]]></config>
+        <config version="3.0.0" key="iflynax_app_store_id" name="App ID (Required.)" type="text"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_affiliate_data" name="Affiliate Data (Optional.)" type="text"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_divider_inApp_purchase" name="In-App Purchase" type="divider"><![CDATA[]]></config>
+        <config version="3.0.0" key="iflynax_inapp_module" name="Use In-App Purchase module" type="bool"><![CDATA[0]]></config>
+        <config version="3.0.0" key="iflynax_inapp_sandbox" name="Use Sand Box for testing" type="bool"><![CDATA[0]]></config>
+    </configs>
+
+    <phrases>
+        <phrase version="3.0.0" key="admin_controllers+name+iflynax" module="admin"><![CDATA[iOS App]]></phrase>
+        <phrase version="3.0.0" key="admin_controllers+name+iflynax_languages" module="admin"><![CDATA[Languages]]></phrase>
+        <phrase version="3.0.0" key="admin_controllers+name+iflynax_settings" module="admin"><![CDATA[Common Settings]]></phrase>
+        <phrase version="3.0.0" key="admin_controllers+name+iflynax_email_templates" module="admin"><![CDATA[E-mail Templates]]></phrase>
+        <phrase version="3.0.0" key="admin_controllers+name+iflynax_listing_types" module="admin"><![CDATA[Listing Type Settings]]></phrase>
+        <phrase version="3.0.0" key="iflynax_import_lang_file_name_error" module="admin"><![CDATA[Incorrect language file name format, use correct format please, example: <b>English(EN).xml</b>]]></phrase>
+        <phrase version="3.0.0" key="iflynax_import_lang_file_empty" module="admin"><![CDATA[There are not phrases in language file]]></phrase>
+        <phrase version="3.0.0" key="iflynax_type_icon" module="admin"><![CDATA[Icon in sliding menu]]></phrase>
+        <phrase version="3.0.0" key="iflynax_xml_dump" module="admin"><![CDATA[XML dump file]]></phrase>
+        <phrase version="3.3.0" key="payment_gateways+name+apple" module="common"><![CDATA[In-App Purchase (iOS)]]></phrase>
+        <phrase version="3.1.0" key="iflynax_admob_add_new" module="admin"><![CDATA[Add Unit]]></phrase>
+        <phrase version="3.1.0" key="iflynax_admob_show_list" module="admin"><![CDATA[Show List]]></phrase>
+        <phrase version="3.1.0" key="iflynax_admob_code" module="admin"><![CDATA[AdMob unit ID]]></phrase>
+        <phrase version="3.1.0" key="iflynax_admob_unit_id_help" module="admin"><![CDATA[<a target="_blank" href="https://support.google.com/admob/answer/3052638?hl=en">Read more</a> how to get AdMob unit ID]]></phrase>
+        <phrase version="3.1.0" key="iflynax_admob_pages_empty" module="admin"><![CDATA[Select at least one page]]></phrase>
+        <phrase version="3.1.0" key="iflynax_admob_page_used" module="admin"><![CDATA[Page has already been used]]></phrase>
+        <phrase version="3.1.0" key="iflynax_admob_all_pages_used" module="admin"><![CDATA[All pages has already been used]]></phrase>
+        <phrase version="3.1.0" key="admin_controllers+name+iflynax_admob" module="admin"><![CDATA[Google AdMob]]></phrase>
+        <phrase version="3.1.0" key="iflynax_section_pictures" module="common"><![CDATA[Pictures]]></phrase>
+        <phrase version="3.1.0" key="iflynax_section_youtube" module="common"><![CDATA[YouTube video]]></phrase>
+        <phrase version="3.1.0" key="iflynax_account_search_results" module="admin"><![CDATA[Account Search Results]]></phrase>
+        <phrase version="3.1.1" key="iflynax_subcategory" module="common"><![CDATA[Subcategory]]></phrase>
+        <phrase version="3.7.0" key="iflynax_promote_app" module="admin" target="iflynax_settings"><![CDATA[Safari has a new Smart App Banner feature in iOS 6 and later that provides a standardized method of promoting apps on the App Store from a website]]></phrase>
+        <phrase version="3.7.0" key="iflynax_app_store_id" module="admin" target="iflynax_settings">
+            <![CDATA[You can find your app <b>App ID</b> from the <a target="_blank" href='http://itunes.apple.com/linkmaker'>iTunes Link Maker</a>,
+            type the name of your app in the Search field, and select the appropriate country and media type.
+            In the results, find your app and select <u>iPhone App Link</u> in the column on the right.
+            Your app ID is the nine-digit number in between <b>id</b> and <b>?mt</b>.]]>
+        </phrase>
+        <phrase version="3.7.0" key="iflynax_affiliate_data" module="admin" target="iflynax_settings">
+            <![CDATA[Your iTunes affiliate string, if you are an iTunes affiliate.
+            If you are not, find out more about becoming an <a target="_blank" href="http://www.apple.com/itunes/affiliates/">iTunes affiliate</a>.]]>
+        </phrase>
+        <phrase version="3.7.0" key="iflynax_inapp_module" module="admin" target="iflynax_settings">
+            <![CDATA[<p>1. Go to <a target="_blank" href="https://itunesconnect.apple.com">iTunes Connect</a> and sign in with your Apple ID account.</p>
+            <p>2. Click <b>My Apps</b> and select your App; next click <b>Features</b> tab in the top.</p>
+            <p>3. Click <b>(+)</b> button at <b>In-App Purchases</b>.</p>
+            <p>4. Select Type <b>Consumable</b>.</p>
+            <p>5. Enter a reference name and a product ID for this In-App Purchase.<br />
+            <b>NOTE:</b> The Product ID must have format: <b>listing.plan.gold</b><br />
+            Where <b><i>listing.plan.</i></b> - required prefix, <b>gold</b> - it's your listing plan key.
+            </p>]]>
+        </phrase>
+        <phrase version="3.7.0" key="iflynax_inapp_sandbox" module="admin" target="iflynax_settings"><![CDATA[<a target="_blank" href="https://support.magplus.com/hc/en-us/articles/203809008-iOS-How-to-Test-In-App-Purchases-in-Your-App">How to Test In-App Purchases in Your App with Sand Box</a>]]></phrase>
+    </phrases>
+
+    <emails>
+        <email version="3.0.0" key="iflynax_pending_account_created" subject="You have been sucessfully registered on {site_name}"><![CDATA[
+Hello {username},
+
+You have successfully registered at {site_name} although your account will have an incomplete status until you confirm your email.
+To confirm your email please follow the link {link}
+
+If you don't confirm your email you will not be able to log into your account next time.
+
+Thank you,
+{site_name}
+        ]]></email>
+        <email version="3.0.0" key="iflynax_account_created_admin" subject="A new user ({username}) signed up through iOS App at {site_name}"><![CDATA[
+Dear Administrator,
+
+A new user signed up and logged into the App. His account was activated automatically.
+You can review the new account here: {link} and suspend it if needed.
+
+<b>Account details:</b>
+Username: {username}
+E-mail: {email}
+Join date: {date}
+Account Type: {account_type}
+        ]]></email>
+    </emails>
+
+    <updates>
+        <update version="2.0.1" files="App.php,config.inc.php,classes/iPhone.class.php,classes/iPhone.class.php,controllers/add_listings.inc.php,controllers/control.inc.php,controllers/listing_type.inc.php,controllers/login.inc.php,controllers/my_listings.inc.php,controllers/registration.inc.php"><![CDATA[]]></update>
+        <update version="2.0.2" files="controllers/home.inc.php"><![CDATA[]]></update>
+        <update version="3.0.0" files="admin/.htaccess,admin/iflynax_languages.inc.php,admin/iflynax_languages.tpl,admin/iflynax_listing_types.inc.php,admin/iflynax_listing_types.tpl,admin/iflynax_settings.inc.php,admin/iflynax_settings.tpl,cert/.htaccess,classes/.htaccess,classes/rlSmarty.class.php,controllers/.htaccess,controllers/caching.inc.php,controllers/control.inc.php,controllers/favorites.inc.php,controllers/home.inc.php,controllers/listing_details.inc.php,controllers/login.inc.php,controllers/my_listings.inc.php,controllers/my_profile.inc.php,controllers/new_listings.inc.php,controllers/requests.inc.php,controllers/seller_details.inc.php,gateways/.htaccess,gateways/apple.gateway.php,languages/.htaccess,languages/English(EN).xml,static/.htaccess,static/gallery.png,static/icon_auto_parts.png,static/icon_auto.png,static/icon_boat_staff.png,static/icon_boats.png,static/icon_default.png,static/icon_girls.png,static/icon_guys.png,static/icon_job.png,static/icon_listings.png,static/icon_med_service.png,static/icon_pets.png,static/icon_property.png,static/icon_services.png,.htaccess,config.inc.php,old_app_notify.php,request.php,rlIFlynaxConnect.class.php,rlIFlynaxLang.class.php,rlApplePush.class.php,smart_app_banner.inc.php,v2/App.php,v2/config.inc.php,v2/rlIFlynaxConnect.class.php,v2/classes/iPhone.class.php,v2/classes/PropertyList.class.php,v2/classes/rlSmarty.class.php,v2/controllers/add_listings.inc.php,v2/controllers/listing_type.inc.php,v2/controllers/caching.inc.php,v2/controllers/control.inc.php,v2/controllers/custom_pages.inc.php,v2/controllers/home.inc.php,v2/controllers/listing_details.inc.php,v2/controllers/location_finder.inc.php,v2/controllers/login.inc.php,v2/controllers/my_listings.inc.php,v2/controllers/new_listings.inc.php,v2/controllers/quick_search.inc.php,v2/controllers/registration.inc.php,v2/controllers/search.inc.php,v2/controllers/streetview.inc.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.0.0');
+        ]]></update>
+        <update version="3.1.0" files="admin/.htaccess,admin/iflynax_admob.inc.php,admin/iflynax_admob.tpl,admin/iflynax_languages.inc.php,admin/iflynax_languages.tpl,admin/iflynax_listing_types.inc.php,admin/iflynax_listing_types.tpl,admin/iflynax_settings.inc.php,admin/iflynax_settings.tpl,cert/.htaccess,config.inc.php,controllers/.htaccess,controllers/caching.inc.php,controllers/control.inc.php,controllers/favorites.inc.php,controllers/home.inc.php,controllers/listing_details.inc.php,controllers/login.inc.php,controllers/my_listings.inc.php,controllers/my_profile.inc.php,controllers/new_listings.inc.php,controllers/requests.inc.php,controllers/seller_details.inc.php,gateways/.htaccess,gateways/apple.gateway.php,languages/.htaccess,languages/English(EN).xml,request.php,rlApplePush.class.php,rlIFlynaxConnect.class.php,rlIFlynaxLang.class.php,rlInstall.class.php,static/.htaccess,static/gallery.png,static/icon_auto.png,static/icon_auto_parts.png,static/icon_boat_staff.png,static/icon_boats.png,static/icon_default.png,static/icon_job.png,static/icon_listings.png,static/icon_med_service.png,static/icon_pets.png,static/icon_property.png,static/icon_services.png,v2/App.php,v2/app_menus.tpl,v2/classes/iPhone.class.php,v2/classes/PropertyList.class.php,v2/classes/rlSmarty.class.php,v2/config.inc.php,v2/controllers/account_menu.inc.php,v2/controllers/add_listings.inc.php,v2/controllers/caching.inc.php,v2/controllers/control.inc.php,v2/controllers/custom_pages.inc.php,v2/controllers/edit_listings.inc.php,v2/controllers/favorites.inc.php,v2/controllers/home.inc.php,v2/controllers/listing_details.inc.php,v2/controllers/listing_type.inc.php,v2/controllers/location_finder.inc.php,v2/controllers/login.inc.php,v2/controllers/my_listings.inc.php,v2/controllers/new_listings.inc.php,v2/controllers/quick_search.inc.php,v2/controllers/registration.inc.php,v2/controllers/requests.inc.php,v2/controllers/search.inc.php,v2/controllers/streetview.inc.php,v2/rlIFlynaxConnect.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.1.0');
+        ]]></update>
+        <update version="3.1.1" files="admin/iflynax_admob.inc.php,admin/iflynax_languages.inc.php,controllers/caching.inc.php,controllers/requests.inc.php,languages/English(EN).xml,request.php,rlApplePush.class.php,rlIFlynaxConnect.class.php,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.1.1');
+        ]]></update>
+        <update version="3.2.0" files=".htaccess,admin/iflynax_languages.inc.php,admin/iflynax_languages.tpl,admin/iflynax_listing_types.inc.php,admin/iflynax_listing_types.tpl,admin/iflynax_settings.tpl,controllers/caching.inc.php,controllers/home.inc.php,controllers/listing_details.inc.php,controllers/requests.inc.php,gateways/apple.gateway.php,languages/Arabic(AR).xml,languages/English(EN).xml,languages/Turkish(TR).xml,php.ini,request.php,rlApplePush.class.php,rlIFlynaxConnect.class.php,rlIFlynaxLang.class.php,rlInstall.class.php,v2/controllers/add_listings.inc.php,v2/controllers/login.inc.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.2.0');
+        ]]></update>
+        <update version="3.3.0" files="admin/iflynax_listing_types.tpl,controllers/caching.inc.php,controllers/requests.inc.php,request.php,rlIFlynaxConnect.class.php,rlIFlynaxLang.class.php"><![CDATA[
+            $GLOBALS['reefless']->deleteDirectory(RL_PLUGINS . 'iFlynaxConnect/v2/');
+        ]]></update>
+        <update version="3.4.0" files="Adapter/ProfileThumbnailUploadAdapter.php,Adapter/ReportPointsAdapter.php,admin/iflynax_settings.tpl,controllers/requests.inc.php,languages/Arabic(AR).xml,languages/English(EN).xml,languages/Turkish(TR).xml,rlApplePush.class.php,rlIFlynaxConnect.class.php,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.4.0');
+        ]]></update>
+        <update version="3.4.1" files="rlIFlynaxConnect.class.php"><![CDATA[]]></update>
+        <update version="3.5.0" files="controllers/caching.inc.php,controllers/my_profile.inc.php,languages/Arabic(AR).xml,languages/English(EN).xml,languages/Turkish(TR).xml,rlIFlynaxConnect.class.php,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.5.0');
+        ]]></update>
+        <update version="3.6.0" files="Adapter/ListingPictureUploadAdapter.php,admin/iflynax_languages.inc.php,controllers/caching.inc.php,controllers/control.inc.php,controllers/listing_details.inc.php,controllers/login.inc.php,controllers/requests.inc.php,languages/Arabic(AR).xml,languages/English(EN).xml,languages/Turkish(TR).xml,request.php,rlIFlynaxConnect.class.php,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.6.0');
+        ]]></update>
+        <update version="3.6.1" files="rlIFlynaxConnect.class.php"><![CDATA[]]></update>
+        <update version="3.6.2" files="Adapter/ReportPointsAdapter.php,admin/iflynax_settings.inc.php,rlIFlynaxConnect.class.php"><![CDATA[]]></update>
+        <update version="3.7.0" files="admin/iflynax_admob.inc.php,admin/iflynax_languages.inc.php,admin/iflynax_listing_types.inc.php,admin/iflynax_settings.inc.php,admin/iflynax_settings.tpl,controllers/login.inc.php,gateways/apple.gateway.php,i18n/ru.json,languages/Russian(RU).xml,rlIFlynaxConnect.class.php,rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.7.0');
+        ]]></update>
+        <update version="3.7.1" files="controllers/caching.inc.php,controllers/login.inc.php,request.php,rlIFlynaxConnect.class.php,languages/Arabic(AR).xml,languages/English(EN).xml,languages/Russian(RU).xml,languages/Turkish(TR).xml"><![CDATA[]]></update>
+        <update version="3.7.2" files="admin/iflynax_admob.tpl,controllers/login.inc.php,controllers/requests.inc.php,rlIFlynaxConnect.class.php,rlIFlynaxLang.class.php,request.php"><![CDATA[]]></update>
+        <update version="3.7.3" files="rlInstall.class.php,rlIFlynaxConnect.class.php,rlApplePush.class.php,i18n/ru.json"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.7.3');
+        ]]></update>
+        <update version="3.7.4" files="rlInstall.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+            $GLOBALS['rlInstall']->update('3.7.4');
+        ]]></update>
+        <update version="3.7.5" files="controllers/listing_details.inc.php,rlIFlynaxConnect.class.php"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('Install', null, 'iFlynaxConnect');
+        $GLOBALS['rlInstall']->uninstall();
+    ]]></uninstall>
+</plugin>

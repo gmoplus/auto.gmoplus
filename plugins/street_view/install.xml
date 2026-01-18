@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="street_view">
+    <title>Street View</title>
+    <description>Shows Google or Yandex Street View on the Listing Details page</description>
+    <author>John Freeman</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.1.0</version>
+    <date>06.04.2013</date>
+    <class>StreetView</class>
+    <compatible>4.8.2</compatible>
+    
+    <files>
+        <file>admin/js.tpl</file>
+        <file>admin/row.tpl</file>
+        <file>box.tpl</file>
+        <file>config.js.tpl</file>
+        <file>gallery.tpl</file>
+        <file>rlStreetView.class.php</file>
+        <file>tab.tpl</file>
+        <file>static/style.css</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <install><![CDATA[]]></install>
+
+    <configs version="2.0.0" key="street_view" name="Street View">
+        <![CDATA[]]>
+        <config version="2.0.0" key="street_view_provider" name="Service provider" type="select" values="google,yandex"><![CDATA[google]]></config>
+        <config version="2.0.0" key="street_view_google_key" name="Google API key" type="text" values=""><![CDATA[]]></config>
+        <config version="2.0.0" key="street_view_yandex_key" name="Yandex API key" type="text" values=""><![CDATA[]]></config>
+        <config version="2.0.0" key="street_view_mode" name="Show Street View in" type="select" values="tab,gallery,box"><![CDATA[tab]]></config>
+    </configs>
+
+    <hooks>             
+        <hook version="2.0.0" name="listingDetailsBottom"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="listingDetailsBottomTpl"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apTplContentBottom"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="tplListingDetailsMapButtons"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="tplListingDetailsPhotoPreview"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apNotifications"><![CDATA[]]></hook>
+        <hook version="2.0.0" name="apMixConfigItem"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apTplListingTypesForm"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apPhpListingTypesPost"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apPhpListingTypesBeforeAdd"><![CDATA[]]></hook>
+        <hook version="2.1.0" name="apPhpListingTypesBeforeEdit"><![CDATA[]]></hook>
+    </hooks>
+
+    <blocks>
+        <block version="2.0.0" key="street_view" name="Street View" side="middle" type="smarty" tpl="1" header="1"><![CDATA[
+            {include file=$smarty.const.RL_PLUGINS|cat:'street_view/box.tpl'}
+        ]]></block>
+    </blocks>
+    
+    <phrases>
+        <phrase key="street_view_tab" module="common"><![CDATA[Street View]]></phrase>
+        <phrase version="2.0.0" key="street_view_no_location" module="common"><![CDATA[Failed to find the requested address (<b>{address}</b>) via the street view service because the service provider doesn't have data for the address.]]></phrase>
+        <phrase version="2.0.0" key="config+option+street_view_mode_tab" module="admin" target="settings"><![CDATA[Tab]]></phrase>
+        <phrase version="2.0.0" key="config+option+street_view_mode_gallery" module="admin" target="settings"><![CDATA[Picture gallery]]></phrase>
+        <phrase version="2.0.0" key="config+option+street_view_mode_box" module="admin" target="settings"><![CDATA[Listing details]]></phrase>
+        <phrase version="2.0.0" key="street_view_no_api_keys" module="system"><![CDATA[Street View API keys are not specified; please configure API keys from the [Basic Settings] ]]></phrase>
+        <phrase version="2.0.0" key="config+des+street_view_provider" module="admin" target="settings"><![CDATA[Read the instruction <a href='https://www.flynax.com/files/manuals/How%20to%20configure%20Street%20View%20provider.pdf' target='_blank'>here</a>]]></phrase>
+    </phrases>
+    
+    <updates>
+        <update version="1.1.0" files="tab.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="1.1.1" files="tab.tpl"><![CDATA[]]></update>
+        <update version="1.1.2" files="tab.tpl"><![CDATA[]]></update>
+        <update version="1.1.3" files="tab.tpl"><![CDATA[]]></update>
+        <update version="1.1.4" files="tab.tpl"><![CDATA[]]></update>
+        <update version="2.0.0" files="admin/js.tpl,box.tpl,config.js.tpl,gallery.tpl,rlStreetView.class.php,tab.tpl,static/style.css"><![CDATA[]]></update>
+        <update version="2.0.1" files="config.js.tpl,rlStreetView.class.php,static/style.css"><![CDATA[]]></update>
+        <update version="2.1.0" files="admin/row.tpl,rlStreetView.class.php,static/style.css"><![CDATA[]]></update>
+    </updates>
+
+    <uninstall><![CDATA[]]></uninstall>
+</plugin>

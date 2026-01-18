@@ -1,0 +1,7 @@
+# Deny all external requests
+# Allow only own external request to plugin controller
+Order allow,deny
+Deny from all
+<FilesMatch blocks\.inc\.php>
+    Allow from all
+</FilesMatch>

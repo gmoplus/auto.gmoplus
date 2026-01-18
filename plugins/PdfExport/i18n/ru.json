@@ -1,0 +1,15 @@
+{
+    "title_PdfExport": "Экспорт объявлений в PDF",
+    "description_PdfExport": "Позволяет пользователям сохранять объявления в PDF формате",
+    "config_groups+name+pdf_export": "Экспорт в PDF",
+    "config+name+pdf_export_logo": "Название файла логотипа",
+    "config+des+pdf_export_logo": "Если вы хотите заменить логотип в файлах PDF, подгрузите файл в поддиректорию плагинов - /plugins/PdfExport/static/.",
+    "config+name+pdf_account_form": "Форма учетной записи",
+    "config+des+pdf_account_form": "Данные учетной записи будут добавлены в PDF на основании выбранной формы",
+    "title_pdf_export": "Сохранить как PDF",
+    "pdf_export_image_error": "Изображение не доступно! Убедитесь, что название файла и права на него установлены корректно.",
+    "config+option+pdf_account_form_registration": "Форма регистрации",
+    "config+option+pdf_account_form_browse": "Форма просмотра",
+    "pages+name+PdfExport": "Экспорт в PDF",
+    "pages+title+PdfExport": "Экспорт в PDF"
+}

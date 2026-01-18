@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="reportBrokenListing">
+    <title>Report Listing</title>
+    <description>Allows users to report listings to the Administrator using different labels</description>
+    <author>Alan Wake</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>3.2.0</version>
+    <date>31.03.2012</date>
+    <controller>reportBrokenListing</controller>
+    <class>ReportBrokenListing</class>
+    <compatible>4.8.1</compatible>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('ReportBrokenListing', null, 'reportBrokenListing');
+        $GLOBALS['rlReportBrokenListing']->install();
+    ]]></install>
+
+    <files>
+        <file>admin/pages/reportDetail.php</file>
+        <file>admin/pages/reportDetail.tpl</file>
+        <file>admin/pages/reportPoints.php</file>
+        <file>admin/pages/reportPoints.tpl</file>
+        <file>admin/reportBrokenListing.inc.php</file>
+        <file>admin/reportBrokenListing.tpl</file>
+        <file>src/FlynaxObjectsContainer.php</file>
+        <file>src/Helpers/AjaxWrapper.php</file>
+        <file>src/Helpers/Requests.php</file>
+        <file>src/Helpers/helpers.php</file>
+        <file>src/Report.php</file>
+        <file>src/ReportDetail.php</file>
+        <file>src/ReportPoints.php</file>
+        <file>src/ReportsFilter.php</file>
+        <file>static/admin_lib.js</file>
+        <file>static/gallery.png</file>
+        <file>static/lib.js</file>
+        <file>static/rtl.css</file>
+        <file>static/remove-circle.svg</file>
+        <file>static/road-sign-warning.svg</file>
+        <file>view/details_icon.tpl</file>
+        <file>view/footer.tpl</file>
+        <file>view/header.tpl</file>
+        <file>rlReportBrokenListing.class.php</file>
+        <file>bootstrap.php</file>
+        <file>vendor/autoload.php</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <hooks>
+        <hook version="3.0.0" name="listingDetailsAfterStats"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="tplFooter"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apTplFooter"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="apAjaxRequest"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="ajaxRequest"><![CDATA[]]></hook>
+        <hook version="3.0.0" name="staticDataRegister"><![CDATA[]]></hook>
+        <hook version="3.2.0" name="tplHeader"><![CDATA[]]></hook>
+    </hooks>
+
+    <configs key="reportBroken" name="Report Listing">
+        <![CDATA[]]>
+        <config version="3.2.0" key="reportBroken_message_length" name="Report message length" type="text" validate="int"><![CDATA[300]]></config>
+        <config version="3.0.0" key="reportBroken_default_point_weight" name="Default offence score" type="text" validate="int"><![CDATA[10]]></config>
+    </configs>
+
+    <phrases>
+        <phrase version="3.2.0" key="reportbroken_add_in" module="frontEnd" target="listing_details"><![CDATA[Report Listing]]></phrase>
+        <phrase version="3.2.0" key="reportbroken_add_comment" module="frontEnd" js="1" target="listing_details"><![CDATA[Select a label or click "Other" to send comments]]></phrase>
+        <phrase version="3.2.0" key="reportbroken_do_you_want_to_delete_list" module="frontEnd" target="listing_details"><![CDATA[Are you sure you want to cancel your report?]]></phrase>
+        <phrase version="3.2.0" key="reportbroken_remove_in" module="frontEnd" target="listing_details"><![CDATA[Cancel Report]]></phrase>
+        <phrase version="3.2.0" key="ext_reportBroken_report_by" module="admin" js="1" target="reportBrokenListing"><![CDATA[Reported by]]></phrase>
+        <phrase version="3.2.0" key="rbl_report" module="frontEnd" target="listing_details"><![CDATA[Report]]></phrase>
+        <phrase version="3.2.0" key="rbl_report_message" module="admin" js="1" target="reportBrokenListing"><![CDATA[Reports]]></phrase>
+        <phrase version="3.2.0" key="rbl_report_date" module="admin" js="1" target="reportBrokenListing"><![CDATA[Report Date]]></phrase>
+        <phrase version="3.2.0" key="rbl_points_to_inactive" module="admin" js="1" target="reportBrokenListing"><![CDATA[Number of reports to affect the listing]]></phrase>
+        <phrase version="3.2.0" key="rbl_criticality" module="admin" js="1" target="reportBrokenListing"><![CDATA[Offence Level]]></phrase>
+        <phrase version="3.2.0" key="rbl_listing_criticality" module="admin" js="1" target="reportBrokenListing"><![CDATA[Offence Score]]></phrase>
+        <phrase version="3.2.0" key="rbl_listing_status" module="admin" js="1" target="reportBrokenListing"><![CDATA[Listing Status]]></phrase>
+        <phrase version="3.2.0" key="rbl_reports_list" module="admin" target="reportBrokenListing"><![CDATA[All Reports]]></phrase>
+        <phrase version="3.2.0" key="rbl_report_points" module="admin" target="reportBrokenListing"><![CDATA[Reporting Labels]]></phrase>
+        <phrase version="3.2.0" key="rbl_detail" module="admin" target="reportBrokenListing"><![CDATA[Report Details]]></phrase>
+        <phrase version="3.2.0" key="rbl_reports_count" module="admin" js="1" target="reportBrokenListing"><![CDATA[Report Count]]></phrase>
+        <phrase version="3.2.0" key="rbl_other" js="1" module="common"><![CDATA[Other]]></phrase>
+        <phrase version="3.2.0" key="rbl_reports" module="admin" target="reportBrokenListing"><![CDATA[report(s)]]></phrase>
+        <phrase version="3.2.0" key="rbl_reports_make_inactive_after" module="admin" target="reportBrokenListing"><![CDATA[Disable listing after]]></phrase>
+        <phrase version="3.2.0" key="rbl_ip_wrong" module="system"><![CDATA[The listing has already been reported from your IP.]]></phrase>
+        <phrase version="3.2.0" key="rbl_listing_title" module="admin" js="1" target="reportBrokenListing"><![CDATA[Listing Title]]></phrase>
+        <phrase version="3.2.0" key="rbl_report_point" module="admin" target="reportBrokenListing"><![CDATA[Report Label]]></phrase>
+        <phrase version="3.2.0" key="rbl_provide_a_reason" module="frontEnd" js="1" target="listing_details"><![CDATA[Please type your report in the form.]]></phrase>
+        <phrase version="3.2.0" key="rbl_report_removed" module="system"><![CDATA[The report has been successfully removed.]]></phrase>
+        <phrase version="3.2.0" key="rbl_report_added" module="system"><![CDATA[You've successfully reported the listing.]]></phrase>
+        <phrase version="3.2.0" key="rbl_point_name" module="admin" js="1" target="reportBrokenListing"><![CDATA[Label title]]></phrase>
+        <phrase version="3.2.0" key="rbl_criticality_low" module="admin" js="1" target="reportBrokenListing"><![CDATA[Low]]></phrase>
+        <phrase version="3.2.0" key="rbl_criticality_medium" module="admin" js="1" target="reportBrokenListing"><![CDATA[Medium]]></phrase>
+        <phrase version="3.2.0" key="rbl_criticality_high" module="admin" js="1" target="reportBrokenListing"><![CDATA[High]]></phrase>
+        <phrase version="3.2.0" key="rbl_reports_removed" module="system"><![CDATA[The reports has been successfully removed.]]></phrase>
+        <phrase version="3.2.0" key="rbl_label_has_reports" module="admin" target="reportBrokenListing"><![CDATA[Label has {number} report(s)]]></phrase>
+        <phrase version="3.2.0" key="rbl_remove_label_with_reports" module="admin" target="reportBrokenListing"><![CDATA[Remove the label with associated reports]]></phrase>
+        <phrase version="3.2.0" key="rbl_assign_label_reports" module="admin" target="reportBrokenListing"><![CDATA[Assign all reports under this label to another label before removing]]></phrase>
+        <phrase version="3.2.0" key="rbl_remove_block" module="admin" target="reportBrokenListing"><![CDATA[Removing report]]></phrase>
+        <phrase version="3.2.0" key="rbl_filter_reports" module="admin" target="reportBrokenListing"><![CDATA[Filter reports]]></phrase>
+        <phrase version="3.2.0" key="rbl_remove_all_reports" module="admin" js="1" target="reportBrokenListing"><![CDATA[Remove all reports]]></phrase>
+        <phrase version="3.2.0" key="report_broken_point_1517465827" module="frontEnd" target="listing_details"><![CDATA[Illegal/Fraudulent]]></phrase>
+        <phrase version="3.2.0" key="report_broken_point_1517465865" module="frontEnd" target="listing_details"><![CDATA[Spam]]></phrase>
+        <phrase version="3.2.0" key="report_broken_point_1517465877" module="frontEnd" target="listing_details"><![CDATA[Duplicate]]></phrase>
+        <phrase version="3.2.0" key="report_broken_point_1517465899" module="frontEnd" target="listing_details"><![CDATA[Added to wrong category]]></phrase>
+        <phrase version="3.2.0" key="report_broken_point_1517465911" module="frontEnd" target="listing_details"><![CDATA[Breaches posting rules]]></phrase>
+        <phrase version="3.2.0" key="report_broken_point_1517465925" module="frontEnd" target="listing_details"><![CDATA[Owner doesn’t answer the phone]]></phrase>
+        <phrase version="3.2.0" key="rbl_listing_remove" module="admin" target="reportBrokenListing"><![CDATA[Remove listing]]></phrase>
+    </phrases>
+
+    <emails>
+        <email version="3.2.0" key="rbl_report_removed" subject="Report removed on {site_name}"><![CDATA[Hello {name},
+            Your report: "{report_message}" has been removed by Administrator.
+            Reason: {reason}
+        ]]></email>
+    </emails>
+
+    <updates>
+        <update version="2.0.1"><![CDATA[]]></update>
+        <update version="2.0.2"><![CDATA[]]></update>
+        <update version="2.0.3" files=".htaccess,dwetails_icon.tpl,grid_icon.tpl,rlReportBrokenListing.class.php,static/gallery.png"><![CDATA[]]></update>
+        <update version="3.0.0" files="admin/pages/reportDetail.php,admin/pages/reportDetail.tpl,admin/pages/reportPoints.php,admin/pages/reportPoints.tpl,admin/reportBrokenListing.inc.php,admin/reportBrokenListing.tpl,bootstrap.php,rlReportBrokenListing.class.php,src/FlynaxObjectsContainer.php,src/Helpers/AjaxWrapper.php,src/Helpers/Requests.php,src/Helpers/helpers.php,src/Report.php,src/ReportDetail.php,src/ReportPoints.php,src/ReportsFilter.php,static/admin_lib.js,static/gallery.png,static/lib.js,view/details_icon.tpl,view/footer.tpl,vendor/autoload.php,vendor/composer/autoload_classmap.php,vendor/composer/autoload_files.php,vendor/composer/autoload_namespaces.php,vendor/composer/autoload_psr4.php,vendor/composer/autoload_real.php,vendor/composer/autoload_static.php,vendor/composer/ClassLoader.php,vendor/composer/installed.json,vendor/composer/LICENSE"><![CDATA[
+            $GLOBALS['reefless']->loadClass('ReportBrokenListing', null, 'reportBrokenListing');
+            $GLOBALS['rlReportBrokenListing']->update300();
+        ]]></update>
+        <update version="3.1.0" files="admin/pages/reportDetail.tpl,admin/reportBrokenListing.tpl,rlReportBrokenListing.class.php,src/Helpers/Requests.php,src/Report.php,static/admin_lib.js"><![CDATA[
+            $GLOBALS['reefless']->loadClass('ReportBrokenListing', null, 'reportBrokenListing');
+            $GLOBALS['rlReportBrokenListing']->update310();
+        ]]></update>
+        <update version="3.1.1" files="admin/pages/reportDetail.tpl,static/lib.js"><![CDATA[]]></update>
+        <update version="3.1.2" files="rlReportBrokenListing.class.php"><![CDATA[]]></update>
+        <update version="3.1.3" files="admin/pages/reportDetail.php,admin/pages/reportDetail.tpl,admin/pages/reportPoints.php,admin/reportBrokenListing.inc.php,src/ReportDetail.php,src/ReportPoints.php,src/ReportsFilter.php"><![CDATA[]]></update>
+        <update version="3.2.0" files="admin/pages/reportDetail.php,admin/pages/reportDetail.tpl,admin/pages/reportPoints.tpl,admin/reportBrokenListing.inc.php,admin/reportBrokenListing.tpl,i18n/ru.json,rlReportBrokenListing.class.php,src/Report.php,src/ReportDetail.php,src/ReportsFilter.php,static/admin_lib.js,static/lib.js,static/remove-circle.svg,static/road-sign-warning.svg,view/details_icon.tpl,view/footer.tpl,view/header.tpl"><![CDATA[
+            $GLOBALS['reefless']->loadClass('ReportBrokenListing', null, 'reportBrokenListing');
+            $GLOBALS['rlReportBrokenListing']->update320();
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('ReportBrokenListing', null, 'reportBrokenListing');
+        $GLOBALS['rlReportBrokenListing']->uninstall();
+    ]]></uninstall>
+</plugin>

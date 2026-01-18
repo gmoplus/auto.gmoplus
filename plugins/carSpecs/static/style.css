@@ -1,0 +1,68 @@
+#cs-container {
+    max-width: 65%;
+}
+#cs-container div.info {
+    padding-bottom: 10px;
+}
+#cs-container input[name=reg-number] {
+    background: #fdf6a6;
+    box-shadow: inset 20px 0 0 0px #174cb6;
+    padding-left: 30px;
+}
+#cs-container.vinaudit input[name=reg-number] {
+    box-shadow: none;
+    padding-left: 10px;
+}
+#cs-container input {
+    width: 180px;
+    text-transform: uppercase;
+}
+#cs-container input:first-of-type {
+    margin-right: 5px;
+}
+#cs-container div.or-divider {
+    text-align: center;
+    font-size: 1.429em;
+    position: relative;
+    margin: 20px 0;
+}
+#cs-container div.or-divider > div {
+    width: 45%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-top-width: 2px;
+    border-top-style: solid;
+}
+#cs-container div.or-divider > div.right {
+    left: auto;
+    right: 0;
+}
+
+body[dir=rtl] #cs-container input:first-of-type {
+    margin-right: 0;
+    margin-left: 5px;
+}
+body[dir=rtl] #cs-container input[name=reg-number] {
+    box-shadow: inset -20px 0 0 0px #174cb6;
+    padding-left: inherit;
+    padding-right: 30px;
+}
+
+.vin-report-loader {
+    text-align: center;
+}
+
+/*** MOBILE VIEW ***/
+@media screen and (max-width: 767px) {
+    #cs-container {
+        max-width: 100%;
+    }
+    #cs-container input {
+        width: 100%;
+    }
+    #cs-container input:first-of-type {
+        margin: 0 0 10px 0;
+    }
+}

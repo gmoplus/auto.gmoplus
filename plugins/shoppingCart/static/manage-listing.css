@@ -1,0 +1,15 @@
+/* Manage listing form */
+
+#shc-group .combo-field input {
+    width: 120px;
+    max-width: 100%;
+}
+#shc-group[data-mode]:not([data-mode=auction]) .price_item > div.price-item-caption {
+    display: none;
+}
+#shc-group[data-mode=listing] .price_item .price-options {
+    display: block;
+}
+.price_item .price-options {
+    display: none;
+}

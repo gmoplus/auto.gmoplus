@@ -1,0 +1,19 @@
+{
+    "testimonials_testimonial": "Отзыв клиента",
+    "testimonials_testimonials": "Отзывы клиентов",
+    "testimonials_add_testimonial": "Добавить отзыв",
+    "testimonials_no_testimonials": "Отзывов нет.",
+    "testimonials_read_more": "Другие отзывы",
+    "testimonial_not_valid_content": "Ваш отзыв слишком короткий или пустой.",
+    "testimonials_accepted_to_moderation": "Ваш отзыв сохранен и ожидает проверки.",
+    "testimonials_posted": "Ваш отзыв был одобрен и размещен на сайте.",
+    "title_testimonials": "Отзывы",
+    "description_testimonials": "Добавляет на сайт блок с отзывами пользователей",
+    "config_groups+name+testimonials": "Отзывы",
+    "config+name+testimonials_moderate": "Проверка отзывов",
+    "config+name+testimonials_per_page": "Отзывы на странице",
+    "blocks+name+testimonials": "Отзывы",
+    "pages+title+testimonials": "Отзывы",
+    "pages+name+testimonials": "Отзывы"
+}
+

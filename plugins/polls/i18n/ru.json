@@ -1,0 +1,18 @@
+{
+    "title_polls": "Голосования и опросы",
+    "description_polls": "Позволяет добавлять на страницы блоки для голосований и опросов",
+    "total_votes": "Количество голосов",
+    "polls_not_created": "Здесь будет голосование",
+    "vote": "Отправить",
+    "notice_vote_accepted": "Ваш голос был принят; благодарим Вас за участие!",
+    "vote_items": "Варианты ответа",
+    "ext_results": "Результаты",
+    "votes": "Голоса",
+    "polls_view_results": "Просмотреть результаты",
+    "polls_back_for_vote": "Вернуться в голосование",
+    "polls_use_create_in_own": "В отдельном блоке",
+    "ext_polls_use_create_in_own": "Отдельный блок",
+    "ext_polls_manager": "Менеджер голосований",
+    "ext_notice_delete_poll": "Вы уверены, что хотите удалить голосование/опрос?",
+    "blocks+name+polls": "Опрос"
+}

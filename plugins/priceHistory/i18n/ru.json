@@ -1,0 +1,19 @@
+{
+    "title_priceHistory": "История цены",
+    "description_priceHistory": "Отображает изменение цены в объявлении за определенный период времени на графике или в таблице.",
+    "ph_listed_for_sale": "Выставлен на продажу",
+    "ph_price_changed": "Цена изменилась",
+    "ph_event": "Событие",
+    "ph_sqft": "Цена за кв.м.",
+    "ph_label": "История цены",
+    "ph_table": "Таблица",
+    "ph_chart": "Диаграмма",
+    "ph_k": "тыс.",
+    "ph_m": "млн.",
+    "ph_b": "млрд.",
+    "ph_add_price_field": "Добавить поле истории цены",
+    "blocks+name+price_history": "История цены",
+    "config_groups+name+price_history_configs": "История цены",
+    "config+name+square_feet_key": "Ключ поля \"Площадь\"",
+    "config+name+ph_sqft_enable": "Добавить столбец \"Цена\" за кв.м."
+}
