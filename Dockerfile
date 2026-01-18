@@ -74,4 +74,10 @@ RUN mkdir -p /var/www/html/tmp/compile \
 EXPOSE 80
 
 # Start Apache
+# Copy entrypoint script
+COPY --chown=www-data:www-data docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Start Apache using entrypoint
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
